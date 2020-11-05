@@ -20,35 +20,6 @@ favicon-url:
 # URL of the Image of Custom Hero Image (i.e., the image in the background of the very first section of the Homepage)
 heroimage: ../../assets/images/bg-workfloworchestrator.png
 
-# Social Media and Contact
-# If you don't want to use any icon, you can leave them blank.
-email: workfloworchestrator.board@commonsconservancy.org
-facebook_username: /
-twitter_username: 
-instagram_username: 
-linkedin_username: 
-github_username:  
-youtube_channel_id: 
-reddit_username: /
-behance_username: /
-dribbble_username: /
-spotify_username: /
-
-# Google Analytics
-google-analytics: 
-
-# Disqus
-disqus-shortname: 
-
-# Name of the Author
-author-name: Workflow Orchestrator programme
-# URL for the Image of the Author
-author-image: https://avatars3.githubusercontent.com/u/72258503
-# 60 Words About the Author
-author-about:  Workflow Orchestrator is a set of projects that provide implementation of a workflow engine and GUI to automate and orchestrate order, administration and provisioning processes.
-# URL to the Author's Profile (i.e., Github, Twitter, Stackoverflow, etc)
-author-url: https://github.com/workfloworchestrator
-
 # SASS
 sass:
   sass_dir: _sass
@@ -65,23 +36,6 @@ permalink: "blog/:title"
 # Compress
 compress_html:
   clippings: all
-
-# Defaults
-defaults:
-  -
-    scope:
-      type: 'posts'
-    values:
-      layout: post
-      post-image: ""
-      description: ""
-      tags:
-        - ""
-  -
-    scope:
-      type: 'pages'
-    values:
-      layout: page
 
 # Exclude
 exclude:
