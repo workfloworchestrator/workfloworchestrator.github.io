@@ -1,9 +1,9 @@
-- name: orch-core
+- name: orchestrator-core
   image: ../../assets/images/bg-workfloworchestrator.png
   link: https://github.com/workfloworchestrator/orchestrator-core
   description: The workflow orchestrator core; includes a workflow engine, products, processes, domain model functionality and more.
 
-- name: orch-gui 
+- name: orchestrator-gui 
   link: https://github.com/workfloworchestrator/orchestrator-gui
   image: ../../assets/images/bg-workfloworchestrator.png
   description: The orchestrator frontend that can be used to let users control the orchestrator core.
