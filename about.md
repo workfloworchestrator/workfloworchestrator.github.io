@@ -15,7 +15,7 @@ Commons Conservancy](https://commonsconservancy.org/programmes/){:target="blank"
 foundation and runs its own [governance](https://dracc.commonsconservancy.org/0029/){:target="blank"}. 
 Current positions:
 <br><br>
-**Board Members**<br>
+**Board Members** <b>[Elections May 2021](board-elections)</b><br>
 * Migiel de Vos (Chair)
 * Hans Trompert
 * John Macauley
