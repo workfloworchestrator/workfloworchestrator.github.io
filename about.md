@@ -15,10 +15,10 @@ Commons Conservancy](https://commonsconservancy.org/programmes/){:target="blank"
 foundation and runs its own [governance](https://dracc.commonsconservancy.org/0029/){:target="blank"}. 
 Current positions:
 <br><br>
-**Board Members** <b>[Elections May 2021](board-elections)</b><br>
-* Migiel de Vos (Chair)
-* Hans Trompert
-* John Macauley
+**Board Members**<br>
+* Migiel de Vos (Chair) [until May 2023]
+* Hans Trompert [until May 2022]
+* John Macauley [until May 2023]
 <br><br>
 **Core Developers**<br>
 * Peter Boers (Technical Lead)
