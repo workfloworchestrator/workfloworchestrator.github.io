@@ -1,6 +1,6 @@
 - name: orch-core
   image: ../../assets/images/bg-workfloworchestrator.png
-  link: https://github.com/workfloworchestrator/orchestrator-core
+  link: https://workfloworchestrator.org/orchestrator-core/
   description: The workflow orchestrator core; includes a workflow engine, products, processes, domain model functionality and more.
 
 - name: orch-gui 
