@@ -17,7 +17,7 @@ Current positions:
 <br><br>
 **Board Members**<br>
 * Migiel de Vos (Chair) [until May 2023]
-* Hans Trompert [until May 2022]
+* Hans Trompert [until May 2024]
 * John Macauley [until May 2023]
 <br><br>
 **Core Developers**<br>
