@@ -13,6 +13,7 @@ pip install -r requirements.txt
 ```bash
 mkdocs serve
 ```
+You can add menu items in the `mkdocs.yml` file. Content is added by changing the files in the `docs/` directory.
 
 For more advanced options in MKdocs check the documentation of the theme [here](https://squidfunk.github.io/mkdocs-material/getting-started/)
 
