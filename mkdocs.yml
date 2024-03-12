@@ -1,0 +1,24 @@
+site_name: Workflow Orchestrator Programme
+site_url: https://workfloworchestrator.org
+nav:
+  - Home: index.md
+  - About: about.md
+  - Contact: contact.md
+  - Leadership: board-elections.md
+  - Members: members.md
+theme:
+  name: material
+  favicon: "img/favicon.ico"
+  logo: img/WFO-Emblem-White.png
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+  icon:
+    repo: fontawesome/brands/github-alt
+extra_css:
+  - css/style.css
+repo_name: workfloworchestrator
+repo_url: https://github.com/workfloworchestrator
+copyright: Copyright &copy; 2018 - 2024 Workflow Orchestrator Programme
+extra:
+  generator: false
