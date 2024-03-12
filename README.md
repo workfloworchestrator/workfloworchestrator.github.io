@@ -14,6 +14,8 @@ pip install -r requirements.txt
 mkdocs serve
 ```
 
+For more advanced options in MKdocs check the documentation of the theme [here](https://squidfunk.github.io/mkdocs-material/getting-started/)
+
 ### Publishing
 ```bash
 mkdocs gh-deploy --config-file mkdocs.yml --remote-branch master
