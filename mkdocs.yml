@@ -10,6 +10,19 @@ theme:
   name: material
   favicon: "img/favicon.ico"
   logo: img/WFO-Emblem-White.png
+  palette:
+  - scheme: default
+    primary: teal
+    accent: amber
+    toggle:
+      icon: material/lightbulb-outline
+      name: Switch to light mode
+  - scheme: slate
+    primary: teal
+    accent: amber
+    toggle:
+      icon: material/lightbulb
+      name: Switch to dark mode
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -23,4 +36,5 @@ copyright: Copyright &copy; 2018 - 2024 Workflow Orchestrator Programme
 extra:
   generator: false
 plugins:
+  - search
   - privacy
