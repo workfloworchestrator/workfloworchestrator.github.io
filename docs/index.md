@@ -16,8 +16,7 @@ FastAPI to create an orchestration engine. Downloads:
 [![pypi-downloads](https://static.pepy.tech/badge/orchestrator-core)](https://pepy.tech/project/orchestrator-core)
 - [Orchestrator-UI](https://github.com/workfloworchestrator/orchestrator-ui-library) Component library for our NextJS 
 app on top of the Orchestrator-core. Downloads: 
-[![npm-downloads](https://img.shields.io/npm/dt/%40orchestrator-ui%2Forchestrator-ui-components)]
-(https://github.com/workfloworchestrator/orchestrator-ui-library)
+[![npm-downloads](https://img.shields.io/npm/dt/%40orchestrator-ui%2Forchestrator-ui-components)](https://github.com/workfloworchestrator/orchestrator-ui-library)
 - [Orchestrator Example UI](https://github.com/workfloworchestrator/example-orchestrator-ui/) Example ui with a NextJS 
 implementation of our component library. 
 
