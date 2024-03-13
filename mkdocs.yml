@@ -22,3 +22,5 @@ repo_url: https://github.com/workfloworchestrator
 copyright: Copyright &copy; 2018 - 2024 Workflow Orchestrator Programme
 extra:
   generator: false
+plugins:
+  - privacy
