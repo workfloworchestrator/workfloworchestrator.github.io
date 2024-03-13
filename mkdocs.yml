@@ -38,3 +38,4 @@ extra:
 plugins:
   - search
   - privacy
+  - social
