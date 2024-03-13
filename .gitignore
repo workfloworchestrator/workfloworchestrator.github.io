@@ -1,5 +1,6 @@
 site/
 .idea
+.cache/
 # Created by https://www.toptal.com/developers/gitignore/api/jekyll,ruby
 # Edit at https://www.toptal.com/developers/gitignore?templates=jekyll,ruby
 
