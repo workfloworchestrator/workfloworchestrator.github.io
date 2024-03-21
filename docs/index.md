@@ -4,15 +4,16 @@ hide:
   - toc
 ---
 # Workflow Orchestrator Programme
-Welcome to the Workflow Orchestrator Programme homepage. This opensource collaboration develops software, tools and best
-practices for automating and orchestrating networks. Our vision is to create an ecosystem of Software that enables users
-to Automate and Orchestrate their network.
+Welcome to the Workflow Orchestrator Programme homepage. This opensource collaboration develops software, tools and best practices for automating and orchestrating networks. Our vision is to create an ecosystem of Software that enables users to Automate and Orchestrate their network.
+
+## Documentation
+- Find workflow & product modeling, reference documentation and workshop information of the Workflow Orchestrator [here](https://workfloworchestrator.org/orchestrator-core)
+
 
 ## Core tooling:
 The Core tooling developed by the programme:
 
-- [Orchestrator-Core](https://workfloworchestrator.org/orchestrator-core): This Python Programme leverages the power of 
-FastAPI to create an orchestration engine. Downloads: 
+- [Orchestrator-Core](https://github.com/workfloworchestrator/orchestrator-core): This Python Programme leverages the power of FastAPI to create an orchestration engine. Downloads: 
 [![pypi-downloads](https://static.pepy.tech/badge/orchestrator-core)](https://pepy.tech/project/orchestrator-core)
 - [Orchestrator-UI](https://github.com/workfloworchestrator/orchestrator-ui-library) Component library for our NextJS 
 app on top of the Orchestrator-core. Downloads: 
