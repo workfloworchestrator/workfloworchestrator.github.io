@@ -17,14 +17,14 @@ foundation and runs its own [governance](https://dracc.commonsconservancy.org/00
 
 ###Current positions:
 ####Board Members
-- Migiel de Vos (Chair) [until May 2023]</br>
-- Hans Trompert [until May 2024] </br>
-- John Macauley [until May 2023]</br>
+- Migiel de Vos - SURF (Chair) [until May 2023]</br>
+- Hans Trompert - SURF [until May 2024] </br>
+- John Macauley - ESnet [until May 2023]</br>
 
 
 ####Core Developers
-- Peter Boers (Technical Lead)
-- Scott Richmond
+- Peter Boers - SURF (Technical Lead)
+- Scott Richmond - ESnet
 
 Several projects with code, examples and documentation have been defined
 and are available [here](/home). 
