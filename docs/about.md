@@ -27,6 +27,6 @@ foundation and runs its own [governance](https://dracc.commonsconservancy.org/00
 - Scott Richmond - ESnet
 
 Several projects with code, examples and documentation have been defined
-and are available [here](/home). 
+and are available [here](https://workfloworchestrator.org/orchestrator-core). 
 You can also visit our [github page](https://github.com/workfloworchestrator/).
 
