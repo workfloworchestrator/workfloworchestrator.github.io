@@ -32,5 +32,5 @@ and an example integration with Netbox
 Restconf
 - [Pydantic-Forms](https://github.com/workfloworchestrator/pydantic-forms): A library that includes standardised Python 
 Form classes that can be used when generating form components from JSON-schema
-- [SuPA](https://workfloworchestrator.org/supa): An NSI Ultimate provider agent with a gRPC api
+- [SuPA](https://workfloworchestrator.org/SuPA): An NSI Ultimate provider agent with a gRPC api
 - [PolyNSI](https://github.com/workfloworchestrator/polynsi): A Soap to gRPC NSI proxy
