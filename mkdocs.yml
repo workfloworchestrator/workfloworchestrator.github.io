@@ -4,7 +4,7 @@ nav:
   - Home: index.md
   - About: about.md
   - Contact: contact.md
-  - Leadership: board-elections.md
+  - Leadership: leadership.md
   - Members: members.md
   - Documentation: https://workfloworchestrator.org/orchestrator-core
 theme:
