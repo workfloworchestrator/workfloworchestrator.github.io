@@ -37,6 +37,10 @@ repo_url: https://github.com/workfloworchestrator
 copyright: Copyright &copy; 2018 - 2024 Workflow Orchestrator Programme
 extra:
   generator: false
+  social:
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/KNgF6gE8
+      name: WFO on Discord!
 plugins:
   - search
   - privacy
