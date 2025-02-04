@@ -36,4 +36,4 @@ Form classes that can be used when generating form components from JSON-schema.
 - [PolyNSI](https://github.com/workfloworchestrator/polynsi): A bidirectional SOAP to gRPC translating proxy server for the NSI protocol.
 
 ### Join the community
-You can find this community on Discord. Feel free to join [us](https://discord.gg/KNgF6gE8) ![Discord](https://img.shields.io/discord/1295834294270558280?style=flat&logo=discord&label=discord&link=https%3A%2F%2Fdiscord.gg%2FKNgF6gE8)
+You can find this community on Discord. Feel free to join [us](https://discord.gg/fQkQn5ajFR) ![Discord](https://img.shields.io/discord/1295834294270558280?style=flat&logo=discord&label=discord&link=https%3A%2F%2Fdiscord.gg%2fQkQn5ajFR)
