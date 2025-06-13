@@ -14,7 +14,7 @@ foundation and runs its own [governance](https://dracc.commonsconservancy.org/00
 - Hans Trompert - SURF [until May 2026] </br>
 - John Macauley - ESnet [until May 2025]</br>
 - Scott Richmond - ESnet [until May 2026]</br>
-- Bram Peeters - Géant [until May 2025]</br>
+- Bram Peeters - GÉANT [until May 2025]</br>
 
 
 ####Core Developers
