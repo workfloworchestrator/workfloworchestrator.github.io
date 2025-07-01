@@ -6,6 +6,7 @@ nav:
   - Contact: contact.md
   - Leadership: leadership.md
   - Members: members.md
+  - Meetings: meetings.md
   - Documentation: https://workfloworchestrator.org/orchestrator-core
   - Demo: https://demo.workfloworchestrator.org
 theme:
