@@ -25,5 +25,5 @@ For more advanced options in MKdocs check the documentation of the theme [here](
 
 ### Publishing
 ```bash
-mkdocs gh-deploy --config-file mkdocs.yml --remote-branch master
+mkdocs gh-deploy --config-file mkdocs.yml
 ```
