@@ -9,6 +9,10 @@ You need uv to run this, take a look at [this](https://docs.astral.sh/uv/getting
 ```bash
 uv run mkdocs serve
 ```
+
+> [!NOTE]
+> This Mkdocs setup implements multirepo, and expectes other repositories to be present. The expected repos are listed in the mkdocs.yml config file. Comment out these parts if you dont need them.
+
 You can add menu items in the `mkdocs.yml` file. Content is added by changing the files in the `docs/` directory.
 
 If it does not work, you might need to set the following in your ENV:
@@ -23,3 +27,4 @@ For more advanced options in MKdocs check the documentation of the theme [here](
 ```bash
 mkdocs gh-deploy --config-file mkdocs.yml --remote-branch master
 ```
+
