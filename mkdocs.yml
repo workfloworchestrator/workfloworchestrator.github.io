@@ -11,9 +11,9 @@ nav:
     - Media: meetings.md
   - Projects:
     - Orchestrator Core: '!include ./orchestrator-core/mkdocs.yml'
-      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core
+      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
     - Orchestrator UI Library: '!include ./orchestrator-ui-library/mkdocs/mkdocs.yml'
-      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-ui-library
+      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-ui-library.git
 
 theme:
   name: material
