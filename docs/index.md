@@ -1,8 +1,3 @@
----
-hide:
-  - navigation
-  - toc
----
 # Workflow Orchestrator programme
 Welcome to the Workflow Orchestrator programme homepage. This opensource collaboration develops software, tools and best practices for automating and orchestrating networks. Our vision is to create an ecosystem of Software that enables users to Automate and Orchestrate their network.
 

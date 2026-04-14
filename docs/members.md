@@ -1,8 +1,3 @@
----
-hide:
-  - navigation
-  - toc
----
 # Programme Members
 Organisations that are involved with the Workflow Orchestrator programme are:
 

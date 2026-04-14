@@ -1,8 +1,3 @@
----
-hide:
-  - navigation
-  - toc
----
 # About
 
 ## Our Vision: Open, Efficient, and Community-Driven

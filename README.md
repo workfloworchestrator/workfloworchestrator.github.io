@@ -4,14 +4,10 @@ This is the website of the workflow orchestrator programme.
 The webpage is built using mkdocs
 
 ### Developing
-To edit do the following:
+You need uv to run this, take a look at [this](https://docs.astral.sh/uv/getting-started/installation/) to install it. Once you have it , to edit do the following :
 
 ```bash
-pip install -r requirements.txt
-```
-
-```bash
-mkdocs serve
+uv run mkdocs serve
 ```
 You can add menu items in the `mkdocs.yml` file. Content is added by changing the files in the `docs/` directory.
 

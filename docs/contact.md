@@ -1,8 +1,3 @@
----
-hide:
-  - navigation
-  - toc
----
 
 We'd love to hear your thoughts, inspiration and ideas! Feel free to contact us via one of the channels below:
 <br><br>
