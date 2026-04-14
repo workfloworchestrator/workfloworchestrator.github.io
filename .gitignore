@@ -1,6 +1,6 @@
 # Dont want to include sub-projects
-./orchestrator-core
-./orchestrator-ui-library
+orchestrator-core
+orchestrator-ui-library
 
 # Dont want to inlude uv.lock
 ./uv.lock

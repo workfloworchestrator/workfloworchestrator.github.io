@@ -11,7 +11,7 @@ uv run mkdocs serve
 ```
 
 > [!NOTE]
-> This Mkdocs setup implements multirepo, and expectes other repositories to be present. The expected repos are listed in the mkdocs.yml config file. Comment out these parts if you dont need them. Otherwise you can clone everything you need with: ```  git clone `grep INCLUDED_REPO mkdocs.yml | awk '{print $3}'` ```
+> This Mkdocs setup implements multirepo, and expectes other repositories to be present. The expected repos are listed in the mkdocs.yml config file. Comment out these parts if you dont need them. Otherwise you can clone everything you need with: ``` grep INCLUDED_REPO mkdocs.yml | awk '{print "git clone "$3}' | sh ```
 
 You can add menu items in the `mkdocs.yml` file. Content is added by changing the files in the `docs/` directory.
 
