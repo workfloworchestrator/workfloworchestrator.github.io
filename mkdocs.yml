@@ -8,7 +8,8 @@ nav:
     - Leadership: leadership.md
   - Community:
     - Members: members.md
-    - Media: meetings.md
+    - Meetings: meetings.md
+    - Media: media.md
   - Projects:
     - Orchestrator Core: '!include ./orchestrator-core/mkdocs.yml'
       # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
