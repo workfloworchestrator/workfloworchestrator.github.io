@@ -21,18 +21,26 @@ theme:
   favicon: "img/favicon.ico"
   logo: img/WFO-Emblem-White.png
   palette:
-  - scheme: default
-    primary: teal
-    accent: amber
-    toggle:
-      icon: material/lightbulb-outline
-      name: Switch to light mode
-  - scheme: slate
-    primary: teal
-    accent: amber
-    toggle:
-      icon: material/lightbulb
-      name: Switch to dark mode
+    - scheme: default
+      primary: teal
+      accent: amber
+      media: "(prefers-color-scheme: light)"
+      toggle:
+          icon: material/lightbulb-on
+          name: Switch to dark mode
+    - scheme: slate
+      primary: teal
+      accent: amber
+      media: "(prefers-color-scheme: dark)"
+      toggle:
+          icon: material/lightbulb-outline
+          name: Switch to system preference
+    - primary: teal
+      accent: amber
+      media: "(prefers-color-scheme)"
+      toggle:
+          icon: material/lightbulb-auto
+          name: Switch to light mode
   features:
     - navigation.sections
     #- navigation.tabs
@@ -43,15 +51,56 @@ extra_css:
   - css/style.css
 repo_name: workfloworchestrator
 repo_url: https://github.com/workfloworchestrator
-copyright: Copyright &copy; 2018 - 2024 Workflow Orchestrator Programme
+copyright: Copyright &copy; 2018 - 2026 Workflow Orchestrator Programme
 extra:
   generator: false
   social:
     - icon: fontawesome/brands/discord
       link: https://discord.gg/fQkQn5ajFR
       name: WFO on Discord!
+hooks:
+  # Merges markdown_extensions, extra_css, extra_javascript, and theme from included mkdocs.yml files,
+  # as the monorepo plugin does not do this (https://github.com/backstage/mkdocs-monorepo-plugin/issues/138)
+  - hooks/merge_subproject_configs.py
 plugins:
   - search
   - privacy
   - social
   - monorepo
+  # Keep in sync with orchestrator-core/mkdocs.yml plugins (can't be merged dynamically)
+  - external-markdown
+  - open-in-new-tab
+  - render_swagger
+  - macros
+  - include-markdown
+  - mkdocstrings:
+      default_handler: python
+      enable_inventory: true
+      handlers:
+        python:
+          options:
+            show_source: true
+            show_root_heading: true
+            show_root_toc_entry: true
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            docstring_style: null
+            docstring_section_style: list
+            annotations_path: full
+            separate_signature: true
+            line_length: 80
+            show_signature_annotations: true
+            unwrap_annotated: true
+  - redirects:
+      redirect_maps:
+        'orchestrator-core/architecture/product_modelling/imports.md': 'orchestrator-core/guides/product-modeling/imports.md'
+        'orchestrator-core/architecture/product_modelling/backfilling.md': 'orchestrator-core/guides/product-modeling/backfilling.md'
+        'orchestrator-core/architecture/application/tasks.md': 'orchestrator-core/guides/tasks.md'
+        'orchestrator-core/reference-docs/app/scaling.md': 'orchestrator-core/guides/scaling.md'
+        'orchestrator-core/reference-docs/app/pause-and-resume.md': 'orchestrator-core/guides/pause-and-resume.md'
+        'orchestrator-core/migration-guide/2.0.md': 'orchestrator-core/guides/upgrading/2.0.md'
+        'orchestrator-core/migration-guide/3.0.md': 'orchestrator-core/guides/upgrading/3.0.md'
+        'orchestrator-core/migration-guide/4.0.md': 'orchestrator-core/guides/upgrading/4.0.md'
+  # orchestrator-ui-library plugins
+  - termynal
+  - awesome-pages
