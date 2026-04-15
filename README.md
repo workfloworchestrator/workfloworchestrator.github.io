@@ -11,7 +11,6 @@ uv run mkdocs serve
 ```
 
 > [!NOTE]
-> This Mkdocs setup implements multirepo, and expectes other repositories to be present. The expected repos are listed in the mkdocs.yml config file. Comment out these parts if you dont need them. Otherwise you can clone everything you need with: ``` grep INCLUDED_REPO mkdocs.yml | awk '{print "git clone "$3}' | sh ```
 
 You can add menu items in the `mkdocs.yml` file. Content is added by changing the files in the `docs/` directory.
 
@@ -25,6 +24,6 @@ For more advanced options in MKdocs check the documentation of the theme [here](
 
 ### Publishing
 ```bash
-mkdocs gh-deploy --config-file mkdocs.yml --remote-branch master
+uv run mkdocs gh-deploy --config-file mkdocs.yml
 ```
 

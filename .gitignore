@@ -2,8 +2,6 @@
 orchestrator-core
 orchestrator-ui-library
 
-# Dont want to inlude uv.lock
-./uv.lock
 
 
 site/
