@@ -1,3 +1,7 @@
+# Dont want to include sub-projects
+orchestrator-core
+orchestrator-ui-library
+
 site/
 .idea
 .cache/

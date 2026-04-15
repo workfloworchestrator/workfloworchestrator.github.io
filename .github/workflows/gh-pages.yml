@@ -1,0 +1,33 @@
+name: gh-pages
+on:
+  push:
+    branches:
+      - main
+  repository_dispatch:
+    types: [docs-update]
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Clone included repositories
+        run: grep INCLUDED_REPO mkdocs.yml | awk '{print "git clone "$3}' | sh
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          version: "0.11.6"
+
+      - name: Install site dependencies
+        run: uv sync
+
+      - name: Install included repositories as packages
+        run: grep 'include ./' mkdocs.yml | sed "s/.*include //;s|/[^/]*'$||" | awk '{print "uv pip install --no-deps "$1}' | sh
+
+      - name: Build and deploy
+        run: uv run --no-sync mkdocs gh-deploy --force

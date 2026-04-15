@@ -1,0 +1,20 @@
+[project]
+name = "workfloworchestrator-org"
+version = "0.1"
+dependencies = [
+    "mkdocs>=1.6.1",
+    "mkdocs-drawio>=1.12.0",
+    "mkdocs-material[imaging]>=9.7.0",
+    "mkdocs-monorepo-plugin",
+    # orchestrator-core docs plugins
+    "mkdocs-embed-external-markdown>=3.0.2",
+    "mkdocs-include-markdown-plugin>=7.1.6",
+    "mkdocs-macros-plugin>=1.3.7",
+    "mkdocs-open-in-new-tab>=1.0.8",
+    "mkdocs-redirects>=1.2.2",
+    "mkdocs-render-swagger-plugin>=0.1.2",
+    "mkdocstrings[python]>=0.29.1",
+    # orchestrator-ui-library docs plugins
+    "termynal",
+    "mkdocs-awesome-pages-plugin",
+]
