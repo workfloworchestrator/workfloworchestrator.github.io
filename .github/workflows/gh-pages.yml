@@ -27,7 +27,7 @@ jobs:
         run: uv sync
 
       - name: Install included repositories as packages
-        run: grep 'include ./' mkdocs.yml | sed "s/.*include //;s|/[^/]*'$||" | awk '{print "uv pip install --no-deps "$1}' | sh
+        run: grep 'include ./' mkdocs.yml | sed 's/.*include //;s|/[^/]*"$||' | awk '{print "uv pip install --no-deps "$1}' | sh
 
       - name: Build and deploy
         run: uv run --no-sync mkdocs gh-deploy --force
