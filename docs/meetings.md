@@ -1,10 +1,10 @@
 ## Regular Meetings
 
-There are 3 regular meetings scheduled during the year: 
+There are three regular meetings scheduled each year:
 
-- __WFO Partner Developers Meeting:__ Usually held in spring in USA and is focused on gathering together developers from the partner organizations who work on orchestrator-core and other projects.  
-- __WFO User Meeting:__ Normally co-located with TNC (early summer), it is a moment to share updates with the community, gather user feedback and meet with potential new users.
-- __WFO User Developers Meeting:__ Happens in Europe in autumn and gathers together the developers that work with WFO, focused on products workflows and plugins/functionalities.
+- WFO Partner Developers Meeting: Usually held in spring in the USA, this meeting brings together developers from partner organizations who work on Orchestrator Core and related projects.
+- WFO User Meeting: Normally co-located with TNC in early summer, this meeting is an opportunity to share updates with the community, gather user feedback, and connect with potential new users.
+- WFO User Developers Meeting: Held in Europe in autumn, this meeting gathers developers working with WFO and focuses on product workflows, plugins, and functionalities.
 
 
 ### Meetings material
