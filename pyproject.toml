@@ -20,4 +20,7 @@ dependencies = [
     "mkdocs-awesome-pages-plugin",
     # lso itself for python docstrings
     "orchestrator-lso",
+    # linting
+    "pre-commit",
+    "yamllint",
 ]

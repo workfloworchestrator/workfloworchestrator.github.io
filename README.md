@@ -1,17 +1,34 @@
 # WorkflowOrchestrator.org website
-This is the website of the workflow orchestrator programme.
 
-The webpage is built using mkdocs
+This is the website of the Workflow Orchestrator Programme.
+
+The webpage is built using mkdocs.
 
 ### Developing
-You need uv to run this, take a look at [this](https://docs.astral.sh/uv/getting-started/installation/) to install it. Once you have it , to edit do the following :
+
+You need uv to run this, take a look at [this](https://docs.astral.sh/uv/getting-started/installation/) to install it.
+
+The project uses pre-commit to enforce YAML and Markdown codestyle, install that with:
+
+```bash
+uv run pre-commit install
+```
+
+Now you can edit the documentation.
+
+To render the documentation locally, run:
 
 ```bash
 uv run mkdocs serve
 ```
 
+### Monorepo
+
 > [!NOTE]
-> This Mkdocs setup implements multirepo, and expectes other repositories to be present. The expected repos are listed in the mkdocs.yml config file. Comment out these parts if you dont need them. Otherwise you can clone everything you need with: ``` grep INCLUDED_REPO mkdocs.yml | awk '{print "git clone "$3}' | sh ```
+> This Mkdocs setup implements monorepo, and expects other repositories to be present.
+> The expected repos are listed in the mkdocs.yml config file.
+> Comment out these parts if you dont need them.
+> Otherwise you can clone everything you need with: ``` grep INCLUDED_REPO mkdocs.yml | awk '{print "git clone "$3}' | sh ```
 
 You can add menu items in the `mkdocs.yml` file. Content is added by changing the files in the `docs/` directory.
 

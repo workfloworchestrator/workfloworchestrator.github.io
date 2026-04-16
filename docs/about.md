@@ -19,11 +19,10 @@ orchestrating order, administration and provisioning processes.
 
 ## Governance and project documentation
 
-The Workflow Orchestrator programme has been established under [The 
-Commons Conservancy](https://commonsconservancy.org/programmes/) 
-foundation and runs its own [governance](https://dracc.commonsconservancy.org/0040/). 
+The Workflow Orchestrator programme has been established under [The
+Commons Conservancy](https://commonsconservancy.org/programmes/)
+foundation and runs its own [governance](https://dracc.commonsconservancy.org/0040/).
 
 Several projects with code, examples and documentation have been defined
-and are available [here](https://workfloworchestrator.org/). 
+and are available [here](https://workfloworchestrator.org/).
 You can also visit our [github page](https://github.com/workfloworchestrator/).
-

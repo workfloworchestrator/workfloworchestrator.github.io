@@ -12,11 +12,11 @@ nav:
       - Media: media.md
   - Projects:
       - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
-        # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
+      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
       - Orchestrator UI Library: "!include ./orchestrator-ui-library/mkdocs/mkdocs.yml"
-        # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-ui-library.git
+      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-ui-library.git
       - Lightweight Service Orchestrator: "!include ./lso/mkdocs.yml"
-        # INCLUDED_REPO: https://github.com/workfloworchestrator/lso.git
+      # INCLUDED_REPO: https://github.com/workfloworchestrator/lso.git
 
 theme:
   name: material
