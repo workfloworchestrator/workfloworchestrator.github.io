@@ -15,9 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Clone included repositories
-        run: grep INCLUDED_REPO mkdocs.yml | awk '{print "git clone "$3}' | sh
-
       - name: Install uv
         uses: astral-sh/setup-uv@v7
         with:
@@ -26,8 +23,8 @@ jobs:
       - name: Install site dependencies
         run: uv sync
 
-      - name: Install included repositories as packages
-        run: grep 'include ./' mkdocs.yml | sed 's/.*include //;s|/[^/]*"$||' | awk '{print "uv pip install --no-deps "$1}' | sh
+      - name: Set up subprojects
+        run: ./setup_subprojects.sh
 
       - name: Build and deploy
         run: uv run --no-sync mkdocs gh-deploy --force

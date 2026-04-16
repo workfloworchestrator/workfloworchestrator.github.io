@@ -29,11 +29,11 @@ There are three regular meetings scheduled each year:
 
 ## Infoshares
 
-Infoshares happen in between the meetings with the aim of keeping the larger community engaged and up to date with what happens in the workflow orchestrator programme. 
+Infoshares happen in between the meetings with the aim of keeping the larger community engaged and up to date with what happens in the workflow orchestrator programme.
 
 ### Upcoming infoshares
 
-No upcoming infoshares at the moment. 
+No upcoming infoshares at the moment.
 
 ### Previous infoshares
 

@@ -1,7 +1,7 @@
 
-The Workflow Orchestrator programme has been established under [The 
-Commons Conservancy](https://commonsconservancy.org/programmes/) 
-foundation and runs its own [governance](https://dracc.commonsconservancy.org/0040/). 
+The Workflow Orchestrator programme has been established under [The
+Commons Conservancy](https://commonsconservancy.org/programmes/)
+foundation and runs its own [governance](https://dracc.commonsconservancy.org/0040/).
 
 ###Current positions:
 ####Board Members
@@ -15,5 +15,3 @@ foundation and runs its own [governance](https://dracc.commonsconservancy.org/00
 ####Core Developers
 - Peter Boers - SURF (Technical Lead)
 - Scott Richmond - ESnet
-
-
