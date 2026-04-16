@@ -24,7 +24,5 @@ export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib
 For more advanced options in MKdocs check the documentation of the theme [here](https://squidfunk.github.io/mkdocs-material/getting-started/)
 
 ### Publishing
-```bash
-mkdocs gh-deploy --config-file mkdocs.yml
-```
 
+Publishing is automated with a GitHub action that runs whenever there is a commit on the main branch.

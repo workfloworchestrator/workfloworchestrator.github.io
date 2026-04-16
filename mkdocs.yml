@@ -3,18 +3,20 @@ site_url: https://workfloworchestrator.org
 nav:
   - Home: index.md
   - The programme:
-    - About: about.md
-    - Contact: contact.md
-    - Leadership: leadership.md
+      - About: about.md
+      - Contact: contact.md
+      - Leadership: leadership.md
   - Community:
-    - Members: members.md
-    - Meetings: meetings.md
-    - Media: media.md
+      - Members: members.md
+      - Meetings: meetings.md
+      - Media: media.md
   - Projects:
-    - Orchestrator Core: '!include ./orchestrator-core/mkdocs.yml'
-      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
-    - Orchestrator UI Library: '!include ./orchestrator-ui-library/mkdocs/mkdocs.yml'
-      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-ui-library.git
+      - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
+        # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
+      - Orchestrator UI Library: "!include ./orchestrator-ui-library/mkdocs/mkdocs.yml"
+        # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-ui-library.git
+      - Lightweight Service Orchestrator: "!include ./lso/mkdocs.yml"
+        # INCLUDED_REPO: https://github.com/workfloworchestrator/lso.git
 
 theme:
   name: material
@@ -26,25 +28,23 @@ theme:
       accent: amber
       media: "(prefers-color-scheme: light)"
       toggle:
-          icon: material/lightbulb-on
-          name: Switch to dark mode
+        icon: material/lightbulb-on
+        name: Switch to dark mode
     - scheme: slate
       primary: teal
       accent: amber
       media: "(prefers-color-scheme: dark)"
       toggle:
-          icon: material/lightbulb-outline
-          name: Switch to system preference
+        icon: material/lightbulb-outline
+        name: Switch to system preference
     - primary: teal
       accent: amber
       media: "(prefers-color-scheme)"
       toggle:
-          icon: material/lightbulb-auto
-          name: Switch to light mode
+        icon: material/lightbulb-auto
+        name: Switch to light mode
   features:
     - navigation.sections
-    #- navigation.tabs
-    # - navigation.tabs.sticky
   icon:
     repo: fontawesome/brands/github-alt
 extra_css:
@@ -78,6 +78,10 @@ plugins:
       enable_inventory: true
       handlers:
         python:
+          inventories:
+            - https://docs.python.org/3/objects.inv
+          paths:
+            - lso/lso
           options:
             show_source: true
             show_root_heading: true
@@ -93,14 +97,14 @@ plugins:
             unwrap_annotated: true
   - redirects:
       redirect_maps:
-        'orchestrator-core/architecture/product_modelling/imports.md': 'orchestrator-core/guides/product-modeling/imports.md'
-        'orchestrator-core/architecture/product_modelling/backfilling.md': 'orchestrator-core/guides/product-modeling/backfilling.md'
-        'orchestrator-core/architecture/application/tasks.md': 'orchestrator-core/guides/tasks.md'
-        'orchestrator-core/reference-docs/app/scaling.md': 'orchestrator-core/guides/scaling.md'
-        'orchestrator-core/reference-docs/app/pause-and-resume.md': 'orchestrator-core/guides/pause-and-resume.md'
-        'orchestrator-core/migration-guide/2.0.md': 'orchestrator-core/guides/upgrading/2.0.md'
-        'orchestrator-core/migration-guide/3.0.md': 'orchestrator-core/guides/upgrading/3.0.md'
-        'orchestrator-core/migration-guide/4.0.md': 'orchestrator-core/guides/upgrading/4.0.md'
+        "orchestrator-core/architecture/product_modelling/imports.md": "orchestrator-core/guides/product-modeling/imports.md"
+        "orchestrator-core/architecture/product_modelling/backfilling.md": "orchestrator-core/guides/product-modeling/backfilling.md"
+        "orchestrator-core/architecture/application/tasks.md": "orchestrator-core/guides/tasks.md"
+        "orchestrator-core/reference-docs/app/scaling.md": "orchestrator-core/guides/scaling.md"
+        "orchestrator-core/reference-docs/app/pause-and-resume.md": "orchestrator-core/guides/pause-and-resume.md"
+        "orchestrator-core/migration-guide/2.0.md": "orchestrator-core/guides/upgrading/2.0.md"
+        "orchestrator-core/migration-guide/3.0.md": "orchestrator-core/guides/upgrading/3.0.md"
+        "orchestrator-core/migration-guide/4.0.md": "orchestrator-core/guides/upgrading/4.0.md"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages

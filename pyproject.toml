@@ -7,6 +7,7 @@ dependencies = [
     "mkdocs-material[imaging]>=9.7.0",
     "mkdocs-monorepo-plugin",
     # orchestrator-core docs plugins
+    "orchestrator-core",
     "mkdocs-embed-external-markdown>=3.0.2",
     "mkdocs-include-markdown-plugin>=7.1.6",
     "mkdocs-macros-plugin>=1.3.7",
@@ -17,4 +18,6 @@ dependencies = [
     # orchestrator-ui-library docs plugins
     "termynal",
     "mkdocs-awesome-pages-plugin",
+    # lso itself for python docstrings
+    "orchestrator-lso",
 ]
