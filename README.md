@@ -14,6 +14,15 @@ The project uses pre-commit to enforce YAML and Markdown codestyle, install that
 uv run pre-commit install
 ```
 
+This Mkdocs setup implements monorepo, and expects other repositories to be present.
+The expected repos are listed in the mkdocs.yml config file.
+Comment out these parts if you dont need them.
+Otherwise, you can clone and install everything you need with:
+
+```bash
+./setup_subprojects.sh
+```
+
 Now you can edit the documentation.
 
 To render the documentation locally, run:
@@ -21,24 +30,6 @@ To render the documentation locally, run:
 ```bash
 uv run mkdocs serve
 ```
-
-### Monorepo
-
-> [!NOTE]
-> This Mkdocs setup implements monorepo, and expects other repositories to be present.
-> The expected repos are listed in the mkdocs.yml config file.
-> Comment out these parts if you dont need them.
-> Otherwise you can clone everything you need with: ``` grep INCLUDED_REPO mkdocs.yml | awk '{print "git clone "$3}' | sh ```
-
-You can add menu items in the `mkdocs.yml` file. Content is added by changing the files in the `docs/` directory.
-
-If it does not work, you might need to set the following in your ENV:
-
-```bash
-export DYLD_FALLBACK_LIBRARY_PATH=/opt/homebrew/lib
-```
-
-For more advanced options in MKdocs check the documentation of the theme [here](https://squidfunk.github.io/mkdocs-material/getting-started/)
 
 ### Publishing
 
