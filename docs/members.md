@@ -18,5 +18,6 @@ Organisations that are involved with the Workflow Orchestrator programme are:
 [<img alt='CANARIE' src='/img/CANARIE_small.png' style="margin-right: 50px; margin-bottom: 50px;">](https://canarie.ca)
 [<img alt='GARR' src='/img/Logo-GARR-small.png' style="margin-right: 50px; margin-bottom: 50px;">](https://garr.it)
 [<img alt='REANNZ' src='/img/reannz-logo-small.png' style="margin-right: 50px; margin-bottom: 50px;">](https://reannz.co.nz)
+[<img alt='Internet2' src='/img/internet2-logo.svg' style="margin-right: 50px; margin-bottom: 50px; height: 130px;">](https://internet2.edu)
 
 If you or your organisation would like to contribute please get in [touch](/contact)!
