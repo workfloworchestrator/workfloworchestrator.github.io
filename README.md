@@ -28,7 +28,7 @@ Now you can edit the documentation.
 To render the documentation locally, run:
 
 ```bash
-uv run mkdocs serve
+uv run --no-sync mkdocs serve
 ```
 
 ### Publishing
