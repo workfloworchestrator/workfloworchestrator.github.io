@@ -1,0 +1,6703 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://workfloworchestrator.org/orchestrator-core/guides/upgrading/5.0/">
+      
+      
+        <link rel="prev" href="../4.8/">
+      
+      
+        <link rel="next" href="../../../reference-docs/tldr/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>v5.0 - Workflow Orchestrator Programme</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        
+        <link rel="stylesheet" href="../../../../assets/external/fonts.googleapis.com/css.49ea35f2.css">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../../css/style.css">
+    
+      <link rel="stylesheet" href="../../../../termynal.css">
+    
+      <link rel="stylesheet" href="../../../css/termynal.css">
+    
+      <link rel="stylesheet" href="../../../css/custom.css">
+    
+      <link rel="stylesheet" href="../../../css/style.css">
+    
+      <link rel="stylesheet" href="../../../css/markers.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  
+<meta property="og:type" content="website" />
+<meta property="og:title" content="v5.0 - Workflow Orchestrator Programme" />
+<meta property="og:image" content="https://workfloworchestrator.org/assets/images/social/orchestrator-core/guides/upgrading/5.0.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:url" content="https://workfloworchestrator.org/orchestrator-core/guides/upgrading/5.0/" />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:title" content="v5.0 - Workflow Orchestrator Programme" />
+<meta property="twitter:image" content="https://workfloworchestrator.org/assets/images/social/orchestrator-core/guides/upgrading/5.0.png" />
+</head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#50-upgrade-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Workflow Orchestrator Programme" class="md-header__button md-logo" aria-label="Workflow Orchestrator Programme" data-md-component="logo">
+      
+  <img src="../../../../img/WFO-Emblem-White.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Workflow Orchestrator Programme
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              v5.0
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 6a6 6 0 0 1 6 6c0 2.22-1.21 4.16-3 5.2V19a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1v-1.8c-1.79-1.04-3-2.98-3-5.2a6 6 0 0 1 6-6m2 15v1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-1zm6-10h3v2h-3zM1 11h3v2H1zM13 1v3h-2V1zM4.92 3.5l2.13 2.14-1.42 1.41L3.5 4.93zm12.03 2.13 2.12-2.13 1.43 1.43-2.13 2.12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 1 7 7c0 2.38-1.19 4.47-3 5.74V17a1 1 0 0 1-1 1H9a1 1 0 0 1-1-1v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 0 1 7-7M9 21v-1h6v1a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1m3-17a5 5 0 0 0-5 5c0 2.05 1.23 3.81 3 4.58V16h4v-2.42c1.77-.77 3-2.53 3-4.58a5 5 0 0 0-5-5"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="amber"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 2C5.13 2 2 5.13 2 9c0 2.38 1.19 4.47 3 5.74V17c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-2.26c1.81-1.27 3-3.36 3-5.74 0-3.87-3.13-7-7-7M6 21c0 .55.45 1 1 1h4c.55 0 1-.45 1-1v-1H6zm13-8h-2l-3.2 9h1.9l.7-2h3.2l.7 2h1.9zm-2.15 5.65L18 15l1.15 3.65z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/workfloworchestrator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    workfloworchestrator
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Workflow Orchestrator Programme" class="md-nav__button md-logo" aria-label="Workflow Orchestrator Programme" data-md-component="logo">
+      
+  <img src="../../../../img/WFO-Emblem-White.png" alt="logo">
+
+    </a>
+    Workflow Orchestrator Programme
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/workfloworchestrator" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M202.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1M496 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2m-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3m-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1"/></svg>
+  </div>
+  <div class="md-source__repository">
+    workfloworchestrator
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The programme
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    The programme
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../about/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    About
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../contact/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contact
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../leadership/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Leadership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Community
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Community
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../members/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Members
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../meetings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meetings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../media/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Media
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Projects
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Projects
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator Core
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Orchestrator Core
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflow Orchestrator
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/framework/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator Framework
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1_3" id="__nav_4_1_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator UI
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Orchestrator UI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/orchestration/orchestrator-ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1_3_2" id="__nav_4_1_1_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    User input forms
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_4_1_1_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    User input forms
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/application/forms-frontend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generic solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1_4" id="__nav_4_1_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/tldr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture; TL;DR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/orchestration/philosophy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestration Philosophy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/application/domainmodels/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Domain Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/application/workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How do Workflows work?
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1_4_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1_4_5" id="__nav_4_1_1_4_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product modeling
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_4_1_1_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product modeling
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/product_modelling/introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/product_modelling/standards/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Standards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/product_modelling/modelling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modelling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/product_modelling/context/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Context
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/product_modelling/terminology/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terminology
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1_4_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1_4_5_6" id="__nav_4_1_1_4_5_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example Product Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="6" aria-labelledby="__nav_4_1_1_4_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1_4_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Example Product Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/product_modelling/node/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/product_modelling/port/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Port
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/product_modelling/l2_point_to_point/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L2 Point-to-Point
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/product_modelling/l2_vpn/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L2 VPN
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/product_modelling/ip_static/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IP Static
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/product_modelling/product_block_graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product Block Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1_4_6" id="__nav_4_1_1_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Extensibility
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_4_1_1_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Extensibility
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/extensibility/packaging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Packaging
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../architecture/extensibility/modules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Optional Modules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2_1" id="__nav_4_1_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/versions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prerequisites
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2_1_2" id="__nav_4_1_2_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Application
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_4_1_2_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Application
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/prepare-source-folder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Preparing source folder
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/base/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Base application
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/orchestration-ui/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator UI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2_2" id="__nav_4_1_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product Modeling
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Product Modeling
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product-modeling/imports/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Importing Existing Products
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../product-modeling/backfilling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backfilling Existing Subscriptions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Creating Tasks and Schedules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../scaling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scaling the Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pause-and-resume/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pausing the Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../generate-config-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generating a Config File
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2_8" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2_8" id="__nav_4_1_2_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Upgrade Guides
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_2_8_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_1_2_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Upgrade Guides
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v2.x
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v3.x
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v4.x
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v4.7
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../4.8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v4.8
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v5.0
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    v5.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-50" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About 5.0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="About 5.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-namespace-packaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Namespace packaging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-graphql-scheduledtasks-query-no-longer-returns-tasks-created-by-the-decorator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. GraphQL scheduledTasks query no longer returns tasks created by the decorator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-secret-settings-for-sensitive-uris" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Secret settings for sensitive URIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dependency-pydantic-forms-lower-bound-increased-from-140-to-240" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Dependency pydantic-forms lower bound increased from 1.4.0 to 2.4.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-db-column-engine_settingsrunning_processes-removed-service-functions-renamed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. DB column engine_settings.running_processes removed, service functions renamed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-the-description-parameter-in-workflow-decorators-is-now-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. The description parameter in workflow decorators is now deprecated
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-strawberry-graphql-upgrade-includes-breaking-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. strawberry-graphql upgrade includes breaking changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-llm-powered-search-is-now-the-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. LLM-powered search is now the default
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-orchestratorcoresecurityauthorize-and-authorize_websocket-now-raise-on-false" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. orchestrator.core.security.authorize and authorize_websocket now raise on False
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-workflow-and-step-callbacks-of-type-authorizer-now-expect-an-authcontext-not-an-oidcusermodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Workflow and Step callbacks of type Authorizer now expect an AuthContext, not an OIDCUserModel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-migration-from-psycopg2-to-psycopg3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Migration from psycopg2 to psycopg3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-new-orchestratorcoreregister_table-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. New OrchestratorCore.register_table() API
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3" id="__nav_4_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference Documentation
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference Documentation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/tldr/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TL;DR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3_2" id="__nav_4_1_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API docs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API docs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rest API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/graphql/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GraphQL
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/auth-backend-and-frontend/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auth(n|z)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3_6" id="__nav_4_1_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Domain Models
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Domain Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/domain_models/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3_6_2" id="__nav_4_1_3_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Domain Model Types
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_4_1_3_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Domain Model Types
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/domain_models/product_types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/domain_models/product_blocks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product Blocks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/domain_models/model_attributes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Attributes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3_6_3" id="__nav_4_1_3_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helpers
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_4_1_3_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Helpers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/domain_models/generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/forms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Forms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3_8" id="__nav_4_1_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running the App
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Running the App
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/app/app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App.py
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python Version
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/app/settings-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Settings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3_9" id="__nav_4_1_3_9_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/workflows/workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/workflows/workflow-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/workflows/callbacks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Callback step
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/workflows/run-predicates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Run Predicates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/websockets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Websockets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_3_12" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_3_12" id="__nav_4_1_3_12_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Monitoring
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_3_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Monitoring
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/monitoring/error-tracking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Error Tracking
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../reference-docs/monitoring/metrics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_4" id="__nav_4_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workshops
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workshops
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_4_1" id="__nav_4_1_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Example Orchestrator Workshop
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Example Orchestrator Workshop
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_4_1_2" id="__nav_4_1_4_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bootstrapping
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_4_1_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Bootstrapping
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/bootstrap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting started
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/execute-workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Seeding data
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4_1_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_4_1_3" id="__nav_4_1_4_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Products
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_4_1_4_1_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Products
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/scenario/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scenario
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/domain-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Domain models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4_1_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_4_1_4" id="__nav_4_1_4_1_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_4_1_4_1_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4_1_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/workflow-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/workflow-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4_1_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_4_1_4_3" id="__nav_4_1_4_1_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflow Examples
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="6" aria-labelledby="__nav_4_1_4_1_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4_1_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflow Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/node-create/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/node-modify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modify Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/node-terminate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Terminate Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/node-validate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Validate Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_4_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_4_1_5" id="__nav_4_1_4_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Create your own product and workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="5" aria-labelledby="__nav_4_1_4_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_4_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Create your own product and workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/create-your-own/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    L2 Point-to-Point
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../workshops/advanced/generator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Product and Workflow Generator
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_5" id="__nav_4_1_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Contributing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development setup
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../contributing/guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Orchestrator UI Library
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Orchestrator UI Library
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adrs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Adrs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/adrs/0001-record-architecture-decisions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 0001 - Record architecture decisions
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/adrs/0002-typescript-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 0002 - Typescript guidelines and rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/adrs/0003-nextjs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 0003 - Next JS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/adrs/0004-turbo-repo-and-dependencies/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 0004 - Turbo Repo and dependencies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/adrs/0005-component-naming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR 0005 - Turbo Repo and dependencies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/adrs/0006-types-extended/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR Proposal on types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/adrs/0007-component-naming/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR Proposal on component naming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/adrs/0008-typescript-conventions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADR Proposal on component naming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_2" id="__nav_4_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/architecture/security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/development/linting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/development/monorepo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NX Monorepo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/development/naming-convention/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Naming conventions and typescript rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_4" id="__nav_4_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Forms
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Forms
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/forms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pydantic Forms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../orchestrator-ui-library/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Index
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Lightweight Service Orchestrator
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Lightweight Service Orchestrator
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lightweight-service-orchestrator/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lightweight-service-orchestrator/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lightweight-service-orchestrator/docker/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running in Docker
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lightweight-service-orchestrator/executors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task Executors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_5" id="__nav_4_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Playbooks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Playbooks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lightweight-service-orchestrator/playbooks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running a Playbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lightweight-service-orchestrator/playbooks/parameters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lightweight-service-orchestrator/playbooks/callback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Callbacks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lightweight-service-orchestrator/playbooks/updates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Progress Updates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_6" id="__nav_4_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Executables
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Executables
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lightweight-service-orchestrator/executables/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running an Executable
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lightweight-service-orchestrator/executables/callback/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Callbacks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lightweight-service-orchestrator/executables/parameters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Parameters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lightweight-service-orchestrator/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#about-50" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About 5.0
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="About 5.0">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-namespace-packaging" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Namespace packaging
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-graphql-scheduledtasks-query-no-longer-returns-tasks-created-by-the-decorator" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. GraphQL scheduledTasks query no longer returns tasks created by the decorator
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-secret-settings-for-sensitive-uris" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Secret settings for sensitive URIs
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-dependency-pydantic-forms-lower-bound-increased-from-140-to-240" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Dependency pydantic-forms lower bound increased from 1.4.0 to 2.4.0
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-db-column-engine_settingsrunning_processes-removed-service-functions-renamed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. DB column engine_settings.running_processes removed, service functions renamed
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-the-description-parameter-in-workflow-decorators-is-now-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. The description parameter in workflow decorators is now deprecated
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-strawberry-graphql-upgrade-includes-breaking-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. strawberry-graphql upgrade includes breaking changes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-llm-powered-search-is-now-the-default" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. LLM-powered search is now the default
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-orchestratorcoresecurityauthorize-and-authorize_websocket-now-raise-on-false" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. orchestrator.core.security.authorize and authorize_websocket now raise on False
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#10-workflow-and-step-callbacks-of-type-authorizer-now-expect-an-authcontext-not-an-oidcusermodel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. Workflow and Step callbacks of type Authorizer now expect an AuthContext, not an OIDCUserModel
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#11-migration-from-psycopg2-to-psycopg3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. Migration from psycopg2 to psycopg3
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-new-orchestratorcoreregister_table-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. New OrchestratorCore.register_table() API
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="50-upgrade-guide">5.0 Upgrade Guide<a class="headerlink" href="#50-upgrade-guide" title="Permanent link">&para;</a></h1>
+<p>In this document we describe important changes to be aware of when upgrading from <code>orchestrator-core</code> v4.x to v5.0.</p>
+<p>If you are not yet using v4.x, please consult the 4.0 upgrade guide first.</p>
+<p>If you are using scheduled tasks and/or workflow authorization callbacks, please consult the 4.7 and 4.8 upgrades first
+as well.</p>
+<h2 id="about-50">About 5.0<a class="headerlink" href="#about-50" title="Permanent link">&para;</a></h2>
+<p>In this release, the following breaking changes are introduced:</p>
+<ol>
+<li><code>orchestrator-core</code> is now a namespaced package, which changes all imports.</li>
+<li>GraphQL <code>scheduledTasks</code> query no longer returns tasks created by the decorator</li>
+<li>Secret settings for sensitive URIs</li>
+<li>Dependency <code>pydantic-forms</code> lower bound increased from 1.4.0 to 2.4.0</li>
+<li>DB column <code>engine_settings.running_processes</code> removed, service functions renamed</li>
+<li>The <code>description</code> parameter in workflow decorators is now deprecated</li>
+<li><code>strawberry-graphql</code> upgrade includes breaking changes</li>
+<li>LLM-powered search is now the default</li>
+<li><code>orchestrator.core.security.authorize</code> and <code>authorize_websocket</code> now raise on <code>False</code></li>
+<li>Workflow and Step callbacks of type <code>Authorizer</code> now expect an <code>AuthContext</code>, not an <code>OIDCUserModel</code></li>
+<li>Migration from <code>psycopg2</code> to <code>psycopg3</code></li>
+<li>New <code>OrchestratorCore.register_table()</code> API</li>
+</ol>
+<h3 id="1-namespace-packaging">1. Namespace packaging<a class="headerlink" href="#1-namespace-packaging" title="Permanent link">&para;</a></h3>
+<h4 id="what-changed">What changed<a class="headerlink" href="#what-changed" title="Permanent link">&para;</a></h4>
+<p>The whole <code>orchestrator</code> Python module has moved to a namespace package structure, which means that every submodule under
+<code>orchestrator.*</code> has been moved to <code>orchestrator.core.*</code>. This will allow for the development of other, optional
+modules that can be used together with the Orchestrator core. This change is motivated more in
+<a href="../../../architecture/extensibility/packaging/">this section of the documentation</a>.</p>
+<h5 id="linting-and-packaging-tools">Linting and packaging tools<a class="headerlink" href="#linting-and-packaging-tools" title="Permanent link">&para;</a></h5>
+<p>As a part of this change, we have also replaced <code>flit</code> and <code>black</code> with <code>uv_build</code> and <code>ruff</code>, respectively.</p>
+<p>Ruff was already part of our development toolchain, but there were some stray uses of <code>black</code> lingering around for
+linting purposes. This is now completely replaced with <code>ruff</code>. You may want to update your own CI pipelines to reflect
+this, but this should not be a breaking change for using <code>orchestrator-core</code> in your own projects.</p>
+<p>We no longer use <code>flit</code> for building the Python wheels that are distributed on PyPI, but use <code>uv_build</code> instead going
+forward. This is a change that only impacts <code>orchestrator-core</code> contributors that may have to run a <code>uv sync</code> just to
+be up-to-date again.</p>
+<h4 id="what-you-need-to-do">What you need to do<a class="headerlink" href="#what-you-need-to-do" title="Permanent link">&para;</a></h4>
+<p>All import statements that mention the Orchestrator core should be updated to reflect this change. There is a migration
+script available to help with this, which will try to do this automatically. It can be run as follows:
+<code>uv run -m orchestrator.core.devtools.scripts.migrate_50 &lt;dir&gt;</code> where <code>&lt;dir&gt;</code> points to your orchestrator implementation, unit tests or any other directory with python files that import something from <code>orchestrator</code>.</p>
+<p>In short, every reference to <code>orchestrator-core</code> like import statements <code>from orchestrator.X import Y</code> should be
+changed to <code>from orchestrator.core.X import Y</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Old</th>
+<th>New</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>import orchestrator.db</code></td>
+<td><code>import orchestrator.core.db</code></td>
+</tr>
+<tr>
+<td><code>from orchestrator.services.subscriptions import WF_USABLE_MAP</code></td>
+<td><code>from orchestrator.core.services.subscriptions import WF_USABLE_MAP</code></td>
+</tr>
+<tr>
+<td><code>@patch("orchestrator.api.api_v1.endpoints")</code></td>
+<td><code>@patch("orchestrator.core.api.api_v1.endpoints")</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="2-graphql-scheduledtasks-query-no-longer-returns-tasks-created-by-the-decorator">2. GraphQL <code>scheduledTasks</code> query no longer returns tasks created by the decorator<a class="headerlink" href="#2-graphql-scheduledtasks-query-no-longer-returns-tasks-created-by-the-decorator" title="Permanent link">&para;</a></h3>
+<p>The GraphQL <code>scheduledTasks</code> query no longer returns tasks created by the decorator, but only tasks that are scheduled
+via the API.</p>
+<p>To see all scheduled tasks, you can run the <a href="../../../reference-docs/cli/#scheduler">show-schedule</a> CLI command which will still show tasks created by the
+decorator.</p>
+<h3 id="3-secret-settings-for-sensitive-uris">3. Secret settings for sensitive URIs<a class="headerlink" href="#3-secret-settings-for-sensitive-uris" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>Replace usages of <code>orchestrator.core.utils.expose_settings.SecretStr</code> with <code>pydantic.SecretStr</code> (previously we also called
+this type <code>OrchSecretStr</code>)</p>
+</blockquote>
+<p>Three <code>AppSettings</code> fields that contain sensitive connection strings have been changed from plain types to Pydantic
+Secret subtypes.
+These URIs can contain credentials (e.g. database passwords, Redis auth tokens) that should not be leaked.
+By wrapping them in Secret types, Pydantic automatically masks their values when the settings object is logged, printed,
+serialized, or appears in tracebacks — replacing the actual value with <code>'**********'</code>.
+This provides better protection against accidental credential exposure in application logs and error reports.</p>
+<p>The affected fields and their new types are:</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Old Type</th>
+<th>New Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>DATABASE_URI</code></td>
+<td><code>PostgresDsn</code></td>
+<td><code>SecretPostgresDsn</code> (<code>Secret[PostgresDsn]</code>)</td>
+</tr>
+<tr>
+<td><code>CACHE_URI</code></td>
+<td><code>RedisDsn</code></td>
+<td><code>SecretRedisDsn</code> (<code>Secret[RedisDsn]</code>)</td>
+</tr>
+<tr>
+<td><code>WEBSOCKET_BROADCASTER_URL</code></td>
+<td><code>str</code></td>
+<td><code>SecretStr</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="what-changed_1">What changed<a class="headerlink" href="#what-changed_1" title="Permanent link">&para;</a></h4>
+<p>Previously, you could use these settings values directly:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.core.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">app_settings</span>
+
+<span class="c1"># Old usage — no longer works</span>
+<span class="n">db_url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">app_settings</span><span class="o">.</span><span class="n">DATABASE_URI</span><span class="p">)</span>
+<span class="n">redis_url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">app_settings</span><span class="o">.</span><span class="n">CACHE_URI</span><span class="p">)</span>
+<span class="n">ws_url</span> <span class="o">=</span> <span class="n">app_settings</span><span class="o">.</span><span class="n">WEBSOCKET_BROADCASTER_URL</span>
+</code></pre></div>
+<p>Now, you must call <code>.get_secret_value()</code> to retrieve the underlying value:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.core.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">app_settings</span>
+
+<span class="c1"># New usage</span>
+<span class="n">db_url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">app_settings</span><span class="o">.</span><span class="n">DATABASE_URI</span><span class="o">.</span><span class="n">get_secret_value</span><span class="p">())</span>
+<span class="n">redis_url</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">app_settings</span><span class="o">.</span><span class="n">CACHE_URI</span><span class="o">.</span><span class="n">get_secret_value</span><span class="p">())</span>
+<span class="n">ws_url</span> <span class="o">=</span> <span class="n">app_settings</span><span class="o">.</span><span class="n">WEBSOCKET_BROADCASTER_URL</span><span class="o">.</span><span class="n">get_secret_value</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="what-you-need-to-do_1">What you need to do<a class="headerlink" href="#what-you-need-to-do_1" title="Permanent link">&para;</a></h4>
+<p>Search your codebase for any direct references to <code>app_settings.DATABASE_URI</code>, <code>app_settings.CACHE_URI</code>, or
+<code>app_settings.WEBSOCKET_BROADCASTER_URL</code> (or via a <code>settings</code> parameter of type <code>AppSettings</code>). At each usage site,
+append <code>.get_secret_value()</code> to extract the actual value.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Before</span>
+<span class="n">config</span><span class="o">.</span><span class="n">set_main_option</span><span class="p">(</span><span class="s2">&quot;sqlalchemy.url&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">app_settings</span><span class="o">.</span><span class="n">DATABASE_URI</span><span class="p">))</span>
+<span class="n">cache</span> <span class="o">=</span> <span class="n">create_redis_client</span><span class="p">(</span><span class="n">app_settings</span><span class="o">.</span><span class="n">CACHE_URI</span><span class="p">)</span>
+<span class="n">broadcaster_type</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">app_settings</span><span class="o">.</span><span class="n">WEBSOCKET_BROADCASTER_URL</span><span class="p">)</span><span class="o">.</span><span class="n">scheme</span>
+
+<span class="c1"># After</span>
+<span class="n">config</span><span class="o">.</span><span class="n">set_main_option</span><span class="p">(</span><span class="s2">&quot;sqlalchemy.url&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">app_settings</span><span class="o">.</span><span class="n">DATABASE_URI</span><span class="o">.</span><span class="n">get_secret_value</span><span class="p">()))</span>
+<span class="n">cache</span> <span class="o">=</span> <span class="n">create_redis_client</span><span class="p">(</span><span class="n">app_settings</span><span class="o">.</span><span class="n">CACHE_URI</span><span class="o">.</span><span class="n">get_secret_value</span><span class="p">())</span>
+<span class="n">broadcaster_type</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="n">app_settings</span><span class="o">.</span><span class="n">WEBSOCKET_BROADCASTER_URL</span><span class="o">.</span><span class="n">get_secret_value</span><span class="p">())</span><span class="o">.</span><span class="n">scheme</span>
+</code></pre></div>
+<p>If you assign to these fields in tests or configuration (e.g. overriding <code>DATABASE_URI</code> with a test database URL), wrap
+the value in the appropriate Secret type:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.core.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecretPostgresDsn</span><span class="p">,</span> <span class="n">SecretRedisDsn</span><span class="p">,</span> <span class="n">app_settings</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">SecretStr</span>
+
+<span class="c1"># Before</span>
+<span class="n">app_settings</span><span class="o">.</span><span class="n">DATABASE_URI</span> <span class="o">=</span> <span class="n">db_uri</span>
+
+<span class="c1"># After</span>
+<span class="n">app_settings</span><span class="o">.</span><span class="n">DATABASE_URI</span> <span class="o">=</span> <span class="n">SecretPostgresDsn</span><span class="p">(</span><span class="n">db_uri</span><span class="p">)</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Previously custom settings whose names contained the string <code>secret</code> or <code>password</code> would automatically be masked.
+This is no longer the case, and you should now use the type <code>SecretStr</code> for these values instead.</p>
+</div>
+<h3 id="4-dependency-pydantic-forms-lower-bound-increased-from-140-to-240">4. Dependency <code>pydantic-forms</code> lower bound increased from 1.4.0 to 2.4.0<a class="headerlink" href="#4-dependency-pydantic-forms-lower-bound-increased-from-140-to-240" title="Permanent link">&para;</a></h3>
+<p>The lower bound for dependency <code>pydantic-forms</code> has increased from 1.4.0 to 2.4.0.
+This includes one breaking change from version
+2.0, <a href="https://github.com/workfloworchestrator/pydantic-forms/pull/41">Replace ReadOnlyField with read_only_field and read_only_list</a>.</p>
+<h4 id="what-changed_2">What changed<a class="headerlink" href="#what-changed_2" title="Permanent link">&para;</a></h4>
+<p>Previously, the type <code>ReadOnlyField</code> was used for both scalar fields and list fields.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Form</span><span class="p">(</span><span class="n">FormPage</span><span class="p">):</span>
+    <span class="n">int_field</span><span class="p">:</span> <span class="n">ReadOnlyField</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">bool_field</span><span class="p">:</span> <span class="n">ReadOnlyField</span><span class="p">(</span><span class="s2">&quot;True&quot;</span><span class="p">,</span> <span class="n">default_type</span><span class="o">=</span><span class="nb">bool</span><span class="p">)</span>
+    <span class="n">list_field</span><span class="p">:</span> <span class="n">ReadOnlyField</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">],</span> <span class="n">default_type</span><span class="o">=</span><span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span>
+</code></pre></div>
+<p>As you can see, for <code>bool_field</code> and <code>list_field</code> it was necessary to explicitly specify the type.</p>
+<p>Now, you must use a different type for either field, and you no longer have to specify the <code>default_type</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Form</span><span class="p">(</span><span class="n">FormPage</span><span class="p">):</span>
+    <span class="n">int_field</span><span class="p">:</span> <span class="n">read_only_field</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">bool_field</span><span class="p">:</span> <span class="n">read_only_field</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">list_field</span><span class="p">:</span> <span class="n">read_only_list</span><span class="p">([</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;b&quot;</span><span class="p">])</span>
+</code></pre></div>
+<h4 id="what-you-need-to-do_2">What you need to do<a class="headerlink" href="#what-you-need-to-do_2" title="Permanent link">&para;</a></h4>
+<p>If you have <code>pydantic-forms</code> pinned to any version, you will need to change this pin to 2.4.0.</p>
+<p>If your pinned version was below 2.0, search your codebase for usages of <code>ReadOnlyField()</code> and replace them with
+<code>read_only_field()</code> or <code>read_only_list()</code> as described above.
+The new types still come from the same module, <code>pydantic_forms.validators</code>.</p>
+<h3 id="5-db-column-engine_settingsrunning_processes-removed-service-functions-renamed">5. DB column <code>engine_settings.running_processes</code> removed, service functions renamed<a class="headerlink" href="#5-db-column-engine_settingsrunning_processes-removed-service-functions-renamed" title="Permanent link">&para;</a></h3>
+<p>The <code>running_processes</code> column has been removed from the <code>engine_settings</code> database table.
+Previously, this counter was maintained manually on every process start and finish.
+This was replaced in v4.8 by <code>WorkerStatusMonitor</code> which continuously determines the <code>running_processes</code> count by
+inspecting either the threadpool or the celery statistics.</p>
+<h4 id="what-changed_3">What changed<a class="headerlink" href="#what-changed_3" title="Permanent link">&para;</a></h4>
+<p>Several internal service functions have been renamed for clarity:</p>
+<table>
+<thead>
+<tr>
+<th>Old name</th>
+<th>New name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>get_engine_settings()</code></td>
+<td><code>get_engine_settings_table()</code></td>
+</tr>
+<tr>
+<td><code>get_engine_settings_for_update()</code></td>
+<td><code>get_engine_settings_table_for_update()</code></td>
+</tr>
+<tr>
+<td><code>generate_engine_status_response()</code> (in <code>api/api_v1/endpoints/settings</code>)</td>
+<td><code>generate_engine_settings_schema()</code> (in <code>services/settings</code>)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="what-you-need-to-do_3">What you need to do<a class="headerlink" href="#what-you-need-to-do_3" title="Permanent link">&para;</a></h4>
+<p>If you use the <code>running_processes</code> column in external queries, this column will need to be removed as there is no direct
+replacement.</p>
+<p>You can instead either retrieve this value through the <code>/settings/status</code> REST endpoint, or through the <code>settings</code>
+GraphQL query.</p>
+<p>If you use the old service functions anywhere, replace them with the new ones as described below.</p>
+<p><strong>Before</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.services.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_engine_settings</span><span class="p">,</span> <span class="n">get_engine_settings_for_update</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.api.api_v1.endpoints.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">generate_engine_status_response</span>
+
+<span class="n">engine_settings</span> <span class="o">=</span> <span class="n">get_engine_settings</span><span class="p">()</span>
+<span class="n">engine_settings_for_update</span> <span class="o">=</span> <span class="n">get_engine_settings_for_update</span><span class="p">()</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">generate_engine_status_response</span><span class="p">(</span><span class="n">engine_settings</span><span class="p">)</span>
+</code></pre></div>
+<p><strong>After</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.core.services.settings</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_engine_settings_table</span><span class="p">,</span> <span class="n">get_engine_settings_table_for_update</span><span class="p">,</span> <span class="n">generate_engine_settings_schema</span>
+
+<span class="n">engine_settings</span> <span class="o">=</span> <span class="n">get_engine_settings_table</span><span class="p">()</span>
+<span class="n">engine_settings_for_update</span> <span class="o">=</span> <span class="n">get_engine_settings_table_for_update</span><span class="p">()</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">generate_engine_settings_schema</span><span class="p">(</span><span class="n">engine_settings</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="6-the-description-parameter-in-workflow-decorators-is-now-deprecated">6. The <code>description</code> parameter in workflow decorators is now deprecated<a class="headerlink" href="#6-the-description-parameter-in-workflow-decorators-is-now-deprecated" title="Permanent link">&para;</a></h3>
+<p>The <code>description</code> parameter in <code>@create_workflow</code>, <code>@modify_workflow</code>, <code>@terminate_workflow</code>, <code>@validate_workflow</code>,
+<code>@reconcile_workflow</code>, <code>@task</code>, and <code>@workflow</code> is now deprecated.
+Workflow descriptions are now managed in the database and can be updated via the UI or API.</p>
+<h4 id="what-changed_4">What changed<a class="headerlink" href="#what-changed_4" title="Permanent link">&para;</a></h4>
+<p>Previously, workflow descriptions were typically defined both in code and in the database.
+This could lead to mismatches when the description was updated through the UI.
+Descriptions are no longer validated against the database by the product validation task.</p>
+<p>Passing a <code>description</code> to a workflow decorator still works in v5.0, but now emits a deprecation warning.</p>
+<h4 id="what-you-need-to-do_4">What you need to do<a class="headerlink" href="#what-you-need-to-do_4" title="Permanent link">&para;</a></h4>
+<p>Remove the <code>description</code> parameter from your workflow decorators and manage workflow descriptions through the database
+instead.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Before</span>
+<span class="nd">@create_workflow</span><span class="p">(</span><span class="s2">&quot;Create SN8 IP BGP&quot;</span><span class="p">,</span> <span class="n">initial_input_form</span><span class="o">=</span><span class="n">initial_input_form_generator</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_sn8_ip_bgp</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">StepList</span><span class="p">:</span>
+    <span class="o">...</span>
+
+
+<span class="c1"># After</span>
+<span class="nd">@create_workflow</span><span class="p">(</span><span class="n">initial_input_form</span><span class="o">=</span><span class="n">initial_input_form_generator</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">create_sn8_ip_bgp</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="n">StepList</span><span class="p">:</span>
+    <span class="o">...</span>
+</code></pre></div>
+<p>If you want to backfill descriptions for multiple existing workflows during the upgrade, you can do so in a one-off
+database migration. For example, replace the workflow names and descriptions below with your own values:</p>
+<div class="highlight"><pre><span></span><code><span class="k">WITH</span><span class="w"> </span><span class="n">workflow_descriptions</span><span class="p">(</span><span class="n">workflow_name</span><span class="p">,</span><span class="w"> </span><span class="n">workflow_description</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="k">VALUES</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;your_create_workflow&#39;</span><span class="p">,</span>
+<span class="w">                                                                            </span><span class="s1">&#39;Create your product&#39;</span><span class="p">),</span>
+<span class="w">                                                                           </span><span class="p">(</span><span class="s1">&#39;your_modify_workflow&#39;</span><span class="p">,</span>
+<span class="w">                                                                            </span><span class="s1">&#39;Modify your product&#39;</span><span class="p">),</span>
+<span class="w">                                                                           </span><span class="p">(</span><span class="s1">&#39;your_terminate_workflow&#39;</span><span class="p">,</span>
+<span class="w">                                                                            </span><span class="s1">&#39;Terminate your product&#39;</span><span class="p">))</span>
+<span class="k">UPDATE</span><span class="w"> </span><span class="n">workflows</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">w</span>
+<span class="k">SET</span><span class="w"> </span><span class="n">description</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wd</span><span class="p">.</span><span class="n">workflow_description</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">workflow_descriptions</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">wd</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">w</span><span class="p">.</span><span class="n">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">wd</span><span class="p">.</span><span class="n">workflow_name</span><span class="p">;</span>
+</code></pre></div>
+<!-- link definitions -->
+
+<h3 id="7-strawberry-graphql-upgrade-includes-breaking-changes">7. <code>strawberry-graphql</code> upgrade includes breaking changes<a class="headerlink" href="#7-strawberry-graphql-upgrade-includes-breaking-changes" title="Permanent link">&para;</a></h3>
+<h4 id="what-changed_5">What changed<a class="headerlink" href="#what-changed_5" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>FEDERATION_ENABLED</code> renamed to <code>FEDERATION_VERSION</code>, defaulting to <code>2.9</code> to maintain compatibility with
+  <code>example-orchestrator</code>. (<a href="https://strawberry.rocks/docs/breaking-changes/0.285.0">strawberry-graphql 0.285.0 breaking change</a>)</li>
+<li><code>SERVE_GRAPHQL_UI</code> changed from <code>bool</code> to a string (leaving it empty turns it off): <code>graphiql</code>, <code>apollo-sandbox</code> or
+  <code>pathfinder</code>.</li>
+<li>Custom scalars no longer accept <code>NewType</code>, use <code>name=</code> and map to the target type
+  instead. (<a href="https://strawberry.rocks/docs/types/scalars">strawberry scalar docs</a>)</li>
+</ul>
+<hr />
+<h4 id="what-you-need-to-do_5">What you need to do<a class="headerlink" href="#what-you-need-to-do_5" title="Permanent link">&para;</a></h4>
+<p>Remove <code>FEDERATION_ENABLED</code> and set <code>FEDERATION_VERSION</code> to the federation version you need.</p>
+<p>Change <code>SERVE_GRAPHQL_UI</code> to the UI you want to use or set it to empty <code>SERVE_GRAPHQL_UI=""</code></p>
+<p>If you have custom scalars, replace the <code>NewType</code> wrapper with <code>name=</code>:</p>
+<p><strong>Before:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">strawberry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">NewType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.graphql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SCALAR_OVERRIDES</span>
+
+<span class="n">VlanRangesType</span> <span class="o">=</span> <span class="n">strawberry</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span>
+    <span class="n">NewType</span><span class="p">(</span><span class="s2">&quot;VlanRangesType&quot;</span><span class="p">,</span> <span class="nb">str</span><span class="p">),</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Represent the Orchestrator VlanRanges data type&quot;</span><span class="p">,</span>
+    <span class="n">serialize</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">to_list_of_tuples</span><span class="p">(),</span>
+    <span class="n">parse_value</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><strong>After:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">strawberry</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.core.graphql</span><span class="w"> </span><span class="kn">import</span> <span class="n">SCALAR_OVERRIDES</span>
+
+<span class="n">VlanRangesType</span> <span class="o">=</span> <span class="n">strawberry</span><span class="o">.</span><span class="n">scalar</span><span class="p">(</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;VlanRangesType&quot;</span><span class="p">,</span>
+    <span class="n">description</span><span class="o">=</span><span class="s2">&quot;Represent the Orchestrator VlanRanges data type&quot;</span><span class="p">,</span>
+    <span class="n">serialize</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span><span class="o">.</span><span class="n">to_list_of_tuples</span><span class="p">(),</span>
+    <span class="n">parse_value</span><span class="o">=</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="n">v</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div>
+<blockquote>
+<p>The <code>NewType</code> wrapper and <code>from typing import NewType</code> are no longer needed and can be removed.</p>
+</blockquote>
+<h3 id="8-llm-powered-search-is-now-the-default">8. LLM-powered search is now the default<a class="headerlink" href="#8-llm-powered-search-is-now-the-default" title="Permanent link">&para;</a></h3>
+<h4 id="what-changed_6">What changed<a class="headerlink" href="#what-changed_6" title="Permanent link">&para;</a></h4>
+<p>The LLM-powered search (AI search) is now a mandatory part of orchestrator-core. The following changes were made:</p>
+<ul>
+<li><strong><code>SEARCH_ENABLED</code> setting removed</strong> &ndash; search is always enabled. Remove this environment variable from your
+  configuration.</li>
+<li><strong><code>search</code> pip extra removed</strong> &ndash; <code>litellm</code> is now a core dependency. Change <code>pip install orchestrator-core[search]</code>
+  to just <code>pip install orchestrator-core</code>.</li>
+<li><strong>Search tables managed by alembic</strong> &ndash; the <code>ai_search_index</code>, <code>agent_runs</code>, <code>search_queries</code>, and <code>graph_snapshots</code>
+  tables are now created via an alembic migration instead of at application startup.</li>
+<li><strong>TSV search deprecated</strong> &ndash; the <code>query</code> parameter on the subscriptions REST and GraphQL endpoints now emits a
+  deprecation warning. Use the <code>/api/search</code> endpoint instead. TSV search will be removed in a future 5.x release.</li>
+</ul>
+<h4 id="what-you-need-to-do_6">What you need to do<a class="headerlink" href="#what-you-need-to-do_6" title="Permanent link">&para;</a></h4>
+<p><strong>1. Prerequisites: install required PostgreSQL extensions</strong></p>
+<p>The AI search migration requires several PostgreSQL extensions. If your database user has sufficient privileges, the
+migration will create them automatically. Otherwise, install them manually before running the migration:</p>
+<div class="highlight"><pre><span></span><code><span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="ss">&quot;uuid-ossp&quot;</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">ltree</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">unaccent</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">pg_trgm</span><span class="p">;</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="n">EXTENSION</span><span class="w"> </span><span class="k">IF</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">EXISTS</span><span class="w"> </span><span class="n">vector</span><span class="p">;</span>
+</code></pre></div>
+<p>The <code>vector</code> extension requires <a href="https://github.com/pgvector/pgvector">pgvector</a> to be installed on your PostgreSQL
+server. The easiest way to get a PostgreSQL instance with all required extensions is to use the <code>pgvector/pgvector</code>
+Docker image, which the <a href="https://github.com/workfloworchestrator/example-orchestrator">example-orchestrator</a> uses in
+its <a href="https://github.com/workfloworchestrator/example-orchestrator/blob/main/docker-compose.yml">docker-compose.yml</a>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">postgres</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pgvector/pgvector:pg17</span>
+</code></pre></div>
+<p>This image is based on the official PostgreSQL image and includes pgvector pre-installed. The other extensions (
+<code>uuid-ossp</code>, <code>ltree</code>, <code>unaccent</code>, <code>pg_trgm</code>) are part of the standard PostgreSQL contrib package and are available in
+all standard PostgreSQL distributions.</p>
+<p>If your database user cannot create extensions but the extensions already exist, no action is needed. If you need to
+force extension creation (e.g., after a PostgreSQL upgrade), set <code>LLM_FORCE_EXTENSION_MIGRATION=true</code>.</p>
+<p><strong>2. Run the database migration</strong></p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>main.py<span class="w"> </span>db<span class="w"> </span>upgrade<span class="w"> </span>heads
+</code></pre></div>
+<p>This creates the AI search tables. For existing installations that already have these tables (from the runtime
+migration), the migration uses <code>CREATE TABLE IF NOT EXISTS</code> and is safe to run.</p>
+<p><strong>3. Configure your embedding provider (optional)</strong></p>
+<p>Search works without any embedding configuration, but semantic search (vector similarity) will be disabled. Text-based
+search will still function normally.</p>
+<p>To enable semantic search, set the following environment variables:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">EMBEDDING_API_ENABLED</span><span class="o">=</span>True
+<span class="nv">EMBEDDING_API_KEY</span><span class="o">=</span>sk-...<span class="w">       </span><span class="c1"># Your embedding provider&#39;s API key</span>
+<span class="nv">EMBEDDING_MODEL</span><span class="o">=</span>openai/text-embedding-3-small<span class="w">  </span><span class="c1"># Default; see LiteLLM docs for alternatives</span>
+<span class="nv">EMBEDDING_DIMENSION</span><span class="o">=</span><span class="m">1536</span><span class="w">       </span><span class="c1"># Default; adjust based on your model</span>
+</code></pre></div>
+<p><code>EMBEDDING_API_BASE</code> is optional. When omitted, the default API base URL of the provider (as configured by LiteLLM) is
+used. Set it to point to a custom or self-hosted endpoint:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">EMBEDDING_API_BASE</span><span class="o">=</span>https://your-custom-endpoint.example.com/v1<span class="w">  </span><span class="c1"># Optional</span>
+</code></pre></div>
+<p><strong>4. Initialize the search index</strong></p>
+<p>After the migration, populate the search index by running the CLI indexing commands:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>main.py<span class="w"> </span>index<span class="w"> </span>subscriptions
+python<span class="w"> </span>main.py<span class="w"> </span>index<span class="w"> </span>products
+python<span class="w"> </span>main.py<span class="w"> </span>index<span class="w"> </span>processes
+python<span class="w"> </span>main.py<span class="w"> </span>index<span class="w"> </span>workflows
+</code></pre></div>
+<p><strong>5. (Optional) Resize embeddings</strong></p>
+<p>If you want to use a different embedding dimension than the default (1536), update <code>EMBEDDING_DIMENSION</code> and run the
+resize command:</p>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>main.py<span class="w"> </span>embedding<span class="w"> </span>resize
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Resizing embeddings will <strong>delete all existing embeddings</strong> from <code>ai_search_index</code> and <code>search_queries</code> tables. You will
+need to re-index after resizing.</p>
+</div>
+<p><strong>6. Remove deprecated settings</strong></p>
+<p>Remove these environment variables from your configuration:</p>
+<ul>
+<li><code>SEARCH_ENABLED</code> &ndash; no longer used</li>
+<li><code>OPENAI_API_KEY</code> &ndash; renamed to <code>EMBEDDING_API_KEY</code></li>
+<li><code>OPENAI_BASE_URL</code> &ndash; renamed to <code>EMBEDDING_API_BASE</code></li>
+<li>Any <code>pip install</code> commands that use <code>orchestrator-core[search]</code> &ndash; change to <code>orchestrator-core</code></li>
+</ul>
+<h3 id="9-orchestratorcoresecurityauthorize-and-authorize_websocket-now-raise-on-false">9. <code>orchestrator.core.security.authorize</code> and <code>authorize_websocket</code> now raise on <code>False</code><a class="headerlink" href="#9-orchestratorcoresecurityauthorize-and-authorize_websocket-now-raise-on-false" title="Permanent link">&para;</a></h3>
+<h4 id="what-changed_7">What changed<a class="headerlink" href="#what-changed_7" title="Permanent link">&para;</a></h4>
+<p>These callbacks determine if a user is authorized to make a request or connect a websocket.</p>
+<p><code>OrchestratorCore.register_authorization</code> allows users to register their own <code>Authorization</code> instance.
+This could be the <code>oauth2_lib</code> default OPA-based instance, but with <code>auto_error=False</code>,
+or a custom <code>Authorization</code> instance entirely.</p>
+<p>Previously, <code>orchestrator-core</code> assumed this instance inherited from <code>oauth2_lib</code>&rsquo;s <code>OPAMixin</code> with <code>auto_error=True</code>,
+and did not raise when <code>False</code> was returned from <code>auth_manager.authorize</code>.</p>
+<p>Now it does raise on <code>False</code>.</p>
+<hr />
+<h4 id="what-you-need-to-do_7">What you need to do<a class="headerlink" href="#what-you-need-to-do_7" title="Permanent link">&para;</a></h4>
+<p>If you write your own instance of an <code>Authorization</code> that returns <code>False</code> instead of raising a 403 Forbidden,
+this may cause your authorizations to start working (i.e. 403ing on failure) where they previously <strong>didn&rsquo;t</strong>.
+You should confirm your authorizations work as expected.</p>
+<h3 id="10-workflow-and-step-callbacks-of-type-authorizer-now-expect-an-authcontext-not-an-oidcusermodel">10. Workflow and Step callbacks of type <code>Authorizer</code> now expect an <code>AuthContext</code>, not an <code>OIDCUserModel</code><a class="headerlink" href="#10-workflow-and-step-callbacks-of-type-authorizer-now-expect-an-authcontext-not-an-oidcusermodel" title="Permanent link">&para;</a></h3>
+<h4 id="what-changed_8">What changed<a class="headerlink" href="#what-changed_8" title="Permanent link">&para;</a></h4>
+<p>These callbacks (of type <code>Authorizer</code>) determine if a user is authorized to start, resume, or retry a workflow.</p>
+<p>Previously, these callbacks should have received an argument of <code>oauth2_lib.fastapi.OIDCUserModel</code>.
+Now, they should receive an <code>AuthContext</code>.</p>
+<p><code>OrchestratorCore.register_authorization</code> allows users to register their own <code>Authorization</code> instance.
+This could be the <code>oauth2_lib</code> default OPA-based instance, but with <code>auto_error=False</code>,
+or a custom <code>Authorization</code> instance entirely.</p>
+<p>Previously, <code>orchestrator-core</code> assumed this instance inherited from <code>oauth2_lib</code>&rsquo;s <code>OPAMixin</code> with <code>auto_error=True</code>,
+and did not raise when <code>False</code> was returned from <code>auth_manager.authorize</code>.</p>
+<p>Now it does raise on <code>False</code>.</p>
+<p>It looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AuthContext</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">model_config</span> <span class="o">=</span> <span class="n">ConfigDict</span><span class="p">(</span><span class="n">arbitrary_types_allowed</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">AuthUserModel</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">action</span><span class="p">:</span> <span class="n">Literal</span><span class="p">[</span><span class="s2">&quot;start_workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;resume_workflow&quot;</span><span class="p">,</span> <span class="s2">&quot;retry_workflow&quot;</span><span class="p">]</span>
+    <span class="n">workflow</span><span class="p">:</span> <span class="n">AuthWorkflow</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># Should be None for &quot;start_workflow&quot;, otherwise set</span>
+    <span class="n">step</span><span class="p">:</span> <span class="n">AuthStep</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+</code></pre></div>
+<hr />
+<h4 id="what-you-need-to-do_8">What you need to do<a class="headerlink" href="#what-you-need-to-do_8" title="Permanent link">&para;</a></h4>
+<p>You are affected by this change if you use any of the following:</p>
+<ul>
+<li><code>@workflow(..., authorize_callback=foo, retry_auth_callback=bar)</code></li>
+<li><code>@step(..., resume_auth_callback=foo, retry_auth_callback=bar)</code></li>
+</ul>
+<p>There should now be much more information available for making authorization decisions within a callback,
+but here is how to quickly port your existing logic. If you currently have:</p>
+<div class="highlight"><pre><span></span><code>def auth_callback(user: OIDCUserModel | None) -&gt; bool:
+    return do_something(user)
+</code></pre></div>
+<p>You would update this function to instead do:</p>
+<div class="highlight"><pre><span></span><code>from orchestrator.core.utils.auth import AuthContext
+
+def auth_callback(context: AuthContext | None) -&gt; bool:
+    return do_something(context.user)
+</code></pre></div>
+<p>To leverage the new changes, see the fields on this model and its sub-Prototypes.</p>
+<h3 id="11-migration-from-psycopg2-to-psycopg3">11. Migration from <code>psycopg2</code> to <code>psycopg3</code><a class="headerlink" href="#11-migration-from-psycopg2-to-psycopg3" title="Permanent link">&para;</a></h3>
+<p>The database driver has been changed from <code>psycopg2-binary</code> to <code>psycopg[binary]</code> (psycopg 3). This requires changes to
+your database connection URI and any code that imports <code>psycopg2</code> directly.</p>
+<h4 id="what-changed_9">What changed<a class="headerlink" href="#what-changed_9" title="Permanent link">&para;</a></h4>
+<ol>
+<li>The dependency <code>psycopg2-binary</code> has been replaced by <code>psycopg[binary]&gt;=3.3.3</code></li>
+<li>The SQLAlchemy dialect in <code>DATABASE_URI</code> must change from <code>postgresql://</code> to <code>postgresql+psycopg://</code>. A deprecation
+   warning is emitted if the old dialect is detected at startup.</li>
+<li>psycopg3 uses &ldquo;autobegin&rdquo; — any query automatically starts an implicit transaction. <code>orchestrator-core</code> has been
+   updated to handle this correctly within its workflow engine and task execution.</li>
+</ol>
+<h4 id="what-you-need-to-do_9">What you need to do<a class="headerlink" href="#what-you-need-to-do_9" title="Permanent link">&para;</a></h4>
+<p><strong>Update your <code>DATABASE_URI</code></strong> in all environments (<code>.env</code>, CI config, deploy scripts, Helm values):</p>
+<div class="highlight"><pre><span></span><code><span class="gd">- DATABASE_URI=postgresql://user:pass@host/dbname</span>
+<span class="gi">+ DATABASE_URI=postgresql+psycopg://user:pass@host/dbname</span>
+</code></pre></div>
+<p>This also applies to any test database URIs (e.g. <code>DATABASE_URI_TEST</code>).</p>
+<p><strong>Update your dependency pin</strong>, if you have one:</p>
+<div class="highlight"><pre><span></span><code><span class="gd">- psycopg2-binary==2.9.11</span>
+<span class="gi">+ psycopg[binary]&gt;=3.3.3</span>
+</code></pre></div>
+<p><strong>Replace direct <code>psycopg2</code> usage</strong>, if any. The psycopg3 API has some differences:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Before</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg2</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">database</span><span class="o">=</span><span class="s2">&quot;mydb&quot;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;myuser&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mypass&quot;</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">conn</span><span class="o">.</span><span class="n">autocommit</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT 1&quot;</span><span class="p">)</span>
+
+<span class="c1"># After</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psycopg</span>
+
+<span class="n">conn</span> <span class="o">=</span> <span class="n">psycopg</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+    <span class="n">dbname</span><span class="o">=</span><span class="s2">&quot;mydb&quot;</span><span class="p">,</span>
+    <span class="n">user</span><span class="o">=</span><span class="s2">&quot;myuser&quot;</span><span class="p">,</span>
+    <span class="n">password</span><span class="o">=</span><span class="s2">&quot;mypass&quot;</span><span class="p">,</span>
+    <span class="n">host</span><span class="o">=</span><span class="s2">&quot;localhost&quot;</span><span class="p">,</span>
+    <span class="n">autocommit</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
+<span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">&quot;SELECT 1&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>Note that <code>conn.autocommit</code> is no longer a settable attribute — pass <code>autocommit=True</code> to the constructor instead, or
+use <code>conn.set_autocommit(True)</code>.</p>
+<p><strong>Be aware of autobegin</strong>: psycopg3 automatically starts a transaction on the first query. If you execute queries
+outside of a <code>transactional()</code> context manager (e.g. in custom workflow steps or Celery signal handlers), those
+transactions may not be committed or rolled back, leaving connections in an &ldquo;idle in transaction&rdquo; state. Wrap such
+queries in <code>transactional()</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.core.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">db</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.core.db.database</span><span class="w"> </span><span class="kn">import</span> <span class="n">transactional</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">structlog</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_logger</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">get_logger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">transactional</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">logger</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">db</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="12-new-orchestratorcoreregister_table-api">12. New <code>OrchestratorCore.register_table()</code> API<a class="headerlink" href="#12-new-orchestratorcoreregister_table-api" title="Permanent link">&para;</a></h3>
+<h4 id="what-changed_10">What changed<a class="headerlink" href="#what-changed_10" title="Permanent link">&para;</a></h4>
+<p>A new static method <code>OrchestratorCore.register_table()</code> has been added. It allows you to register custom
+<code>column_property</code> attributes from a subclass onto the mapper of any SQLAlchemy base table. This makes custom computed
+columns available in queries and GraphQL without modifying the core table definition.</p>
+<p>The method works with any SQLAlchemy mapped class — <code>SubscriptionTable</code> is the most common use case, but it can be
+applied to any base table you want to extend.</p>
+<h4 id="what-you-need-to-do_10">What you need to do<a class="headerlink" href="#what-you-need-to-do_10" title="Permanent link">&para;</a></h4>
+<p>If you have a custom subclass with extra <code>column_property</code> definitions, register it during application startup:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.core.app</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrchestratorCore</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.core.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">SubscriptionTable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">myapp.db.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">MySubscriptionTable</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">OrchestratorCore</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+
+<span class="c1"># Register custom column properties onto the base table mapper</span>
+<span class="n">app</span><span class="o">.</span><span class="n">register_table</span><span class="p">(</span><span class="n">SubscriptionTable</span><span class="p">,</span> <span class="n">MySubscriptionTable</span><span class="p">)</span>
+</code></pre></div>
+<p>For example, if your subclass defines a computed column (assuming a user-defined <code>CustomerTable</code> with <code>customer_id</code> and
+<code>fullname</code> columns — see the <a href="../../../reference-docs/graphql/#customertype-resolver-override">GraphQL customization guide</a>
+for a full example):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy.orm</span><span class="w"> </span><span class="kn">import</span> <span class="n">column_property</span><span class="p">,</span> <span class="n">Mapped</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">sqlalchemy</span><span class="w"> </span><span class="kn">import</span> <span class="n">select</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">orchestrator.core.db</span><span class="w"> </span><span class="kn">import</span> <span class="n">SubscriptionTable</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">myapp.db.models</span><span class="w"> </span><span class="kn">import</span> <span class="n">CustomerTable</span>  <span class="c1"># your own model</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MySubscriptionTable</span><span class="p">(</span><span class="n">SubscriptionTable</span><span class="p">):</span>
+    <span class="n">customer_name</span><span class="p">:</span> <span class="n">Mapped</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">column_property</span><span class="p">(</span>
+        <span class="n">select</span><span class="p">(</span><span class="n">CustomerTable</span><span class="o">.</span><span class="n">fullname</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">CustomerTable</span><span class="o">.</span><span class="n">customer_id</span> <span class="o">==</span> <span class="n">SubscriptionTable</span><span class="o">.</span><span class="n">customer_id</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">correlate_except</span><span class="p">(</span><span class="n">CustomerTable</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">scalar_subquery</span><span class="p">(),</span>
+    <span class="p">)</span>
+</code></pre></div>
+<p>After calling <code>register_table()</code>, <code>customer_name</code> becomes available on the base <code>SubscriptionTable</code> mapper — queryable
+via SQLAlchemy and exposed through GraphQL.</p>
+<p>The same pattern applies to any other base table. Pass the base class and custom class as arguments:</p>
+<div class="highlight"><pre><span></span><code><span class="n">OrchestratorCore</span><span class="o">.</span><span class="n">register_table</span><span class="p">(</span><span class="n">SomeOtherBaseTable</span><span class="p">,</span> <span class="n">MyCustomSomeOtherTable</span><span class="p">)</span>
+</code></pre></div>
+<p>If you are using Celery workers, register the table in your worker startup as well:</p>
+<div class="highlight"><pre><span></span><code><span class="n">OrchestratorCore</span><span class="o">.</span><span class="n">register_table</span><span class="p">(</span><span class="n">SubscriptionTable</span><span class="p">,</span> <span class="n">MySubscriptionTable</span><span class="p">)</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2018 - 2026 Workflow Orchestrator Programme
+    </div>
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+    <a href="https://discord.gg/fQkQn5ajFR" target="_blank" rel="noopener" title="WFO on Discord!" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M492.5 69.8c-.2-.3-.4-.6-.8-.7-38.1-17.5-78.4-30-119.7-37.1-.4-.1-.8 0-1.1.1s-.6.4-.8.8c-5.5 9.9-10.5 20.2-14.9 30.6-44.6-6.8-89.9-6.8-134.4 0-4.5-10.5-9.5-20.7-15.1-30.6-.2-.3-.5-.6-.8-.8s-.7-.2-1.1-.2C162.5 39 122.2 51.5 84.1 69c-.3.1-.6.4-.8.7C7.1 183.5-13.8 294.6-3.6 404.2c0 .3.1.5.2.8s.3.4.5.6c44.4 32.9 94 58 146.8 74.2.4.1.8.1 1.1 0s.7-.4.9-.7c11.3-15.4 21.4-31.8 30-48.8.1-.2.2-.5.2-.8s0-.5-.1-.8-.2-.5-.4-.6-.4-.3-.7-.4c-15.8-6.1-31.2-13.4-45.9-21.9-.3-.2-.5-.4-.7-.6s-.3-.6-.3-.9 0-.6.2-.9.3-.5.6-.7c3.1-2.3 6.2-4.7 9.1-7.1.3-.2.6-.4.9-.4s.7 0 1 .1c96.2 43.9 200.4 43.9 295.5 0 .3-.1.7-.2 1-.2s.7.2.9.4c2.9 2.4 6 4.9 9.1 7.2.2.2.4.4.6.7s.2.6.2.9-.1.6-.3.9-.4.5-.6.6c-14.7 8.6-30 15.9-45.9 21.8-.2.1-.5.2-.7.4s-.3.4-.4.7-.1.5-.1.8.1.5.2.8c8.8 17 18.8 33.3 30 48.8.2.3.6.6.9.7s.8.1 1.1 0c52.9-16.2 102.6-41.3 147.1-74.2.2-.2.4-.4.5-.6s.2-.5.2-.8c12.3-126.8-20.5-236.9-86.9-334.5zm-302 267.7c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.4 59.2-52.8 59.2m195.4 0c-29 0-52.8-26.6-52.8-59.2s23.4-59.2 52.8-59.2c29.7 0 53.3 26.8 52.8 59.2 0 32.7-23.2 59.2-52.8 59.2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "search.suggest", "search.highlight", "navigation.tracking", "navigation.instant", "content.code.copy", "content.code.annotate", "content.tooltips", "content.tabs.link", "header.autohide"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../../js/open_in_new_tab.js"></script>
+      
+        <script src="../../../../termynal.js"></script>
+      
+        <script src="../../../js/termynal.js"></script>
+      
+        <script src="../../../js/custom.js"></script>
+      
+    
+  </body>
+</html>
