@@ -5,11 +5,11 @@ foundation and runs its own [governance](https://dracc.commonsconservancy.org/00
 
 ###Current positions:
 ####Board Members
-- Migiel de Vos - SURF (Chair) [until May 2025]</br>
+- Migiel de Vos - SURF (Chair) [until May 2027]</br>
 - Hans Trompert - SURF [until May 2026] </br>
-- John Macauley - ESnet [until May 2025]</br>
+- John Macauley - ESnet [until May 2027]</br>
 - Scott Richmond - ESnet [until May 2026]</br>
-- Bram Peeters - GÉANT [until May 2025]</br>
+- Bram Peeters - GÉANT [until May 2027]</br>
 
 
 ####Core Developers
