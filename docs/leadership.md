@@ -14,4 +14,4 @@ foundation and runs its own [governance](https://dracc.commonsconservancy.org/00
 
 ####Core Developers
 - Peter Boers - SURF (Technical Lead)
-- Scott Richmond - ESnet
+- Alex Ray - ESnet
