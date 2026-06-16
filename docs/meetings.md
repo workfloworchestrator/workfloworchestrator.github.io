@@ -24,8 +24,7 @@ There are three regular meetings scheduled each year:
 - SURF implementation update "SURF orchestration landscape" ([slides](presentations/2025-06-09 - WFO SURF update - TNC25 Brighton.pdf))
 
 #### 1st Workflow Orchestrator User Developer Days, Amsterdam, September 22–24 2025
-
-(no material available)
+- WFO update ([slides](presentations/2025-09-22 - First Workflow Orchestrator User Developer Days - Amsterdam - public.pdf))
 
 #### 3rd Workflow Orchestrator User Meeting, TNC26 in Helsinki, June 8 2026
 - WFO update ([slides](presentations/2026-06-08 - Third Workflow Orchestrator User Meeting - TNC26 Helsinki.pdf))
