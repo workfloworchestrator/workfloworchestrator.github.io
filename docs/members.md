@@ -5,7 +5,7 @@ Organisations that are involved with the Workflow Orchestrator programme are:
 
 [<img alt='SURF' src='/img/surf-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://surf.nl)
 [<img alt='ESnet' src='/img/esnet-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://es.net)
-[<img alt='Géant' src='/img/geant-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://geant.org)
+[<img alt='GÉANT' src='/img/geant-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://geant.org)
 
 ## Graduate
 
