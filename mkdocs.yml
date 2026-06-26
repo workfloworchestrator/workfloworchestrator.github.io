@@ -2,7 +2,7 @@ site_name: Workflow Orchestrator Programme
 site_url: https://workfloworchestrator.org
 nav:
   - Home: index.md
-  - The programme:
+  - The Programme:
       - About: about.md
       - Contact: contact.md
       - Leadership: leadership.md
@@ -10,6 +10,26 @@ nav:
       - Members: members.md
       - Meetings: meetings.md
       - Media: media.md
+  - Workshops:
+      - Example Orchestrator Workshop:
+          - Overview: workshops/example-orchestrator/overview.md
+          - Bootstrapping:
+              - Getting started: workshops/example-orchestrator/bootstrap.md
+              - Seeding data: workshops/example-orchestrator/execute-workflows.md
+          - Products:
+              - Scenario: workshops/example-orchestrator/scenario.md
+              - Domain models: workshops/example-orchestrator/domain-models.md
+          - Workflows:
+              - Introduction: workshops/example-orchestrator/workflow-introduction.md
+              - Workflow Basics: workshops/example-orchestrator/workflow-basics.md
+              - Workflow Examples:
+                  - Create Workflow: workshops/example-orchestrator/node-create.md
+                  - Modify Workflow: workshops/example-orchestrator/node-modify.md
+                  - Terminate Workflow: workshops/example-orchestrator/node-terminate.md
+                  - Validate Workflow: workshops/example-orchestrator/node-validate.md
+          - Create your own product and workflows:
+              - L2 Point-to-Point: workshops/example-orchestrator/create-your-own.md
+              - Product and Workflow Generator: workshops/example-orchestrator/generator.md
   - Projects:
       - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
       # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
@@ -105,6 +125,19 @@ plugins:
         "orchestrator-core/migration-guide/2.0.md": "orchestrator-core/guides/upgrading/2.0.md"
         "orchestrator-core/migration-guide/3.0.md": "orchestrator-core/guides/upgrading/3.0.md"
         "orchestrator-core/migration-guide/4.0.md": "orchestrator-core/guides/upgrading/4.0.md"
+        "orchestrator-core/workshops/advanced/overview.md": "workshops/example-orchestrator/overview.md"
+        "orchestrator-core/workshops/advanced/bootstrap.md": "workshops/example-orchestrator/bootstrap.md"
+        "orchestrator-core/workshops/advanced/execute-workflows.md": "workshops/example-orchestrator/execute-workflows.md"
+        "orchestrator-core/workshops/advanced/scenario.md": "workshops/example-orchestrator/scenario.md"
+        "orchestrator-core/workshops/advanced/domain-models.md": "workshops/example-orchestrator/domain-models.md"
+        "orchestrator-core/workshops/advanced/workflow-introduction.md": "workshops/example-orchestrator/workflow-introduction.md"
+        "orchestrator-core/workshops/advanced/workflow-basics.md": "workshops/example-orchestrator/workflow-basics.md"
+        "orchestrator-core/workshops/advanced/node-create.md": "workshops/example-orchestrator/node-create.md"
+        "orchestrator-core/workshops/advanced/node-modify.md": "workshops/example-orchestrator/node-modify.md"
+        "orchestrator-core/workshops/advanced/node-terminate.md": "workshops/example-orchestrator/node-terminate.md"
+        "orchestrator-core/workshops/advanced/node-validate.md": "workshops/example-orchestrator/node-validate.md"
+        "orchestrator-core/workshops/advanced/create-your-own.md": "workshops/example-orchestrator/create-your-own.md"
+        "orchestrator-core/workshops/advanced/generator.md": "workshops/example-orchestrator/generator.md"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages
