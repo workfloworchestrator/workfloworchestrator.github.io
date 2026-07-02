@@ -6,17 +6,16 @@ At the end of these steps the developer will have all the necessary configuratio
 the workflow and start developing on implementing the business logic.
 
 ### Step 1 - Create the product configuration file
+
 Open the Example Orchestrator directory and list the templates directory. It should look similar to this:
 
 ```bash
-~/Documents/SURF/projects/example-orchestrator
 ❯ ls -l templates
 total 32
 -rw-r--r--  1 boers001  staff  2687 Mar  7 11:28 core_link.yaml
 -rw-r--r--  1 boers001  staff  2052 Mar  7 11:28 l2vpn.yaml
 -rw-r--r--  1 boers001  staff  2575 Mar  7 11:28 node.yaml
 -rw-r--r--  1 boers001  staff  2444 Mar  7 11:28 port.yaml
-~/Documents/SURF/projects/example-orchestrator
 ```
 
 This directory houses all the configuration of the initial products that the example orchestrator provides. It is a
@@ -24,10 +23,13 @@ starting point for developing new products. In this workshop we will create a ne
 L2-Point-to-Point model and workflows by configuring it with this yaml file.
 
 ### Step 2 - Configure the YAML
+
 Create a new file in the template directory called `l2-p2p.yaml`
+
 ```bash
 touch templates/l2-p2p.yaml
 ```
+
 This file will contain the Initial product type configuration. Please create a yaml configuration reflecting the
 product model as described on the [previous page](create-your-own.md). The goal is to configure the generator to
 reuse as many of the product blocks already existing in the orchestrator as possible.
@@ -97,18 +99,22 @@ reuse as many of the product blocks already existing in the orchestrator as poss
     ```
 
 ### Step 3 - Run the generator functions
-To help generate the correct file exec into the running container and run the generator:
+
+To help generate the correct file exec into the running container and activate the Python venv:
 
 ```bash
-docker exec -it example-orchestrator-orchestrator-1 /bin/bash
+docker compose exec -it orchestrator bash
+source .venv/bin/activate
 ```
 
 #### Product Blocks
+
 Run the command to generate the domain models product blocks:
 
 ```bash
 python main.py generate product-blocks -cf templates/l2-p2p.yaml --no-dryrun
 ```
+
 The `--no-dryrun` option will immediately write the files to the `products/product_blocks` folder and create:
 `l2_p2p_sap.py` and `l2_p2p_virtual_circuit.py`. This file contains the product block configuration for the l2-p2p
 product and defines the strict hierarchy of virtual circuit and saps.
@@ -125,8 +131,14 @@ domain model, fixed inputs and imported the correct product blocks to be used in
 
 
 #### Workflows
+
 Now generate the workflows. This command will always create 4 sets of workflows `create`, `modify`, `terminate` and
 `validate`. These can be implemeted as the users sees fit.
+
+!!! warning
+    There is a bug in `generate workflows` which makes it overwrite the contents of workflows/shared.py.
+    Make sure to backup the contents, or restore it afterwards.
+    Bug is tracked in https://github.com/workfloworchestrator/orchestrator-core/issues/1757.
 
 Run the command:
 ```bash
