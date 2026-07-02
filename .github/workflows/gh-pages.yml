@@ -27,4 +27,4 @@ jobs:
         run: ./setup_subprojects.sh
 
       - name: Build and deploy
-        run: uv run --no-sync mkdocs gh-deploy --force
+        run: uv run --no-sync mkdocs gh-deploy --force --strict

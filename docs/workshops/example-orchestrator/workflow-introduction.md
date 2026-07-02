@@ -1,4 +1,4 @@
-> This document assumes you are already familiar with the key safeguards and potential pitfalls outlined in the [Architecture of workflows](../../architecture/application/workflow.md)
+> This document assumes you are already familiar with the key safeguards and potential pitfalls outlined in the [Architecture of workflows](../../orchestrator-core/architecture/application/workflow.md)
 
 ### Continuing the Workshop
 

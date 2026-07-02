@@ -5,5 +5,6 @@ Orchestrator provides the user. In this scenario you will create a product that 
 L2VPN product, but constrained to two interfaces. In other words a L2 Point-to-Point circuit.
 
 ## L2 Point-to-Point model
+
 {{ external_markdown('https://raw.githubusercontent.com/workfloworchestrator/orchestrator-core/main/docs/architecture/product_modelling/l2_point_to_point.md',
 '') }}
