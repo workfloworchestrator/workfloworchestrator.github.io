@@ -21,6 +21,62 @@ The following software is required on your machine to follow this workshop:
 - [containerlab](https://containerlab.dev/install/)
 
 
+### macOS on Apple Silicon
+
+!!! note
+    This only applies to **ARM / Apple Silicon (M-series) Macs**. On Linux and
+    Intel machines a standard Docker install works — skip to
+    [Step 1](#step-1-cloning-the-repo).
+
+**Docker runtime (colima + virtiofs).**
+On Apple Silicon the containerlab SR Linux nodes need a Docker VM that mounts host
+paths with **virtiofs** and has enough memory. The default Docker Desktop VM and
+colima's legacy `sshfs` mount both break the nodes in two ways:
+
+- **`virtiofs`, not `sshfs`.** SR Linux generates a TLS keypair at boot and
+  `chown`s it. `sshfs` forbids `chown` even as root, so the keygen fails,
+  `sr_linux_mgr` crash-loops, and no management server (JSON-RPC / gNMI / gRPC)
+  ever comes online.
+- **≥ 8 GB VM memory.** Each SR Linux node reserves ~2 GB; on a smaller VM the
+  kernel OOM-killer keeps killing `sr_mgmt_server` and the nodes never settle.
+
+Use [colima](https://github.com/abiosoft/colima) as the Docker runtime:
+
+```shell
+brew install colima docker
+
+# vm-type vz + virtiofs is the Apple Silicon path; 8 GB / 4 CPUs runs the
+# compose stack and the 3-node lab together.
+colima start --vm-type vz --mount-type virtiofs --memory 8 --cpu 4
+```
+
+Confirm the VM before continuing:
+
+```shell
+colima status | grep mountType   # -> mountType: virtiofs
+colima ssh -- free -h            # Mem total should be ~8 GB
+```
+
+!!! danger "Do not run Docker Desktop at the same time as colima"
+    Both register a `docker` CLI context and fight over the `/var/run/docker.sock`
+    symlink and host ports, leaving you with a broken, non-deterministic Docker
+    setup. Quit Docker Desktop (and disable "Start at login") before using colima.
+
+!!! warning "`mountType` / `vmType` are fixed when the VM is created"
+    The `--mount-type` / `--vm-type` flags are silently ignored on an existing VM.
+    If your colima VM was created with `sshfs`, recreate it — this destroys the
+    VM's containers, images and volumes:
+
+    ```shell
+    colima delete && colima start --vm-type vz --mount-type virtiofs --memory 8 --cpu 4
+    ```
+
+    Memory and CPU, by contrast, *can* be changed on a plain restart:
+    `colima stop && colima start --memory 8 --cpu 4`.
+
+Once the runtime is up, run the `containerlab` commands in this guide from the
+maintainers' container — there is no native `containerlab` binary on Apple Silicon:
+
 !!! info
     For MacOS ARM there is no `containerlab` executable.
     You can run the `containerlab` commands in this guide from within this container provided by the maintainers.
