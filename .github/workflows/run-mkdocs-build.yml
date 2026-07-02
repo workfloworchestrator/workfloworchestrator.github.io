@@ -1,0 +1,29 @@
+name: Test mkdocs build
+
+on:
+  pull_request:
+    branches: ["main"]
+
+env:
+  UV_LOCKED: true # Assert that the `uv.lock` will remain unchanged
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install uv and set the python version
+        uses: astral-sh/setup-uv@v8.2.0
+        with:
+          # It is considered best practice to pin to a specific uv version.
+          version: "0.11.26"
+
+      - name: Install site dependencies
+        run: uv sync
+
+      - name: Set up subprojects
+        run: ./setup_subprojects.sh
+
+      - name: Test mkdocs build with --strict
+        run: DISABLE_MKDOCS_2_WARNING=true uv run --no-sync mkdocs build --strict
