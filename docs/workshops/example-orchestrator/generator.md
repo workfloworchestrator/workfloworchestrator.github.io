@@ -35,7 +35,7 @@ reuse as many of the product blocks already existing in the orchestrator as poss
 !!! tip "Inspiration"
     Take a look at the `l2vpn.yaml` model for inspiration. As you can see this file has been configured in a certain
     way to reflect the configuration of the product. For more in depth documentation take a look at the [reference
-    doc](../../reference-docs/cli.md#generate).
+    doc](../../orchestrator-core/reference-docs/cli.md#generate).
 
 !!! danger "What can I do when I encounter errors?"
     If you get stuck just remove all generated files, edit the yaml and try again.
