@@ -175,7 +175,7 @@ docker compose build
 
 ## Step 3 - Starting the environment
 
-Now we can the containers:
+Now we can start the containers:
 
 ```shell
 docker compose up -d
