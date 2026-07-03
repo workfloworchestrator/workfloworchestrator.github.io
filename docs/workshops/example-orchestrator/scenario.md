@@ -3,9 +3,9 @@
 During this workshop a set of products will be used together with the needed workflows to manage enrolling network
 nodes into the Workflow Orchestrator and creating circuits between nodes.
 The products will be just complex enough to show the basic capabilities of products, product blocks, fixed inputs,
-resource types and workflows in the workflow orchestrator. We will cover nesting product blocks and products together.
+resource types and workflows in the Workflow Orchestrator. We will cover nesting product blocks and products together.
 
-## Product hiearchy example
+## Product hierarchy example
 
 In the diagram below you can see how all products and product blocks relate to each other. The example orchestrator
 has implemented the following example products and corresponding workflows that can be used to build a basic network
@@ -62,7 +62,7 @@ flowchart
         direction LR
         l2ptp_sap1[SAPBlock]
         l2ptp_vc[VirtualCircuitBlock]
-        l2ptp_sap2[SapBlock]
+        l2ptp_sap2[SAPBlock]
         l2ptp_sap1 --- l2ptp_vc
         l2ptp_vc --- l2ptp_sap2
     end
@@ -95,6 +95,6 @@ flowchart
 ```
 
 
-!!! Hint
+!!! hint
     Take some time to explore the module described above. It shows how the product modelling is done in Python.
-    Once you are familiar with the code, continue with the workshop
+    Once you are familiar with the code, continue with the workshop.

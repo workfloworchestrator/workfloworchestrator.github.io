@@ -64,7 +64,7 @@ reuse as many of the product blocks already existing in the orchestrator as poss
         values:
           - protected
           - unprotected
-        description: "Level of network redundancany"
+        description: "Level of network redundancy"
     product_blocks:
       - name: l2_p2p_virtual_circuit
         type: L2P2PVirtualCircuit
@@ -79,7 +79,7 @@ reuse as many of the product blocks already existing in the orchestrator as poss
             max_items: 2
             required: provisioning
           - name: speed
-            description: "speed of the L2VPN im Mbit/s"
+            description: "speed of the L2VPN in Mbit/s"
             type: int
             required: provisioning
             modifiable:
@@ -133,7 +133,7 @@ domain model, fixed inputs and imported the correct product blocks to be used in
 #### Workflows
 
 Now generate the workflows. This command will always create 4 sets of workflows `create`, `modify`, `terminate` and
-`validate`. These can be implemeted as the users sees fit.
+`validate`. These can be implemented as the user sees fit.
 
 !!! warning
     There is a bug in `generate workflows` which makes it overwrite the contents of workflows/shared.py.
@@ -157,7 +157,7 @@ python main.py generate migration -cf templates/l2-p2p.yaml
 python main.py db upgrade heads
 ```
 
-### Step 4 -  Profit
+### Step 4 - Profit
 If this has been executed without errors, you should be able to create a new subscription for the l2-p2p product by
 running the create workflow through the UI. All it does is create the domain model and fill it in with some
 rudimentary values from the input form, but it's a starting point. Users can now go into the workflow source code
@@ -170,12 +170,12 @@ in the orchestrator UI to see what has been configured.
 
 ### Step 5 - Bonus
 Implement a new step in the create workflow that manipulates the subscription in a certain way. An example could be
-to change the subscription description. Or any other value you can think of that exists in the subscription
+to change the subscription description, or any other value you can think of that exists in the subscription.
 
-??? example - "Answer"
+??? example "Answer"
     ```python
     @step("Update Subscription Description")
     def update(subscription: L2p2pProvisioning) -> State:
-        subscription.descrtiption = "My Awesome L2P2P"
+        subscription.description = "My Awesome L2P2P"
         return state | {"subscription": subscription}
     ```
