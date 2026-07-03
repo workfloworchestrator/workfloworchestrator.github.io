@@ -6,5 +6,5 @@ First read the [Architecture; TL;DR](../../orchestrator-core/architecture/tldr.m
 concepts that will be covered.
 
 ## Products
-{{ external_markdown('https://raw.githubusercontent.com/workfloworchestrator/example-orchestrator/master/README.md',
+{{ external_markdown('https://raw.githubusercontent.com/workfloworchestrator/example-orchestrator/main/README.md',
 '## Products') }}

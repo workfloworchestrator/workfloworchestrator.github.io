@@ -94,7 +94,7 @@ maintainers' container — there is no native `containerlab` binary on Apple Sil
 
 ## Step 1 - Cloning the repo
 
-The fist step is to clone the Example orchestrator repository using:
+The first step is to clone the Example orchestrator repository using:
 
 ```
 git clone https://github.com/workfloworchestrator/example-orchestrator.git
@@ -102,7 +102,7 @@ git clone https://github.com/workfloworchestrator/example-orchestrator.git
 At this point, you have a functional environment to start play with. This includes:
 
 * The orchestrator (core and GUI)
-* Netbox (the entire stack including database, workers, etc...)
+* NetBox (the entire stack including database, workers, etc...)
 * LSO (to run ansible playbooks)
 * An example containerlab topology based on Nokia SRlinux.
 * Some examples of Ansible playbooks
@@ -185,8 +185,8 @@ You should be able to view the applications here:
 
 1. Orchestrator ui: [Frontend: http://localhost:3000](http://localhost:3000)
 2. Orchestrator backend: [REST api: http://localhost:8080/api/redoc](http://localhost:8080/api/redoc) and
-   [Graphql API: http://localbost:8080/api/graphql](http://localhost:8080/api/graphql)
-3. Netbox (admin|admin): [Netbox: http://localhost:8000](http://localhost:8000)
+   [Graphql API: http://localhost:8080/api/graphql](http://localhost:8080/api/graphql)
+3. NetBox (admin|admin): [NetBox: http://localhost:8000](http://localhost:8000)
 
 !!! note
     Take your time to familiarise with the applications and make sure they are working correctly.
