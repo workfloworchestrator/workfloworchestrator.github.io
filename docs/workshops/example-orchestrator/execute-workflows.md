@@ -29,9 +29,12 @@ We will have to fill in an initial form.
 * **Node role**: Provider
 * **Site**: Amsterdam
 * **Node status**: active
-* **Node name**: Same as the node name in containerlab: `clab-orch-demo-ams-pe`, `clab-orch-demo-lon-pe` and `clab-orch-demo-par-p`
+* **Node name**: `clab-orch-demo-ams-pe`
 
 Click **Next**, review the summary page, and click **Next** again to start the workflow.
+
+The workflow will pause halfway during the step "Confirm provisioning proxy results".
+Assuming that the result was successful, click **Resume workflow**.
 
 Once the workflow has successfully run, we can log in to the node and take a look at the config:
 
@@ -43,11 +46,25 @@ ssh clab-orch-demo-ams-pe -l admin
 !!! note
     If you deployed containerlab through the docker image, run the ssh commands from the same container.
 
-We can practice this deploying all the 3 nodes in the topology.
+For example, observe the IP addresses assigned to the loopback interface, e.g. `show interface lo1.0`.
+This corresponds to what you see in NetBox in the **Devices >> Devices** menu.
+
+Repeat this process for the other 2 containerlab nodes:
+
+* `clab-orch-demo-lon-pe`
+* `clab-orch-demo-par-p`
 
 ### Deploying core links
 
-Once we have 2 nodes configured, we should be able to deploy a core link between them using the "create core link 10G" workflow.
+Once we have at least 2 nodes configured, we should be able to deploy a core link between them.
+To do this, click **New subscription** and select **core link 10G**.
+Select any customer and 2 distinct nodes.
+
+On the next page choose a free port on each node.
+Click **Next** to start the workflow.
+
+The workflow will pause halfway during the step "Confirm provisioning proxy results".
+Assuming that the result was successful, click **Resume workflow**.
 
 You can log in to the router and check the status of ISIS using:
 
