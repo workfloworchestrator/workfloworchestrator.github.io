@@ -6,6 +6,10 @@ nav:
       - About: about.md
       - Contact: contact.md
       - Leadership: leadership.md
+  - Architecture:
+      - The Framework: architecture/framework.md
+      - Orchestrator UI: architecture/orchestrator-ui.md
+      - Input Forms: architecture/input-forms.md
   - Community:
       - Members: members.md
       - Meetings: meetings.md
@@ -138,6 +142,9 @@ plugins:
         "orchestrator-core/workshops/advanced/node-validate.md": "workshops/example-orchestrator/node-validate.md"
         "orchestrator-core/workshops/advanced/create-your-own.md": "workshops/example-orchestrator/create-your-own.md"
         "orchestrator-core/workshops/advanced/generator.md": "workshops/example-orchestrator/generator.md"
+        "orchestrator-core/architecture/framework.md": "architecture/framework.md"
+        "orchestrator-core/architecture/orchestration/orchestrator-ui.md": "architecture/orchestrator-ui.md"
+        "orchestrator-core/architecture/application/forms-frontend.md": "architecture/input-forms.md"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages

@@ -5,12 +5,12 @@ setup in our docker-compose.yml file so that you don't have to think about how t
 
 The following Docker images are used in this workshop:
 
-* [orchestrator-core](https://github.com/workfloworchestrator/orchestrator-core/pkgs/container/orchestrator-core): The workflow orchestrator step engine.
-* [example-orchestrator-ui](https://github.com/workfloworchestrator/example-orchestrator-ui/pkgs/container/example-orchestrator-ui): An example GUI implementation for the orchestrator-core.
-* [netbox](https://docs.netbox.dev/en/stable/): An open source IPAM and NSoT system.
-* [postgres](https://hub.docker.com/_/postgres): The PostgreSQL object-relational database system.
-* [redis](https://redis.io/): An open source in-memory data store.
-* [containerlab](https://containerlab.dev/): A free network topology simulator that uses containerized
+- [orchestrator-core](https://github.com/workfloworchestrator/orchestrator-core/pkgs/container/orchestrator-core): The workflow orchestrator step engine.
+- [example-orchestrator-ui](https://github.com/workfloworchestrator/example-orchestrator-ui/pkgs/container/example-orchestrator-ui): An example GUI implementation for the orchestrator-core.
+- [netbox](https://docs.netbox.dev/en/stable/): An open source IPAM and NSoT system.
+- [postgres](https://hub.docker.com/_/postgres): The PostgreSQL object-relational database system.
+- [redis](https://redis.io/): An open source in-memory data store.
+- [containerlab](https://containerlab.dev/): A free network topology simulator that uses containerized
   Network Operating Systems.
 
 ## Prerequisites
@@ -20,13 +20,11 @@ The following software is required on your machine to follow this workshop:
 - [docker-compose](https://docs.docker.com/compose/install/)
 - [containerlab](https://containerlab.dev/install/)
 
-
 ### macOS on Apple Silicon
 
 !!! note
-    This only applies to **ARM / Apple Silicon (M-series) Macs**. On Linux and
-    Intel machines a standard Docker install works — skip to
-    [Step 1](#step-1-cloning-the-repo).
+    This only applies to **ARM / Apple Silicon (M-series) Macs**. On Linux and Intel machines a standard Docker install
+    works — skip to [Step 1](#step-1-cloning-the-repo).
 
 **Docker runtime (colima + virtiofs).**
 On Apple Silicon the containerlab SR Linux nodes need a Docker VM that mounts host
@@ -63,53 +61,53 @@ colima ssh -- free -h            # Mem total should be ~8 GB
     setup. Quit Docker Desktop (and disable "Start at login") before using colima.
 
 !!! warning "`mountType` / `vmType` are fixed when the VM is created"
-    The `--mount-type` / `--vm-type` flags are silently ignored on an existing VM.
-    If your colima VM was created with `sshfs`, recreate it — this destroys the
-    VM's containers, images and volumes:
+    The `--mount-type` / `--vm-type` flags are silently ignored on an existing VM. If your colima VM was created with
+    `sshfs`, recreate it — this destroys the VM's containers, images and volumes:
 
     ```shell
     colima delete && colima start --vm-type vz --mount-type virtiofs --memory 8 --cpu 4
     ```
 
-    Memory and CPU, by contrast, *can* be changed on a plain restart:
-    `colima stop && colima start --memory 8 --cpu 4`.
+    Memory and CPU, by contrast, *can* be changed on a plain restart: `colima stop && colima start --memory 8 --cpu 4`.
 
-Once the runtime is up, run the `containerlab` commands in this guide from the
-maintainers' container — there is no native `containerlab` binary on Apple Silicon:
+Once the runtime is up, run the `containerlab` commands in this guide from the maintainers' container — there is no
+native `containerlab` binary on Apple Silicon:
 
 !!! info
-    For MacOS ARM there is no `containerlab` executable.
-    You can run the `containerlab` commands in this guide from within this container provided by the maintainers.
-        ```shell
-        docker run --rm -it --privileged \
-        --network host \
-        -v /var/run/docker.sock:/var/run/docker.sock \
-        -v /var/run/netns:/var/run/netns \
-        -v /var/lib/docker/containers:/var/lib/docker/containers \
-        --pid="host" \
-        -v $(pwd):$(pwd) \
-        -w $(pwd) \
-        ghcr.io/srl-labs/clab bash
-        ```
+    For MacOS ARM there is no `containerlab` executable. You can run the `containerlab` commands in this guide from
+    within this container provided by the maintainers.
+
+    ```shell
+    docker run --rm -it --privileged \
+    --network host \
+    -v /var/run/docker.sock:/var/run/docker.sock \
+    -v /var/run/netns:/var/run/netns \
+    -v /var/lib/docker/containers:/var/lib/docker/containers \
+    --pid="host" \
+    -v $(pwd):$(pwd) \
+    -w $(pwd) \
+    ghcr.io/srl-labs/clab bash
+    ```
 
 ## Step 1 - Cloning the repo
 
 The first step is to clone the Example orchestrator repository using:
 
-```
+```shell
 git clone https://github.com/workfloworchestrator/example-orchestrator.git
 ```
+
 At this point, you have a functional environment to start play with. This includes:
 
-* The orchestrator (core and GUI)
-* NetBox (the entire stack including database, workers, etc...)
-* LSO (to run ansible playbooks)
-* An example containerlab topology based on Nokia SRlinux.
-* Some examples of Ansible playbooks
+- The orchestrator (core and GUI)
+- NetBox (the entire stack including database, workers, etc...)
+- LSO (to run ansible playbooks)
+- An example ContainerLab topology based on Nokia SR Linux.
+- Some examples of Ansible playbooks
 
 The directory contains at least these files and directories:
 
-```
+```shell
 $ ls -1
 alembic.ini
 ansible
@@ -139,7 +137,7 @@ Use the command matching your OS to check if any are in use.
 
 On Linux you can use `netstat` or `ss`:
 
-```
+```shell
 # net-tools
 netstat -tulnp | grep -E ':80|:3000|:4000|:5432|:5678|:8000|:8001|:8080'
 
@@ -149,7 +147,7 @@ ss -tulnp | grep -E ':80|:3000|:4000|:5432|:5678|:8000|:8001|:8080'
 
 On macOS:
 
-```
+```shell
 lsof -nP -iTCP -sTCP:LISTEN | grep -E ':80 |:3000 |:4000 |:5432 |:5678 |:8000 |:8001 |:8080 '
 ```
 
@@ -189,7 +187,7 @@ You should be able to view the applications here:
 3. NetBox (admin|admin): [NetBox: http://localhost:8000](http://localhost:8000)
 
 !!! note
-    Take your time to familiarise with the applications and make sure they are working correctly.
+Take your time to familiarize with the applications and make sure they are working correctly.
 
     If anything is wrong, inspect the results of these commands:
 
@@ -202,18 +200,18 @@ You should be able to view the applications here:
     docker compose logs -tf -n 5
     ```
 
-## Step 4 - Containerlab
+## Step 4 - ContainerLab
 
-Now that we have our orchestrator stack running, we can spin up the containerlab topology:
+Now that we have our orchestrator stack running, we can spin up the ContainerLab topology:
 
-```
+```shell
 cd clab
 containerlab deploy
 ```
 
 At the end of this process we can use `containerlab inspect` to check the status of our topology:
 
-```
+```text
 ╭───────────────────────┬──────────────────────────────┬─────────┬────────────────╮
 │          Name         │          Kind/Image          │  State  │ IPv4/6 Address │
 ├───────────────────────┼──────────────────────────────┼─────────┼────────────────┤
@@ -233,14 +231,14 @@ At the end of this process we can use `containerlab inspect` to check the status
 
 And with the command:
 
-```
+```shell
 containerlab graph
 ```
 
 This will serve a nice rendering of the topology on port [50080](http://localhost:50080).
 
 !!! info
-    When using containerlab's docker image, this does not work.
+    When using the ContainerLab docker image, this does not work.
 
 The topology we are going to use is something like this one:
 
@@ -248,10 +246,10 @@ The topology we are going to use is something like this one:
 
 The Example orchestrator used in this workshop already has a number of products pre-configured and ready to be used:
 
-* Nodes (including Ansible to deploy example config)
-* Core-links (including Ansible to deploy/delete example config)
-* Ports
-* L2VPN
+- Nodes (including Ansible to deploy example config)
+- Core-links (including Ansible to deploy/delete example config)
+- Ports
+- L2VPN
 
 We can start feeding initial data into the environment and run some workflows!
 
@@ -261,7 +259,7 @@ We can start feeding initial data into the environment and run some workflows!
 
 To completely reset your environment and start from scratch, follow these steps.
 
-If you had containerlab deployed, destroy the deployed nodes:
+If you had ContainerLab deployed, destroy the deployed nodes:
 
 ```shell
 containerlab destroy

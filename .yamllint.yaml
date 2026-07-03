@@ -2,7 +2,9 @@ extends: default
 
 rules:
   line-length:
-    max: 150
+    max: 120
+    ignore: |
+      mkdocs.yml
   truthy:
     check-keys: false
   comments:
