@@ -95,7 +95,6 @@ plugins:
   - external-markdown
   - open-in-new-tab
   - render_swagger
-  - macros
   - include-markdown
   - mkdocstrings:
       default_handler: python
@@ -148,3 +147,5 @@ plugins:
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages
+  # workfloworchestrator.org general plugin that has to be loaded after awesome-pages
+  - macros
