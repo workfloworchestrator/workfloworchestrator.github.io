@@ -9,22 +9,22 @@ as well as teaching you how to relate products to other products, using the depe
 Workflow Orchestrator.
 
 !!! tip
-    Knowledge of the Python programming language, Docker, and the Unix command line interface are prerequisites for this workshop.
-
+    Knowledge of the Python programming language, Docker, and the Unix command line interface are prerequisites for
+    this workshop.
 
 ## Topics
 
-* **Installation**
+- **Installation**
   Detailed instructions are given on how to prepare your environment and install the orchestrator and GUI using docker compose.
-* **Start applications**
+- **Start applications**
   Outline how to start the Workflow Orchestrator backend and GUI using docker compose.
-* **Bootstrapping the applications and familiarisation**
+- **Bootstrapping the applications and familiarization**
   Through a simple network node and network circuit scenario, a set of products is created showing how domain models are defined.
-    * **Domain models**
+  - **Domain models**
     Explains the benefits of the use of domain models and shows how the hierarchy of products, product blocks, fixed inputs and resource types are used to create product subscriptions for customers.
-* **Workflows**
+- **Workflows**
   Introduces the workflow concept and how the create, modify, terminate, and validate workflows relate to the product model, using the example orchestrator's node workflows as a reference.
-* **L2 Point-to-Point product modelling and workflow**
+- **L2 Point-to-Point product modeling and workflow**
   For the L2 Point-to-Point product, we will make the CREATE workflow by using the product generator. The use of input
   forms is explained as part of defining the create workflow. By using this method you should be able to quickly get
   up to speed and start coding quickly.
@@ -33,9 +33,9 @@ Workflow Orchestrator.
 
 This workshop uses the following folder layout:
 
-```text
+```shell
 ├── migrations
-│   └── versions
+│   ├── versions
 │   └── schema
 ├── products
 │   ├── product_blocks
@@ -54,32 +54,32 @@ This workshop uses the following folder layout:
 
 ## Workshop software architecture
 
-The workshop combines a number of opensource software components that can provision a simulated network
-running in containerlab. The following diagram shows the logical components of the application and how the data
+The workshop combines a number of open source software components that can provision a simulated network
+running in ContainerLab. The following diagram shows the logical components of the application and how the data
 flows. In reality there are a number of extra services like Postgres and Redis that store the application data of
 the Orchestrator, NetBox and LSO.
 
 ### Software used in the workshop
 
-* **The orchestrator**: This includes the UI and python backend that will run all workflows. All data is persisted in a Postgres database. Redis is used for event broadcasting and synchronisation purposes.
-* **[NetBox](https://docs.netbox.dev/en/stable/)**: NetBox is the source of truth for this network topology. It contains all resources that are known
+- **The orchestrator**: This includes the UI and python backend that will run all workflows. All data is persisted in a Postgres database. Redis is used for event broadcasting and synchronization purposes.
+- **[NetBox](https://docs.netbox.dev/en/stable/)**: NetBox is the source of truth for this network topology. It contains all resources that are known
   in the topology: Interfaces, Nodes, IP addresses etc. The Orchestrator will configure NetBox but also retrieve resources from it.
-* **[LSO](https://github.com/workfloworchestrator/lso)**: The Network Resource Manager (NRM) of this topology. This software is an API abstraction on top of
+- **[LSO](https://github.com/workfloworchestrator/lso)**: The Network Resource Manager (NRM) of this topology. This software is an API abstraction on top of
   ansible that integrates well with the orchestrator. It is responsible for running ansible jobs to provision the topology.
-* **[containerlab](https://containerlab.dev/)**: This software will manage the (virtual) network topology running the Network Operating System
+- **[containerlab](https://containerlab.dev/)**: This software will manage the (virtual) network topology running the Network Operating System
   of the workshop. Below the network topology is explained.
 
 ![Software topology](../images/Software-topology.drawio.png)
 
 ## Workshop topology
 
-Once you have installed the example orchestrator with containerlab integration enabled (explained in the next section),
+Once you have installed the example orchestrator with ContainerLab integration enabled (explained in the next section),
 we will build the workshop topology that can be used to actually see packets flow. The workflows that you will run in the following steps will do the following:
 
-* Seed NetBox
-* Provision two PE nodes
-* Create an IS-IS cloud to signal MPLS LSPs with backbone links
-* Provision customer Ports that can be used in network services
+- Seed NetBox
+- Provision two PE nodes
+- Create an IS-IS cloud to signal MPLS LSPs with backbone links
+- Provision customer Ports that can be used in network services
 
 The topology will be as follows:
 

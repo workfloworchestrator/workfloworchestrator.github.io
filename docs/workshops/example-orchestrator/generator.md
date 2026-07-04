@@ -9,7 +9,7 @@ the workflow and start developing on implementing the business logic.
 
 Open the Example Orchestrator directory and list the templates directory. It should look similar to this:
 
-```bash
+```shell
 ❯ ls -l templates
 total 32
 -rw-r--r--  1 boers001  staff  2687 Mar  7 11:28 core_link.yaml
@@ -26,7 +26,7 @@ L2-Point-to-Point model and workflows by configuring it with this yaml file.
 
 Create a new file in the template directory called `l2-p2p.yaml`
 
-```bash
+```shell
 touch templates/l2-p2p.yaml
 ```
 
@@ -49,7 +49,6 @@ reuse as many of the product blocks already existing in the orchestrator as poss
     generator due to the different limits on the amount of SAPS that can be connected to the Virtual Circuit of the
     L2 P2P product.
 
-    #### Yaml file
     ```yaml
     config:
       summary_forms: true
@@ -102,7 +101,7 @@ reuse as many of the product blocks already existing in the orchestrator as poss
 
 To help generate the correct file exec into the running container and activate the Python venv:
 
-```bash
+```shell
 docker compose exec -it orchestrator bash
 source .venv/bin/activate
 ```
@@ -111,7 +110,7 @@ source .venv/bin/activate
 
 Run the command to generate the domain models product blocks:
 
-```bash
+```shell
 python main.py generate product-blocks -cf templates/l2-p2p.yaml --no-dryrun
 ```
 
@@ -120,15 +119,15 @@ The `--no-dryrun` option will immediately write the files to the `products/produ
 product and defines the strict hierarchy of virtual circuit and saps.
 
 #### Product
+
 Now create the product.
 
-```bash
+```shell
 python main.py generate product -cf templates/l2-p2p.yaml --no-dryrun
 ```
 
 This will create the file `products/product_types/l2_p2p.py`. When looking at this file you can see it created the
 domain model, fixed inputs and imported the correct product blocks to be used in this subscription.
-
 
 #### Workflows
 
@@ -136,12 +135,13 @@ Now generate the workflows. This command will always create 4 sets of workflows 
 `validate`. These can be implemented as the user sees fit.
 
 !!! warning
-    There is a bug in `generate workflows` which makes it overwrite the contents of workflows/shared.py.
-    Make sure to backup the contents, or restore it afterwards.
-    Bug is tracked in https://github.com/workfloworchestrator/orchestrator-core/issues/1757.
+    There is a bug in `generate workflows` which makes it overwrite the contents of workflows/shared.py. Make sure to
+    backup the contents, or restore it afterwards. Bug is tracked in
+    https://github.com/workfloworchestrator/orchestrator-core/issues/1757.
 
 Run the command:
-```bash
+
+```shell
 python main.py generate workflows -cf templates/l2-p2p.yaml --no-dryrun --force
 ```
 
@@ -150,25 +150,28 @@ files. Furthermore it will populate the files in `workflows.l2_p2p`. Feel free t
 already has done.
 
 #### Database migrations
+
 As a final step the user must generate and run the migrations to wire up the database. This is done as follows.
 
-```bash
+```shell
 python main.py generate migration -cf templates/l2-p2p.yaml
 python main.py db upgrade heads
 ```
 
 ### Step 4 - Profit
+
 If this has been executed without errors, you should be able to create a new subscription for the l2-p2p product by
 running the create workflow through the UI. All it does is create the domain model and fill it in with some
 rudimentary values from the input form, but it's a starting point. Users can now go into the workflow source code
 and start implementing steps to provision the resource that is being created by the create workflow. Take some time
 in the orchestrator UI to see what has been configured.
 
-* Metadata pages
-* Action menu
-* Available workflows
+- Metadata pages
+- Action menu
+- Available workflows
 
 ### Step 5 - Bonus
+
 Implement a new step in the create workflow that manipulates the subscription in a certain way. An example could be
 to change the subscription description, or any other value you can think of that exists in the subscription.
 

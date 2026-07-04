@@ -8,14 +8,14 @@ orchestrating order, administration and provisioning processes.
 
 ## Core Principles of WFO
 
-  - Open Source and Community-Driven – developed by and for the NREN community,
-    but also adopted by organisations beyond it.
-  - User-Friendly and Modular – lightweight, opinionated, and easy to integrate
-    into existing systems.
-  - Sustainability and Continuity – working towards a self-sustaining
-    organisation to maintain and enhance the core software.
-  - Support and Collaboration – encouraging adoption and supporting the
-    community through documentation, workshops, and best practices.
+- Open Source and Community-Driven – developed by and for the NREN community,
+  but also adopted by organizations beyond it.
+- User-Friendly and Modular – lightweight, opinionated, and easy to integrate
+  into existing systems.
+- Sustainability and Continuity – working towards a self-sustaining
+  organization to maintain and enhance the core software.
+- Support and Collaboration – encouraging adoption and supporting the
+  community through documentation, workshops, and best practices.
 
 ## Governance and project documentation
 
