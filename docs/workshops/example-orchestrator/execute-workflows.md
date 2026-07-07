@@ -75,3 +75,6 @@ You can log in to the router and check the status of ISIS using:
 show network-instance default protocols isis adjacency
 show network-instance default protocols isis interface
 ```
+
+Feel free to play around with the created devices.
+Can you manage to send a ping through the created link?
