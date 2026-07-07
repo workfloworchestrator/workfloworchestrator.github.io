@@ -58,10 +58,10 @@ flowchart
     node1 --- port1
     node2 --- port2
     port3 --- node3
-    subgraph sg_l2ptp[L2PointToPoint subscription]
+    subgraph sg_l2p2p[L2p2p subscription]
         direction LR
         l2ptp_sap1[SAPBlock]
-        l2ptp_vc[VirtualCircuitBlock]
+        l2ptp_vc[L2p2pVirtualCircuitBlock]
         l2ptp_sap2[SAPBlock]
         l2ptp_sap1 --- l2ptp_vc
         l2ptp_vc --- l2ptp_sap2
@@ -89,7 +89,7 @@ flowchart
     style sg_port2 rx:20,ry:20,fill:#ffe699
     style sg_port3 rx:20,ry:20,fill:#c5e0b4
     style sg_l2vpn rx:20,ry:20,fill:#ffe699
-    style sg_l2ptp rx:20,ry:20,fill:#c5e0b4
+    style sg_l2p2p rx:20,ry:20,fill:#c5e0b4
 
     classDef default rx:10,ry:10,fill:#ff9300,stroke:#333,stroke-width:1px
 ```
