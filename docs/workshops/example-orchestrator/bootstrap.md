@@ -187,7 +187,7 @@ You should be able to view the applications here:
 3. NetBox (admin|admin): [NetBox: http://localhost:8000](http://localhost:8000)
 
 !!! note
-Take your time to familiarize with the applications and make sure they are working correctly.
+    Take your time to familiarize with the applications and make sure they are working correctly.
     If anything is wrong, inspect the results of these commands:
     ```shell
     # Check the status of all services
