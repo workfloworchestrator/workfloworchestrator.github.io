@@ -59,11 +59,23 @@ Repeat this process for the other 2 ContainerLab nodes:
 
 ### Deploying core links
 
-Once we have at least 2 nodes configured, we should be able to deploy a core link between them.
+Once we have all 3 nodes configured, we should be able to create a core link between them.
 To do this, click **New subscription** and select **core link 10G**.
-Select any customer and 2 distinct nodes.
 
-On the next page choose a free port on each node.
+Given that this is the containerlab topology:
+
+```yaml
+links:
+- endpoints: ["ams-pe:e1-1", "par-p:e1-2"]
+- endpoints: ["par-p:e1-1", "lon-pe:e1-2"]
+```
+
+Can you determine which choices to select in the form?
+
+??? example "Answer"
+    For the first corelink, select node A `clab-orch-demo-ams-pe` and node B `clab-orch-demo-par-p`.
+    Then choose port 1/1 on node A and port 1/2 on node B.
+
 Click **Next** to start the workflow.
 
 The workflow will pause halfway during the step "Confirm provisioning proxy results".
