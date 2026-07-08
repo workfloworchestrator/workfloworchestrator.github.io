@@ -188,9 +188,7 @@ You should be able to view the applications here:
 
 !!! note
 Take your time to familiarize with the applications and make sure they are working correctly.
-
     If anything is wrong, inspect the results of these commands:
-
     ```shell
     # Check the status of all services
     docker compose ps
