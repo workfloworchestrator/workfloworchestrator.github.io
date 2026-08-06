@@ -29,3 +29,39 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
 [data-md-color-scheme="slate"] img[alt='Internet2'] {
     filter: drop-shadow(1px 1px 5px white);
 }
+
+/*
+ * Label search results with the project they belong to.
+ *
+ * Page titles collide across sub-projects -- "Introduction" alone occurs five times -- so a bare
+ * result title gives no clue which project it came from. Material renders the page-level result of
+ * each group as an h1 (nested section matches are h2), with an absolute href, so matching on the
+ * href prefix labels the group heading only and leaves the sections under it untouched.
+ *
+ * Done in CSS rather than by prefixing titles in the search index, because the index title carries a
+ * boost of 1e3: putting "Orchestrator Core" in ~60 page titles would make every one of them rank
+ * highly for "orchestrator" or "core", degrading the relevance this is meant to improve.
+ *
+ * Purely additive: if Material changes its result markup the label silently disappears, and nothing
+ * else breaks. Keep in sync with the sub-projects in the Projects nav of mkdocs.yml.
+ */
+.md-search-result__article h1::before {
+    color: var(--md-default-fg-color--light);
+    font-weight: 400;
+}
+
+.md-search-result__link[href*="/orchestrator-core/"] h1::before {
+    content: "Orchestrator Core › ";
+}
+
+.md-search-result__link[href*="/orchestrator-ui-library/"] h1::before {
+    content: "Orchestrator UI Library › ";
+}
+
+.md-search-result__link[href*="/lightweight-service-orchestrator/"] h1::before {
+    content: "Lightweight Service Orchestrator › ";
+}
+
+.md-search-result__link[href*="/pydantic-forms/"] h1::before {
+    content: "Pydantic Forms › ";
+}
