@@ -2,6 +2,7 @@
 orchestrator-core
 orchestrator-ui-library
 lso
+pydantic-forms
 
 site/
 .idea
