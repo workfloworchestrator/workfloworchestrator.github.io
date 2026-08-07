@@ -41,6 +41,8 @@ nav:
       # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-ui-library.git
       - Lightweight Service Orchestrator: "!include ./lso/mkdocs.yml"
       # INCLUDED_REPO: https://github.com/workfloworchestrator/lso.git
+      - Pydantic Forms: "!include ./pydantic-forms/mkdocs.yml"
+      # INCLUDED_REPO: https://github.com/workfloworchestrator/pydantic-forms.git
 
 theme:
   name: material
@@ -105,6 +107,9 @@ plugins:
             - https://docs.python.org/3/objects.inv
           paths:
             - lso/lso
+            # Read pydantic-forms from the checkout rather than the installed copy, so that
+            # attribute docstrings cannot go stale between edits and a re-install.
+            - pydantic-forms
           options:
             show_source: true
             show_root_heading: true
