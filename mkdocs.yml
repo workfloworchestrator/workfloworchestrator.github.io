@@ -7,6 +7,7 @@ nav:
       - Contact: contact.md
       - Leadership: leadership.md
   - Architecture:
+      - At A Glance: architecture/at-a-glance.md
       - The Framework: architecture/framework.md
       - Orchestrator UI: architecture/orchestrator-ui.md
       - Input Forms: architecture/input-forms.md
