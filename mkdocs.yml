@@ -153,5 +153,14 @@ plugins:
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages
+  # Click a screenshot to open it full size in a lightbox. Listed last so it runs after the plugins
+  # that inject HTML, and thus also covers images pulled in from the sub-projects. Images already
+  # wrapped in a link (badges, for instance) are left alone; add the "off-glb" class to opt an
+  # individual image out.
+  - glightbox:
+      draggable: false
+      zoomable: true
+      skip_classes:
+        - off-glb
   # workfloworchestrator.org general plugin that has to be loaded after awesome-pages
   - macros
