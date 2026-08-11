@@ -73,6 +73,11 @@ So what's actually happening behind the scenes when we run these workflows?
 WFO provides none of the facilities for talking to Netbox, NSO, Ansible, etc.
 These features are implemented by other packages or by the software team leveraging the framework.
 
+In particular, each workflow is created from a number of user-defined **steps**.
+A step is just a Python function that can be re-used by developers across workflows.
+Usually, each step is responsible for interacting with an external resource: an inventory system, a database, a network device, an HTTP API, etc.
+When a workflow fails for some reason, it can be retried beginning at whichever step failed.
+
 If you want to see the code for yourself, the above example came from the [example-orchestrator][example-orchestrator] repo.
 The Core Link producted is defined by a [Product][example-core-link-product-type] and its constituent [Product Blocks][example-core-link-product-blocks], along with its [workflows][example-core-link-workflows].
 
