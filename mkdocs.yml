@@ -108,10 +108,14 @@ plugins:
         python:
           inventories:
             - https://docs.python.org/3/objects.inv
+          # Read every sub-project from its checkout rather than from the copy installed in the
+          # venv, so that docstrings cannot go stale: the checkouts track their main branch, while
+          # the installed versions only move when pyproject.toml is bumped. A page documenting a
+          # symbol added since the last bump fails the build ("Could not collect ...") otherwise.
+          # Each entry is the directory *containing* the package, not the package itself.
           paths:
-            - lso/lso
-            # Read pydantic-forms from the checkout rather than the installed copy, so that
-            # attribute docstrings cannot go stale between edits and a re-install.
+            - orchestrator-core
+            - lso
             - pydantic-forms
           options:
             show_source: true
