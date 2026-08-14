@@ -6,11 +6,11 @@ nav:
       - About: about.md
       - Contact: contact.md
       - Leadership: leadership.md
-  - Architecture:
-      - At A Glance: architecture/at-a-glance.md
-      - The Framework: architecture/framework.md
-      - Orchestrator UI: architecture/orchestrator-ui.md
-      - Input Forms: architecture/input-forms.md
+  - The Framework:
+      - At A Glance: framework/at-a-glance.md
+      - Components: framework/components.md
+      - User Interface: framework/orchestrator-ui.md
+      - Input Forms: framework/input-forms.md
   - Community:
       - Members: members.md
       - Meetings: meetings.md
@@ -132,6 +132,11 @@ plugins:
             unwrap_annotated: true
   - redirects:
       redirect_maps:
+        # Define redirects here for pages that have been moved or renamed.
+        # Annotate each section of redirects by prefixing the date (YYYY-MM-DD) they were added.
+        # We don't have to keep them around forever, but after a year or so we can clean them up.
+        # ----
+        # 2026-04-16: redirects added while creating the monorepo
         "orchestrator-core/architecture/product_modelling/imports.md": "orchestrator-core/guides/product-modeling/imports.md"
         "orchestrator-core/architecture/product_modelling/backfilling.md": "orchestrator-core/guides/product-modeling/backfilling.md"
         "orchestrator-core/architecture/application/tasks.md": "orchestrator-core/guides/tasks.md"
@@ -140,6 +145,7 @@ plugins:
         "orchestrator-core/migration-guide/2.0.md": "orchestrator-core/guides/upgrading/2.0.md"
         "orchestrator-core/migration-guide/3.0.md": "orchestrator-core/guides/upgrading/3.0.md"
         "orchestrator-core/migration-guide/4.0.md": "orchestrator-core/guides/upgrading/4.0.md"
+        # 2026-06-26: workshop pages moved from orchestrator-core to the monorepo
         "orchestrator-core/workshops/advanced/overview.md": "workshops/example-orchestrator/overview.md"
         "orchestrator-core/workshops/advanced/bootstrap.md": "workshops/example-orchestrator/bootstrap.md"
         "orchestrator-core/workshops/advanced/execute-workflows.md": "workshops/example-orchestrator/execute-workflows.md"
@@ -153,9 +159,14 @@ plugins:
         "orchestrator-core/workshops/advanced/node-validate.md": "workshops/example-orchestrator/node-validate.md"
         "orchestrator-core/workshops/advanced/create-your-own.md": "workshops/example-orchestrator/create-your-own.md"
         "orchestrator-core/workshops/advanced/generator.md": "workshops/example-orchestrator/generator.md"
-        "orchestrator-core/architecture/framework.md": "architecture/framework.md"
-        "orchestrator-core/architecture/orchestration/orchestrator-ui.md": "architecture/orchestrator-ui.md"
-        "orchestrator-core/architecture/application/forms-frontend.md": "architecture/input-forms.md"
+        # 2026-07-04: architecture pages moved from orchestrator-core to the monorepo
+        "orchestrator-core/architecture/framework.md": "framework/components.md"
+        "orchestrator-core/architecture/orchestration/orchestrator-ui.md": "framework/orchestrator-ui.md"
+        "orchestrator-core/architecture/application/forms-frontend.md": "framework/input-forms.md"
+        # 2026-08-14: redirects for rearranging "Architecture" into "The Framework"
+        "architecture/framework.md": "framework/components.md"
+        "architecture/input-forms.md": "framework/input-forms.md"
+        "architecture/orchestrator-ui.md": "framework/orchestrator-ui.md"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages

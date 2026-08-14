@@ -1,3 +1,5 @@
+# Components
+
 The Workflow Orchestrator programme contains multiple components for both the frontend and backend, as shown below:
 
 ![Screenshot](../img/base-orchestrator-setup.png)
@@ -31,3 +33,32 @@ By tweaking the `example-orchestrator-ui` it is possible to easily add extra pag
 ![Screenshot](../img/custom-orchestrator-setup.png)
 
 Another approach could be to use individual components from the npm library and build your own application or integrate the components in an existing application.
+
+## Tooling
+
+**TODO: rephrase this text to match the page**
+
+The WFO programme maintains an entire ecosystem of tooling, a non-comprehensive list in no
+particular order:
+
+- [Orchestrator-Core](https://github.com/workfloworchestrator/orchestrator-core): This Python
+  program leverages the power of FastAPI to create an orchestration engine. Downloads:
+  [![pypi-downloads](https://static.pepy.tech/badge/orchestrator-core)](https://pepy.tech/project/orchestrator-core).
+- [Orchestrator-UI](https://github.com/workfloworchestrator/orchestrator-ui-library): Component
+  library for our NextJS app on top of the Orchestrator-core. Downloads:
+  [![npm-downloads](https://img.shields.io/npm/dt/%40orchestrator-ui%2Forchestrator-ui-components)](https://github.com/workfloworchestrator/orchestrator-ui-library).
+- [Orchestrator Example UI](https://github.com/workfloworchestrator/example-orchestrator-ui/):
+  Example UI with a NextJS implementation of our component library.
+- [LSO](https://workfloworchestrator.org/lso): This application provides an API layer on top of
+  Ansible playbooks.
+- [Example Orchestrator](https://github.com/workfloworchestrator/example-orchestrator): This
+  repository houses a Docker-compose running a full stack of the Orchestrator, UI and Netbox. It
+  includes examples our best (coding) practices and an example integration with Netbox.
+- [PyNSO-Restconf](https://workfloworchestrator.org/pynso-restconf): A thin client for interfacing
+  with Cisco NSO using RESTCONF.
+- [Pydantic-Forms](https://github.com/workfloworchestrator/pydantic-forms): A library that includes
+  standardized Python Form classes that can be used when generating form components from
+  JSON-schema.
+- [SuPA](https://workfloworchestrator.org/SuPA): An NSI Ultimate provider agent with a gRPC API.
+- [PolyNSI](https://github.com/workfloworchestrator/polynsi): A bidirectional SOAP to gRPC
+  translating proxy server for the NSI protocol.

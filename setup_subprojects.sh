@@ -8,7 +8,8 @@ MKDOCS_YML="$SCRIPT_DIR/mkdocs.yml"
 grep INCLUDED_REPO "$MKDOCS_YML" | awk '{print $3}' | while read -r repo_url; do
     dir=$(basename "$repo_url" .git)
     if [ -d "$SCRIPT_DIR/$dir" ]; then
-        echo "Skipping $dir (already exists)"
+        echo "Updating branch in $dir"
+        cd "$SCRIPT_DIR/$dir" && git pull && cd -
     else
         git clone "$repo_url" "$SCRIPT_DIR/$dir"
     fi
