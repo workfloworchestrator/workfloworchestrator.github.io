@@ -76,6 +76,8 @@ theme:
     repo: fontawesome/brands/github-alt
 extra_css:
   - css/style.css
+extra_javascript:
+  - js/glightbox-instant.js
 repo_name: workfloworchestrator
 repo_url: https://github.com/workfloworchestrator
 copyright: Copyright &copy; 2018 - 2026 Workflow Orchestrator Programme
@@ -106,10 +108,14 @@ plugins:
         python:
           inventories:
             - https://docs.python.org/3/objects.inv
+          # Read every sub-project from its checkout rather than from the copy installed in the
+          # venv, so that docstrings cannot go stale: the checkouts track their main branch, while
+          # the installed versions only move when pyproject.toml is bumped. A page documenting a
+          # symbol added since the last bump fails the build ("Could not collect ...") otherwise.
+          # Each entry is the directory *containing* the package, not the package itself.
           paths:
-            - lso/lso
-            # Read pydantic-forms from the checkout rather than the installed copy, so that
-            # attribute docstrings cannot go stale between edits and a re-install.
+            - orchestrator-core
+            - lso
             - pydantic-forms
           options:
             show_source: true
@@ -153,5 +159,14 @@ plugins:
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages
+  # Click a screenshot to open it full size in a lightbox. Listed last so it runs after the plugins
+  # that inject HTML, and thus also covers images pulled in from the sub-projects. Images already
+  # wrapped in a link (badges, for instance) are left alone; add the "off-glb" class to opt an
+  # individual image out.
+  - glightbox:
+      draggable: false
+      zoomable: true
+      skip_classes:
+        - off-glb
   # workfloworchestrator.org general plugin that has to be loaded after awesome-pages
   - macros
