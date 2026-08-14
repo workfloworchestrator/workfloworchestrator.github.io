@@ -16,10 +16,15 @@ import yaml
 
 log = logging.getLogger("mkdocs.hooks.merge_subproject_configs")
 
-# Paths relative to the repo root (where parent mkdocs.yml lives)
+# Paths relative to the repo root (where parent mkdocs.yml lives). Keep in sync with the
+# !include'd sub-projects under "Projects" in mkdocs.yml: a sub-project missing here silently
+# builds without its own markdown_extensions, so syntax that works in its standalone build
+# renders as literal text on workfloworchestrator.org.
 SUB_PROJECTS = [
     "orchestrator-core/mkdocs.yml",
     "orchestrator-ui-library/mkdocs/mkdocs.yml",
+    "lso/mkdocs.yml",
+    "pydantic-forms/mkdocs.yml",
 ]
 
 
