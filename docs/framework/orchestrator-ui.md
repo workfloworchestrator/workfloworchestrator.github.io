@@ -11,6 +11,16 @@ the UI to meet their own requirements. There are two possible ways to accomplish
 - Overriding components
 - Using components from the npm UI library
 
+<!-- TODO: This page is more or less documentats the entire Orchestrator UI.
+It should be moved in the orchestrator-ui-library project docs and split up over separate pages.
+
+As for framework/orchestrator-ui.md:
+- Describe the application in a nutshell
+- Overview of capabilities, design choices
+- Relation to other components
+- Link to the project docs for users to get started or read more details
+-->
+
 ## Overriding components
 
 The first solution is based on using the orchestrator-ui library in its full extend and just add/tweak components.

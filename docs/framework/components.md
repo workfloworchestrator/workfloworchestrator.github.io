@@ -8,17 +8,26 @@ The Workflow Orchestrator programme contains multiple components for both the fr
 
 ### Orchestrator Core
 
-The `orchestrator-core` component is an open-source backend component, which defines the ruleset for product modeling and workflows. The `orchestrator-core` is a mandatory component to have a functional workflow orchestrator application. This component is written in Python and makes use of the Fastapi framework. The `orchestrator-core` repo can be found [here](https://github.com/workfloworchestrator/orchestrator-core). The `orchestrator-core` cannot be run standalone, as it contains no definition of any products and workflows.
+The `orchestrator-core` component is an open-source backend component, which defines the ruleset for product modeling
+and workflows. The `orchestrator-core` is a mandatory component to have a functional workflow orchestrator application.
+It is written in Python and makes use of other established frameworks like FastAPI, Pydantic and SQLAlchemy.  
+It cannot run standalone, since it is a library that contains no definition of products or workflows.
 
 ### Workflow Orchestrator
 
-The `Workflow Orchestrator` is the custom implementation of the orchestrator backend. It is the application which defines all your products, workflows and tasks to create/modify/terminate/validate your product instances, the so-called `subscriptions`. All product modeling, tasks/workflows and subscription details are stored in the `orchestrator-coredb` which is part of the orchestrator-core package. This custom implementation of the workflow orchestrator uses the `orchestrator-core` as sub-module.
+The `Workflow Orchestrator` is the custom implementation of the orchestrator backend. It is the application in which you
+define your products, workflows and tasks to create/modify/terminate/validate your product instances, the so-called
+`subscriptions`. All product modeling, tasks/workflows and subscription details are stored in the `orchestrator-coredb`
+which is part of the orchestrator-core package. This custom implementation of the workflow orchestrator uses
+`orchestrator-core` as a library.
 
-With the two backend components set up correctly, you'll have a running Workflow Orchestrator instance accessible via the API. Additionally, with minimal effort, you can have a fully functional frontend application running on top of it.
+With the two backend components set up correctly, you'll have a running Workflow Orchestrator instance accessible via
+the API. Additionally, with minimal effort, you can have a fully functional frontend application running on top of it.
 
 ### Example Orchestrator
 
-An example of the `Workflow Orchestrator` using the `orchestrator-core` with some example products and workflow are available [here](https://github.com/workfloworchestrator/example-orchestrator).
+An example of the `Workflow Orchestrator` using the `orchestrator-core` with some example products and workflow are
+available [here][example-orchestrator].
 
 ## Frontend
 
@@ -36,29 +45,31 @@ Another approach could be to use individual components from the npm library and 
 
 ## Tooling
 
-**TODO: rephrase this text to match the page**
+The WFO programme maintains an entire ecosystem of tooling, a non-comprehensive list in no particular order:
 
-The WFO programme maintains an entire ecosystem of tooling, a non-comprehensive list in no
-particular order:
-
-- [Orchestrator-Core](https://github.com/workfloworchestrator/orchestrator-core): This Python
-  program leverages the power of FastAPI to create an orchestration engine. Downloads:
+- [Orchestrator-Core][core]: Python library that makes up the orchestration engine. Downloads:
   [![pypi-downloads](https://static.pepy.tech/badge/orchestrator-core)](https://pepy.tech/project/orchestrator-core).
-- [Orchestrator-UI](https://github.com/workfloworchestrator/orchestrator-ui-library): Component
+- [Orchestrator-UI][ui-library]: Component
   library for our NextJS app on top of the Orchestrator-core. Downloads:
-  [![npm-downloads](https://img.shields.io/npm/dt/%40orchestrator-ui%2Forchestrator-ui-components)](https://github.com/workfloworchestrator/orchestrator-ui-library).
-- [Orchestrator Example UI](https://github.com/workfloworchestrator/example-orchestrator-ui/):
+  [![npm-downloads](https://img.shields.io/npm/dt/%40orchestrator-ui%2Forchestrator-ui-components)][ui-library].
+- [Example Orchestrator UI][example-ui]:
   Example UI with a NextJS implementation of our component library.
-- [LSO](https://workfloworchestrator.org/lso): This application provides an API layer on top of
+- [LSO][lso-docs]: This application provides an API layer on top of
   Ansible playbooks.
-- [Example Orchestrator](https://github.com/workfloworchestrator/example-orchestrator): This
+- [Example Orchestrator][example-orchestrator]: This
   repository houses a Docker-compose running a full stack of the Orchestrator, UI and Netbox. It
   includes examples our best (coding) practices and an example integration with Netbox.
-- [PyNSO-Restconf](https://workfloworchestrator.org/pynso-restconf): A thin client for interfacing
-  with Cisco NSO using RESTCONF.
-- [Pydantic-Forms](https://github.com/workfloworchestrator/pydantic-forms): A library that includes
+- [Pydantic-Forms][pydantic-forms]: A library that includes
   standardized Python Form classes that can be used when generating form components from
   JSON-schema.
-- [SuPA](https://workfloworchestrator.org/SuPA): An NSI Ultimate provider agent with a gRPC API.
-- [PolyNSI](https://github.com/workfloworchestrator/polynsi): A bidirectional SOAP to gRPC
-  translating proxy server for the NSI protocol.
+- [SuPA][supa-docs]: An NSI Ultimate provider agent with a gRPC API.
+- [PolyNSI][polynsi]: A bidirectional SOAP to gRPC translating proxy server for the NSI protocol.
+
+[core]: https://github.com/workfloworchestrator/orchestrator-core
+[example-orchestrator]: https://github.com/workfloworchestrator/example-orchestrator
+[ui-library]: https://github.com/workfloworchestrator/orchestrator-ui-library
+[example-ui]: https://github.com/workfloworchestrator/example-orchestrator-ui
+[lso-docs]: https://workfloworchestrator.org/lso
+[pydantic-forms]: https://github.com/workfloworchestrator/pydantic-forms
+[supa-docs]: https://workfloworchestrator.org/SuPA
+[polynsi]: https://github.com/workfloworchestrator/polynsi

@@ -4,6 +4,16 @@ Orchestrator Core contains a module called Pydantic Forms. Pydantic Forms allows
 
 ## Initiating a workflow from frontend
 
+<!-- TODO: This page is a bit too detailed, and out of date after migrating from uniforms to pydantic-forms
+
+As for framework/input-forms.md:
+
+This page describes how a Workflow Orchestrator uses Pydantic-forms (backend) to generate forms that
+pydantic-forms-ui turns into components based on the schema, which the orchestrator-ui renders.
+
+This probably is more architecture than framework...
+-->
+
 A workflow can be initiated by doing a POST call to `/processes/<workflow_name>`
 
 The steps that happen to initiate a workflow on the frontend are:

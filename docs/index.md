@@ -23,7 +23,7 @@ framework helps and guides you through the steps from automation to orchestratio
 to define products to which users can subscribe. This helps you to intelligently manage their lifecycle, with the use
 of creation, modification, validation, and termination workflows.
 
-See what it's like to use the framework by [At A Glance](framework/at-a-glance.md)
+See what it's like to use the framework [At A Glance](framework/at-a-glance.md).
 
 ### Join the community
 

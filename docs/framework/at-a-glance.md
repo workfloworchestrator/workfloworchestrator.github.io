@@ -53,6 +53,7 @@ The General tab provides more extensive information about the subscription.
 ![Core Link subscription page general tab](../img/at-a-glance/core_link_sub_general.png)
 
 # Additional Actions
+
 Above, we saw the Actions available to manage a Core Link subscription after it was created.
 
 `Modify core_link`: Users can define modify workflows to update the subscription database and/or an orchestrated external resource. Users define modify workflows for each subscription to facilitate changes mid-lifecycle.
@@ -81,6 +82,7 @@ When a workflow fails for some reason, it can be retried beginning at whichever 
 If you want to see the code for yourself, the above example came from the [example-orchestrator][example-orchestrator] repo.
 The Core Link producted is defined by a [Product][example-core-link-product-type] and its constituent [Product Blocks][example-core-link-product-blocks], along with its [workflows][example-core-link-workflows].
 
+If you want to know what the framework consists of, continue reading [Components](./components.md).
 
 [nren-wikipedia]: https://en.wikipedia.org/wiki/National_research_and_education_network
 [pydantic-forms]: https://workfloworchestrator.org/pydantic-forms/
