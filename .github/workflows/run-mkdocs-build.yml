@@ -2,7 +2,6 @@ name: Test mkdocs build
 
 on:
   pull_request:
-    branches: ["main"]
 
 env:
   UV_LOCKED: true # Assert that the `uv.lock` will remain unchanged
@@ -27,3 +26,26 @@ jobs:
 
       - name: Test mkdocs build with --strict
         run: DISABLE_MKDOCS_2_WARNING=true uv run --no-sync mkdocs build --strict
+
+      # Publish the documentation artifact for review.
+      - name: Upload built site
+        id: upload-site
+        uses: actions/upload-artifact@v7
+        with:
+          name: site-pr-${{ github.event.pull_request.number }}
+          path: site/
+          retention-days: 14
+
+      # Renders on the workflow run page, just above the artifacts list.
+      - name: Add preview instructions to the run summary
+        run: |
+          cat >> "$GITHUB_STEP_SUMMARY" <<'EOF'
+          ## Preview the built documentation
+
+          1. Download [site-pr-${{ github.event.pull_request.number }}.zip][artifact]
+          2. Unzip it and serve the HTML files.
+             - For example: `unzip site-pr-X.zip -d out-dir && python3 -m http.server --directory out-dir 8000`
+          3. Open <http://localhost:8000>
+
+          [artifact]: ${{ steps.upload-site.outputs.artifact-url }}
+          EOF
