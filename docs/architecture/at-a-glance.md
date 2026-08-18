@@ -80,6 +80,8 @@ When a workflow fails for some reason, it can be retried beginning at whichever 
 
 If you want to see the code for yourself, the above example came from the [example-orchestrator][example-orchestrator] repo.
 The Core Link producted is defined by a [Product][example-core-link-product-type] and its constituent [Product Blocks][example-core-link-product-blocks], along with its [workflows][example-core-link-workflows].
+The workflows update the inventory system, Netbox, via [services/netbox.py][example-core-netbox-service].
+By convention, user-defined modules for interacting with external services are organized under `services/`.
 
 
 [nren-wikipedia]: https://en.wikipedia.org/wiki/National_research_and_education_network
@@ -88,3 +90,4 @@ The Core Link producted is defined by a [Product][example-core-link-product-type
 [example-core-link-product-type]: https://github.com/workfloworchestrator/example-orchestrator/blob/main/products/product_types/core_link.py
 [example-core-link-product-blocks]: https://github.com/workfloworchestrator/example-orchestrator/blob/main/products/product_blocks/core_link.py
 [example-core-link-workflows]: https://github.com/workfloworchestrator/example-orchestrator/tree/main/workflows/core_link
+[example-core-netbox-service]: https://github.com/workfloworchestrator/example-orchestrator/blob/main/services/netbox.py
