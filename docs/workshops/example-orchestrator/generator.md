@@ -144,14 +144,13 @@ python main.py generate workflows -cf templates/l2_p2p.yaml --no-dryrun
 As you can see this file needs to be run with the --force flag as it needs to overwrite a number of configuration
 files. Furthermore it will populate the files in `workflows/l2_p2p/`. Do that now:
 
+!!! warning
+    If you modified any of the files that are going to be overwritten, commit them or back them up before forcefully
+    overwriting them with the generator and reapply the changes afterwards.
+
 ```shell
 python main.py generate workflows -cf templates/l2_p2p.yaml --no-dryrun --force
 ```
-
-!!! warning
-    There is a [bug](https://github.com/workfloworchestrator/orchestrator-core/issues/1757) in `generate workflows`
-    which makes it overwrite the contents of `workflows/shared.py` instead of
-    extend it with the missing elements. You can use `git restore` to restore it aftwards.
 
 Take a look around to see which files have been created by now.
 Can you explain what each of them are for?
