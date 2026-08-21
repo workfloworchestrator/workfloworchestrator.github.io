@@ -186,7 +186,14 @@ You should be able to view the applications here:
    [Graphql API: http://localhost:8080/api/graphql](http://localhost:8080/api/graphql)
 3. NetBox (admin|admin): [NetBox: http://localhost:8000](http://localhost:8000)
 
-!!! note
+!!! info
+    Every published port binds to `127.0.0.1` by default, so these links only work from the
+    machine running Docker Compose. If you're running the stack elsewhere (e.g. a local or
+    remote VM) and browsing from another machine, see the
+    [Service bind addresses](https://github.com/workfloworchestrator/example-orchestrator#service-bind-addresses)
+    section of the example-orchestrator README for changing the bind addresses.
+
+!!! tip
     Take your time to familiarize with the applications and make sure they are working correctly.
     If anything is wrong, inspect the results of these commands:
     ```shell
