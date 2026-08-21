@@ -22,7 +22,7 @@ dependencies = [
     "termynal",
     "mkdocs-awesome-pages-plugin",
     # lso itself for python docstrings
-    "orchestrator-lso>=3.0",
+    "orchestrator-lso>=5.0",
     # linting
     "pre-commit",
     "yamllint",
@@ -37,4 +37,5 @@ override-dependencies = [
     "pydantic-settings>=2.14.0",
     "uvicorn[standard]>=0.46.0,<0.47",
     "fastapi>=0.136.0,<0.137",
+    "redis>=8.1.0",
 ]
