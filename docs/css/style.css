@@ -65,3 +65,47 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
 .md-search-result__link[href*="/pydantic-forms/"] h1::before {
     content: "Pydantic Forms › ";
 }
+
+/*
+ * Sidebar navigation hierarchy cues.
+ *
+ * Put the border on the nested nav container rather than on individual list
+ * items. The container spans the complete group, keeping the line solid where
+ * Material adds spacing between links.
+ */
+.md-sidebar--primary .md-nav:not(.md-nav--primary) {
+    margin-left: 3px;
+    padding-left: 3px;
+    position: relative;
+}
+
+/* Inset the line slightly so it does not touch the entries above or below. */
+.md-sidebar--primary .md-nav:not(.md-nav--primary)::before {
+    background: color-mix(in srgb, var(--md-default-fg-color--light) 25%, transparent);
+    bottom: 4px;
+    content: "";
+    left: 0;
+    position: absolute;
+    top: 4px;
+    width: 1px;
+}
+
+.md-sidebar--primary .md-nav:not(.md-nav--primary):hover::before {
+    background: color-mix(in srgb, #05385E 60%, transparent);
+}
+
+.md-sidebar--primary .md-nav:not(.md-nav--primary):has(.md-nav__item--active)::before {
+    background: color-mix(in srgb, var(--md-default-fg-color--light) 25%, transparent);
+}
+
+/* No line on the outermost nav container. */
+.md-sidebar--primary .md-nav:not(.md-nav--primary)::before {}
+.md-sidebar--primary .md-nav--primary + .md-nav::before,
+.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav::before {
+    content: none;
+}
+
+/* Remove only the outermost hierarchy line; keep deeper nesting cues. */
+.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav {
+    border-left: none;
+}
