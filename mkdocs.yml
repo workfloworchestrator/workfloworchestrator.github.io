@@ -1,20 +1,11 @@
 site_name: Workflow Orchestrator Programme
 site_url: https://workfloworchestrator.org
 nav:
-  - Home: index.md
-  - The Programme:
-      - About: about.md
-      - Contact: contact.md
-      - Leadership: leadership.md
-  - Architecture:
-      - The Framework: architecture/framework.md
-      - Orchestrator UI: architecture/orchestrator-ui.md
-      - Input Forms: architecture/input-forms.md
-  - Community:
-      - Members: members.md
-      - Meetings: meetings.md
-      - Media: media.md
-  - Workshops:
+  - Learn:
+      - Concepts:
+          - The Framework: architecture/framework.md
+          - Orchestrator UI: architecture/orchestrator-ui.md
+          - Input Forms: architecture/input-forms.md
       - Example Orchestrator Workshop:
           - Overview: workshops/example-orchestrator/overview.md
           - Bootstrapping:
@@ -34,15 +25,25 @@ nav:
           - Create your own product and workflows:
               - L2 Point-to-Point: workshops/example-orchestrator/create-your-own.md
               - Product and Workflow Generator: workshops/example-orchestrator/generator.md
+  - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
+  # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
+  - Orchestrator UI Library: "!include ./orchestrator-ui-library/mkdocs/mkdocs.yml"
+  # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-ui-library.git
+  - LSO: "!include ./lso/mkdocs.yml"
+  # INCLUDED_REPO: https://github.com/workfloworchestrator/lso.git
   - Projects:
-      - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
-      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
-      - Orchestrator UI Library: "!include ./orchestrator-ui-library/mkdocs/mkdocs.yml"
-      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-ui-library.git
-      - Lightweight Service Orchestrator: "!include ./lso/mkdocs.yml"
-      # INCLUDED_REPO: https://github.com/workfloworchestrator/lso.git
+      - Overview: projects.md
       - Pydantic Forms: "!include ./pydantic-forms/mkdocs.yml"
       # INCLUDED_REPO: https://github.com/workfloworchestrator/pydantic-forms.git
+  - Community:
+      - The Programme:
+          - About: about.md
+          - Contact: contact.md
+          - Leadership: leadership.md
+      - Get Involved:
+          - Members: members.md
+          - Meetings: meetings.md
+          - Media: media.md
 
 theme:
   name: material
@@ -71,6 +72,8 @@ theme:
         name: Switch to light mode
   features:
     - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
   icon:
     repo: fontawesome/brands/github-alt
 extra_css:
