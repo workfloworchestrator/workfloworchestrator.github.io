@@ -40,6 +40,22 @@ _REPO_BY_PREFIX = {}
 
 _ALIAS_RE = re.compile(r"^[a-zA-Z0-9_.\-/]+$")
 
+_REPO_URL_RE = re.compile(r"^https?://github\.com/[^/]+/([^/]+?)(?:\.git)?/*$")
+
+
+def _repo_short_name(repo_url):
+    """Return just the repo name from a GitHub URL, omitting the "owner/" prefix.
+
+    Sub-projects' own repo_name fields are inconsistent -- some are already
+    "owner/repo" (orchestrator-core, lso, pydantic-forms), one is just "repo"
+    (orchestrator-ui-library) -- so using them directly made the org prefix
+    show up on some header links but not others, and get truncated with an
+    ellipsis on the longer ones. Deriving the name from repo_url instead
+    keeps it uniform everywhere.
+    """
+    match = _REPO_URL_RE.match(repo_url)
+    return match.group(1) if match else repo_url
+
 
 def _monorepo_alias(sub_config):
     """Mirror mkdocs_monorepo_plugin.parser.Parser.getAlias().
@@ -85,7 +101,8 @@ def on_config(config):
         repo_url = sub_config.get("repo_url")
         if repo_url:
             alias = _monorepo_alias(sub_config)
-            _REPO_BY_PREFIX[alias] = (repo_url, sub_config.get("repo_name") or repo_url)
+            name = _repo_short_name(repo_url)
+            _REPO_BY_PREFIX[alias] = (repo_url, name)
 
     # Expose the same mapping to docs/js/repo-source.js (see
     # overrides/partials/source.html, which serializes this as JSON into the
