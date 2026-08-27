@@ -3,10 +3,10 @@
 
   CUSTOMIZED: copied from mkdocs-material 9.7.6
   (material/templates/partials/nav-item.html) with one change in the
-  render() macro below: the `checked` assignment also auto-expands levels
-  1-2 (tab-level groups and their first child groups, e.g. Concepts,
-  Example Orchestrator Workshop) regardless of active state. Deeper levels
-  keep stock behavior (expand only when part of the active page's chain).
+  render() macro below: level-2 sections receive Material's indeterminate
+  toggle class so they start expanded in the desktop sidebar. That class
+  is deliberately inert in the mobile drawer, where nested navigation
+  must stay collapsed until selected.
   Diff against the vendored file on mkdocs-material upgrades.
 -#}
 {% macro render_status(nav_item, type) %}
@@ -105,8 +105,8 @@
     {% endif %}
     <li class="{{ class }} md-nav__item--nested">
       {% if not is_pruned %}
-        {% set checked = "checked" if (nav_item.active or level <= 2) %}
-        {% if "navigation.expand" in features and not checked %}
+        {% set checked = "checked" if nav_item.active %}
+        {% if not checked and (level == 2 or "navigation.expand" in features) %}
           {% set indeterminate = "md-toggle--indeterminate" %}
         {% endif %}
         <input class="md-nav__toggle md-toggle {{ indeterminate }}" type="checkbox" id="{{ path }}" {{ checked }}>

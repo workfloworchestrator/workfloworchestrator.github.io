@@ -72,42 +72,52 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
  * Put the border on the nested nav container rather than on individual list
  * items. The container spans the complete group, keeping the line solid where
  * Material adds spacing between links.
+ *
+ * Desktop only: on mobile, Material positions every nested <nav> absolutely
+ * (a full-screen panel that slides in over the current one) so a collapsed
+ * section takes up no space in the drawer's flow. The `position: relative`
+ * below has higher specificity than that rule, so without this media query
+ * it would win on mobile too and turn every off-canvas panel back into an
+ * in-flow block -- each collapsed section would still reserve its full
+ * height, leaving blank space and pushing later items far down the drawer.
  */
-.md-sidebar--primary .md-nav:not(.md-nav--primary) {
-    margin-left: 3px;
-    padding-left: 3px;
-    position: relative;
-}
+@media screen and (min-width: 76.25em) {
+    .md-sidebar--primary .md-nav:not(.md-nav--primary) {
+        margin-left: 3px;
+        padding-left: 3px;
+        position: relative;
+    }
 
-/* Inset the line slightly so it does not touch the entries above or below. */
-.md-sidebar--primary .md-nav:not(.md-nav--primary)::before {
-    background: color-mix(in srgb, var(--md-default-fg-color--light) 25%, transparent);
-    bottom: 4px;
-    content: "";
-    left: 0;
-    position: absolute;
-    top: 4px;
-    width: 1px;
-}
+    /* Inset the line slightly so it does not touch the entries above or below. */
+    .md-sidebar--primary .md-nav:not(.md-nav--primary)::before {
+        background: color-mix(in srgb, var(--md-default-fg-color--light) 25%, transparent);
+        bottom: 4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        top: 4px;
+        width: 1px;
+    }
 
-.md-sidebar--primary .md-nav:not(.md-nav--primary):hover::before {
-    background: color-mix(in srgb, #05385E 60%, transparent);
-}
+    .md-sidebar--primary .md-nav:not(.md-nav--primary):hover::before {
+        background: color-mix(in srgb, #05385E 60%, transparent);
+    }
 
-.md-sidebar--primary .md-nav:not(.md-nav--primary):has(.md-nav__item--active)::before {
-    background: color-mix(in srgb, var(--md-default-fg-color--light) 25%, transparent);
-}
+    .md-sidebar--primary .md-nav:not(.md-nav--primary):has(.md-nav__item--active)::before {
+        background: color-mix(in srgb, var(--md-default-fg-color--light) 25%, transparent);
+    }
 
-/* No line on the outermost nav container. */
-.md-sidebar--primary .md-nav:not(.md-nav--primary)::before {}
-.md-sidebar--primary .md-nav--primary + .md-nav::before,
-.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav::before {
-    content: none;
-}
+    /* No line on the outermost nav container. */
+    .md-sidebar--primary .md-nav:not(.md-nav--primary)::before {}
+    .md-sidebar--primary .md-nav--primary + .md-nav::before,
+    .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav::before {
+        content: none;
+    }
 
-/* Remove only the outermost hierarchy line; keep deeper nesting cues. */
-.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav {
-    border-left: none;
+    /* Remove only the outermost hierarchy line; keep deeper nesting cues. */
+    .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav {
+        border-left: none;
+    }
 }
 
 /* Bold top-level nav headings for emphasis. */
@@ -140,8 +150,12 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
 
 /*
  * The active tab's root nav link (e.g. "Learn") is rendered above its own
- * sidebar content. The horizontal tab already provides that context.
+ * desktop sidebar content. The horizontal tab already provides that context.
+ * Material reuses this nav as the mobile drawer, where the link must remain
+ * visible because it is the only way to enter the tab.
  */
-.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link {
-    display: none;
+@media screen and (min-width: 76.25em) {
+    .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link {
+        display: none;
+    }
 }
