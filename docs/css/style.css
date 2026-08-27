@@ -122,3 +122,11 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
     color: var(--md-primary-bg-color);
     opacity: 1;
 }
+
+/*
+ * The active tab's root nav link (e.g. "Learn") is rendered above its own
+ * sidebar content. The horizontal tab already provides that context.
+ */
+.md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link {
+    display: none;
+}
