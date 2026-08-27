@@ -115,3 +115,10 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
     font-weight: 550;
     color: color-mix(in srgb, var(--md-default-fg-color) 65%, transparent);
 }
+
+/* Mark the active horizontal tab without changing the tab bar's height. */
+.md-tabs__item--active .md-tabs__link {
+    box-shadow: inset 0 -2px var(--md-primary-bg-color);
+    color: var(--md-primary-bg-color);
+    opacity: 1;
+}
