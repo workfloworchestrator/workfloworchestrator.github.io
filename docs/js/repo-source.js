@@ -66,6 +66,34 @@
     return resp.json()
   }
 
+  /* Unauthenticated GitHub API requests are capped at 60/hour per IP, shared
+     across every visitor behind it. Caching each response for an hour under
+     its own URL as the key keeps tab-hopping between projects from re-fetching
+     the same data and tripping that limit, while still refreshing periodically. */
+  const CACHE_TTL_MS = 60 * 60 * 1000
+  const CACHE_PREFIX = "repo-source:"
+
+  function cachedFetchJSON(url) {
+    const key = CACHE_PREFIX + url
+    try {
+      const cached = JSON.parse(sessionStorage.getItem(key))
+      if (cached && Date.now() - cached.timestamp < CACHE_TTL_MS) {
+        return Promise.resolve(cached.data)
+      }
+    } catch (_) {
+      /* Corrupt or missing cache entry -- fall through to a live fetch. */
+    }
+
+    return fetchJSON(url).then(data => {
+      try {
+        sessionStorage.setItem(key, JSON.stringify({ data, timestamp: Date.now() }))
+      } catch (_) {
+        /* Storage full or unavailable (e.g. private browsing) -- still return the data. */
+      }
+      return data
+    })
+  }
+
   /* Stats/releases come from api.github.com; github.com itself sends no CORS
      headers, so the repo_url can only be used as a link target, never fetched. */
   function apiURL(repoURL) {
@@ -90,10 +118,10 @@
         /* Stats and the latest release are independent facts: a repo without
            any releases (404 on releases/latest) must still show stars/forks,
            so each request degrades on its own rather than sharing one catch. */
-        const stats = fetchJSON(api)
+        const stats = cachedFetchJSON(api)
           .then(info => ({ stars: info.stargazers_count, forks: info.forks_count }))
           .catch(() => ({}))
-        const release = fetchJSON(`${api}/releases/latest`)
+        const release = cachedFetchJSON(`${api}/releases/latest`)
           .then(info => ({ version: info.tag_name }))
           .catch(() => ({}))
 
@@ -104,7 +132,7 @@
       SRC.href = ORG_URL
       if (textEl) textEl.textContent = ORG_NAME
 
-      fetchJSON(`https://api.github.com/users/${ORG_NAME}`)
+      cachedFetchJSON(`https://api.github.com/users/${ORG_NAME}`)
         .then(info => showFacts({ repositories: info.public_repos }))
         .catch(() => {})
     }
