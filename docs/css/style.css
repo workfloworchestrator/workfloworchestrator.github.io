@@ -116,11 +116,26 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
     color: color-mix(in srgb, var(--md-default-fg-color) 65%, transparent);
 }
 
-/* Mark the active horizontal tab without changing the tab bar's height. */
+/*
+ * Mark the active horizontal tab without changing the tab bar's height.
+ * Uses an absolutely-positioned underline rather than a box-shadow, since
+ * an inset shadow is clipped to the link's own box and can't be nudged
+ * below its bottom edge -- this can sit in the slack space under the
+ * link's text within the tab.
+ */
 .md-tabs__item--active .md-tabs__link {
-    box-shadow: inset 0 -2px var(--md-primary-bg-color);
+    position: relative;
     color: var(--md-primary-bg-color);
     opacity: 1;
+}
+.md-tabs__item--active .md-tabs__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background: var(--md-primary-bg-color);
 }
 
 /*
