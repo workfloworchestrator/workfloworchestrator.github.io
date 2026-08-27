@@ -47,6 +47,7 @@ nav:
 
 theme:
   name: material
+  custom_dir: overrides
   favicon: "img/favicon.ico"
   logo: img/WFO-Emblem-White.png
   palette:
@@ -71,7 +72,7 @@ theme:
         icon: material/lightbulb-auto
         name: Switch to light mode
   features:
-    - navigation.sections
+    # - navigation.sections
     - navigation.tabs
     - navigation.tabs.sticky
   icon:
