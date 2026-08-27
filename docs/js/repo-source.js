@@ -101,6 +101,18 @@
     return match ? `https://api.github.com/repos/${match[1]}/${match[2]}` : null
   }
 
+  /* npm-published repos (e.g. orchestrator-ui-library, releasing via
+     changesets) tag releases as "@scope/package@1.2.3" rather than a bare
+     "v1.2.3" -- the full tag is too long to show next to stars/forks and the
+     scope/package name is redundant with the repo name already shown next to
+     it. Take just the version after the last "@"; a bare tag has no "@" and
+     passes through unchanged.
+     */
+  function formatVersion(tagName) {
+    const at = tagName.lastIndexOf("@")
+    return at > 0 ? tagName.slice(at + 1) : tagName
+  }
+
   function update() {
     const prefix = location.pathname.split("/", 2)[1] || ""
     if (prefix === lastPrefix) return
@@ -122,7 +134,7 @@
           .then(info => ({ stars: info.stargazers_count, forks: info.forks_count }))
           .catch(() => ({}))
         const release = cachedFetchJSON(`${api}/releases/latest`)
-          .then(info => ({ version: info.tag_name }))
+          .then(info => ({ version: formatVersion(info.tag_name) }))
           .catch(() => ({}))
 
         Promise.all([stats, release])
