@@ -1,0 +1,25 @@
+{#-
+  CUSTOMIZED: copied from mkdocs-material 9.7.6
+  (material/templates/partials/source.html) to prefer page.meta.repo_url
+  and page.meta.repo_name. The merge_subproject_configs hook's
+  on_page_context sets those for pages inside !include'd sub-projects so
+  each project's "view source" link points at its own GitHub repository
+  rather than the org-level root config on first render/full page load.
+
+  Material's own instant-navigation code doesn't refresh this component on
+  later navigations, and its star/fork fetching is cached session-wide for
+  a single repo -- both wrong for a monorepo with a different repo per tab.
+  docs/js/repo-source.js re-derives the correct repo from the current URL
+  and re-fetches its stats after every navigation; see that file for why.
+-#}
+{% set repo_url = page.meta.repo_url if page and page.meta.repo_url else config.repo_url %}
+{% set repo_name = page.meta.repo_name if page and page.meta.repo_name else config.repo_name %}
+<a href="{{ repo_url }}" title="{{ lang.t('source') }}" class="md-source" data-md-component="source" data-repo-map='{{ config.extra.repo_by_prefix | tojson }}'>
+  <div class="md-source__icon md-icon">
+    {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
+    {% include ".icons/" ~ icon ~ ".svg" %}
+  </div>
+  <div class="md-source__repository">
+    {{ repo_name }}
+  </div>
+</a>

@@ -79,6 +79,8 @@ theme:
     repo: fontawesome/brands/github-alt
 extra_css:
   - css/style.css
+extra_javascript:
+  - js/repo-source.js
 repo_name: workfloworchestrator
 repo_url: https://github.com/workfloworchestrator
 copyright: Copyright &copy; 2018 - 2026 Workflow Orchestrator Programme
