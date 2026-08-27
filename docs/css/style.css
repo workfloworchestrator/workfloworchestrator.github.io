@@ -111,7 +111,7 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
 }
 
 /* Bold top-level nav headings for emphasis. */
-.md-sidebar--primary .md-nav[data-md-level="1"] > .md-nav__list > .md-nav__item > .md-nav__link {
+.md-sidebar--primary .md-nav[data-md-level="1"] > .md-nav__list > .md-nav__item--nested > .md-nav__link {
     font-weight: 550;
     color: color-mix(in srgb, var(--md-default-fg-color) 65%, transparent);
 }
