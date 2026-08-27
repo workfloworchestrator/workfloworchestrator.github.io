@@ -162,6 +162,15 @@ plugins:
         "orchestrator-core/architecture/framework.md": "architecture/framework.md"
         "orchestrator-core/architecture/orchestration/orchestrator-ui.md": "architecture/orchestrator-ui.md"
         "orchestrator-core/architecture/application/forms-frontend.md": "architecture/input-forms.md"
+        # 2026-08-27: architecture decision pages reorganized in orchestrator-ui-library
+        "orchestrator-ui-library/adrs/0001-record-architecture-decisions.md": "orchestrator-ui-library/decisions/records/0001-record-architecture-decisions.md"
+        "orchestrator-ui-library/adrs/0002-typescript-rules.md": "orchestrator-ui-library/decisions/records/0002-typescript-rules.md"
+        "orchestrator-ui-library/adrs/0003-nextjs.md": "orchestrator-ui-library/decisions/records/0003-nextjs.md"
+        "orchestrator-ui-library/adrs/0004-turbo-repo-and-dependencies.md": "orchestrator-ui-library/decisions/records/0004-turbo-repo-and-dependencies.md"
+        "orchestrator-ui-library/adrs/0005-component-naming.md": "orchestrator-ui-library/decisions/records/0005-component-naming.md"
+        "orchestrator-ui-library/adrs/0006-types-extended.md": "orchestrator-ui-library/decisions/records/0006-types-extended.md"
+        "orchestrator-ui-library/adrs/0007-component-naming.md": "orchestrator-ui-library/decisions/records/0007-component-naming.md"
+        "orchestrator-ui-library/adrs/0008-typescript-conventions.md": "orchestrator-ui-library/decisions/records/0008-typescript-conventions.md"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages
