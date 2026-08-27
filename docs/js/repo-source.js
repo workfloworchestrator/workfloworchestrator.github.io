@@ -66,9 +66,9 @@
     return resp.json()
   }
 
-  /* Stats come from api.github.com; github.com itself sends no CORS headers,
-     so the repo_url can only be used as a link target, never fetched. */
-  function statsURL(repoURL) {
+  /* Stats/releases come from api.github.com; github.com itself sends no CORS
+     headers, so the repo_url can only be used as a link target, never fetched. */
+  function apiURL(repoURL) {
     const match = /^https?:\/\/github\.com\/([^/]+)\/([^/]+?)(?:\.git)?\/*$/.exec(repoURL)
     return match ? `https://api.github.com/repos/${match[1]}/${match[2]}` : null
   }
@@ -85,11 +85,20 @@
       SRC.href = repo.url
       if (textEl) textEl.textContent = repo.name
 
-      const stats = statsURL(repo.url)
-      if (stats) {
-        fetchJSON(stats)
-          .then(info => showFacts({ stars: info.stargazers_count, forks: info.forks_count }))
-          .catch(() => {})  /* The link is already correct; degrade quietly. */
+      const api = apiURL(repo.url)
+      if (api) {
+        /* Stats and the latest release are independent facts: a repo without
+           any releases (404 on releases/latest) must still show stars/forks,
+           so each request degrades on its own rather than sharing one catch. */
+        const stats = fetchJSON(api)
+          .then(info => ({ stars: info.stargazers_count, forks: info.forks_count }))
+          .catch(() => ({}))
+        const release = fetchJSON(`${api}/releases/latest`)
+          .then(info => ({ version: info.tag_name }))
+          .catch(() => ({}))
+
+        Promise.all([stats, release])
+          .then(([statsFacts, releaseFacts]) => showFacts({ ...statsFacts, ...releaseFacts }))
       }
     } else {
       SRC.href = ORG_URL
