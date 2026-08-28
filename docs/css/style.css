@@ -143,9 +143,10 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: -2px;
-    height: 2px;
+    bottom: -3px;
+    height: 1.9px;
     background: var(--md-primary-bg-color);
+    opacity: .85;
 }
 
 /*
