@@ -3,6 +3,13 @@ site_url: https://workfloworchestrator.org
 nav:
   - Learn:
       - Concepts:
+          # TODO:
+          #   The Orchestrator UI and Input Forms pages contain lots of project specific documentation and
+          #   implementation detail.
+          #   I think it makes sense to move them into the UI docs, but also extract essential key concepts
+          #   and add that into the framework page.
+          #   Then this page can be the one that guides the user throughout all the technical elements.
+          #   The "At a Glance" or "Crash Course" page before it will have shown the functional parts.
           - The Framework: architecture/framework.md
           - Orchestrator UI: architecture/orchestrator-ui.md
           - Input Forms: architecture/input-forms.md
