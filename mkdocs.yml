@@ -80,6 +80,7 @@ theme:
 extra_css:
   - css/style.css
 extra_javascript:
+  - js/nav-persistence.js
   - js/repo-source.js
 repo_name: workfloworchestrator
 repo_url: https://github.com/workfloworchestrator

@@ -159,3 +159,15 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
         display: none;
     }
 }
+
+/*
+ * Used by js/nav-persistence.js while it re-applies a remembered
+ * collapsed/expanded section after navigation, so that correction doesn't
+ * itself play the expand/collapse animation.
+ */
+.md-nav--no-transition,
+.md-nav--no-transition *,
+.md-nav--no-transition *::before,
+.md-nav--no-transition *::after {
+    transition: none !important;
+}
