@@ -2,19 +2,18 @@ site_name: Workflow Orchestrator Programme
 site_url: https://workfloworchestrator.org
 nav:
   - Home: index.md
-  - The Programme:
-      - About: about.md
-      - Contact: contact.md
-      - Leadership: leadership.md
-  - Architecture:
-      - The Framework: architecture/framework.md
-      - Orchestrator UI: architecture/orchestrator-ui.md
-      - Input Forms: architecture/input-forms.md
-  - Community:
-      - Members: members.md
-      - Meetings: meetings.md
-      - Media: media.md
-  - Workshops:
+  - Learn:
+      - Concepts:
+          # TODO (https://github.com/workfloworchestrator/workfloworchestrator.github.io/issues/63):
+          #   The Orchestrator UI and Input Forms pages contain lots of project specific documentation and
+          #   implementation detail.
+          #   I think it makes sense to move them into the UI docs, but also extract essential key concepts
+          #   and add that into the framework page.
+          #   Then this page can be the one that guides the user throughout all the technical elements.
+          #   The "At a Glance" or "Crash Course" page before it will have shown the functional parts.
+          - The Framework: architecture/framework.md
+          - Orchestrator UI: architecture/orchestrator-ui.md
+          - Input Forms: architecture/input-forms.md
       - Example Orchestrator Workshop:
           - Overview: workshops/example-orchestrator/overview.md
           - Bootstrapping:
@@ -34,18 +33,29 @@ nav:
           - Create your own product and workflows:
               - L2 Point-to-Point: workshops/example-orchestrator/create-your-own.md
               - Product and Workflow Generator: workshops/example-orchestrator/generator.md
+  - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
+  # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
+  - Orchestrator UI Library: "!include ./orchestrator-ui-library/mkdocs/mkdocs.yml"
+  # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-ui-library.git
+  - LSO: "!include ./lso/mkdocs.yml"
+  # INCLUDED_REPO: https://github.com/workfloworchestrator/lso.git
   - Projects:
-      - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
-      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
-      - Orchestrator UI Library: "!include ./orchestrator-ui-library/mkdocs/mkdocs.yml"
-      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-ui-library.git
-      - Lightweight Service Orchestrator: "!include ./lso/mkdocs.yml"
-      # INCLUDED_REPO: https://github.com/workfloworchestrator/lso.git
+      - Overview: projects.md
       - Pydantic Forms: "!include ./pydantic-forms/mkdocs.yml"
       # INCLUDED_REPO: https://github.com/workfloworchestrator/pydantic-forms.git
+  - Community:
+      - The Programme:
+          - About: about.md
+          - Contact: contact.md
+          - Leadership: leadership.md
+      - Get Involved:
+          - Members: members.md
+          - Meetings: meetings.md
+          - Media: media.md
 
 theme:
   name: material
+  custom_dir: overrides
   favicon: "img/favicon.ico"
   logo: img/WFO-Emblem-White.png
   palette:
@@ -70,11 +80,16 @@ theme:
         icon: material/lightbulb-auto
         name: Switch to light mode
   features:
-    - navigation.sections
+    # - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
   icon:
     repo: fontawesome/brands/github-alt
 extra_css:
   - css/style.css
+extra_javascript:
+  - js/nav-persistence.js
+  - js/repo-source.js
 repo_name: workfloworchestrator
 repo_url: https://github.com/workfloworchestrator
 copyright: Copyright &copy; 2018 - 2026 Workflow Orchestrator Programme
@@ -88,6 +103,8 @@ hooks:
   # Merges markdown_extensions, extra_css, extra_javascript, and theme from included mkdocs.yml files,
   # as the monorepo plugin does not do this (https://github.com/backstage/mkdocs-monorepo-plugin/issues/138)
   - hooks/merge_subproject_configs.py
+markdown_extensions:
+  - md_in_html
 plugins:
   - search
   - privacy
@@ -125,6 +142,11 @@ plugins:
             unwrap_annotated: true
   - redirects:
       redirect_maps:
+        # Define redirects here for pages that have been moved or renamed.
+        # Annotate each section of redirects by prefixing the date (YYYY-MM-DD) they were added.
+        # We don't have to keep them around forever; after a year or so we can clean them up.
+        # ----
+        # 2026-04-16: redirects added while creating the monorepo
         "orchestrator-core/architecture/product_modelling/imports.md": "orchestrator-core/guides/product-modeling/imports.md"
         "orchestrator-core/architecture/product_modelling/backfilling.md": "orchestrator-core/guides/product-modeling/backfilling.md"
         "orchestrator-core/architecture/application/tasks.md": "orchestrator-core/guides/tasks.md"
@@ -133,6 +155,7 @@ plugins:
         "orchestrator-core/migration-guide/2.0.md": "orchestrator-core/guides/upgrading/2.0.md"
         "orchestrator-core/migration-guide/3.0.md": "orchestrator-core/guides/upgrading/3.0.md"
         "orchestrator-core/migration-guide/4.0.md": "orchestrator-core/guides/upgrading/4.0.md"
+        # 2026-06-26: workshop pages moved from orchestrator-core to the monorepo
         "orchestrator-core/workshops/advanced/overview.md": "workshops/example-orchestrator/overview.md"
         "orchestrator-core/workshops/advanced/bootstrap.md": "workshops/example-orchestrator/bootstrap.md"
         "orchestrator-core/workshops/advanced/execute-workflows.md": "workshops/example-orchestrator/execute-workflows.md"
@@ -146,9 +169,19 @@ plugins:
         "orchestrator-core/workshops/advanced/node-validate.md": "workshops/example-orchestrator/node-validate.md"
         "orchestrator-core/workshops/advanced/create-your-own.md": "workshops/example-orchestrator/create-your-own.md"
         "orchestrator-core/workshops/advanced/generator.md": "workshops/example-orchestrator/generator.md"
+        # 2026-07-04: architecture pages moved from orchestrator-core to the monorepo
         "orchestrator-core/architecture/framework.md": "architecture/framework.md"
         "orchestrator-core/architecture/orchestration/orchestrator-ui.md": "architecture/orchestrator-ui.md"
         "orchestrator-core/architecture/application/forms-frontend.md": "architecture/input-forms.md"
+        # 2026-08-27: architecture decision pages reorganized in orchestrator-ui-library
+        "orchestrator-ui-library/adrs/0001-record-architecture-decisions.md": "orchestrator-ui-library/decisions/records/0001-record-architecture-decisions.md"
+        "orchestrator-ui-library/adrs/0002-typescript-rules.md": "orchestrator-ui-library/decisions/records/0002-typescript-rules.md"
+        "orchestrator-ui-library/adrs/0003-nextjs.md": "orchestrator-ui-library/decisions/records/0003-nextjs.md"
+        "orchestrator-ui-library/adrs/0004-turbo-repo-and-dependencies.md": "orchestrator-ui-library/decisions/records/0004-turbo-repo-and-dependencies.md"
+        "orchestrator-ui-library/adrs/0005-component-naming.md": "orchestrator-ui-library/decisions/records/0005-component-naming.md"
+        "orchestrator-ui-library/adrs/0006-types-extended.md": "orchestrator-ui-library/decisions/records/0006-types-extended.md"
+        "orchestrator-ui-library/adrs/0007-component-naming.md": "orchestrator-ui-library/decisions/records/0007-component-naming.md"
+        "orchestrator-ui-library/adrs/0008-typescript-conventions.md": "orchestrator-ui-library/decisions/records/0008-typescript-conventions.md"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages

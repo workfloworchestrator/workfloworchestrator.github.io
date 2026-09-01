@@ -26,6 +26,11 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
     padding-top: 5px;
 }
 
+/* Increase overall fontsize on the home page */
+.homepage {
+    font-size: 1.10em;
+}
+
 [data-md-color-scheme="slate"] img[alt='Internet2'] {
     filter: drop-shadow(1px 1px 5px white);
 }
@@ -64,4 +69,111 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
 
 .md-search-result__link[href*="/pydantic-forms/"] h1::before {
     content: "Pydantic Forms › ";
+}
+
+/*
+ * Sidebar navigation hierarchy cues.
+ *
+ * Put the border on the nested nav container rather than on individual list
+ * items. The container spans the complete group, keeping the line solid where
+ * Material adds spacing between links.
+ *
+ * Desktop only: on mobile, Material positions every nested <nav> absolutely
+ * (a full-screen panel that slides in over the current one) so a collapsed
+ * section takes up no space in the drawer's flow. The `position: relative`
+ * below has higher specificity than that rule, so without this media query
+ * it would win on mobile too and turn every off-canvas panel back into an
+ * in-flow block -- each collapsed section would still reserve its full
+ * height, leaving blank space and pushing later items far down the drawer.
+ */
+@media screen and (min-width: 76.25em) {
+    .md-sidebar--primary .md-nav:not(.md-nav--primary) {
+        margin-left: 3px;
+        padding-left: 3px;
+        position: relative;
+    }
+
+    /* Inset the line slightly so it does not touch the entries above or below. */
+    .md-sidebar--primary .md-nav:not(.md-nav--primary)::before {
+        background: color-mix(in srgb, var(--md-default-fg-color--light) 25%, transparent);
+        bottom: 4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        top: 4px;
+        width: 1px;
+    }
+
+    .md-sidebar--primary .md-nav:not(.md-nav--primary):hover::before {
+        background: color-mix(in srgb, #05385E 60%, transparent);
+    }
+
+    .md-sidebar--primary .md-nav:not(.md-nav--primary):has(.md-nav__item--active)::before {
+        background: color-mix(in srgb, var(--md-default-fg-color--light) 25%, transparent);
+    }
+
+    /* No line on the outermost nav container. */
+    .md-sidebar--primary .md-nav:not(.md-nav--primary)::before {}
+    .md-sidebar--primary .md-nav--primary + .md-nav::before,
+    .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav::before {
+        content: none;
+    }
+
+    /* Remove only the outermost hierarchy line; keep deeper nesting cues. */
+    .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav {
+        border-left: none;
+    }
+}
+
+/* Bold top-level nav headings for emphasis. */
+.md-sidebar--primary .md-nav[data-md-level="1"] > .md-nav__list > .md-nav__item--nested > .md-nav__link {
+    font-weight: 550;
+    color: color-mix(in srgb, var(--md-default-fg-color) 65%, transparent);
+}
+
+/*
+ * Mark the active horizontal tab without changing the tab bar's height.
+ * Uses an absolutely-positioned underline rather than a box-shadow, since
+ * an inset shadow is clipped to the link's own box and can't be nudged
+ * below its bottom edge -- this can sit in the slack space under the
+ * link's text within the tab.
+ */
+.md-tabs__item--active .md-tabs__link {
+    position: relative;
+    color: var(--md-primary-bg-color);
+    opacity: 1;
+}
+.md-tabs__item--active .md-tabs__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 1.9px;
+    background: var(--md-primary-bg-color);
+    opacity: .85;
+}
+
+/*
+ * The active tab's root nav link (e.g. "Learn") is rendered above its own
+ * desktop sidebar content. The horizontal tab already provides that context.
+ * Material reuses this nav as the mobile drawer, where the link must remain
+ * visible because it is the only way to enter the tab.
+ */
+@media screen and (min-width: 76.25em) {
+    .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link {
+        display: none;
+    }
+}
+
+/*
+ * Used by js/nav-persistence.js while it re-applies a remembered
+ * collapsed/expanded section after navigation, so that correction doesn't
+ * itself play the expand/collapse animation.
+ */
+.md-nav--no-transition,
+.md-nav--no-transition *,
+.md-nav--no-transition *::before,
+.md-nav--no-transition *::after {
+    transition: none !important;
 }
