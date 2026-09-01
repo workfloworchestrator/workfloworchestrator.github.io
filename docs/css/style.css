@@ -26,6 +26,11 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
     padding-top: 5px;
 }
 
+/* Increase overall fontsize on the home page */
+.homepage {
+    font-size: 1.10em;
+}
+
 [data-md-color-scheme="slate"] img[alt='Internet2'] {
     filter: drop-shadow(1px 1px 5px white);
 }

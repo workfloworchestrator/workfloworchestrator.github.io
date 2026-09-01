@@ -103,6 +103,8 @@ hooks:
   # Merges markdown_extensions, extra_css, extra_javascript, and theme from included mkdocs.yml files,
   # as the monorepo plugin does not do this (https://github.com/backstage/mkdocs-monorepo-plugin/issues/138)
   - hooks/merge_subproject_configs.py
+markdown_extensions:
+  - md_in_html
 plugins:
   - search
   - privacy
