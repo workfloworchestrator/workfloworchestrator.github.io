@@ -1,6 +1,7 @@
 site_name: Workflow Orchestrator Programme
 site_url: https://workfloworchestrator.org
 nav:
+  - Home: index.md
   - Learn:
       - Concepts:
           # TODO:
