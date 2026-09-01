@@ -13,8 +13,16 @@ users to Automate and Orchestrate their network.
 <p align="center"><em>Production ready Workflow Orchestration to manage product lifecycle and workflows. Easy to use,
 built on open source software.</em></p>
 
-The Workflow Orchestrator software ecosystem is maintained by its members and all individual code contributors. More
-information about the contributors can be found [here](members.md).
+<p align="center">
+    <a href="https://discord.gg/fQkQn5ajFR">
+    <img src="https://img.shields.io/discord/1295834294270558280?style=flat&logo=discord&label=discord" alt="Discord">
+    </a>
+    <a href="https://github.com/workfloworchestrator">
+    <img src="https://img.shields.io/badge/GitHub-workfloworchestrator-181717?style=flat&logo=github" alt="GitHub">
+    </a>
+    </p>
+
+The Workflow Orchestrator software ecosystem is maintained by its [Members](members.md) and all individual code contributors.
 
 ## Orchestration
 
@@ -79,7 +87,7 @@ particular order:
   [![npm-downloads](https://img.shields.io/npm/dt/%40orchestrator-ui%2Forchestrator-ui-components)](https://github.com/workfloworchestrator/orchestrator-ui-library).
 - [Orchestrator Example UI](https://github.com/workfloworchestrator/example-orchestrator-ui/):
   Example UI with a NextJS implementation of our component library.
-- [LSO](https://workfloworchestrator.org/lso): This application provides an API layer on top of
+- [LSO](lightweight-service-orchestrator/index.md): This application provides an API layer on top of
   Ansible playbooks. Downloads:
   [![pypi-downloads](https://static.pepy.tech/badge/orchestrator-lso)](https://pepy.tech/project/orchestrator-lso).
 - [Example Orchestrator](https://github.com/workfloworchestrator/example-orchestrator): This
@@ -106,8 +114,3 @@ particular order:
 [<img alt='GARR' src='/img/Logo-GARR-small.png' style="margin-right: 50px; margin-bottom: 50px;">](https://garr.it)
 [<img alt='REANNZ' src='/img/reannz-logo-small.png' style="margin-right: 50px; margin-bottom: 50px;">](https://reannz.co.nz)
 [<img alt='Internet2' src='/img/internet2-logo.svg' style="margin-right: 50px; margin-bottom: 50px; height: 130px;">](https://internet2.edu)
-
-
-### Join the community
-
-You can find this community on Discord. Feel free to join [us](https://discord.gg/fQkQn5ajFR) ![Discord](https://img.shields.io/discord/1295834294270558280?style=flat&logo=discord&label=discord&link=https%3A%2F%2Fdiscord.gg%2fQkQn5ajFR)
