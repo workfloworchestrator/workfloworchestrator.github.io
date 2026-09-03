@@ -21,11 +21,6 @@
     background-color: #05385E;
 }
 
-img[alt='pypi-downloads'], img[alt='npm-downloads'] {
-    height: 19px;
-    padding-top: 5px;
-}
-
 /* Increase overall fontsize on the home page */
 .homepage {
     font-size: 1.10em;
@@ -33,6 +28,12 @@ img[alt='pypi-downloads'], img[alt='npm-downloads'] {
 
 [data-md-color-scheme="slate"] img[alt='Internet2'] {
     filter: drop-shadow(1px 1px 5px white);
+}
+
+.homepage img[alt='pypi-downloads'],
+.homepage img[alt='npm-downloads'] {
+    height: 20px;
+    padding-top: 0;
 }
 
 /*

@@ -79,30 +79,87 @@ If this has sparked your interest, read more about [the framework](./architectur
 ## Tooling
 
 The WFO programme maintains an entire ecosystem of tooling, a non-comprehensive list in no
-particular order:
+particular order.
 
-- [Orchestrator-Core](https://github.com/workfloworchestrator/orchestrator-core): This Python
-  program leverages the power of FastAPI, Pydantic and SQLAlchemy to create an orchestration engine. Downloads:
-  [![pypi-downloads](https://static.pepy.tech/badge/orchestrator-core)](https://pepy.tech/project/orchestrator-core).
-- [Orchestrator-UI](https://github.com/workfloworchestrator/orchestrator-ui-library): Component
-  library for a modern and flexible NextJS app on top of the Orchestrator-core. Downloads:
-  [![npm-downloads](https://img.shields.io/npm/dt/%40orchestrator-ui%2Forchestrator-ui-components)](https://github.com/workfloworchestrator/orchestrator-ui-library).
-- [Orchestrator Example UI](https://github.com/workfloworchestrator/example-orchestrator-ui/):
-  Example UI with a NextJS implementation of our component library.
-- [LSO](lightweight-service-orchestrator/index.md): This application provides an API layer on top of
-  Ansible playbooks. Downloads:
-  [![pypi-downloads](https://static.pepy.tech/badge/orchestrator-lso)](https://pepy.tech/project/orchestrator-lso).
-- [Example Orchestrator](https://github.com/workfloworchestrator/example-orchestrator): This
-  repository houses a Docker-compose running a full stack of the Orchestrator, UI and Netbox. It
-  includes examples our best (coding) practices and an example integration with Netbox.
-- [PyNSO-Restconf](https://workfloworchestrator.org/pynso-restconf): A thin client for interfacing
-  with Cisco NSO using RESTCONF.
-- [Pydantic-Forms](https://github.com/workfloworchestrator/pydantic-forms): A library that includes
-  standardized Python Form classes that can be used when generating form components from
-  JSON-schema.
-- [SuPA](https://workfloworchestrator.org/SuPA): An NSI Ultimate provider agent with a gRPC API.
-- [PolyNSI](https://github.com/workfloworchestrator/polynsi): A bidirectional SOAP to gRPC
-  translating proxy server for the NSI protocol.
+<div class="grid cards" markdown>
+
+-   **Orchestrator-Core**
+
+    [![pypi-downloads](https://static.pepy.tech/badge/orchestrator-core)](https://pypi.org/project/orchestrator-core/)
+    [![GitHub stars](https://img.shields.io/github/stars/workfloworchestrator/orchestrator-core?style=flat)](https://github.com/workfloworchestrator/orchestrator-core/stargazers)
+
+    This Python program leverages the power of FastAPI, Pydantic and SQLAlchemy to create an
+    orchestration engine.
+
+    [Source](https://github.com/workfloworchestrator/orchestrator-core)
+    · [Docs](orchestrator-core/index.md)
+
+-   **Orchestrator-UI**
+
+    [![npm-downloads](https://img.shields.io/npm/dt/%40orchestrator-ui%2Forchestrator-ui-components?style=flat)](https://github.com/workfloworchestrator/orchestrator-ui-library)
+    [![GitHub stars](https://img.shields.io/github/stars/workfloworchestrator/orchestrator-ui-library?style=flat)](https://github.com/workfloworchestrator/orchestrator-ui-library/stargazers)
+
+    Component library for a modern and flexible NextJS app on top of the Orchestrator-core.
+
+    [Source](https://github.com/workfloworchestrator/orchestrator-ui-library)
+    · [Docs](orchestrator-ui-library/index.md)
+
+-   **Orchestrator Example UI**
+
+    [![GitHub stars](https://img.shields.io/github/stars/workfloworchestrator/example-orchestrator-ui?style=flat)](https://github.com/workfloworchestrator/example-orchestrator-ui/stargazers)
+
+    Example UI with a NextJS implementation of our component library.
+
+    [Source](https://github.com/workfloworchestrator/example-orchestrator-ui/)
+
+-   **LSO**
+
+    [![pypi-downloads](https://static.pepy.tech/badge/orchestrator-lso)](https://pypi.org/project/orchestrator-lso/)
+    [![GitHub stars](https://img.shields.io/github/stars/workfloworchestrator/lso?style=flat)](https://github.com/workfloworchestrator/lso/stargazers)
+
+    This application provides an API layer on top of Ansible playbooks.
+
+    [Source](https://github.com/workfloworchestrator/lso)
+    · [Docs](lightweight-service-orchestrator/index.md)
+
+-   **Example Orchestrator**
+
+    [![GitHub stars](https://img.shields.io/github/stars/workfloworchestrator/example-orchestrator?style=flat)](https://github.com/workfloworchestrator/example-orchestrator/stargazers)
+
+    This repository houses a Docker-compose running a full stack of the Orchestrator, UI and
+    Netbox.
+
+    [Source](https://github.com/workfloworchestrator/example-orchestrator)
+
+-   **Pydantic-Forms**
+
+    [![pypi-downloads](https://static.pepy.tech/badge/pydantic-forms)](https://pypi.org/project/pydantic-forms/)
+    [![GitHub stars](https://img.shields.io/github/stars/workfloworchestrator/pydantic-forms?style=flat)](https://github.com/workfloworchestrator/pydantic-forms/stargazers)
+
+    A library that includes standardized Python Form classes that can be used when generating
+    form components from JSON-schema.
+
+    [Source](https://github.com/workfloworchestrator/pydantic-forms)
+    · [Docs](pydantic-forms/index.md)
+
+-   **SuPA**
+
+    [![GitHub stars](https://img.shields.io/github/stars/workfloworchestrator/SuPA?style=flat)](https://github.com/workfloworchestrator/SuPA/stargazers)
+
+    An NSI Ultimate provider agent with a gRPC API.
+
+    [Source](https://github.com/workfloworchestrator/SuPA)
+    · [Docs](https://workfloworchestrator.org/SuPA)
+
+-   **PolyNSI**
+
+    [![GitHub stars](https://img.shields.io/github/stars/workfloworchestrator/polynsi?style=flat)](https://github.com/workfloworchestrator/polynsi/stargazers)
+
+    A bidirectional SOAP to gRPC translating proxy server for the NSI protocol.
+
+    [Source](https://github.com/workfloworchestrator/polynsi)
+
+</div>
 
 ## Which organizations are using Workflow Orchestrator?
 
