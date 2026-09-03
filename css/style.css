@@ -1,0 +1,221 @@
+:root {
+    --md-primary-fg-color: #0067AC;
+    --md-primary-fg-color--light: #94A4B8;
+    --md-primary-fg-color--dark: #64758B;
+    --md-primary-bg-color: #F1F5F9;
+    --md-primary-bg-color--light: #FFFFFF;
+    --md-accent-fg-color: #262830;
+    --md-accent-fg-color--transparent: #51576;
+    --md-accent-bg-color: #F1F5F9;
+    --md-accent-bg-color--light: #FFFFFF;
+}
+
+.md-header__button.md-logo {
+    padding: 0;
+}
+.md-header__button.md-logo img, .md-header__button.md-logo svg {
+    height: 55px;
+}
+
+.md-header, .md-tabs {
+    background-color: #05385E;
+}
+
+img[alt='pypi-downloads'], img[alt='npm-downloads'] {
+    height: 19px;
+    padding-top: 5px;
+}
+
+/* Increase overall fontsize on the home page */
+.homepage {
+    font-size: 1.10em;
+}
+
+[data-md-color-scheme="slate"] img[alt='Internet2'] {
+    filter: drop-shadow(1px 1px 5px white);
+}
+
+/*
+ * Make it discoverable that images open in a lightbox (mkdocs-glightbox): hovering one shows a
+ * zoom-in cursor and a magnifier badge in its top right corner. The badge is drawn on the link
+ * glightbox wraps around the image, so it disappears together with the plugin if it is ever
+ * removed, and never covers an image that is not clickable.
+ */
+:root {
+    --wfo-magnify-icon: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5m-.5 2h1v2h2v1h-2v2H9v-2H7V9h2z"/></svg>');
+}
+
+.md-typeset a.glightbox {
+    cursor: zoom-in;
+    display: inline-block;
+    line-height: 0;
+    position: relative;
+}
+
+.md-typeset a.glightbox::after {
+    background: rgba(0, 0, 0, .55) var(--wfo-magnify-icon) center / 1.1rem no-repeat;
+    border-radius: .2rem;
+    content: "";
+    height: 1.7rem;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: .5rem;
+    top: .5rem;
+    transition: opacity 125ms;
+    width: 1.7rem;
+}
+
+.md-typeset a.glightbox:hover::after,
+.md-typeset a.glightbox:focus-visible::after {
+    opacity: 1;
+}
+
+/* Dim the page behind the lightbox rather than blacking it out (glightbox defaults to .92 alpha). */
+.goverlay {
+    background: rgba(0, 0, 0, .6);
+    backdrop-filter: blur(2px);
+}
+
+/*
+ * Label search results with the project they belong to.
+ *
+ * Page titles collide across sub-projects -- "Introduction" alone occurs five times -- so a bare
+ * result title gives no clue which project it came from. Material renders the page-level result of
+ * each group as an h1 (nested section matches are h2), with an absolute href, so matching on the
+ * href prefix labels the group heading only and leaves the sections under it untouched.
+ *
+ * Done in CSS rather than by prefixing titles in the search index, because the index title carries a
+ * boost of 1e3: putting "Orchestrator Core" in ~60 page titles would make every one of them rank
+ * highly for "orchestrator" or "core", degrading the relevance this is meant to improve.
+ *
+ * Purely additive: if Material changes its result markup the label silently disappears, and nothing
+ * else breaks. Keep in sync with the sub-projects in the Projects nav of mkdocs.yml.
+ */
+.md-search-result__article h1::before {
+    color: var(--md-default-fg-color--light);
+    font-weight: 400;
+}
+
+.md-search-result__link[href*="/orchestrator-core/"] h1::before {
+    content: "Orchestrator Core › ";
+}
+
+.md-search-result__link[href*="/orchestrator-ui-library/"] h1::before {
+    content: "Orchestrator UI Library › ";
+}
+
+.md-search-result__link[href*="/lightweight-service-orchestrator/"] h1::before {
+    content: "Lightweight Service Orchestrator › ";
+}
+
+.md-search-result__link[href*="/pydantic-forms/"] h1::before {
+    content: "Pydantic Forms › ";
+}
+
+/*
+ * Sidebar navigation hierarchy cues.
+ *
+ * Put the border on the nested nav container rather than on individual list
+ * items. The container spans the complete group, keeping the line solid where
+ * Material adds spacing between links.
+ *
+ * Desktop only: on mobile, Material positions every nested <nav> absolutely
+ * (a full-screen panel that slides in over the current one) so a collapsed
+ * section takes up no space in the drawer's flow. The `position: relative`
+ * below has higher specificity than that rule, so without this media query
+ * it would win on mobile too and turn every off-canvas panel back into an
+ * in-flow block -- each collapsed section would still reserve its full
+ * height, leaving blank space and pushing later items far down the drawer.
+ */
+@media screen and (min-width: 76.25em) {
+    .md-sidebar--primary .md-nav:not(.md-nav--primary) {
+        margin-left: 3px;
+        padding-left: 3px;
+        position: relative;
+    }
+
+    /* Inset the line slightly so it does not touch the entries above or below. */
+    .md-sidebar--primary .md-nav:not(.md-nav--primary)::before {
+        background: color-mix(in srgb, var(--md-default-fg-color--light) 25%, transparent);
+        bottom: 4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        top: 4px;
+        width: 1px;
+    }
+
+    .md-sidebar--primary .md-nav:not(.md-nav--primary):hover::before {
+        background: color-mix(in srgb, #05385E 60%, transparent);
+    }
+
+    .md-sidebar--primary .md-nav:not(.md-nav--primary):has(.md-nav__item--active)::before {
+        background: color-mix(in srgb, var(--md-default-fg-color--light) 25%, transparent);
+    }
+
+    /* No line on the outermost nav container. */
+    .md-sidebar--primary .md-nav:not(.md-nav--primary)::before {}
+    .md-sidebar--primary .md-nav--primary + .md-nav::before,
+    .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav::before {
+        content: none;
+    }
+
+    /* Remove only the outermost hierarchy line; keep deeper nesting cues. */
+    .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav {
+        border-left: none;
+    }
+}
+
+/* Bold top-level nav headings for emphasis. */
+.md-sidebar--primary .md-nav[data-md-level="1"] > .md-nav__list > .md-nav__item--nested > .md-nav__link {
+    font-weight: 550;
+    color: color-mix(in srgb, var(--md-default-fg-color) 65%, transparent);
+}
+
+/*
+ * Mark the active horizontal tab without changing the tab bar's height.
+ * Uses an absolutely-positioned underline rather than a box-shadow, since
+ * an inset shadow is clipped to the link's own box and can't be nudged
+ * below its bottom edge -- this can sit in the slack space under the
+ * link's text within the tab.
+ */
+.md-tabs__item--active .md-tabs__link {
+    position: relative;
+    color: var(--md-primary-bg-color);
+    opacity: 1;
+}
+.md-tabs__item--active .md-tabs__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -3px;
+    height: 1.9px;
+    background: var(--md-primary-bg-color);
+    opacity: .85;
+}
+
+/*
+ * The active tab's root nav link (e.g. "Learn") is rendered above its own
+ * desktop sidebar content. The horizontal tab already provides that context.
+ * Material reuses this nav as the mobile drawer, where the link must remain
+ * visible because it is the only way to enter the tab.
+ */
+@media screen and (min-width: 76.25em) {
+    .md-sidebar--primary .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link {
+        display: none;
+    }
+}
+
+/*
+ * Used by js/nav-persistence.js while it re-applies a remembered
+ * collapsed/expanded section after navigation, so that correction doesn't
+ * itself play the expand/collapse animation.
+ */
+.md-nav--no-transition,
+.md-nav--no-transition *,
+.md-nav--no-transition *::before,
+.md-nav--no-transition *::after {
+    transition: none !important;
+}
