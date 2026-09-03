@@ -10,7 +10,7 @@ The framework is open-source and written in the Python programming language.
 In organizations using WFO, software teams define **products** using the framework, along with **workflows** by which end-users manage each product's lifecycle.
 
 When a user subscribes a customer to a product, they run a **create** workflow, which produces a **subscription** to that product.
-That subscription can then orchestrated by the other workflows associated with its product.
+That subscription can then be orchestrated by the other workflows associated with its product.
 For example, **validate** workflows ensure WFO's database is kept in sync with any external resources allocated to a subscription, and **terminate** workflows deprovision the subscription along with those external resources.
 
 # Scenario: Adding a Link
