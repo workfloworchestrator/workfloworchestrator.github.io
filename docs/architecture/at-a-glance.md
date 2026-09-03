@@ -40,7 +40,7 @@ Below, we can see the output of the Assign IPv6 Prefix step.
 
 ![Create Core Link workflow output](../img/at-a-glance/create_core_link_output.png)
 
-A link in the upper-right corner of the workflow output (above) takes us to the subscription we created (below.)
+A link in the upper-right corner of the workflow output (above) takes us to the subscription we created (below).
 
 On the left, we can see various details about both the Core Link subscription, the ports on either end, and the nodes (also subscriptions) each port resides on.
 
