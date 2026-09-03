@@ -13,7 +13,7 @@ When a user subscribes a customer to a product, they run a **create** workflow, 
 That subscription can then be orchestrated by the other workflows associated with its product.
 For example, **validate** workflows ensure WFO's database is kept in sync with any external resources allocated to a subscription, and **terminate** workflows deprovision the subscription along with those external resources.
 
-# Scenario: Adding a Link
+## Scenario: Adding a Link
 !!! info
     In this section, we highlight the experience of an end-user: in this case, a network operator setting up a link between two routers.
     While this example focuses on networking, WFO can be used for any kind of service, and provides no specific support for network products.
@@ -52,21 +52,21 @@ The General tab provides more extensive information about the subscription.
 
 ![Core Link subscription page general tab](../img/at-a-glance/core_link_sub_general.png)
 
-# Additional Actions
+## Additional Actions
 Above, we saw the Actions available to manage a Core Link subscription after it was created.
 
-`Modify core_link`: Users can define modify workflows to update the subscription database and/or an orchestrated external resource. Users define modify workflows for each subscription to facilitate changes mid-lifecycle.
+`Modify core_link`: Users can define modify workflows to update the subscription database and any orchestrated external resources. These workflows facilitate changes to a subscription mid-lifecycle.
 
-`Validate core_link`: Users can define validation workflows to verify the data in the WFO database against the external systems it manages. An error in a validation workflow places the corresponding subscription in an Out of Sync state, which flags it for remediation and blocks its workflows. For example, if WFO manages a resource in Netbox and that resource is then edited directly in Netbox, this could be detected with a validation workflow.
-
-Validation workflows are commonly run overnight using WFO's [scheduling](../../orchestrator-core/guides/tasks/) features, which can be customized to run at any time or frequency.
+`Validate core_link`: Users can define validation workflows to verify the data in the WFO database against the external systems it manages. An error in a validation workflow places the corresponding subscription in an Out of Sync state, which flags it for remediation and blocks execution of its workflows. For example, if WFO manages a resource in Netbox and that resource is then edited directly in Netbox, this could be detected with a validation workflow.
 
 `Terminate core_link`: Users can define terminate workflows in order to deprovision a subscription and any resources orchestrated on its behalf. Terminated subscriptions are still accessible for reference.
 
 Users aren't limited to these workflows.
 For example, it can be helpful to create distinct modify workflows for the same product to make unrelated changes.
+Users can also create Tasks, which are simply workflows that aren't tied to any subscription.
+Tasks can be run automatically via WFO's [scheduling](../../orchestrator-core/guides/tasks/) features, which can be customized to run at any time or frequency.
 
-# Behind the Scenes
+## Behind the Scenes
 
 So what's actually happening behind the scenes when we run these workflows?
 
@@ -83,10 +83,20 @@ The Core Link producted is defined by a [Product][example-core-link-product-type
 The workflows update the inventory system, Netbox, via [services/netbox.py][example-core-netbox-service].
 By convention, user-defined modules for interacting with external services are organized under `services/`.
 
+## Next Steps
+To deploy your own Workflow Orchestrator, you will need two services:
+
+* A web backend. You will develop a Python application that imports the [`orchestrator-core`][orchestrator-core] package as a dependency.
+* A web frontend served over HTTP. You may develop a React application using the [`orchestrator-ui-components`][orchestrator-ui-library] NPM package, but it's easiest to start by modifying a copy of the [`example-orchestrator-ui`][example-orchestrator-ui] application for your own use.
+
+Next, see [The Framework](./framework.md) for an architectural walkthrough of the software stack.
 
 [nren-wikipedia]: https://en.wikipedia.org/wiki/National_research_and_education_network
 [pydantic-forms]: https://workfloworchestrator.org/pydantic-forms/
+[orchestrator-core]: https://github.com/workfloworchestrator/orchestrator-core
+[orchestrator-ui-library]: https://github.com/workfloworchestrator/orchestrator-ui-library
 [example-orchestrator]: https://github.com/workfloworchestrator/example-orchestrator
+[example-orchestrator-ui]: https://github.com/workfloworchestrator/example-orchestrator-ui
 [example-core-link-product-type]: https://github.com/workfloworchestrator/example-orchestrator/blob/main/products/product_types/core_link.py
 [example-core-link-product-blocks]: https://github.com/workfloworchestrator/example-orchestrator/blob/main/products/product_blocks/core_link.py
 [example-core-link-workflows]: https://github.com/workfloworchestrator/example-orchestrator/tree/main/workflows/core_link
