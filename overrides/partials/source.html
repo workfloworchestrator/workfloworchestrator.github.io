@@ -1,5 +1,5 @@
 {#-
-  CUSTOMIZED: copied from mkdocs-material 9.7.6
+  CUSTOMIZED: copied from mkdocs-material 9.7.7
   (material/templates/partials/source.html) to prefer page.meta.repo_url
   and page.meta.repo_name. The merge_subproject_configs hook's
   on_page_context sets those for pages inside !include'd sub-projects so
@@ -11,10 +11,18 @@
   a single repo -- both wrong for a monorepo with a different repo per tab.
   docs/js/repo-source.js re-derives the correct repo from the current URL
   and re-fetches its stats after every navigation; see that file for why.
+
+  CUSTOMIZED: the link is marked with data-repo-source instead of upstream's
+  data-md-component="source". Material mounts its own fact-fetching over every
+  element carrying that component name, which would append a second stats list
+  next to the one repo-source.js renders -- the cause of the stats showing
+  twice on a cold page load. Dropping the component name leaves repo-source.js
+  as the only writer and saves a redundant GitHub API call; nothing else keys
+  off the value, as the theme's styling targets the .md-source* classes.
 -#}
 {% set repo_url = page.meta.repo_url if page and page.meta.repo_url else config.repo_url %}
 {% set repo_name = page.meta.repo_name if page and page.meta.repo_name else config.repo_name %}
-<a href="{{ repo_url }}" title="{{ lang.t('source') }}" class="md-source" data-md-component="source" data-repo-map='{{ config.extra.repo_by_prefix | tojson }}'>
+<a href="{{ repo_url }}" title="{{ lang.t('source') }}" class="md-source" data-repo-source data-repo-map='{{ config.extra.repo_by_prefix | tojson }}'>
   <div class="md-source__icon md-icon">
     {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
     {% include ".icons/" ~ icon ~ ".svg" %}
