@@ -9,7 +9,7 @@ Organizations that are involved with the Workflow Orchestrator programme are:
 
 ## Graduate
 
-[<img alt='HEAnet' src='/img/HEAnet-Logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://www.heanet.ie/)
+[<img alt='Asiera' src='/img/asiera-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://www.asiera.ie/)
 [<img alt='Nomios' src='/img/nomios-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://www.nomios.com/)
 [<img alt='ShopVirge' src='/img/ShopVirge-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://shopvirge.com)
 
