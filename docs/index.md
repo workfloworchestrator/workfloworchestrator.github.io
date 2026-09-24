@@ -166,7 +166,7 @@ particular order.
 [<img alt='SURF' src='/img/surf-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://surf.nl)
 [<img alt='ESnet' src='/img/esnet-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://es.net)
 [<img alt='GÉANT' src='/img/geant-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://geant.org)
-[<img alt='HEAnet' src='/img/HEAnet-Logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://www.heanet.ie/)
+[<img alt='Asiera' src='/img/asiera-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://www.asiera.ie/)
 [<img alt='Nomios' src='/img/nomios-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://www.nomios.com/)
 [<img alt='ShopVirge' src='/img/ShopVirge-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://shopvirge.com)
 [<img alt='CANARIE' src='/img/CANARIE_small.png' style="margin-right: 50px; margin-bottom: 50px;">](https://canarie.ca)
