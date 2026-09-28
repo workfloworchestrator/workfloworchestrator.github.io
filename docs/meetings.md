@@ -38,6 +38,13 @@ There are three regular meetings scheduled each year:
 - SURF implementation update ([slides](presentations/2026-06-08 - WFO SURF update - TNC26 Helsinki.pdf))
 - WFO Optical module "Re-usable models, steps, and clients" ([slides](presentations/2026-06-08 - WFO Optical module - TNC26 Helsinki.pdf))
 
+#### 2nd Workflow Orchestrator User Developer Days, Dublin, September 22–24 2026
+-  WFO core updates ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - WFO core updates.pdf))
+-  WFO sprints, architecture and documentation([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - WFO sprints, architecture and documentation.pdf))
+-  WFO UI update ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - WFO UI update.pdf))
+-  Agent to Agent based troubleshooting ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - Agent to Agent based troubleshooting.pdf))
+
+
 ## Infoshares
 
 Infoshares happen in between the meetings with the aim of keeping the larger community engaged and up to date with what happens in the workflow orchestrator programme.
