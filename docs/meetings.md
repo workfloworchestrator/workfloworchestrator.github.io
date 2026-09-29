@@ -9,24 +9,24 @@ There are three regular meetings scheduled each year:
 
 ### Meetings material
 
-#### 1st Workflow Orchestrator User Meeting, TNC24 in Rennes, June 10 2024
+#### 1st Workflow Orchestrator User Meeting, TNC24 in Rennes, June 10, 2024
 - WFO update ([slides](presentations/2024-06-10 - First Workflow Orchestrator User Meeting - TNC24 Rennes.pdf))
 
-#### 1st Workflow Orchestrator Partner Code Sprint, Berkeley CA, February 10-14 2025
+#### 1st Workflow Orchestrator Partner Code Sprint, Berkeley CA, February 10-14, 2025
 
-#### 2nd Workflow Orchestrator User Meeting, TNC25 in Brighton, June 9 2025
+#### 2nd Workflow Orchestrator User Meeting, TNC25 in Brighton, June 9, 2025
 - WFO update ([slides](presentations/2025-06-09 - Second Workflow Orchestrator User Meeting - TNC25 Brighton - public.pdf))
 - ESnet implementation update "Adapting WFO to Your Business Needs" ([slides](presentations/2025-06-09 - WFO ESnet update - TNC25 Brighton.pdf))
 - HEAnet implementation update "HEAnet status report TNC25" ([slides](presentations/2025-06-09 - WFO HEAnet update - TNC25 Brighton.pdf))
 - GARR implementation update "From Clicks to Code" ([slides](presentations/2025-06-09 - WFO GARR update - TNC25 Brighton.pdf))
 - SURF implementation update "SURF orchestration landscape" ([slides](presentations/2025-06-09 - WFO SURF update - TNC25 Brighton.pdf))
 
-#### 1st Workflow Orchestrator User Developer Days, Amsterdam, September 22–24 2025
+#### 1st Workflow Orchestrator User Developer Days, Amsterdam, September 22–24, 2025
 - WFO update ([slides](presentations/2025-09-22 - First Workflow Orchestrator User Developer Days - Amsterdam - public.pdf))
 
-#### 2nd Workflow Orchestrator Partner Code Sprint, Berkeley CA, April 13-16 2026
+#### 2nd Workflow Orchestrator Partner Code Sprint, Berkeley CA, April 13-16, 2026
 
-#### 3rd Workflow Orchestrator User Meeting, TNC26 in Helsinki, June 8 2026
+#### 3rd Workflow Orchestrator User Meeting, TNC26 in Helsinki, June 8, 2026
 - WFO update ([slides](presentations/2026-06-08 - Third Workflow Orchestrator User Meeting - TNC26 Helsinki.pdf))
 - WFO software update "A Year of Workflow Orchestrator" ([slides](presentations/2026-06-08 - WFO software update - TNC26 Helsinki.pdf))
 - Asiera implementation update ([slides](presentations/2026-06-08 - WFO Asiera update - TNC26 Helsinki.pdf))
@@ -38,11 +38,12 @@ There are three regular meetings scheduled each year:
 - SURF implementation update ([slides](presentations/2026-06-08 - WFO SURF update - TNC26 Helsinki.pdf))
 - WFO Optical module "Re-usable models, steps, and clients" ([slides](presentations/2026-06-08 - WFO Optical module - TNC26 Helsinki.pdf))
 
-#### 2nd Workflow Orchestrator User Developer Days, Dublin, September 22–24 2026
--  WFO core updates ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - WFO core updates.pdf))
--  WFO sprints, architecture and documentation([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - WFO sprints, architecture and documentation.pdf))
--  WFO UI update ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - WFO UI update.pdf))
--  Agent to Agent based troubleshooting ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - Agent to Agent based troubleshooting.pdf))
+#### 2nd Workflow Orchestrator User Developer Days, Dublin, September 22–24, 2026
+- WFO core updates ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - WFO core updates.pdf))
+- WFO sprints, architecture and documentation([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - WFO sprints, architecture and documentation.pdf))
+- WFO UI update ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - WFO UI update.pdf))
+- Asiera - lessons from the trenches operating WFO ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - Asiera lessons from the trenches operating WFO.pdf))
+- Agent to Agent based troubleshooting ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - Agent to Agent based troubleshooting.pdf))
 
 
 ## Infoshares
@@ -55,4 +56,4 @@ No upcoming infoshares at the moment.
 
 ### Previous infoshares
 
-- [Infoshare: Workflow Orchestrator (WFO) update - 4 February 2026](https://events.geant.org/event/1993/)
+- [Infoshare: Workflow Orchestrator (WFO) update - 4 February, 2026](https://events.geant.org/event/1993/)
