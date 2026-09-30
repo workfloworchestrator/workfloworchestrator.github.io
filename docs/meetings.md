@@ -44,6 +44,7 @@ There are three regular meetings scheduled each year:
 - WFO UI update ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - WFO UI update.pdf))
 - Asiera - lessons from the trenches operating WFO ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - Asiera lessons from the trenches operating WFO.pdf))
 - Agent to Agent based troubleshooting ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - Agent to Agent based troubleshooting.pdf))
+- How ShopVirge uses WFO ([slides](presentations/2026-09-23 - Second WFO Developer Days - Dublin - How ShopVirge uses WFO.pdf))
 
 
 ## Infoshares
