@@ -1,4 +1,5 @@
 ---
+description: "Open-source Workflow Orchestrator (WFO) programme: software, tools and best practices for automating and orchestrating networks."
 hide:
   - navigation
   - toc

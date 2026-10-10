@@ -1,3 +1,9 @@
+---
+description: "Workflow Orchestrator (WFO) community meetings, code sprints, developer days and infoshares, with presentation slides."
+---
+
+# Meetings
+
 ## Regular Meetings
 
 There are three regular meetings scheduled each year:

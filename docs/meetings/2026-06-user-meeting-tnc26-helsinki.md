@@ -1,3 +1,7 @@
+---
+description: "3rd Workflow Orchestrator User Meeting, TNC26 in Helsinki, June 8, 2026. Presentations and slides."
+---
+
 # 3rd Workflow Orchestrator User Meeting, TNC26 in Helsinki, June 8, 2026
 
 - WFO update ([slides](../presentations/2026-06-08 - Third Workflow Orchestrator User Meeting - TNC26 Helsinki.pdf))

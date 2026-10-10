@@ -1,3 +1,7 @@
+---
+description: "2nd Workflow Orchestrator User Meeting, TNC25 in Brighton, June 9, 2025. Presentations and slides."
+---
+
 # 2nd Workflow Orchestrator User Meeting, TNC25 in Brighton, June 9, 2025
 
 - WFO update ([slides](../presentations/2025-06-09 - Second Workflow Orchestrator User Meeting - TNC25 Brighton - public.pdf))

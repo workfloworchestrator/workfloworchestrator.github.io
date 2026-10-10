@@ -41,12 +41,12 @@ have a look at the
 
 ### Standard orchestrator-ui
 
-![Screenshot](../img/Standard-orchestrator-ui.png)
+![Standard Workflow Orchestrator UI dashboard](../img/Standard-orchestrator-ui.png)
 
 ### Custom orchestrator-ui
 
 - showing additional summary card component (in-maintenance core link)
-- additional menu items ![Screenshot](../img/Custom-orchestrator-ui-using-override.png)
+- additional menu items ![Customised Workflow Orchestrator UI with extra summary card and menu items](../img/Custom-orchestrator-ui-using-override.png)
 
 ### Env variables
 
