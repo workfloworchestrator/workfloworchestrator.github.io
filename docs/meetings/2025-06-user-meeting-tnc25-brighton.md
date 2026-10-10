@@ -1,0 +1,7 @@
+# 2nd Workflow Orchestrator User Meeting, TNC25 in Brighton, June 9, 2025
+
+- WFO update ([slides](../presentations/2025-06-09 - Second Workflow Orchestrator User Meeting - TNC25 Brighton - public.pdf))
+- ESnet implementation update "Adapting WFO to Your Business Needs" ([slides](../presentations/2025-06-09 - WFO ESnet update - TNC25 Brighton.pdf))
+- HEAnet implementation update "HEAnet status report TNC25" ([slides](../presentations/2025-06-09 - WFO HEAnet update - TNC25 Brighton.pdf))
+- GARR implementation update "From Clicks to Code" ([slides](../presentations/2025-06-09 - WFO GARR update - TNC25 Brighton.pdf))
+- SURF implementation update "SURF orchestration landscape" ([slides](../presentations/2025-06-09 - WFO SURF update - TNC25 Brighton.pdf))
