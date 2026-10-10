@@ -1,3 +1,7 @@
+---
+description: "Overview of Workflow Orchestrator projects: Orchestrator Core, Orchestrator UI Library, LSO and Pydantic Forms."
+---
+
 # Projects
 
 The following Workflow Orchestrator projects have their own documentation page:

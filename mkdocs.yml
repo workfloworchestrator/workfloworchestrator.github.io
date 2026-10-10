@@ -1,5 +1,8 @@
 site_name: Workflow Orchestrator Programme
 site_url: https://workfloworchestrator.org
+site_description: >-
+  Workflow Orchestrator (WFO) is an open-source framework for automating and orchestrating network
+  service lifecycles, products and workflows.
 nav:
   - Home: index.md
   - Learn:
@@ -51,7 +54,15 @@ nav:
           - Leadership: leadership.md
       - Get Involved:
           - Members: members.md
-          - Meetings: meetings.md
+          - Meetings:
+              - Overview: meetings/index.md
+              - "2026-09 Developer Days Dublin": meetings/2026-09-user-developer-days-dublin.md
+              - "2026-06 User Meeting TNC26 Helsinki": meetings/2026-06-user-meeting-tnc26-helsinki.md
+              - "2026-04 Code Sprint Berkeley": meetings/2026-04-partner-code-sprint-berkeley.md
+              - "2025-09 Developer Days Amsterdam": meetings/2025-09-user-developer-days-amsterdam.md
+              - "2025-06 User Meeting TNC25 Brighton": meetings/2025-06-user-meeting-tnc25-brighton.md
+              - "2025-02 Code Sprint Berkeley": meetings/2025-02-partner-code-sprint-berkeley.md
+              - "2024-06 User Meeting TNC24 Rennes": meetings/2024-06-user-meeting-tnc24-rennes.md
           - Media: media.md
 
 theme:
@@ -188,6 +199,8 @@ plugins:
         "orchestrator-ui-library/adrs/0006-types-extended.md": "orchestrator-ui-library/decisions/records/0006-types-extended.md"
         "orchestrator-ui-library/adrs/0007-component-naming.md": "orchestrator-ui-library/decisions/records/0007-component-naming.md"
         "orchestrator-ui-library/adrs/0008-typescript-conventions.md": "orchestrator-ui-library/decisions/records/0008-typescript-conventions.md"
+        # 2026-10-10: meetings page split into a page per meeting
+        "meetings.md": "meetings/index.md"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages
