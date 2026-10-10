@@ -1,6 +1,8 @@
+# The Framework
+
 The Workflow Orchestrator programme contains multiple components for both the frontend and backend, as shown below:
 
-![Screenshot](../img/base-orchestrator-setup.png)
+![Workflow Orchestrator architecture: backend and frontend components](../img/base-orchestrator-setup.png)
 
 ## Backend
 
@@ -28,6 +30,6 @@ The Workflow Orchestrator UI can also be split into 2 major components. A fronte
 
 By tweaking the `example-orchestrator-ui` it is possible to easily add extra pages, cards on dashboard page, or change the rending of certain resource type. Examples of the possible changes is shown [here](orchestrator-ui.md) . This will leverage the default architecture, like shown below:
 
-![Screenshot](../img/custom-orchestrator-setup.png)
+![Customised Workflow Orchestrator UI deployment architecture](../img/custom-orchestrator-setup.png)
 
 Another approach could be to use individual components from the npm library and build your own application or integrate the components in an existing application.

@@ -1,3 +1,7 @@
+---
+description: "About the Workflow Orchestrator (WFO) programme: vision, goals and community-driven development of open-source network orchestration software."
+---
+
 # About
 
 ## Our Vision: Open, Efficient, and Community-Driven

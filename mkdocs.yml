@@ -1,5 +1,8 @@
 site_name: Workflow Orchestrator Programme
 site_url: https://workfloworchestrator.org
+site_description: >-
+  Workflow Orchestrator (WFO) is an open-source framework for automating and orchestrating network
+  service lifecycles, products and workflows.
 nav:
   - Home: index.md
   - Learn:
