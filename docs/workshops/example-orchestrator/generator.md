@@ -1,3 +1,5 @@
+# Product and Workflow Generator
+
 To create a new product configuration and wire up the python, database and workflows correctly you need to create a
 lot of boilerplate configuration and code. To speed up this process and make the experience as user friendly as
 possible, initial configuration of what a product looks like can be created with a yaml file.
