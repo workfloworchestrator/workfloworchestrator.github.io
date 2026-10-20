@@ -48,7 +48,8 @@ uv run --no-sync mkdocs build --strict   # what CI runs on PRs; deploy also uses
 ## Conventions
 
 - When moving or renaming a page, add an entry to the `redirects` plugin's `redirect_maps` in `mkdocs.yml`, under a
-  dated `# YYYY-MM-DD:` comment.
+  dated `# YYYY-MM-DD:` comment. Skip this when the URL doesn't change (e.g. `foo.md` -> `foo/index.md`, both served
+  at `/foo/`): the redirect stub would overwrite the page itself and cause a redirect loop.
 - Meeting material lives in `docs/meetings/` (an `index.md` overview plus one page per meeting, each listed in the
   nav). Slide PDFs are in `docs/presentations/` and linked as `../presentations/<file>.pdf`.
 - Pages may carry a `description:` front-matter field (quoted) for the meta description; the site-wide fallback is
