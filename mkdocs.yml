@@ -199,8 +199,6 @@ plugins:
         "orchestrator-ui-library/adrs/0006-types-extended.md": "orchestrator-ui-library/decisions/records/0006-types-extended.md"
         "orchestrator-ui-library/adrs/0007-component-naming.md": "orchestrator-ui-library/decisions/records/0007-component-naming.md"
         "orchestrator-ui-library/adrs/0008-typescript-conventions.md": "orchestrator-ui-library/decisions/records/0008-typescript-conventions.md"
-        # 2026-10-10: meetings page split into a page per meeting
-        "meetings.md": "meetings/index.md"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages
