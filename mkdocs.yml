@@ -200,7 +200,11 @@ plugins:
         "orchestrator-ui-library/adrs/0007-component-naming.md": "orchestrator-ui-library/decisions/records/0007-component-naming.md"
         "orchestrator-ui-library/adrs/0008-typescript-conventions.md": "orchestrator-ui-library/decisions/records/0008-typescript-conventions.md"
   # orchestrator-ui-library plugins
-  - termynal
+  # Inline the termynal assets only on pages with a `<!-- termynal -->` block. Loaded site-wide, its
+  # termynal.js clashes with orchestrator-core's own (both declare `class Termynal`) and its init code
+  # grabs orchestrator-core's `.termy` blocks, leaving them as empty terminals with just "restart".
+  - termynal:
+      include_assets: true
   - awesome-pages
   # Click a screenshot to open it full size in a lightbox. Listed last so it runs after the plugins
   # that inject HTML, and thus also covers images pulled in from the sub-projects. Images already
