@@ -4,13 +4,15 @@ description: "What the Orchestrator Agent can do: search, aggregate, look up, ex
 
 # What the agent can do
 
-<!-- OUTLINE: 2-line intro (ask questions about your subscriptions, products and workflows in plain language) + hero screenshot of LibreChat with a WFO answer -->
+Ask questions about your subscriptions, products and workflows in plain language, and start workflows from the
+same conversation. The Orchestrator Agent works on top of the search index and the MCP server of orchestrator-core.
 
-<!-- OUTLINE: status legend. "Available" = on orchestrator-agent main / in a release. "In development" = branch only. -->
+![LibreChat with an answer of the Orchestrator Agent](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
+
+Everything on this page is available in the `main` branch of the
+[orchestrator-agent](https://github.com/workfloworchestrator/orchestrator-agent) repository.
 
 ## Use cases
-
-<!-- OUTLINE: one card per use case: thumbnail · example question · what you get · status badge · links: Tutorial step | How-to | Reference | Virge.io showcase -->
 
 <div class="grid cards cols-3" markdown>
 
@@ -20,9 +22,8 @@ description: "What the Orchestrator Agent can do: search, aggregate, look up, ex
 
     Matching subscriptions, ranked by relevance.
 
-    - [How-to: Enable AI search](#)
-    - [Reference: Plugins](#)
-    - [Virge.io showcase](#)
+    - [How-to: Enable AI search](../../orchestrator-agent/guides/ai-search.md)
+    - [Reference: Plugins](../../orchestrator-agent/reference/plugins.md)
 
     ![Search](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
@@ -32,8 +33,7 @@ description: "What the Orchestrator Agent can do: search, aggregate, look up, ex
 
     Counts and trends, ready to chart.
 
-    - [Reference: Plugins](#)
-    - [Virge.io showcase](#)
+    - [Reference: Plugins](../../orchestrator-agent/reference/plugins.md)
 
     ![Aggregate and charts](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
@@ -43,7 +43,7 @@ description: "What the Orchestrator Agent can do: search, aggregate, look up, ex
 
     The full details of a single subscription.
 
-    - [Reference: Plugins](#)
+    - [Reference: Plugins](../../orchestrator-agent/reference/plugins.md)
 
     ![Look up by id](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
@@ -53,8 +53,7 @@ description: "What the Orchestrator Agent can do: search, aggregate, look up, ex
 
     A downloadable file with the results.
 
-    - [Reference: Plugins](#)
-    - [Virge.io showcase](#)
+    - [Reference: Plugins](../../orchestrator-agent/reference/plugins.md)
 
     ![Export](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
@@ -64,9 +63,8 @@ description: "What the Orchestrator Agent can do: search, aggregate, look up, ex
 
     A workflow started from the conversation.
 
-    - [How-to: Start workflows from chat](#)
-    - [Reference: Plugins](#)
-    - [Virge.io showcase](#)
+    - [How-to: Start workflows from chat](../../orchestrator-agent/guides/workflows-from-chat.md)
+    - [Reference: Plugins](../../orchestrator-agent/reference/plugins.md)
 
     ![Start workflows from chat](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
@@ -76,8 +74,7 @@ description: "What the Orchestrator Agent can do: search, aggregate, look up, ex
 
     One answer combining several systems.
 
-    - [How-to: Multi-agent over A2A](#)
-    - [Virge.io showcase](#)
+    - [How-to: Multi-agent over A2A](../../orchestrator-agent/guides/a2a-planner.md)
 
     ![Multi-agent: WFO + NetBox](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
@@ -87,25 +84,22 @@ description: "What the Orchestrator Agent can do: search, aggregate, look up, ex
 
     Model results side by side on your own questions.
 
-    - [How-to: Use your own LLM](#)
-    - [How-to: Benchmark prompt and model changes](#)
+    - [How-to: Use your own LLM](../../orchestrator-agent/guides/own-llm.md)
+    - [How-to: Benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md)
 
     ![Use your own LLM](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
-
--   **Result tables in chat**
-
-    *"Browse, select and send results back to the agent"*
-
-    Interactive tables inside the chat.
-
-    ![Result tables in chat](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
 </div>
 
 ## Where to start
 
-<!-- OUTLINE: link to the tutorial below, and to Projects / Orchestrator Agent for installation, guides and reference -->
+- Want to try it? Follow the [tutorial](tutorial.md), which runs the agent on the example orchestrator and walks
+  through these use cases.
+- Want to run it on your own orchestrator-core? Go to [Getting started](../../orchestrator-agent/getting-started.md)
+  in Projects / Orchestrator Agent, which also has the guides and the reference.
 
 ## WFO beyond networking
 
-<!-- OUTLINE: short note that WFO is domain-agnostic (see At A Glance) + neutral list of community write-ups of non-network uses -->
+Workflow Orchestrator is not limited to networks. It models products, services and workflows of any domain, see
+[At A Glance](../../architecture/at-a-glance.md). The agent works on the models of your own domain, so the same use
+cases apply wherever you use WFO.
