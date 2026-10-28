@@ -1,23 +1,78 @@
 # Getting started
 
-<!-- OUTLINE: tutorial: run the agent standalone against any orchestrator-core and ask a first question -->
+Run the agent next to your own orchestrator-core and ask it a first question. To try it on a ready-made setup
+instead, follow the [tutorial on the example orchestrator](../learn/orchestrator-agent/tutorial.md).
 
 ## Prerequisites
 
-<!-- OUTLINE: orchestrator-core with MCP_ENABLED, an LLM API key -->
+- An orchestrator-core with its MCP server enabled (`MCP_ENABLED=True`, installed with the `mcp` extra). See the
+  [MCP server reference](../orchestrator-core/reference-docs/mcp.md).
+- Network access to the orchestrator-core database, because the agent connects to it with `DATABASE_URI`.
+- An API key for an LLM, or an OpenAI-compatible endpoint of your own. See [Use your own LLM](guides/own-llm.md).
+- A search index that is built. Without embeddings the agent uses fuzzy search, see
+  [Enable AI search and embeddings](guides/ai-search.md).
 
 ## 1. Run the agent
 
-<!-- OUTLINE: container image (GHCR), docker compose, or uv -->
+The agent is published as a container image on the
+[GitHub Container Registry](https://github.com/workfloworchestrator/orchestrator-agent/pkgs/container/orchestrator-agent).
+You can also run it from source with [uv](https://docs.astral.sh/uv/):
+
+```shell
+git clone https://github.com/workfloworchestrator/orchestrator-agent.git
+cd orchestrator-agent
+cp .env.example .env
+uv sync
+uv run uvicorn orchestrator_agent.app:app --port 8080
+```
+
+Or build and run the container with `docker compose up --build`.
 
 ## 2. Point it at orchestrator-core
 
-<!-- OUTLINE: minimal configuration -->
+Edit `.env`. These are the settings you need for a first run:
+
+```shell
+DATABASE_URI=postgresql+psycopg://user:pass@localhost/orchestrator
+WFO_CORE_MCP_URL=http://localhost:8080/mcp
+AGENT_MODEL=openai:gpt-4o
+AGENT_API_KEY=<your key>
+OAUTH2_ACTIVE=false
+```
+
+Both the agent and orchestrator-core default to port 8080, so run one of them on another port or on another host and
+adjust `WFO_CORE_MCP_URL` and `BASE_URL` to match. Keep `OAUTH2_ACTIVE=false` for a local try-out only, see
+[Security and observability](guides/security-observability.md) before you expose the agent. All settings are listed in
+[Configuration](reference/configuration.md).
+
+At startup the agent checks the tools of the orchestrator-core MCP server. If a tool it needs is missing, it stops
+with an error that names the tool.
 
 ## 3. Ask a first question
 
-<!-- OUTLINE: demos/mcp_client.py or curl against /v1 -->
+Check that the agent is up:
+
+```shell
+curl http://localhost:8080/health
+```
+
+Then ask a question with the MCP demo client from the repository:
+
+```shell
+uv run demos/mcp_client.py search "active subscriptions"
+```
+
+Or send a chat completion to the OpenAI-compatible endpoint:
+
+```shell
+curl http://localhost:8080/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model": "wfo", "messages": [{"role": "user", "content": "How many subscriptions are there per status?"}]}'
+```
 
 ## Next steps
 
-<!-- OUTLINE: link to Guides: Connect LibreChat, Enable AI search -->
+- [Connect LibreChat](guides/librechat.md) to chat with the agent.
+- [Enable AI search and embeddings](guides/ai-search.md) for semantic and hybrid search.
+- [Teach the agent your domain](guides/domain-context.md) with your identifiers and terminology.
+- [Endpoints and protocols](reference/endpoints.md) for the other ways to reach the agent.
