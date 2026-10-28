@@ -221,6 +221,26 @@
     transition: none !important;
 }
 
+/* Protocol badges of the Orchestrator Agent: the same badge marks a protocol in the list and on each use case card
+   that uses it, so a reader can match them up. */
+.md-typeset .wfo-protocol {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 3.7em;
+  padding: 0.1em 0;
+  text-align: center;
+  border-radius: 1em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+.md-typeset .wfo-protocol--chat { background-color: #10A37F; }
+.md-typeset .wfo-protocol--a2a { background-color: #0067AC; }
+.md-typeset .wfo-protocol--agui { background-color: #7B4FBF; }
+.md-typeset .wfo-protocol--mcp { background-color: #C2410C; }
+
 /* Grid cards fixed to three columns on wide screens (add the "cols-3" class next to "grid cards").
    Material's default auto-fills as many 16rem columns as fit; fall back to it on narrow screens. */
 @media screen and (min-width: 40em) {

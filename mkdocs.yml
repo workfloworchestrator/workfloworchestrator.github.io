@@ -40,6 +40,7 @@ nav:
       - Orchestrator Agent:
           - What the agent can do: learn/orchestrator-agent/index.md
           - "Tutorial: run it on the example orchestrator": learn/orchestrator-agent/tutorial.md
+          - "Use case: chat in your own frontend": learn/orchestrator-agent/chat-in-your-frontend.md
   - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
   # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
   - Orchestrator UI Library: "!include ./orchestrator-ui-library/mkdocs/mkdocs.yml"

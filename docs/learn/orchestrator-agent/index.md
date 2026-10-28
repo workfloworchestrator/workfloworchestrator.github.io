@@ -4,19 +4,35 @@ description: "What the Orchestrator Agent can do: search, aggregate, look up, ex
 
 # What the agent can do
 
-Ask questions about your subscriptions, products and workflows in plain language, and start workflows from the
-same conversation. The Orchestrator Agent works on top of the search index and the MCP server of orchestrator-core.
+orchestrator-core can expose its API as tools over the [MCP server](../../orchestrator-core/reference-docs/mcp.md),
+so any agent can work with your WFO. The
+[Orchestrator Agent](https://github.com/workfloworchestrator/orchestrator-agent) is a ready-to-use agent built on those
+tools. See the [prerequisites](../../orchestrator-agent/getting-started.md#prerequisites) for what it needs to run.
 
-![LibreChat with an answer of the Orchestrator Agent](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
+The agent is reachable in several ways, so you can fit it into your own agentic setup:
 
-Everything on this page is available in the `main` branch of the
-[orchestrator-agent](https://github.com/workfloworchestrator/orchestrator-agent) repository.
+- <span class="wfo-protocol wfo-protocol--chat">Chat</span> **OpenAI chat completions**: use it as a chat model
+  in LibreChat or any other OpenAI-compatible client.
+- <span class="wfo-protocol wfo-protocol--a2a">A2A</span> **A2A**: let other agents, such as a planner, hand
+  questions and tasks to it.
+- <span class="wfo-protocol wfo-protocol--agui">AG-UI</span> **AG-UI**: stream answers, tables and charts into your
+  own web frontend.
+- <span class="wfo-protocol wfo-protocol--mcp">MCP</span> **MCP**: call it as a tool from MCP clients such as Claude
+  Code or an agent framework.
+
+See [Protocols](../../orchestrator-agent/index.md#protocols) for the endpoints. The use cases below are based on the
+[example orchestrator](https://github.com/workfloworchestrator/example-orchestrator). Search, aggregate, look up and
+export work over every protocol. The badges on a card show which protocol that example uses. To make the agent work
+well with your own products and naming, see
+[Teach the agent your domain](../../orchestrator-agent/guides/domain-context.md).
 
 ## Use cases
 
 <div class="grid cards cols-3" markdown>
 
 -   **Search**
+
+    <span class="wfo-protocol wfo-protocol--chat">Chat</span>
 
     *"Which L2VPNs run on node X?"*
 
@@ -29,6 +45,8 @@ Everything on this page is available in the `main` branch of the
 
 -   **Aggregate and charts**
 
+    <span class="wfo-protocol wfo-protocol--chat">Chat</span>
+
     *"How many subscriptions per product, per month?"*
 
     Counts and trends, ready to chart.
@@ -38,6 +56,8 @@ Everything on this page is available in the `main` branch of the
     ![Aggregate and charts](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
 -   **Look up by id**
+
+    <span class="wfo-protocol wfo-protocol--chat">Chat</span>
 
     *"Show subscription 3f2a…"*
 
@@ -49,6 +69,8 @@ Everything on this page is available in the `main` branch of the
 
 -   **Export**
 
+    <span class="wfo-protocol wfo-protocol--chat">Chat</span>
+
     *"Export all active core links to CSV"*
 
     A downloadable file with the results.
@@ -58,6 +80,8 @@ Everything on this page is available in the `main` branch of the
     ![Export](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
 -   **Start workflows from chat**
+
+    <span class="wfo-protocol wfo-protocol--chat">Chat</span> <span class="wfo-protocol wfo-protocol--a2a">A2A</span>
 
     *"Create a core link between Amsterdam and London"*
 
@@ -70,6 +94,8 @@ Everything on this page is available in the `main` branch of the
 
 -   **Multi-agent: WFO + NetBox**
 
+    <span class="wfo-protocol wfo-protocol--a2a">A2A</span>
+
     *"Which sites exist in NetBox, and how many nodes are in WFO?"*
 
     One answer combining several systems.
@@ -79,6 +105,8 @@ Everything on this page is available in the `main` branch of the
     ![Multi-agent: WFO + NetBox](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
 -   **Use your own LLM**
+
+    <span class="wfo-protocol wfo-protocol--chat">Chat</span>
 
     *"Compare models on your own data"*
 
@@ -103,3 +131,32 @@ Everything on this page is available in the `main` branch of the
 Workflow Orchestrator is not limited to networks. It models products, services and workflows of any domain, see
 [At A Glance](../../architecture/at-a-glance.md). The agent works on the models of your own domain, so the same use
 cases apply wherever you use WFO.
+
+<div class="grid cards cols-3" markdown>
+
+-   **Answers in your own portal**
+
+    <span class="wfo-protocol wfo-protocol--agui">AG-UI</span>
+
+    *"Which of my services renew next quarter?" then "export them"*
+
+    Answers, tables and charts streamed into a self-service portal of your own, with follow-ups on the same thread.
+
+    - [Use case: Chat in your own frontend](chat-in-your-frontend.md)
+    - [How-to: Build a frontend with AG-UI](../../orchestrator-agent/guides/ag-ui.md)
+
+    ![Answers in your own portal](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
+
+-   **WFO as a tool for your assistant**
+
+    <span class="wfo-protocol wfo-protocol--mcp">MCP</span>
+
+    *"Which products have no active subscriptions?"*
+
+    WFO questions answered from the assistant or agent framework you already use, such as Claude Code.
+
+    - [How-to: Use MCP clients](../../orchestrator-agent/guides/mcp-clients.md)
+
+    ![WFO as a tool for your assistant](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
+
+</div>
