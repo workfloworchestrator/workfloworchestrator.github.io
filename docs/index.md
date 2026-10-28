@@ -105,6 +105,18 @@ particular order.
     [Source](https://github.com/workfloworchestrator/orchestrator-ui-library)
     · [Docs](orchestrator-ui-library/index.md)
 
+-   **Orchestrator Agent**
+
+    [![GitHub stars](https://img.shields.io/github/stars/workfloworchestrator/orchestrator-agent?style=flat)](https://github.com/workfloworchestrator/orchestrator-agent/stargazers)
+    ![New](https://img.shields.io/badge/New-brightgreen?style=flat)
+
+    An AI agent that answers questions about your subscriptions and starts workflows from chat,
+    over OpenAI, A2A, AG-UI and MCP.
+
+    [Source](https://github.com/workfloworchestrator/orchestrator-agent)
+    · [Docs](orchestrator-agent/index.md)
+    · [What it can do](learn/orchestrator-agent/index.md)
+
 -   **Orchestrator Example UI**
 
     [![GitHub stars](https://img.shields.io/github/stars/workfloworchestrator/example-orchestrator-ui?style=flat)](https://github.com/workfloworchestrator/example-orchestrator-ui/stargazers)
@@ -159,16 +171,6 @@ particular order.
     A bidirectional SOAP to gRPC translating proxy server for the NSI protocol.
 
     [Source](https://github.com/workfloworchestrator/polynsi)
-
--   **Orchestrator Agent**
-
-    [![GitHub stars](https://img.shields.io/github/stars/workfloworchestrator/orchestrator-agent?style=flat)](https://github.com/workfloworchestrator/orchestrator-agent/stargazers)
-
-    An AI agent that answers questions about your subscriptions and starts workflows from chat,
-    over OpenAI, A2A, AG-UI and MCP.
-
-    [Source](https://github.com/workfloworchestrator/orchestrator-agent)
-    · [Docs](orchestrator-agent/index.md)
 
 </div>
 
