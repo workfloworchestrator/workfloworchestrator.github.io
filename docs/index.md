@@ -111,7 +111,7 @@ particular order.
     ![New](https://img.shields.io/badge/New-brightgreen?style=flat)
 
     An AI agent that answers questions about your subscriptions and starts workflows from chat,
-    over OpenAI, A2A, AG-UI and MCP.
+    over A2A, AG-UI and MCP.
 
     [Source](https://github.com/workfloworchestrator/orchestrator-agent)
     · [Docs](orchestrator-agent/index.md)

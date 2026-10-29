@@ -11,13 +11,16 @@ tools. See the [prerequisites](../../orchestrator-agent/getting-started.md#prere
 
 The agent is reachable in several ways, so you can fit it into your own agentic setup:
 
-- <span class="wfo-protocol wfo-protocol--chat">Chat</span> **OpenAI chat completions**: use it as a chat model
+<span class="wfo-protocol wfo-protocol--chat">Chat</span> **OpenAI chat completions**: use it as a chat model
   in LibreChat or any other OpenAI-compatible client.
-- <span class="wfo-protocol wfo-protocol--a2a">A2A</span> **A2A**: let other agents, such as a planner, hand
+
+<span class="wfo-protocol wfo-protocol--a2a">A2A</span> **A2A**: let other agents, such as a planner, hand
   questions and tasks to it.
-- <span class="wfo-protocol wfo-protocol--agui">AG-UI</span> **AG-UI**: stream answers, tables and charts into your
+
+<span class="wfo-protocol wfo-protocol--agui">AG-UI</span> **AG-UI**: stream answers, tables and charts into your
   own web frontend.
-- <span class="wfo-protocol wfo-protocol--mcp">MCP</span> **MCP**: call it as a tool from MCP clients such as Claude
+
+<span class="wfo-protocol wfo-protocol--mcp">MCP</span> **MCP**: call it as a tool from MCP clients such as Claude
   Code or an agent framework.
 
 See [Protocols](../../orchestrator-agent/index.md#protocols) for the endpoints. The use cases below are based on the
