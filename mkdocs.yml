@@ -38,9 +38,11 @@ nav:
               - L2 Point-to-Point: workshops/example-orchestrator/create-your-own.md
               - Product and Workflow Generator: workshops/example-orchestrator/generator.md
       - Orchestrator Agent:
-          - What the agent can do: learn/orchestrator-agent/index.md
-          - "Tutorial: run it on the example orchestrator": learn/orchestrator-agent/tutorial.md
-          - "Use case: chat in your own frontend": learn/orchestrator-agent/chat-in-your-frontend.md
+          - "Overview: from first question to production": learn/orchestrator-agent/index.md
+          - Tutorials:
+              - "Run it on the example orchestrator": learn/orchestrator-agent/tutorials/example-orchestrator.md
+          - Use cases:
+              - "Chat in your own frontend": learn/orchestrator-agent/use-cases/chat-in-your-frontend.md
   - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
   # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
   - Orchestrator UI Library: "!include ./orchestrator-ui-library/mkdocs/mkdocs.yml"
@@ -205,6 +207,9 @@ plugins:
         "orchestrator-ui-library/adrs/0006-types-extended.md": "orchestrator-ui-library/decisions/records/0006-types-extended.md"
         "orchestrator-ui-library/adrs/0007-component-naming.md": "orchestrator-ui-library/decisions/records/0007-component-naming.md"
         "orchestrator-ui-library/adrs/0008-typescript-conventions.md": "orchestrator-ui-library/decisions/records/0008-typescript-conventions.md"
+        # 2026-10-29: Orchestrator Agent tutorial and use case moved into subfolders
+        "learn/orchestrator-agent/tutorial.md": "learn/orchestrator-agent/tutorials/example-orchestrator.md"
+        "learn/orchestrator-agent/chat-in-your-frontend.md": "learn/orchestrator-agent/use-cases/chat-in-your-frontend.md"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages

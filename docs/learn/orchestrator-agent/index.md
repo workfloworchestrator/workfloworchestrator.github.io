@@ -1,13 +1,20 @@
 ---
-description: "What the Orchestrator Agent can do: search, aggregate, look up, export and start workflows from chat."
+description: "The Orchestrator Agent from first question to production: what it can do, how to try it, what data it touches, and how to run it in your own stack."
 ---
 
-# What the agent can do
+# Orchestrator Agent: from first question to production
 
-Orchestrator Core can expose its API as tools over the [MCP server](../../orchestrator-core/reference-docs/mcp.md),
-so any agent can work with your WFO. The
-[Orchestrator Agent](https://github.com/workfloworchestrator/orchestrator-agent) is a ready-to-use agent built on those
-tools. See the [prerequisites](../../orchestrator-agent/getting-started.md#prerequisites) for what it needs to run.
+The [Orchestrator Agent](https://github.com/workfloworchestrator/orchestrator-agent) lets people and other agents work
+with your WFO in plain language: search and count subscriptions, look up details, export results and start workflows.
+It is a ready-to-use agent built on the tools that the
+[MCP server](../../orchestrator-core/reference-docs/mcp.md) of Orchestrator Core exposes.
+
+This page follows the questions you have along the way, from knowing nothing about the agent to running it live. See
+what it can do, try it on the example orchestrator, learn what data it touches, apply it to your own stack, deploy it
+and keep it working. Each section is short and points to the tutorial, the guides and the reference that go into
+detail.
+
+## What can I do with it?
 
 The agent is reachable in several ways, so you can fit it into your own agentic setup:
 
@@ -23,13 +30,9 @@ The agent is reachable in several ways, so you can fit it into your own agentic 
 <span class="wfo-protocol wfo-protocol--mcp">MCP</span> **MCP**: call it as a tool from MCP clients such as Claude
   Code or an agent framework.
 
-See [Protocols](../../orchestrator-agent/index.md#protocols) for the endpoints. The use cases below are based on the
+The use cases below are based on the
 [example orchestrator](https://github.com/workfloworchestrator/example-orchestrator). Search, aggregate, look up and
-export work over every protocol. The badges on a card show which protocol that example uses. To make the agent work
-well with your own products and naming, see
-[Teach the agent your domain](../../orchestrator-agent/guides/domain-context.md).
-
-## Use cases
+export work over every protocol.
 
 <div class="grid cards cols-3" markdown>
 
@@ -41,7 +44,7 @@ well with your own products and naming, see
 
     Matching subscriptions, ranked by relevance.
 
-    - [How-to: Enable AI search](../../orchestrator-agent/guides/ai-search.md)
+    - [How-to: Enable AI search](../../orchestrator-core/reference-docs/ai-search.md#running-it)
     - [Reference: Plugins](../../orchestrator-agent/reference/plugins.md)
 
     ![Search](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
@@ -122,14 +125,7 @@ well with your own products and naming, see
 
 </div>
 
-## Where to start
-
-- Want to try it? Follow the [tutorial](tutorial.md), which runs the agent on the example orchestrator and walks
-  through these use cases.
-- Want to run it on your own Orchestrator Core? Go to [Getting started](../../orchestrator-agent/getting-started.md)
-  in Projects / Orchestrator Agent, which also has the guides and the reference.
-
-## Orchestrator agent beyond networking
+### Beyond networking
 
 Workflow Orchestrator is not limited to networks. It models products, services and workflows of any domain, see
 [At A Glance](../../architecture/at-a-glance.md). The agent works on the models of your own domain, so the same use
@@ -145,7 +141,7 @@ cases apply wherever you use WFO.
 
     Answers, tables and charts streamed into a self-service portal of your own, with follow-ups on the same thread.
 
-    - [Use case: Chat in your own frontend](chat-in-your-frontend.md)
+    - [Use case: Chat in your own frontend](use-cases/chat-in-your-frontend.md)
     - [How-to: Build a frontend with AG-UI](../../orchestrator-agent/guides/ag-ui.md)
 
     ![Answers in your own portal](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
@@ -163,3 +159,52 @@ cases apply wherever you use WFO.
     ![WFO as a tool for your assistant](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
 </div>
+
+## How can I try it out myself?
+
+Follow the [tutorial](tutorials/example-orchestrator.md). It runs the agent, a planner and a NetBox agent on the example orchestrator, with
+LibreChat as the chat frontend, and walks through the use cases above. You only need the example orchestrator and an
+API key for an LLM provider.
+
+## How does it work, and what data does the agent touch?
+
+- [How it works](../../orchestrator-agent/architecture/index.md): the agent is a thin layer that calls the tools of
+  the MCP server of Orchestrator Core. It has no search index or domain logic of its own.
+- [Where your data goes](../../orchestrator-agent/architecture/index.md#where-your-data-goes): what is sent to the
+  LLM, to Orchestrator Core and to observability tools, and what the agent stores itself.
+- [Read tools and write tools](../../orchestrator-agent/architecture/index.md#read-tools-and-write-tools): what the
+  agent can only read, and [why workflows need approval](../../orchestrator-agent/architecture/index.md#why-workflows-need-approval)
+  before anything changes.
+
+## How can I apply it to our stack?
+
+- [Getting started](../../orchestrator-agent/getting-started.md): run the agent on your own Orchestrator Core. See
+  the [prerequisites](../../orchestrator-agent/getting-started.md#prerequisites) for what it needs.
+- Connect your clients: [LibreChat](../../orchestrator-agent/guides/librechat.md),
+  [MCP clients](../../orchestrator-agent/guides/mcp-clients.md),
+  [an A2A planner](../../orchestrator-agent/guides/a2a-planner.md) or
+  [your own frontend with AG-UI](../../orchestrator-agent/guides/ag-ui.md).
+- Fit it to your data: [Teach the agent your domain](../../orchestrator-agent/guides/domain-context.md),
+  [Add your own tools, services and agents](../../orchestrator-agent/guides/own-tools.md) and
+  [Enable AI search and embeddings](../../orchestrator-core/reference-docs/ai-search.md#running-it).
+- Choose your model: [Use your own LLM](../../orchestrator-agent/guides/own-llm.md).
+- Look up the details in the reference:
+  [Endpoints and protocols](../../orchestrator-agent/reference/endpoints.md) and
+  [Configuration](../../orchestrator-agent/reference/configuration.md).
+
+## How do I deploy it live?
+
+- [Running the agent in your own stack](../../orchestrator-agent/architecture/production.md): the choices for
+  production, such as which clients connect, who they act as, where the agent runs, which model it uses and what you put
+  around it.
+- [Security and observability](../../orchestrator-agent/guides/security-observability.md): authentication towards
+  Orchestrator Core and tracing.
+
+## How do I keep it working?
+
+- [How we evaluate the agent](../../orchestrator-agent/architecture/evaluation.md): why prompt and model changes need
+  a benchmark.
+- [Benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md): run the evals before you change a
+  prompt or a model, and gate CI on them.
+- [Security and observability](../../orchestrator-agent/guides/security-observability.md#trace-with-another-opentelemetry-backend):
+  follow requests and costs in your observability platform.
