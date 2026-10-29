@@ -1,16 +1,16 @@
 # Enable AI search and embeddings
 
 !!! info "Goal"
-    Turn on semantic and hybrid search in orchestrator-core. Without embeddings the agent works, but it matches on
+    Turn on semantic and hybrid search in Orchestrator Core. Without embeddings the agent works, but it matches on
     fuzzy keywords and structured filters only.
 
-The search index, the retrievers and the embeddings all live in orchestrator-core. The agent only chooses a retriever
+The search index, the retrievers and the embeddings all live in Orchestrator Core. The agent only chooses a retriever
 per question: hybrid for identifiers, semantic for descriptive questions, and fuzzy otherwise. When embeddings are
 off, it uses fuzzy automatically and stops offering the other two, so no change to the agent is needed.
 
 ## Steps
 
-1. Configure an embedding provider in orchestrator-core:
+1. Configure an embedding provider in Orchestrator Core:
 
     ```shell
     EMBEDDING_API_ENABLED=True
@@ -29,7 +29,7 @@ off, it uses fuzzy automatically and stops offering the other two, so no change 
 
     `python main.py db upgrade` does not update the index unless you pass `--index`.
 
-3. Restart orchestrator-core.
+3. Restart Orchestrator Core.
 
 ## Verify it works
 

@@ -1,13 +1,13 @@
 # Getting started
 
-Run the agent next to your own orchestrator-core and ask it a first question. To try it on a ready-made setup
+Run the agent next to your own Orchestrator Core and ask it a first question. To try it on a ready-made setup
 instead, follow the [tutorial on the example orchestrator](../learn/orchestrator-agent/tutorial.md).
 
 ## Prerequisites
 
-- An orchestrator-core with its MCP server enabled (`MCP_ENABLED=True`, installed with the `mcp` extra). See the
+- An Orchestrator Core with its MCP server enabled (`MCP_ENABLED=True`, installed with the `mcp` extra). See the
   [MCP server reference](../orchestrator-core/reference-docs/mcp.md).
-- Network access to the orchestrator-core database, because the agent connects to it with `DATABASE_URI`.
+- Network access to the Orchestrator Core database, because the agent connects to it with `DATABASE_URI`.
 - An API key for an LLM, or an OpenAI-compatible endpoint of your own. See [Use your own LLM](guides/own-llm.md).
 - A search index that is built. Without embeddings the agent uses fuzzy search, see
   [Enable AI search and embeddings](guides/ai-search.md).
@@ -28,7 +28,7 @@ uv run uvicorn orchestrator_agent.app:app --port 8080
 
 Or build and run the container with `docker compose up --build`.
 
-## 2. Point it at orchestrator-core
+## 2. Point it at Orchestrator Core
 
 Edit `.env`. These are the settings you need for a first run:
 
@@ -40,12 +40,12 @@ AGENT_API_KEY=<your key>
 OAUTH2_ACTIVE=false
 ```
 
-Both the agent and orchestrator-core default to port 8080, so run one of them on another port or on another host and
+Both the agent and Orchestrator Core default to port 8080, so run one of them on another port or on another host and
 adjust `WFO_CORE_MCP_URL` and `BASE_URL` to match. Keep `OAUTH2_ACTIVE=false` for a local try-out only, see
 [Security and observability](guides/security-observability.md) before you expose the agent. All settings are listed in
 [Configuration](reference/configuration.md).
 
-At startup the agent checks the tools of the orchestrator-core MCP server. If a tool it needs is missing, it stops
+At startup the agent checks the tools of the Orchestrator Core MCP server. If a tool it needs is missing, it stops
 with an error that names the tool.
 
 ## 3. Ask a first question

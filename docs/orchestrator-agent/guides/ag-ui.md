@@ -15,7 +15,7 @@
    URL. The agent also puts a rendered table or chart in the text of the answer, so a client that only shows text
    still shows the result.
 
-The AG-UI endpoint runs the agent without the workflow form-fill skill, and the write tools of orchestrator-core stay
+The AG-UI endpoint runs the agent without the workflow form-fill skill, and the write tools of Orchestrator Core stay
 reachable only through that skill. To start workflows from chat, see
 [Start workflows from chat](workflows-from-chat.md).
 

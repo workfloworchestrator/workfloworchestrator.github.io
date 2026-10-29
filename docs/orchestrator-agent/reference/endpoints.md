@@ -38,5 +38,5 @@ thread keeps its history. See [Build a frontend with AG-UI](../guides/ag-ui.md).
 ## Authentication
 
 With `OAUTH2_ACTIVE=true` (the default) incoming requests are authenticated with OIDC. With
-`OAUTH2_ACTIVE=false` the agent accepts unauthenticated requests. Calls from the agent to orchestrator-core
+`OAUTH2_ACTIVE=false` the agent accepts unauthenticated requests. Calls from the agent to Orchestrator Core
 are controlled separately by `OAUTH2_OUTBOUND_ACTIVE`. See [Configuration](configuration.md#authentication).

@@ -1,7 +1,7 @@
 # Evals
 
 The `evals/` folder of the agent repository holds a golden-set benchmark built on
-[pydantic-evals](https://ai.pydantic.dev/evals/). The agent runs in-process against a live orchestrator-core MCP
+[pydantic-evals](https://ai.pydantic.dev/evals/). The agent runs in-process against a live Orchestrator Core MCP
 server, so the benchmark measures agent behaviour only: which tools are called, in which order and with which
 arguments. See [How we evaluate the agent](../architecture/evaluation.md) for the reasoning and
 [Benchmark prompt and model changes](../guides/evals.md) for a walkthrough.
@@ -34,7 +34,7 @@ Tool calls are read from the OpenTelemetry spans that pydantic-ai emits.
 
 ## Commands
 
-Start the backing services, an orchestrator-core with the MCP server and a seeded database, then run from `evals/`:
+Start the backing services, an Orchestrator Core with the MCP server and a seeded database, then run from `evals/`:
 
 ```shell
 docker compose -f docker-compose.yml up -d --wait

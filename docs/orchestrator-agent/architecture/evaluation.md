@@ -7,7 +7,7 @@ right order, with the right arguments? How to run them is described in [Evals](.
 ## What we measure
 
 We measure the **trajectory** and not the wording of the answer. The agent runs in-process against a live
-orchestrator-core with a seeded database, and the tool calls are read from the OpenTelemetry spans of pydantic-ai.
+Orchestrator Core with a seeded database, and the tool calls are read from the OpenTelemetry spans of pydantic-ai.
 This has a few consequences:
 
 - A change of prompt, model or plugin shows up as a different set of tool calls, which is a much more stable signal

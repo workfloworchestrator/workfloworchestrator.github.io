@@ -29,13 +29,13 @@ Orchestrator Agent that talks to it over [AG-UI](https://docs.ag-ui.com/).
 
 ## How it fits together
 
-<!-- OUTLINE: diagram of the frontend -> POST /agui -> Orchestrator Agent -> MCP -> orchestrator-core. Mention
+<!-- OUTLINE: diagram of the frontend -> POST /agui -> Orchestrator Agent -> MCP -> Orchestrator Core. Mention
 that authentication uses the same bearer token as the rest of WFO. -->
 
 ```mermaid
 flowchart LR
     F[Your frontend with orchestrator-agent-chat] -->|AG-UI /agui| A[Orchestrator Agent]
-    A -->|MCP| O[orchestrator-core]
+    A -->|MCP| O[Orchestrator Core]
 ```
 
 ## Chat popup

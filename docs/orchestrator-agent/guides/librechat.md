@@ -46,7 +46,7 @@ container itself.
 - `askUserQuestion: true` offers the ask-user tool to the agent. Without it no workflow form is opened.
 - `titleConvo: false` stops LibreChat from asking the agent for a chat title before the first answer.
 - When the agent runs with `OAUTH2_ACTIVE=true`, forward the token of the signed-in user with the `Authorization`
-  header. The agent passes it on to orchestrator-core.
+  header. The agent passes it on to Orchestrator Core.
 
 Restart LibreChat after you change `librechat.yaml`.
 

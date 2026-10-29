@@ -39,7 +39,8 @@ them the agent uses fuzzy search and does not offer the other two.
 The behaviour of each capability is a Markdown prompt in the [plugins](../reference/plugins.md) of the agent. To change
 a prompt or add a plugin, fork the agent, edit or add a file in `capabilities/plugins/` and restart. Plugins are not
 loaded from outside the agent, and they describe intent rather than tool names. How a tool is used is described by the
-tool descriptions in orchestrator-core.
+tool descriptions in Orchestrator Core. To give the agent data that no tool serves yet, see
+[Give the agent your own tools](own-tools.md).
 
 ## Verify it works
 

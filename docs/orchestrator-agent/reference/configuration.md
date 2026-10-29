@@ -7,7 +7,7 @@ The agent is configured through environment variables. Copy `.env.example` from 
 | Variable | Default | Description |
 | --- | --- | --- |
 | `DATABASE_URI` | *(required)* | PostgreSQL connection URI for the WFO database. A bare `postgresql://` scheme is coerced to `postgresql+psycopg://` |
-| `WFO_CORE_MCP_URL` | `http://localhost:8080/mcp` | URL of the orchestrator-core MCP server that serves the domain tools the agent calls |
+| `WFO_CORE_MCP_URL` | `http://localhost:8080/mcp` | URL of the Orchestrator Core MCP server that serves the domain tools the agent calls |
 | `BASE_URL` | `http://localhost:8080` | Public URL of the agent, advertised in the A2A agent card |
 
 ## Model
@@ -34,7 +34,7 @@ See [Teach the agent your domain](../guides/domain-context.md).
 | Variable | Default | Description |
 | --- | --- | --- |
 | `OAUTH2_ACTIVE` | `true` | Authenticate incoming requests with OIDC |
-| `OAUTH2_OUTBOUND_ACTIVE` | *(unset)* | Authenticate outgoing requests to orchestrator-core with OAuth2 client credentials. When unset it follows `OAUTH2_ACTIVE` |
+| `OAUTH2_OUTBOUND_ACTIVE` | *(unset)* | Authenticate outgoing requests to Orchestrator Core with OAuth2 client credentials. When unset it follows `OAUTH2_ACTIVE` |
 | `OIDC_BASE_URL` | *(none)* | Base URL of the OIDC provider. Required when `OAUTH2_ACTIVE=true` |
 | `OIDC_CONF_URL` | *(none)* | OIDC discovery document URL. Required when `OAUTH2_ACTIVE=true` |
 | `OAUTH2_RESOURCE_SERVER_ID` | *(none)* | OAuth2 client id. Required when `OAUTH2_ACTIVE=true` |

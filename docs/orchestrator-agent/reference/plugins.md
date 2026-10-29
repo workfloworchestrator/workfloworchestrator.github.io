@@ -2,11 +2,11 @@
 
 Each capability of the agent is a plugin: a Markdown file with YAML frontmatter, shipped in the agent under
 `capabilities/plugins/`. The body is the prompt. The plugins describe *what* to do and the tool descriptions served by
-orchestrator-core describe *how* to use each tool. See [How it works](../architecture/index.md) for the design.
+Orchestrator Core describe *how* to use each tool. See [How it works](../architecture/index.md) for the design.
 
 All plugins are always on. Every plugin is also advertised as a skill in the A2A agent card.
 
-| Plugin | Tools from orchestrator-core | Output |
+| Plugin | Tools from Orchestrator Core | Output |
 | --- | --- | --- |
 | [search](#search) | `search` | Table of results |
 | [aggregate](#aggregate) | `aggregate` | Chart, or a number |

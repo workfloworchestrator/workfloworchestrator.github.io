@@ -4,7 +4,7 @@ description: "What the Orchestrator Agent can do: search, aggregate, look up, ex
 
 # What the agent can do
 
-orchestrator-core can expose its API as tools over the [MCP server](../../orchestrator-core/reference-docs/mcp.md),
+Orchestrator Core can expose its API as tools over the [MCP server](../../orchestrator-core/reference-docs/mcp.md),
 so any agent can work with your WFO. The
 [Orchestrator Agent](https://github.com/workfloworchestrator/orchestrator-agent) is a ready-to-use agent built on those
 tools. See the [prerequisites](../../orchestrator-agent/getting-started.md#prerequisites) for what it needs to run.
@@ -123,10 +123,10 @@ well with your own products and naming, see
 
 - Want to try it? Follow the [tutorial](tutorial.md), which runs the agent on the example orchestrator and walks
   through these use cases.
-- Want to run it on your own orchestrator-core? Go to [Getting started](../../orchestrator-agent/getting-started.md)
+- Want to run it on your own Orchestrator Core? Go to [Getting started](../../orchestrator-agent/getting-started.md)
   in Projects / Orchestrator Agent, which also has the guides and the reference.
 
-## WFO beyond networking
+## Orchestrator agent beyond networking
 
 Workflow Orchestrator is not limited to networks. It models products, services and workflows of any domain, see
 [At A Glance](../../architecture/at-a-glance.md). The agent works on the models of your own domain, so the same use

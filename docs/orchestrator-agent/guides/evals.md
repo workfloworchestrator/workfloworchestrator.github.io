@@ -5,7 +5,7 @@
 
 ## Steps
 
-1. Start the backing services, an orchestrator-core with the MCP server and a seeded database, and install the
+1. Start the backing services, an Orchestrator Core with the MCP server and a seeded database, and install the
    dependencies. From the `evals/` folder of the agent repository:
 
     ```shell

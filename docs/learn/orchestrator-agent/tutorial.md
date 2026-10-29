@@ -54,7 +54,7 @@ This adds the services below to the stack.
 | `wfo-agent` | The Orchestrator Agent. All its tools come from the MCP server of the orchestrator |
 | `inventory-agent` | Reads NetBox through `netbox-mcp` |
 
-The orchestrator needs no extra service, because orchestrator-core has a built-in MCP server. It is enabled with
+The orchestrator needs no extra service, because Orchestrator Core has a built-in MCP server. It is enabled with
 `MCP_ENABLED=True` in the stack and served at `http://localhost:8080/mcp`.
 
 ## 3. Seed data
@@ -125,6 +125,6 @@ orchestrator has started.
 
 ## Next steps
 
-- [Run the agent on your own orchestrator-core](../../orchestrator-agent/getting-started.md)
+- [Run the agent on your own Orchestrator Core](../../orchestrator-agent/getting-started.md)
 - [Guides](../../orchestrator-agent/guides/librechat.md) to connect other clients and configure the agent
 - [What the agent can do](index.md)

@@ -62,6 +62,7 @@ nav:
               - Start workflows from chat: orchestrator-agent/guides/workflows-from-chat.md
               - Use your own LLM: orchestrator-agent/guides/own-llm.md
               - Teach the agent your domain: orchestrator-agent/guides/domain-context.md
+              - Give the agent your own tools: orchestrator-agent/guides/own-tools.md
               - Security and observability: orchestrator-agent/guides/security-observability.md
               - Enable AI search and embeddings: orchestrator-agent/guides/ai-search.md
               - Benchmark prompt and model changes: orchestrator-agent/guides/evals.md

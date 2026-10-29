@@ -7,10 +7,9 @@ description: "Orchestrator Agent: an AI agent for Workflow Orchestrator that ans
 The Orchestrator Agent is an AI agent for Workflow Orchestrator. It answers questions about your subscriptions,
 products, workflows and processes, and starts workflows from a conversation, with an approval of the person before
 anything changes. It is a thin service on top of the search index and the MCP server of
-[orchestrator-core](../orchestrator-core/index.md), and it needs a running orchestrator-core to work.
+[Orchestrator Core](../orchestrator-core/index.md), and it needs a running Orchestrator Core to work.
 
-It is for teams that run WFO and want their users, or their own agents, to work with it in plain language. To see what
-it can do first, read [What the agent can do](../learn/orchestrator-agent/index.md).
+To see what it can do read [What the agent can do](../learn/orchestrator-agent/index.md).
 
 ## Protocols
 
@@ -24,12 +23,6 @@ The same agent is available over four protocols.
 | MCP clients | MCP | `/mcp` |
 
 See [Endpoints and protocols](reference/endpoints.md) for the details.
-
-## Status
-
-The pages in this section describe the `main` branch of the
-[orchestrator-agent](https://github.com/workfloworchestrator/orchestrator-agent) repository, which is published as a
-container image on the GitHub Container Registry. Work that is only on a branch is not described here.
 
 ## Documentation
 

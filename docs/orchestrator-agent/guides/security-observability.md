@@ -12,7 +12,7 @@
 ### Authenticate incoming requests
 
 With `OAUTH2_ACTIVE=true`, which is the default, the agent authenticates requests with OIDC, using `oauth2_lib` like
-orchestrator-core. Set the details of your identity provider:
+Orchestrator Core. Set the details of your identity provider:
 
 ```shell
 OAUTH2_ACTIVE=true
@@ -24,17 +24,17 @@ OAUTH2_RESOURCE_SERVER_SECRET=<client secret>
 
 `OAUTH2_ACTIVE=false` turns authentication off. Use it only for local development.
 
-### Authenticate towards orchestrator-core
+### Authenticate towards Orchestrator Core
 
-The agent calls orchestrator-core for its tools. `OAUTH2_OUTBOUND_ACTIVE` controls whether it authenticates those
+The agent calls Orchestrator Core for its tools. `OAUTH2_OUTBOUND_ACTIVE` controls whether it authenticates those
 calls with OAuth2 client credentials. When it is unset it follows `OAUTH2_ACTIVE`. Set `OAUTH2_TOKEN_URL` to the token
-endpoint. Set it to `false` when orchestrator-core accepts the calls without a token, independent of how clients
+endpoint. Set it to `false` when Orchestrator Core accepts the calls without a token, independent of how clients
 authenticate to the agent.
 
 ### Restrict where the agent listens
 
 Bind published ports to a specific address and put the agent behind a reverse proxy that terminates TLS. The agent
-and orchestrator-core read the database, so keep `DATABASE_URI` credentials in a secret store and give the agent a
+and Orchestrator Core read the database, so keep `DATABASE_URI` credentials in a secret store and give the agent a
 read-only database role where your deployment allows it.
 
 ### Trace with Langfuse
