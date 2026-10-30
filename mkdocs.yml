@@ -37,6 +37,9 @@ nav:
           - Create your own product and workflows:
               - L2 Point-to-Point: workshops/example-orchestrator/create-your-own.md
               - Product and Workflow Generator: workshops/example-orchestrator/generator.md
+      - Orchestrator Agent:
+          - What the agent can do: learn/orchestrator-agent/index.md
+          - "Tutorial: run it on the example orchestrator": learn/orchestrator-agent/tutorial.md
   - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
   # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
   - Orchestrator UI Library: "!include ./orchestrator-ui-library/mkdocs/mkdocs.yml"
@@ -47,6 +50,28 @@ nav:
       - Overview: projects.md
       - Pydantic Forms: "!include ./pydantic-forms/mkdocs.yml"
       # INCLUDED_REPO: https://github.com/workfloworchestrator/pydantic-forms.git
+      - Orchestrator Agent:
+          - Overview: orchestrator-agent/index.md
+          - Getting started: orchestrator-agent/getting-started.md
+          - Guides:
+              - Connect LibreChat: orchestrator-agent/guides/librechat.md
+              - Use MCP clients: orchestrator-agent/guides/mcp-clients.md
+              - Use the agent from an A2A planner: orchestrator-agent/guides/a2a-planner.md
+              - Build a frontend with AG-UI: orchestrator-agent/guides/ag-ui.md
+              - Start workflows from chat: orchestrator-agent/guides/workflows-from-chat.md
+              - Use your own LLM: orchestrator-agent/guides/own-llm.md
+              - Teach the agent your domain: orchestrator-agent/guides/domain-context.md
+              - Security and observability: orchestrator-agent/guides/security-observability.md
+              - Enable AI search and embeddings: orchestrator-agent/guides/ai-search.md
+              - Benchmark prompt and model changes: orchestrator-agent/guides/evals.md
+          - Architecture:
+              - How it works: orchestrator-agent/architecture/index.md
+              - How we evaluate the agent: orchestrator-agent/architecture/evaluation.md
+          - Reference:
+              - Endpoints and protocols: orchestrator-agent/reference/endpoints.md
+              - Configuration: orchestrator-agent/reference/configuration.md
+              - Plugins: orchestrator-agent/reference/plugins.md
+              - Evals: orchestrator-agent/reference/evals.md
   - Community:
       - The Programme:
           - About: about.md
