@@ -208,3 +208,16 @@ API key for an LLM provider.
   prompt or a model, and gate CI on them.
 - [Security and observability](../../orchestrator-agent/guides/security-observability.md#trace-with-another-opentelemetry-backend):
   follow requests and costs in your observability platform.
+
+## Special thanks
+
+<div class="grid cards" markdown>
+
+-   [![GÉANT](../../img/geant-logo.png){ align=right width="160" }](https://geant.org)
+    Special thanks to **GÉANT** for funding this work through the
+    [NETDEV Incubator](https://wiki.geant.org/spaces/NETDEV/pages/613122207/NETDEV+Incubator).
+    Two incubator projects, [*WFO RAG agent and LLM integration*](https://wiki.geant.org/spaces/NETDEV/pages/631443164/NETDEV+Incubator+proposals)
+    (2025) and *A2A protocol integration, agent refactoring and multi-agent troubleshooting* (2026), got the
+    Orchestrator Agent off the ground.
+
+</div>
