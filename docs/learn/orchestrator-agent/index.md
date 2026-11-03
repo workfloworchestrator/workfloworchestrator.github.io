@@ -168,13 +168,13 @@ API key for an LLM provider.
 
 ## How does it work, and what data does the agent touch?
 
-- [How it works](../../orchestrator-agent/architecture/index.md): the agent is a thin layer that calls the tools of
-  the MCP server of Orchestrator Core. It has no search index or domain logic of its own.
-- [Where your data goes](../../orchestrator-agent/architecture/index.md#where-your-data-goes): what is sent to the
-  LLM, to Orchestrator Core and to observability tools, and what the agent stores itself.
-- [Read tools and write tools](../../orchestrator-agent/architecture/index.md#read-tools-and-write-tools): what the
-  agent can only read, and [why workflows need approval](../../orchestrator-agent/architecture/index.md#why-workflows-need-approval)
-  before anything changes.
+- [How the agent fits into WFO](../../orchestrator-agent/architecture/index.md): how Core, the model, the database
+  and different clients work together.
+- [The language model](../../orchestrator-agent/architecture/index.md#the-language-model-interprets-the-request) and
+  [conversation storage](../../orchestrator-agent/architecture/index.md#the-database-keeps-the-conversation-going):
+  where requests are processed and why the agent needs database access.
+- [The agent needs approval before starting workflows](../../orchestrator-agent/architecture/index.md#the-agent-needs-approval-before-starting-workflows): how
+  interpreting a request is kept separate from authorising a change.
 
 ## How can I apply it to our stack?
 
