@@ -168,10 +168,10 @@ API key for an LLM provider.
 
 ## How does it work, and what data does the agent touch?
 
-- [How the agent fits into WFO](../../orchestrator-agent/architecture/index.md): how Core, the model, the database
+- [How the agent fits on top of Orchestrator Core](../../orchestrator-agent/architecture/index.md): how Core, the model, the database
   and different clients work together.
 - [The language model](../../orchestrator-agent/architecture/index.md#the-language-model-interprets-the-request) and
-  [conversation storage](../../orchestrator-agent/architecture/index.md#the-database-keeps-the-conversation-going):
+  [conversation storage](../../orchestrator-agent/architecture/index.md#the-database-stores-the-conversations):
   where requests are processed and why the agent needs database access.
 - [The agent needs approval before starting workflows](../../orchestrator-agent/architecture/index.md#the-agent-needs-approval-before-starting-workflows): how
   interpreting a request is kept separate from authorising a change.
@@ -209,15 +209,3 @@ API key for an LLM provider.
 - [Security and observability](../../orchestrator-agent/guides/security-observability.md#trace-with-another-opentelemetry-backend):
   follow requests and costs in your observability platform.
 
-## Special thanks
-
-<div class="grid cards" markdown>
-
--   [![GÉANT](../../img/geant-logo.png){ align=right width="160" }](https://geant.org)
-    Special thanks to **GÉANT** for funding this work through the
-    [NETDEV Incubator](https://wiki.geant.org/spaces/NETDEV/pages/613122207/NETDEV+Incubator).
-    Two incubator projects, [*WFO RAG agent and LLM integration*](https://wiki.geant.org/spaces/NETDEV/pages/631443164/NETDEV+Incubator+proposals)
-    (2025) and *A2A protocol integration, agent refactoring and multi-agent troubleshooting* (2026), got the
-    Orchestrator Agent off the ground.
-
-</div>
