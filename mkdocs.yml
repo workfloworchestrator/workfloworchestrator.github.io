@@ -212,6 +212,8 @@ plugins:
         "learn/orchestrator-agent/chat-in-your-frontend.md": "learn/orchestrator-agent/use-cases/chat-in-your-frontend.md"
         # 2026-11-05: Orchestrator Agent own-tools guide split into connect-service and create-agent
         "orchestrator-agent/guides/own-tools.md": "orchestrator-agent/guides/create-agent.md"
+        # 2026-11-05: Orchestrator Agent security-and-observability guide split into secure-agent and tracing
+        "orchestrator-agent/guides/security-observability.md": "orchestrator-agent/guides/secure-agent.md"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages

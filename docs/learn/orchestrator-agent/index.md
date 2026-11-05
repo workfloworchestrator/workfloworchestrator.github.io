@@ -183,7 +183,7 @@ API key for an LLM provider.
 - Connect your clients: [LibreChat](../../orchestrator-agent/guides/librechat.md),
   [MCP clients](../../orchestrator-agent/guides/mcp-clients.md),
   [an A2A planner](../../orchestrator-agent/guides/a2a-planner.md) or
-  [your own frontend with AG-UI](../../orchestrator-agent/guides/ag-ui.md). 
+  [your own frontend with AG-UI](../../orchestrator-agent/guides/ag-ui.md).
 - Once several clients, other agents or
   machine callers reach the agent, decide in one place, in front of it, who may call it, what they may see and how much
   they may spend. See [Gateways](../../orchestrator-agent/architecture/production.md#gateways).
@@ -202,8 +202,9 @@ API key for an LLM provider.
 - [Running the agent in your own stack](../../orchestrator-agent/architecture/production.md): the choices for
   production, such as which clients connect, who they act as, where the agent runs, which model it uses and what you put
   around it.
-- [Security and observability](../../orchestrator-agent/guides/security-observability.md): authentication towards
-  Orchestrator Core and tracing.
+- [How to secure the agent](../../orchestrator-agent/guides/secure-agent.md): authenticate users, authorize them with OPA and
+  call Orchestrator Core as them. [Authentication and authorization](../../orchestrator-agent/architecture/auth.md)
+  explains which token reaches Orchestrator Core on which endpoint.
 
 ## How do I keep it working?
 
@@ -211,5 +212,6 @@ API key for an LLM provider.
   a benchmark.
 - [Benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md): run the evals before you change a
   prompt or a model, and gate CI on them.
-- [Security and observability](../../orchestrator-agent/guides/security-observability.md#trace-with-another-opentelemetry-backend):
-  follow requests and costs in your observability platform.
+- [How to trace the agent](../../orchestrator-agent/guides/tracing.md): follow requests and costs in Langfuse or another
+  OpenTelemetry backend. [Tracing and observability](../../orchestrator-agent/architecture/observability.md) explains what
+  traces show and how they feed the evals.
