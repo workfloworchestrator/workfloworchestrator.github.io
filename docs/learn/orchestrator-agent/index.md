@@ -154,7 +154,7 @@ cases apply wherever you use WFO.
 
     WFO questions answered from the assistant or agent framework you already use, such as Claude Code.
 
-    - [How-to: Use MCP clients](../../orchestrator-agent/guides/mcp-clients.md)
+    - [How-to: Use the agent with MCP](../../orchestrator-agent/guides/mcp-clients.md)
 
     ![WFO as a tool for your assistant](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
@@ -183,9 +183,14 @@ API key for an LLM provider.
 - Connect your clients: [LibreChat](../../orchestrator-agent/guides/librechat.md),
   [MCP clients](../../orchestrator-agent/guides/mcp-clients.md),
   [an A2A planner](../../orchestrator-agent/guides/a2a-planner.md) or
-  [your own frontend with AG-UI](../../orchestrator-agent/guides/ag-ui.md).
+  [your own frontend with AG-UI](../../orchestrator-agent/guides/ag-ui.md). 
+- Once several clients, other agents or
+  machine callers reach the agent, decide in one place, in front of it, who may call it, what they may see and how much
+  they may spend. See [Gateways](../../orchestrator-agent/architecture/production.md#gateways).
 - Fit it to your data: [Teach the agent your domain](../../orchestrator-agent/guides/domain-context.md),
-  [Add your own tools, services and agents](../../orchestrator-agent/guides/own-tools.md) and
+  [Expose your own Core routes as tools](../../orchestrator-core/reference-docs/mcp.md#extending),
+  [Connect another service](../../orchestrator-agent/guides/connect-service.md),
+  [Create your own agent](../../orchestrator-agent/guides/create-agent.md) and
   [Enable AI search and embeddings](../../orchestrator-core/reference-docs/ai-search.md#running-it).
 - Choose your model: [Use your own LLM](../../orchestrator-agent/guides/own-llm.md).
 - Look up the details in the reference:
@@ -208,4 +213,3 @@ API key for an LLM provider.
   prompt or a model, and gate CI on them.
 - [Security and observability](../../orchestrator-agent/guides/security-observability.md#trace-with-another-opentelemetry-backend):
   follow requests and costs in your observability platform.
-
