@@ -118,7 +118,7 @@ export work over every protocol.
 
     Model results side by side on your own questions.
 
-    - [How-to: Use your own LLM](../../orchestrator-agent/guides/own-llm.md)
+    - [How-to: Change the language model](../../orchestrator-agent/guides/own-llm.md)
     - [How to benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md)
 
     ![Use your own LLM](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
@@ -142,7 +142,7 @@ cases apply wherever you use WFO.
     Answers, tables and charts streamed into a self-service portal of your own, with follow-ups on the same thread.
 
     - [Use case: Chat in your own frontend](use-cases/chat-in-your-frontend.md)
-    - [How-to: Build a frontend with AG-UI](../../orchestrator-agent/guides/ag-ui.md)
+    - [AG-UI protocol reference](../../orchestrator-agent/reference/endpoints.md#ag-ui)
 
     ![Answers in your own portal](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
@@ -183,16 +183,16 @@ API key for an LLM provider.
 - Connect your clients: [LibreChat](../../orchestrator-agent/guides/librechat.md),
   [MCP clients](../../orchestrator-agent/guides/mcp-clients.md),
   [an A2A planner](../../orchestrator-agent/guides/a2a-planner.md) or
-  [your own frontend with AG-UI](../../orchestrator-agent/guides/ag-ui.md).
+  [an AG-UI frontend](../../orchestrator-agent/reference/endpoints.md#ag-ui).
 - Once several clients, other agents or
   machine callers reach the agent, decide in one place, in front of it, who may call it, what they may see and how much
   they may spend. See [Gateways](production.md#gateways).
-- Fit it to your data: [Teach the agent your domain](../../orchestrator-agent/guides/domain-context.md),
+- Fit it to your data: [Add domain context](../../orchestrator-agent/guides/domain-context.md),
   [Expose your own Core routes as tools](../../orchestrator-core/reference-docs/mcp.md#extending),
-  [Connect another service](../../orchestrator-agent/guides/connect-service.md),
-  [Create your own agent](../../orchestrator-agent/guides/create-agent.md) and
+  [Connect another system through a planner](integrations/connect-service.md),
+  [Run a companion agent with docker-agent](integrations/create-agent.md) and
   [Enable AI search and embeddings](../../orchestrator-core/reference-docs/ai-search.md#running-it).
-- Choose your model: [Use your own LLM](../../orchestrator-agent/guides/own-llm.md).
+- Choose your model: [Change the language model](../../orchestrator-agent/guides/own-llm.md).
 - Look up the details in the reference:
   [Endpoints and protocols](../../orchestrator-agent/reference/endpoints.md) and
   [Configuration](../../orchestrator-agent/reference/configuration.md).
@@ -202,7 +202,7 @@ API key for an LLM provider.
 - [Running the agent in your own stack](production.md): the choices for
   production, such as which clients connect, who they act as, where the agent runs, which model it uses and what you put
   around it.
-- [How to secure the agent](../../orchestrator-agent/guides/secure-agent.md): authenticate users, authorize them with OPA and
+- [How to configure authentication and authorization](../../orchestrator-agent/guides/secure-agent.md): authenticate users, authorize them with OPA and
   call Orchestrator Core as them. [Authentication and authorization](../../orchestrator-agent/architecture/auth.md)
   explains which token reaches Orchestrator Core on which endpoint.
 

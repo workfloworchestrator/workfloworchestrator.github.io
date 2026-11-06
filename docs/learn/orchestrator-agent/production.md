@@ -34,7 +34,7 @@ One short paragraph each: which path to use, what works, what doesn't, and a lin
 - **Agent platforms and planners** (kagent, docker-agent, other A2A runtimes) → A2A.
   [Connect another agent over A2A](../../orchestrator-agent/guides/a2a-planner.md).
 - **Your own app** → AG-UI for a web UI, or the OpenAI SDK for backend scripts and bots.
-  [Build a frontend with AG-UI](../../orchestrator-agent/guides/ag-ui.md).
+  [AG-UI protocol reference](../../orchestrator-agent/reference/endpoints.md#ag-ui).
 - **A gateway in front of several clients** (LiteLLM proxy, an MCP gateway) → see [Gateways](#gateways).
 
 ## Identity
@@ -46,7 +46,7 @@ One short paragraph each: which path to use, what works, what doesn't, and a lin
 - Fallback to a service account with client credentials (`OAUTH2_OUTBOUND_ACTIVE`), and why it grants more than the
   user may do, see [Why the user's token is better than a service account](../../orchestrator-agent/architecture/auth.md#why-the-users-token-is-better-than-a-service-account).
 - Token exchange (RFC 8693) as an option, depending on your identity provider.
-- Link: [How to secure the agent](../../orchestrator-agent/guides/secure-agent.md).
+- Link: [How to configure authentication and authorization](../../orchestrator-agent/guides/secure-agent.md).
 
 ## Deployment shapes
 
@@ -60,7 +60,7 @@ Short, one paragraph each, with upstream links:
 
 - Hosted (OpenAI, Azure OpenAI, Anthropic), self-hosted (Ollama, vLLM) or through a proxy (LiteLLM).
 - Data residency and cost.
-- Link: [Use your own LLM](../../orchestrator-agent/guides/own-llm.md).
+- Link: [Change the language model](../../orchestrator-agent/guides/own-llm.md).
 
 ## Observability
 

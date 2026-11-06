@@ -57,6 +57,5 @@ from chat, use LibreChat or an A2A planner, see
 
 ## Next steps
 
-- [How-to: Build a frontend with AG-UI](../../../orchestrator-agent/guides/ag-ui.md)
 - [Reference: Endpoints and protocols](../../../orchestrator-agent/reference/endpoints.md#ag-ui)
 - [orchestrator-agent-chat on GitHub](https://github.com/workfloworchestrator/orchestrator-agent-chat)

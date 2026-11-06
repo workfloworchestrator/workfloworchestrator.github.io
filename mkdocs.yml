@@ -44,6 +44,9 @@ nav:
           - Use cases:
               - "Start workflows from chat": learn/orchestrator-agent/use-cases/workflows-from-chat.md
               - "Chat in your own frontend": learn/orchestrator-agent/use-cases/chat-in-your-frontend.md
+          - Integrations:
+              - "Connect another system through a planner": learn/orchestrator-agent/integrations/connect-service.md
+              - "Run a companion agent with docker-agent": learn/orchestrator-agent/integrations/create-agent.md
           - Running in your own stack: learn/orchestrator-agent/production.md
   - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
   # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
@@ -213,12 +216,16 @@ plugins:
         "learn/orchestrator-agent/tutorial.md": "learn/orchestrator-agent/tutorials/example-orchestrator.md"
         "learn/orchestrator-agent/chat-in-your-frontend.md": "learn/orchestrator-agent/use-cases/chat-in-your-frontend.md"
         # 2026-11-05: Orchestrator Agent own-tools guide split into connect-service and create-agent
-        "orchestrator-agent/guides/own-tools.md": "orchestrator-agent/guides/create-agent.md"
+        "orchestrator-agent/guides/own-tools.md": "learn/orchestrator-agent/integrations/create-agent.md"
         # 2026-11-05: Orchestrator Agent security-and-observability guide split into secure-agent and tracing
         "orchestrator-agent/guides/security-observability.md": "orchestrator-agent/guides/secure-agent.md"
         # 2026-11-06: Orchestrator Agent pages moved to Learn
         "orchestrator-agent/guides/workflows-from-chat.md": "learn/orchestrator-agent/use-cases/workflows-from-chat.md"
         "orchestrator-agent/architecture/production.md": "learn/orchestrator-agent/production.md"
+        # 2026-11-06: broader agent integrations moved to Learn; frontend guide removed
+        "orchestrator-agent/guides/connect-service.md": "learn/orchestrator-agent/integrations/connect-service.md"
+        "orchestrator-agent/guides/create-agent.md": "learn/orchestrator-agent/integrations/create-agent.md"
+        "orchestrator-agent/guides/ag-ui.md": "orchestrator-agent/reference/endpoints.md#ag-ui"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages
