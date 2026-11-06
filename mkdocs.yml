@@ -3,6 +3,10 @@ site_url: https://workfloworchestrator.org
 site_description: >-
   Workflow Orchestrator (WFO) is an open-source framework for automating and orchestrating network
   service lifecycles, products and workflows.
+# The monorepo plugin does not merge sub-project exclude_docs settings.
+exclude_docs: |
+  /orchestrator-agent/superpowers/
+  /orchestrator-agent/plugin-driven-capabilities.md
 nav:
   - Home: index.md
   - Learn:
