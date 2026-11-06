@@ -3,7 +3,7 @@ orchestrator-core
 orchestrator-ui-library
 lso
 pydantic-forms
-orchestrator-agent
+/orchestrator-agent
 
 site/
 .idea

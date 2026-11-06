@@ -42,7 +42,9 @@ nav:
           - Tutorials:
               - "Run it on the example orchestrator": learn/orchestrator-agent/tutorials/example-orchestrator.md
           - Use cases:
+              - "Start workflows from chat": learn/orchestrator-agent/use-cases/workflows-from-chat.md
               - "Chat in your own frontend": learn/orchestrator-agent/use-cases/chat-in-your-frontend.md
+          - Running in your own stack: learn/orchestrator-agent/production.md
   - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
   # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
   - Orchestrator UI Library: "!include ./orchestrator-ui-library/mkdocs/mkdocs.yml"
@@ -214,6 +216,9 @@ plugins:
         "orchestrator-agent/guides/own-tools.md": "orchestrator-agent/guides/create-agent.md"
         # 2026-11-05: Orchestrator Agent security-and-observability guide split into secure-agent and tracing
         "orchestrator-agent/guides/security-observability.md": "orchestrator-agent/guides/secure-agent.md"
+        # 2026-11-06: Orchestrator Agent pages moved to Learn
+        "orchestrator-agent/guides/workflows-from-chat.md": "learn/orchestrator-agent/use-cases/workflows-from-chat.md"
+        "orchestrator-agent/architecture/production.md": "learn/orchestrator-agent/production.md"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages

@@ -93,7 +93,7 @@ export work over every protocol.
 
     A workflow started from the conversation.
 
-    - [How-to: Start workflows from chat](../../orchestrator-agent/guides/workflows-from-chat.md)
+    - [How-to: Start workflows from chat](use-cases/workflows-from-chat.md)
     - [Reference: Plugins](../../orchestrator-agent/reference/plugins.md)
 
     ![Start workflows from chat](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
@@ -119,7 +119,7 @@ export work over every protocol.
     Model results side by side on your own questions.
 
     - [How-to: Use your own LLM](../../orchestrator-agent/guides/own-llm.md)
-    - [How-to: Benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md)
+    - [How to benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md)
 
     ![Use your own LLM](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
 
@@ -186,7 +186,7 @@ API key for an LLM provider.
   [your own frontend with AG-UI](../../orchestrator-agent/guides/ag-ui.md).
 - Once several clients, other agents or
   machine callers reach the agent, decide in one place, in front of it, who may call it, what they may see and how much
-  they may spend. See [Gateways](../../orchestrator-agent/architecture/production.md#gateways).
+  they may spend. See [Gateways](production.md#gateways).
 - Fit it to your data: [Teach the agent your domain](../../orchestrator-agent/guides/domain-context.md),
   [Expose your own Core routes as tools](../../orchestrator-core/reference-docs/mcp.md#extending),
   [Connect another service](../../orchestrator-agent/guides/connect-service.md),
@@ -199,7 +199,7 @@ API key for an LLM provider.
 
 ## How do I deploy it live?
 
-- [Running the agent in your own stack](../../orchestrator-agent/architecture/production.md): the choices for
+- [Running the agent in your own stack](production.md): the choices for
   production, such as which clients connect, who they act as, where the agent runs, which model it uses and what you put
   around it.
 - [How to secure the agent](../../orchestrator-agent/guides/secure-agent.md): authenticate users, authorize them with OPA and
@@ -208,10 +208,12 @@ API key for an LLM provider.
 
 ## How do I keep it working?
 
-- [How we evaluate the agent](../../orchestrator-agent/architecture/evaluation.md): why prompt and model changes need
+- [Understanding agent evaluations](../../orchestrator-agent/architecture/evaluation.md): why prompt and model changes need
   a benchmark.
-- [Benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md): run the evals before you change a
+- [How to benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md): run the evals before you change a
   prompt or a model, and gate CI on them.
+- [How to add an evaluation case](../../orchestrator-agent/guides/add-eval-case.md): protect a request or observed failure
+  with checks in the dataset.
 - [How to trace the agent](../../orchestrator-agent/guides/tracing.md): follow requests and costs in Langfuse or another
   OpenTelemetry backend. [Tracing and observability](../../orchestrator-agent/architecture/observability.md) explains what
   traces show and how they feed the evals.
