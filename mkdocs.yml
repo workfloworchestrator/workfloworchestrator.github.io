@@ -236,7 +236,11 @@ plugins:
         "orchestrator-agent/architecture/observability.md": "orchestrator-agent/explanation/observability.md"
         "orchestrator-agent/architecture/evaluation.md": "orchestrator-agent/explanation/evaluation.md"
   # orchestrator-ui-library plugins
-  - termynal
+  # Inline the termynal assets only on pages with a `<!-- termynal -->` block. Loaded site-wide, its
+  # termynal.js clashes with orchestrator-core's own (both declare `class Termynal`) and its init code
+  # grabs orchestrator-core's `.termy` blocks, leaving them as empty terminals with just "restart".
+  - termynal:
+      include_assets: true
   - awesome-pages
   # Click a screenshot to open it full size in a lightbox. Listed last so it runs after the plugins
   # that inject HTML, and thus also covers images pulled in from the sub-projects. Images already
