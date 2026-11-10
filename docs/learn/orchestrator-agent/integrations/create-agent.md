@@ -35,7 +35,7 @@ Make the `description` specific: the planner uses it to choose between agents.
 If your agent also needs WFO data, add the Orchestrator Agent as an A2A peer, as in
 [How to connect another agent over A2A](../../../orchestrator-agent/guides/a2a-planner.md#steps). Do not add the MCP server of Orchestrator Core as a
 toolset: the agent would get only the raw tools of Core, without the plugins, guards and workflow approval of the
-Orchestrator Agent. See [Different ways to reach the same agent](../../../orchestrator-agent/architecture/index.md#different-ways-to-reach-the-same-agent).
+Orchestrator Agent. See [Different ways to reach the same agent](../../../orchestrator-agent/explanation/index.md#different-ways-to-reach-the-same-agent).
 
 ### 2. Write its instructions
 
@@ -103,7 +103,7 @@ Restart the planner whenever you restart this agent: the card is read at startup
 
 - If the service has per-user permissions, configure identity forwarding in its own integration. The Orchestrator
   Agent does not forward credentials to this companion agent. See
-  [Authentication and authorization](../../../orchestrator-agent/architecture/auth.md) for the WFO part of the chain.
+  [Authentication and authorization](../../../orchestrator-agent/explanation/auth.md) for the WFO part of the chain.
 - Before changing the Orchestrator Agent's prompts or model, use
   [How to benchmark prompt and model changes](../../../orchestrator-agent/guides/evals.md).
   The bundled WFO benchmark does not evaluate the companion agent or planner; give those their own checks.

@@ -168,12 +168,12 @@ API key for an LLM provider.
 
 ## How does it work, and what data does the agent touch?
 
-- [How the agent fits on top of Orchestrator Core](../../orchestrator-agent/architecture/index.md): how Core, the model, the database
+- [How the agent fits on top of Orchestrator Core](../../orchestrator-agent/explanation/index.md): how Core, the model, the database
   and different clients work together.
-- [The language model](../../orchestrator-agent/architecture/index.md#the-language-model-interprets-the-request) and
-  [conversation storage](../../orchestrator-agent/architecture/index.md#the-database-stores-the-conversations):
+- [The language model](../../orchestrator-agent/explanation/index.md#the-language-model-interprets-the-request) and
+  [conversation storage](../../orchestrator-agent/explanation/index.md#the-database-stores-the-conversations):
   where requests are processed and why the agent needs database access.
-- [The agent needs approval before starting workflows](../../orchestrator-agent/architecture/index.md#the-agent-needs-approval-before-starting-workflows): how
+- [The agent needs approval before starting workflows](../../orchestrator-agent/explanation/index.md#the-agent-needs-approval-before-starting-workflows): how
   interpreting a request is kept separate from authorising a change.
 
 ## How can I apply it to our stack?
@@ -203,17 +203,17 @@ API key for an LLM provider.
   production, such as which clients connect, who they act as, where the agent runs, which model it uses and what you put
   around it.
 - [How to configure authentication and authorization](../../orchestrator-agent/guides/secure-agent.md): authenticate users, authorize them with OPA and
-  call Orchestrator Core as them. [Authentication and authorization](../../orchestrator-agent/architecture/auth.md)
+  call Orchestrator Core as them. [Authentication and authorization](../../orchestrator-agent/explanation/auth.md)
   explains which token reaches Orchestrator Core on which endpoint.
 
 ## How do I keep it working?
 
-- [Understanding agent evaluations](../../orchestrator-agent/architecture/evaluation.md): why prompt and model changes need
+- [Understanding agent evaluations](../../orchestrator-agent/explanation/evaluation.md): why prompt and model changes need
   a benchmark.
 - [How to benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md): run the evals before you change a
   prompt or a model, and gate CI on them.
 - [How to add an evaluation case](../../orchestrator-agent/guides/add-eval-case.md): protect a request or observed failure
   with checks in the dataset.
 - [How to trace the agent](../../orchestrator-agent/guides/tracing.md): follow requests and costs in Langfuse or another
-  OpenTelemetry backend. [Tracing and observability](../../orchestrator-agent/architecture/observability.md) explains what
+  OpenTelemetry backend. [Tracing and observability](../../orchestrator-agent/explanation/observability.md) explains what
   traces show and how they feed the evals.

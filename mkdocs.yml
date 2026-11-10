@@ -230,6 +230,11 @@ plugins:
         "orchestrator-agent/guides/connect-service.md": "learn/orchestrator-agent/integrations/connect-service.md"
         "orchestrator-agent/guides/create-agent.md": "learn/orchestrator-agent/integrations/create-agent.md"
         "orchestrator-agent/guides/ag-ui.md": "orchestrator-agent/reference/endpoints.md#ag-ui"
+        # 2026-11-10: Orchestrator Agent explanation pages renamed from architecture
+        "orchestrator-agent/architecture/index.md": "orchestrator-agent/explanation/index.md"
+        "orchestrator-agent/architecture/auth.md": "orchestrator-agent/explanation/auth.md"
+        "orchestrator-agent/architecture/observability.md": "orchestrator-agent/explanation/observability.md"
+        "orchestrator-agent/architecture/evaluation.md": "orchestrator-agent/explanation/evaluation.md"
   # orchestrator-ui-library plugins
   - termynal
   - awesome-pages

@@ -41,10 +41,10 @@ One short paragraph each: which path to use, what works, what doesn't, and a lin
 
 - Who holds the user's token on each path: a chat UI forwarding OIDC, a harness sending a bearer header, A2A
   propagation. Explained per endpoint in
-  [Authentication and authorization](../../orchestrator-agent/architecture/auth.md#outbound-who-the-agent-acts-as), including that the agent's
+  [Authentication and authorization](../../orchestrator-agent/explanation/auth.md#outbound-who-the-agent-acts-as), including that the agent's
   `/mcp` always calls Orchestrator Core as the service account.
 - Fallback to a service account with client credentials (`OAUTH2_OUTBOUND_ACTIVE`), and why it grants more than the
-  user may do, see [Why the user's token is better than a service account](../../orchestrator-agent/architecture/auth.md#why-the-users-token-is-better-than-a-service-account).
+  user may do, see [Why the user's token is better than a service account](../../orchestrator-agent/explanation/auth.md#why-the-users-token-is-better-than-a-service-account).
 - Token exchange (RFC 8693) as an option, depending on your identity provider.
 - Link: [How to configure authentication and authorization](../../orchestrator-agent/guides/secure-agent.md).
 
@@ -65,7 +65,7 @@ Short, one paragraph each, with upstream links:
 ## Observability
 
 - Langfuse is built in. Other OpenTelemetry backends work with a small wrapper, see
-  [Tracing and observability](../../orchestrator-agent/architecture/observability.md#langfuse-and-why-switching-is-easy) and
+  [Tracing and observability](../../orchestrator-agent/explanation/observability.md#langfuse-and-why-switching-is-easy) and
   [How to trace the agent](../../orchestrator-agent/guides/tracing.md).
 - Following one request from the chat trace to the agent trace to the audit log of Orchestrator Core
   (`traceparent`).
@@ -120,7 +120,7 @@ agents and MCP servers, or a model proxy such as LiteLLM between the agents and 
 ## Evaluate before you change prompts or models
 
 - Prompt and model drift are production concerns.
-- Links: [Understanding agent evaluations](../../orchestrator-agent/architecture/evaluation.md), [How to benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md).
+- Links: [Understanding agent evaluations](../../orchestrator-agent/explanation/evaluation.md), [How to benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md).
 
 ## Known pitfalls
 

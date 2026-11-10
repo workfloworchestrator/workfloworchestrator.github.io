@@ -175,7 +175,7 @@ Here is what was going on behind the chat window:
   speaks [AG-UI](../../../orchestrator-agent/reference/endpoints.md#ag-ui) and
   [MCP](../../../orchestrator-agent/reference/endpoints.md#mcp), so other clients can use it too.
 - **Approval.** The agent only starts a workflow after you approve it; see
-  [The agent needs approval before starting workflows](../../../orchestrator-agent/architecture/index.md#the-agent-needs-approval-before-starting-workflows).
+  [The agent needs approval before starting workflows](../../../orchestrator-agent/explanation/index.md#the-agent-needs-approval-before-starting-workflows).
 - **Configuration.** `AGENT_MODEL` and `AGENT_API_KEY` are two of the
   [configuration](../../../orchestrator-agent/reference/configuration.md) settings.
 
@@ -193,7 +193,7 @@ search index may be empty or embeddings may be off; see
 
 ## Next steps
 
-- [How the agent fits on top of Orchestrator Core](../../../orchestrator-agent/architecture/index.md): what the services you just
+- [How the agent fits on top of Orchestrator Core](../../../orchestrator-agent/explanation/index.md): what the services you just
   started are and how they talk to each other
 - [Run the agent on your own Orchestrator Core](../../../orchestrator-agent/getting-started.md)
 - [Start workflows from chat](../use-cases/workflows-from-chat.md) and the other

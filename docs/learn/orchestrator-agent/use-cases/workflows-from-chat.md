@@ -52,6 +52,6 @@ orchestrator.
 
 ## Reference
 
-- [The agent needs approval before starting workflows](../../../orchestrator-agent/architecture/index.md#the-agent-needs-approval-before-starting-workflows)
+- [The agent needs approval before starting workflows](../../../orchestrator-agent/explanation/index.md#the-agent-needs-approval-before-starting-workflows)
 - [Plugins: workflow](../../../orchestrator-agent/reference/plugins.md#workflow)
 - [Forms in Orchestrator Core](https://workfloworchestrator.org/orchestrator-core/reference-docs/forms/)
