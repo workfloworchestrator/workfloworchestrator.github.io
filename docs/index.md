@@ -82,7 +82,7 @@ If this has sparked your interest, read more about [the framework](./architectur
 The WFO programme maintains an entire ecosystem of tooling, a non-comprehensive list in no
 particular order.
 
-<div class="grid cards" markdown>
+<div class="grid cards links-bottom" markdown>
 
 -   **Orchestrator-Core**
 
@@ -104,6 +104,18 @@ particular order.
 
     [Source](https://github.com/workfloworchestrator/orchestrator-ui-library)
     · [Docs](orchestrator-ui-library/index.md)
+
+-   **Orchestrator Agent**
+
+    [![GitHub stars](https://img.shields.io/github/stars/workfloworchestrator/orchestrator-agent?style=flat)](https://github.com/workfloworchestrator/orchestrator-agent/stargazers)
+    ![New](https://img.shields.io/badge/New-brightgreen?style=flat)
+
+    An AI agent that answers questions about your subscriptions and starts workflows from chat,
+    over A2A, AG-UI and MCP.
+
+    [Source](https://github.com/workfloworchestrator/orchestrator-agent)
+    · [Docs](orchestrator-agent/index.md)
+    · [Learn & Use Cases](learn/orchestrator-agent/index.md)
 
 -   **Orchestrator Example UI**
 
@@ -169,7 +181,7 @@ particular order.
 [<img alt='GÉANT' src='/img/geant-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://geant.org)
 [<img alt='Asiera' src='/img/asiera-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://www.asiera.ie/)
 [<img alt='Nomios' src='/img/nomios-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://www.nomios.com/)
-[<img alt='ShopVirge' src='/img/ShopVirge-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://shopvirge.com)
+[<img alt='Virge' src='/img/Virge-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://virge.io)
 [<img alt='CANARIE' src='/img/CANARIE_small.png' style="margin-right: 50px; margin-bottom: 50px;">](https://canarie.ca)
 [<img alt='GARR' src='/img/Logo-GARR-small.png' style="margin-right: 50px; margin-bottom: 50px;">](https://garr.it)
 [<img alt='REANNZ' src='/img/reannz-logo-small.png' style="margin-right: 50px; margin-bottom: 50px;">](https://reannz.co.nz)
