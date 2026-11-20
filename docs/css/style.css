@@ -286,3 +286,18 @@
   flex-grow: 1;
   padding-bottom: .8rem;
 }
+
+/* Grid cards with the "links-bottom" class: pin the last paragraph (the links) to the bottom so links line up across a row of cards of
+   unequal height. */
+.md-typeset .grid.cards.links-bottom > ul > li {
+  display: flex;
+  flex-direction: column;
+}
+/* Flex items don't collapse margins like block children do, so keep only the top margin between siblings */
+.md-typeset .grid.cards.links-bottom > ul > li > :not(:last-child) {
+  margin-bottom: 0;
+}
+.md-typeset .grid.cards.links-bottom > ul > li > p:last-child {
+  margin-top: auto;
+  padding-top: 1em;
+}

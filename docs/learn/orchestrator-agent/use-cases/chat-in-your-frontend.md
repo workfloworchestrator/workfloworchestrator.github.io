@@ -29,13 +29,13 @@ Orchestrator Agent that talks to it over [AG-UI](https://docs.ag-ui.com/).
 
 ## How it fits together
 
-<!-- OUTLINE: diagram of the frontend -> POST /agui -> Orchestrator Agent -> MCP -> orchestrator-core. Mention
+<!-- OUTLINE: diagram of the frontend -> POST /agui -> Orchestrator Agent -> MCP -> Orchestrator Core. Mention
 that authentication uses the same bearer token as the rest of WFO. -->
 
 ```mermaid
 flowchart LR
     F[Your frontend with orchestrator-agent-chat] -->|AG-UI /agui| A[Orchestrator Agent]
-    A -->|MCP| O[orchestrator-core]
+    A -->|MCP| O[Orchestrator Core]
 ```
 
 ## Chat popup
@@ -51,12 +51,11 @@ flowchart LR
 
 AG-UI runs the agent without the workflow form-fill skill, so this chat cannot start workflows. To start workflows
 from chat, use LibreChat or an A2A planner, see
-[Start workflows from chat](../../orchestrator-agent/guides/workflows-from-chat.md).
+[Start workflows from chat](workflows-from-chat.md).
 
 <!-- OUTLINE: revisit when the popup lands; check whether #101 changes this. -->
 
 ## Next steps
 
-- [How-to: Build a frontend with AG-UI](../../orchestrator-agent/guides/ag-ui.md)
-- [Reference: Endpoints and protocols](../../orchestrator-agent/reference/endpoints.md#ag-ui)
+- [Reference: Endpoints and protocols](../../../orchestrator-agent/reference/endpoints.md#ag-ui)
 - [orchestrator-agent-chat on GitHub](https://github.com/workfloworchestrator/orchestrator-agent-chat)

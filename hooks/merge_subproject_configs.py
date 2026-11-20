@@ -32,6 +32,7 @@ SUB_PROJECTS = [
     "orchestrator-ui-library/mkdocs/mkdocs.yml",
     "lso/mkdocs.yml",
     "pydantic-forms/mkdocs.yml",
+    "orchestrator-agent/mkdocs.yml",
 ]
 
 # Populated by on_config, keyed by the sub-project's published route prefix (see

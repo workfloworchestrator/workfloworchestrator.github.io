@@ -3,6 +3,10 @@ site_url: https://workfloworchestrator.org
 site_description: >-
   Workflow Orchestrator (WFO) is an open-source framework for automating and orchestrating network
   service lifecycles, products and workflows.
+# The monorepo plugin does not merge sub-project exclude_docs settings.
+exclude_docs: |
+  /orchestrator-agent/superpowers/
+  /orchestrator-agent/plugin-driven-capabilities.md
 nav:
   - Home: index.md
   - Learn:
@@ -38,9 +42,16 @@ nav:
               - L2 Point-to-Point: workshops/example-orchestrator/create-your-own.md
               - Product and Workflow Generator: workshops/example-orchestrator/generator.md
       - Orchestrator Agent:
-          - What the agent can do: learn/orchestrator-agent/index.md
-          - "Tutorial: run it on the example orchestrator": learn/orchestrator-agent/tutorial.md
-          - "Use case: chat in your own frontend": learn/orchestrator-agent/chat-in-your-frontend.md
+          - "Overview: from first question to production": learn/orchestrator-agent/index.md
+          - Tutorials:
+              - "Run it on the example orchestrator": learn/orchestrator-agent/tutorials/example-orchestrator.md
+          - Use cases:
+              - "Start workflows from chat": learn/orchestrator-agent/use-cases/workflows-from-chat.md
+              - "Chat in your own frontend": learn/orchestrator-agent/use-cases/chat-in-your-frontend.md
+          - Integrations:
+              - "Connect another system through a planner": learn/orchestrator-agent/integrations/connect-service.md
+              - "Run a companion agent with docker-agent": learn/orchestrator-agent/integrations/create-agent.md
+          - Running in your own stack: learn/orchestrator-agent/production.md
   - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
   # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
   - Orchestrator UI Library: "!include ./orchestrator-ui-library/mkdocs/mkdocs.yml"
@@ -51,28 +62,8 @@ nav:
       - Overview: projects.md
       - Pydantic Forms: "!include ./pydantic-forms/mkdocs.yml"
       # INCLUDED_REPO: https://github.com/workfloworchestrator/pydantic-forms.git
-      - Orchestrator Agent:
-          - Overview: orchestrator-agent/index.md
-          - Getting started: orchestrator-agent/getting-started.md
-          - Guides:
-              - Connect LibreChat: orchestrator-agent/guides/librechat.md
-              - Use MCP clients: orchestrator-agent/guides/mcp-clients.md
-              - Use the agent from an A2A planner: orchestrator-agent/guides/a2a-planner.md
-              - Build a frontend with AG-UI: orchestrator-agent/guides/ag-ui.md
-              - Start workflows from chat: orchestrator-agent/guides/workflows-from-chat.md
-              - Use your own LLM: orchestrator-agent/guides/own-llm.md
-              - Teach the agent your domain: orchestrator-agent/guides/domain-context.md
-              - Security and observability: orchestrator-agent/guides/security-observability.md
-              - Enable AI search and embeddings: orchestrator-agent/guides/ai-search.md
-              - Benchmark prompt and model changes: orchestrator-agent/guides/evals.md
-          - Architecture:
-              - How it works: orchestrator-agent/architecture/index.md
-              - How we evaluate the agent: orchestrator-agent/architecture/evaluation.md
-          - Reference:
-              - Endpoints and protocols: orchestrator-agent/reference/endpoints.md
-              - Configuration: orchestrator-agent/reference/configuration.md
-              - Plugins: orchestrator-agent/reference/plugins.md
-              - Evals: orchestrator-agent/reference/evals.md
+      - Orchestrator Agent: "!include ./orchestrator-agent/mkdocs.yml"
+      # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-agent.git
   - Community:
       - The Programme:
           - About: about.md
@@ -225,6 +216,25 @@ plugins:
         "orchestrator-ui-library/adrs/0006-types-extended.md": "orchestrator-ui-library/decisions/records/0006-types-extended.md"
         "orchestrator-ui-library/adrs/0007-component-naming.md": "orchestrator-ui-library/decisions/records/0007-component-naming.md"
         "orchestrator-ui-library/adrs/0008-typescript-conventions.md": "orchestrator-ui-library/decisions/records/0008-typescript-conventions.md"
+        # 2026-10-29: Orchestrator Agent tutorial and use case moved into subfolders
+        "learn/orchestrator-agent/tutorial.md": "learn/orchestrator-agent/tutorials/example-orchestrator.md"
+        "learn/orchestrator-agent/chat-in-your-frontend.md": "learn/orchestrator-agent/use-cases/chat-in-your-frontend.md"
+        # 2026-11-05: Orchestrator Agent own-tools guide split into connect-service and create-agent
+        "orchestrator-agent/guides/own-tools.md": "learn/orchestrator-agent/integrations/create-agent.md"
+        # 2026-11-05: Orchestrator Agent security-and-observability guide split into secure-agent and tracing
+        "orchestrator-agent/guides/security-observability.md": "orchestrator-agent/guides/secure-agent.md"
+        # 2026-11-06: Orchestrator Agent pages moved to Learn
+        "orchestrator-agent/guides/workflows-from-chat.md": "learn/orchestrator-agent/use-cases/workflows-from-chat.md"
+        "orchestrator-agent/architecture/production.md": "learn/orchestrator-agent/production.md"
+        # 2026-11-06: broader agent integrations moved to Learn; frontend guide removed
+        "orchestrator-agent/guides/connect-service.md": "learn/orchestrator-agent/integrations/connect-service.md"
+        "orchestrator-agent/guides/create-agent.md": "learn/orchestrator-agent/integrations/create-agent.md"
+        "orchestrator-agent/guides/ag-ui.md": "orchestrator-agent/reference/endpoints.md#ag-ui"
+        # 2026-11-10: Orchestrator Agent explanation pages renamed from architecture
+        "orchestrator-agent/architecture/index.md": "orchestrator-agent/explanation/index.md"
+        "orchestrator-agent/architecture/auth.md": "orchestrator-agent/explanation/auth.md"
+        "orchestrator-agent/architecture/observability.md": "orchestrator-agent/explanation/observability.md"
+        "orchestrator-agent/architecture/evaluation.md": "orchestrator-agent/explanation/evaluation.md"
   # orchestrator-ui-library plugins
   # Inline the termynal assets only on pages with a `<!-- termynal -->` block. Loaded site-wide, its
   # termynal.js clashes with orchestrator-core's own (both declare `class Termynal`) and its init code

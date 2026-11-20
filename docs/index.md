@@ -82,7 +82,7 @@ If this has sparked your interest, read more about [the framework](./architectur
 The WFO programme maintains an entire ecosystem of tooling, a non-comprehensive list in no
 particular order.
 
-<div class="grid cards" markdown>
+<div class="grid cards links-bottom" markdown>
 
 -   **Orchestrator-Core**
 
@@ -111,11 +111,11 @@ particular order.
     ![New](https://img.shields.io/badge/New-brightgreen?style=flat)
 
     An AI agent that answers questions about your subscriptions and starts workflows from chat,
-    over OpenAI, A2A, AG-UI and MCP.
+    over A2A, AG-UI and MCP.
 
     [Source](https://github.com/workfloworchestrator/orchestrator-agent)
     · [Docs](orchestrator-agent/index.md)
-    · [What it can do](learn/orchestrator-agent/index.md)
+    · [Learn & Use Cases](learn/orchestrator-agent/index.md)
 
 -   **Orchestrator Example UI**
 
