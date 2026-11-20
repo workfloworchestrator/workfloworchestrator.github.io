@@ -11,7 +11,7 @@ Organizations that are involved with the Workflow Orchestrator programme are:
 
 [<img alt='Asiera' src='/img/asiera-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://www.asiera.ie/)
 [<img alt='Nomios' src='/img/nomios-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://www.nomios.com/)
-[<img alt='ShopVirge' src='/img/ShopVirge-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://shopvirge.com)
+[<img alt='Virge' src='/img/Virge-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://virge.io)
 
 ## Sandbox
 

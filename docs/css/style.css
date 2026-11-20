@@ -220,3 +220,69 @@
 .md-nav--no-transition *::after {
     transition: none !important;
 }
+
+/* Protocol badges of the Orchestrator Agent: the same badge marks a protocol in the list and on each use case card
+   that uses it, so a reader can match them up. */
+.md-typeset .wfo-protocol {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 3.7em;
+  padding: 0.1em 0;
+  text-align: center;
+  border-radius: 1em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: #FFFFFF;
+  white-space: nowrap;
+}
+.md-typeset .wfo-protocol--chat { background-color: #10A37F; }
+.md-typeset .wfo-protocol--a2a { background-color: #0067AC; }
+.md-typeset .wfo-protocol--agui { background-color: #7B4FBF; }
+.md-typeset .wfo-protocol--mcp { background-color: #C2410C; }
+
+/* Grid cards fixed to three columns on wide screens (add the "cols-3" class next to "grid cards").
+   Material's default auto-fills as many 16rem columns as fit; fall back to it on narrow screens. */
+@media screen and (min-width: 40em) {
+  .md-typeset .grid.cards.cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Cards start with an image (the last paragraph in the markdown, moved to the top with flex order). The image
+   scales with the card width and its bottom third slides under the text, which sits on the card background. */
+.md-typeset .grid.cards.cols-3 > ul > li {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.md-typeset .grid.cards.cols-3 > ul > li > p:last-child {
+  flex: none;
+  min-width: 0;
+  order: -1;
+  /* Percentage margins resolve against the card width: the image is 1999x1232, so a third of its height is ~20.5% */
+  margin: 0 0 -20.5%;
+  line-height: 0;
+}
+.md-typeset .grid.cards.cols-3 > ul > li > p:last-child a {
+  display: block;
+}
+.md-typeset .grid.cards.cols-3 > ul > li > p:last-child img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  height: auto;
+  margin: 0;
+}
+.md-typeset .grid.cards.cols-3 > ul > li > :not(:last-child) {
+  position: relative;
+  margin: 0;
+  padding: .4rem .8rem;
+  background-color: var(--md-default-bg-color);
+}
+.md-typeset .grid.cards.cols-3 > ul > li > :nth-last-child(2) {
+  flex-grow: 1;
+  padding-bottom: .8rem;
+}
