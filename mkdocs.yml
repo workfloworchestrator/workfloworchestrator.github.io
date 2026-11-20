@@ -221,7 +221,7 @@ plugins:
         "orchestrator-ui-library/adrs/0008-typescript-conventions.md": "orchestrator-ui-library/decisions/records/0008-typescript-conventions.md"
         # 2026-10-29: Orchestrator Agent tutorial and use case moved into subfolders
         "learn/orchestrator-agent/tutorial.md": "learn/orchestrator-agent/tutorials/example-orchestrator.md"
-        "learn/orchestrator-agent/chat-in-your-frontend.md": "orchestrator-agent/guides/chat-popup.md"
+        "learn/orchestrator-agent/chat-in-your-frontend.md": "learn/orchestrator-agent/tutorials/example-orchestrator.md#part-4-explore-the-agent-inside-the-wfo-ui"
         # 2026-11-05: Orchestrator Agent own-tools guide split into connect-service and create-agent
         "orchestrator-agent/guides/own-tools.md": "learn/orchestrator-agent/integrations/create-agent.md"
         # 2026-11-05: Orchestrator Agent security-and-observability guide split into secure-agent and tracing
@@ -238,8 +238,8 @@ plugins:
         "orchestrator-agent/architecture/auth.md": "orchestrator-agent/explanation/auth.md"
         "orchestrator-agent/architecture/observability.md": "orchestrator-agent/explanation/observability.md"
         "orchestrator-agent/architecture/evaluation.md": "orchestrator-agent/explanation/evaluation.md"
-        # 2026-11-18: Orchestrator Agent chat-in-your-frontend page replaced by the chat popup guide
-        "learn/orchestrator-agent/use-cases/chat-in-your-frontend.md": "orchestrator-agent/guides/chat-popup.md"
+        # 2026-11-20: frontend chat outlines replaced by the runnable WFO UI tutorial
+        "learn/orchestrator-agent/use-cases/chat-in-your-frontend.md": "learn/orchestrator-agent/tutorials/example-orchestrator.md#part-4-explore-the-agent-inside-the-wfo-ui"
   # orchestrator-ui-library plugins
   # Inline the termynal assets only on pages with a `<!-- termynal -->` block. Loaded site-wide, its
   # termynal.js clashes with orchestrator-core's own (both declare `class Termynal`) and its init code
