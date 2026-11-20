@@ -1,0 +1,28 @@
+{
+  "case": "workflows-from-chat",
+  "captured_at": "2026-11-17T17:25:56.213587+00:00",
+  "client": "Official agent chat frontend (AG-UI)",
+  "prompt": "Create a core link 10G between clab-orch-demo-ams-pe and clab-orch-demo-lon-pe.",
+  "sha256": {
+    "scene.png": "d8c8783432ec024bf4533877e484decf350667dfecd9a2de00c1b93fa3c6a2d2",
+    "thumbnail.webp": "974cf638bda5a88bd121a2acede80e383c20aeb68d9633a4bdd1be59b0eed064"
+  },
+  "review": {
+    "content_passed": true,
+    "visual_passed": true,
+    "independent_checks_passed": true,
+    "awaiting_approval": true
+  },
+  "composition": {
+    "layout": "scene",
+    "size": [
+      1440,
+      900
+    ],
+    "source_sha256": {
+      "scene.png": "d8c8783432ec024bf4533877e484decf350667dfecd9a2de00c1b93fa3c6a2d2"
+    },
+    "thumbnail_sha256": "974cf638bda5a88bd121a2acede80e383c20aeb68d9633a4bdd1be59b0eed064",
+    "treatment": "Full uncomposited viewport screenshot; aspect ratio preserved"
+  }
+}

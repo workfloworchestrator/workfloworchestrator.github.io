@@ -5,8 +5,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## What this is
 
 The workfloworchestrator.org website: a MkDocs (Material theme) site that is also a **monorepo docs hub**. Besides
-the programme pages in `docs/`, it pulls in the documentation of four sub-projects (orchestrator-core,
-orchestrator-ui-library, lso, pydantic-forms) via `mkdocs-monorepo-plugin` `!include` entries in `mkdocs.yml`.
+the programme pages in `docs/`, it pulls in the documentation of five sub-projects (orchestrator-core,
+orchestrator-ui-library, lso, pydantic-forms, orchestrator-agent) via `mkdocs-monorepo-plugin` `!include` entries in `mkdocs.yml`.
 
 ## Commands
 
@@ -21,7 +21,7 @@ uv run --no-sync mkdocs build --strict   # what CI runs on PRs; deploy also uses
 ```
 
 - The build **fails without the sub-project checkouts** (`orchestrator-core/`, `orchestrator-ui-library/`, `lso/`,
-  `pydantic-forms/` at the repo root, all gitignored). Run `just setup-subprojects` first.
+  `pydantic-forms/`, `orchestrator-agent/` at the repo root, all gitignored). Run `just setup-subprojects` first.
 - CI builds with `--strict`, so any warning (broken link, missing nav target) fails the PR.
 - yamllint caps lines at 120 chars (except `mkdocs.yml`).
 

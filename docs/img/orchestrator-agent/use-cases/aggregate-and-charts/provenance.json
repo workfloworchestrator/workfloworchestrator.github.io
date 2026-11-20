@@ -1,0 +1,27 @@
+{
+  "case": "aggregate-and-charts",
+  "captured_at": "2026-11-17T17:25:12.265478+00:00",
+  "client": "Official agent chat frontend (AG-UI)",
+  "prompt": "How many active subscriptions are there per product type? Show a bar chart.",
+  "sha256": {
+    "scene.png": "c06b2355594521f01a44923dea2c6b492128ecf152f2a9fda8136877bbe09207",
+    "thumbnail.webp": "e7372bd8b4eade13fe33a50b73831b3eb7913dd1242069d744321406136857b3"
+  },
+  "review": {
+    "content_passed": true,
+    "visual_passed": true,
+    "independent_checks_passed": true
+  },
+  "composition": {
+    "layout": "scene",
+    "size": [
+      1440,
+      900
+    ],
+    "source_sha256": {
+      "scene.png": "c06b2355594521f01a44923dea2c6b492128ecf152f2a9fda8136877bbe09207"
+    },
+    "thumbnail_sha256": "e7372bd8b4eade13fe33a50b73831b3eb7913dd1242069d744321406136857b3",
+    "treatment": "Full uncomposited viewport screenshot; aspect ratio preserved"
+  }
+}

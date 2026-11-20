@@ -1,0 +1,28 @@
+{
+  "case": "export",
+  "captured_at": "2026-11-17T17:25:45.824131+00:00",
+  "client": "Official agent chat frontend (AG-UI)",
+  "prompt": "Export these results to CSV.",
+  "sha256": {
+    "scene.png": "ef852bfaa8acaf0fd39428469fbed80afdea3ca7072e7436e959a1cf85529450",
+    "thumbnail.webp": "aba45efdf699d7925b446ed178bd73c9a27e1bb1b1e43c6e869c5a3d4fc06209"
+  },
+  "review": {
+    "content_passed": true,
+    "visual_passed": true,
+    "independent_checks_passed": true,
+    "csv_verified": true
+  },
+  "composition": {
+    "layout": "scene",
+    "size": [
+      1440,
+      900
+    ],
+    "source_sha256": {
+      "scene.png": "ef852bfaa8acaf0fd39428469fbed80afdea3ca7072e7436e959a1cf85529450"
+    },
+    "thumbnail_sha256": "aba45efdf699d7925b446ed178bd73c9a27e1bb1b1e43c6e869c5a3d4fc06209",
+    "treatment": "Full uncomposited viewport screenshot; aspect ratio preserved"
+  }
+}
