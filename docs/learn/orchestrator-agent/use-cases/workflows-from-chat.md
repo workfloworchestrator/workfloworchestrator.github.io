@@ -1,57 +1,54 @@
-# Start workflows from chat
+---
+description: "Request a workflow from chat, complete its form and review the final approval without starting it."
+---
 
-## Steps
+# Start workflows from chat <span class="wfo-protocol wfo-protocol--agui">AG-UI</span> { #start-workflows-from-chat }
 
-The `workflow` [plugin](../../../orchestrator-agent/reference/plugins.md#workflow) is built in and always on. What a client needs is a way to
-show the questions and the approval to a person:
+Ask for a service change in plain language, then review the workflow before anything starts. The agent walks the form with Orchestrator Core; a person supplies the values and decides whether to approve. The following screenshot shows what this looks like in the chat popup at the end of the conversation: the values for the `create_core_link` workflow between the Amsterdam and London nodes, with **Approve and start** and **Reject** buttons and the note that nothing starts until approval.
 
-- **LibreChat.** Follow [Connect LibreChat](../../../orchestrator-agent/guides/librechat.md). The `X-Agent-Client: librechat` header and
-  `askUserQuestion: true` on the model spec are what enable forms.
-- **An A2A planner.** The planner must support the kagent human-in-the-loop extension.
-  See [Connect another agent over A2A](../../../orchestrator-agent/guides/a2a-planner.md).
+<!-- use-case-capture -->
+<div class="wfo-use-case-scene" markdown>
 
-The AG-UI and MCP endpoints run without the form-fill skill, so they have no workflow forms and no approval step. See
-[Read tools and write tools](../../../orchestrator-agent/reference/runtime.md#read-tools-and-write-tools).
+[![Workflow values awaiting approval over the WFO home page](../../../img/orchestrator-agent/use-cases/workflows-from-chat/scene.png)](../../../img/orchestrator-agent/use-cases/workflows-from-chat/scene.png)
+
+</div>
+<!-- /use-case-capture -->
+
+The example below uses the AG-UI chat popup. You can also request workflows, complete their forms and approve or
+reject them through chat in [LibreChat](../../../orchestrator-agent/guides/librechat.md), connected directly to the
+agent with workflow forms enabled.
+
+## Try it yourself
+
+To try this inside WFO, first enable [the tutorial's native chat popup](../tutorials/example-orchestrator.md#part-4-explore-the-agent-inside-the-wfo-ui).
+
+```text
+Create a core link 10G between clab-orch-demo-ams-pe and clab-orch-demo-lon-pe.
+```
 
 ### What the user goes through
 
-1. The user asks for something that changes the inventory, for example *Create a core link between Amsterdam and
-   London*. The agent lists the workflows, picks the matching one and hands over. It does not look anything up first,
-   because the form offers the options itself.
-2. The agent walks the form from the first page with Orchestrator Core. At each page that Orchestrator Core does not
-   accept yet, the user gets one question per field: its title, whether it is required and the options, if any.
-3. When the form is complete, the user sees the call that will be made: the workflow key and the values, with labels
-   that say what each id stands for. A workflow that ends in a summary page has its tables shown as well.
-4. **Approve** starts the workflow and **reject** cancels it. The agent answers with the id of the process.
+1. Start the [example orchestrator](../tutorials/example-orchestrator.md), including its seeded data.
+2. Add the [agent chat popup](../../../orchestrator-agent/guides/chat-popup.md). Workflow forms over AG-UI need a
+   client that supports interrupts, as the popup does; see
+   [workflow interrupts](../../../orchestrator-agent/reference/endpoints.md#workflow-interrupts). To use LibreChat instead,
+   [connect it directly to the agent](../../../orchestrator-agent/guides/librechat.md) with forms enabled.
+3. Ask the question above. Choose the lab customer, endpoints, available ports and maintenance setting as the
+   form asks. Orchestrator Core validates the answers; correct any values it rejects.
+4. Stop at the final approval screen. Check the workflow name, customer, both endpoints and port values.
+   **Awaiting approval** means the workflow has not started. Reject the request when you finish exploring.
 
-??? tip "Answer with the keyboard in LibreChat"
-    | Key | Effect |
-    | --- | --- |
-    | `1`–`9` | Pick that option; in a multi-select question, toggle it |
-    | `↑` / `↓` | Move the highlight |
-    | `Enter` | Confirm the answer |
-    | `Shift`+`Enter` | New line, does not submit |
-    | `Esc` | Hide the dialog; the question stays open |
+Only approval of the pending form starts the workflow. Typing “yes” in ordinary chat does not approve it. If you
+choose to approve a separate test later, check the returned process in WFO and follow any provisioning confirmation
+steps there.
 
-    To give an answer that is not in the list, type it in the message box.
+Try requesting a different workflow on disposable lab data. Keep the final review even when the request sounds
+straightforward. The [workflow plugin reference](../../../orchestrator-agent/reference/plugins.md#workflow) explains
+how workflow requests are handled, and [the approval explanation](../../../orchestrator-agent/explanation/index.md#the-agent-needs-approval-before-starting-workflows)
+describes where the decision sits.
 
-### What the agent does not do
+## More examples
 
-- It does not read a *yes* in the chat as approval. Only the approval of the pending stop counts.
-- It does not judge values. Orchestrator Core validates them, and a rejected field is asked again with the message of
-  Orchestrator Core. When a person describes a value in words, such as an option or a number, the agent interprets it
-  once per page and shows the result at the approval.
-- It does not resume or abort workflows.
-- A form that is not finished is gone. When the user asks again, the form starts again.
-
-## Verify it works
-
-Ask *Start the terminate workflow for subscription* followed by the id of a subscription. You should be asked the
-questions of the form, then asked to approve. After approval the process shows up in the process list of the
-orchestrator.
-
-## Reference
-
-- [The agent needs approval before starting workflows](../../../orchestrator-agent/explanation/index.md#the-agent-needs-approval-before-starting-workflows)
-- [Plugins: workflow](../../../orchestrator-agent/reference/plugins.md#workflow)
-- [Forms in Orchestrator Core](https://workfloworchestrator.org/orchestrator-core/reference-docs/forms/)
+- [Find the affected subscriptions](search.md)
+- [Investigate an outage](outage-triage.md)
+- [Assess maintenance impact - from virge.io](https://virge.io/en/cases/wfo-maintenance-impact/){target="_blank" rel="noopener"}

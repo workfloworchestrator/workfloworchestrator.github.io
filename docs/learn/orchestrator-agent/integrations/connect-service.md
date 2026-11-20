@@ -1,3 +1,7 @@
+---
+description: "Let the Orchestrator Agent answer questions that need another system, such as NetBox, by combining agents through a planner."
+---
+
 # How to connect another system through a planner
 
 This guide shows you how to let the agent answer questions that need data from another system, such as NetBox, a
@@ -8,7 +12,7 @@ the data belongs:
 
 | If the data | Do this |
 | --- | --- |
-| Belongs to subscriptions in WFO, for example the contract or the monitoring status of a subscription | Add a route to your orchestrator and [expose it as a tool](https://workfloworchestrator.org/orchestrator-core/reference-docs/mcp/#extending). You don't need the steps below. |
+| Belongs to subscriptions in WFO, for example the contract or the monitoring status of a subscription | Add a route to your orchestrator and [expose it as a tool](../../../orchestrator-core/reference-docs/mcp.md#extending). You don't need the steps below. |
 | Lives in a system of its own | Give the system its own agent and let a planner combine the answers. Follow the steps below. |
 
 ## Steps
@@ -41,19 +45,22 @@ The tools are then served at `http://netbox-mcp:8000/mcp`.
 
 ### 2. Create an agent with the MCP server as its toolset
 
-Follow [How to run a companion agent with docker-agent](create-agent.md), with `http://netbox-mcp:8000/mcp` as its toolset.
+Run an agent whose only tools are those of the MCP server, with a description a planner can use to choose it, and
+serve it over A2A. [How to run a companion agent with docker-agent](create-agent.md) shows each step; use
+`http://netbox-mcp:8000/mcp` as its toolset.
 
 ### 3. Connect both agents to a planner
 
-Add the new agent and the Orchestrator Agent as peers of a planner, see
+Add the new agent and the Orchestrator Agent as peers of a planner and tell the planner when to use each, see
 [How to connect another agent over A2A](../../../orchestrator-agent/guides/a2a-planner.md).
 
 ## Verify it works
 
-Ask the planner a question that needs both systems, for example *Which sites exist in NetBox, and how many nodes are
+Check the agent card as described in [How to run a companion agent with docker-agent](create-agent.md#verify-it-works).
+Then ask the planner a question that needs both systems, for example *Which sites exist in NetBox, and how many nodes are
 in WFO?* The answer should combine data from NetBox and from WFO.
 
 ## Reference
 
-- [MCP server of Orchestrator Core: extending](https://workfloworchestrator.org/orchestrator-core/reference-docs/mcp/#extending)
+- [MCP server of Orchestrator Core: extending](../../../orchestrator-core/reference-docs/mcp.md#extending)
 - [How to add domain context](../../../orchestrator-agent/guides/domain-context.md)

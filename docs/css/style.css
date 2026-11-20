@@ -26,6 +26,18 @@
     font-size: 1.10em;
 }
 
+/* Mark outgoing Virge links, including links added to future documentation pages. */
+.md-typeset a:is([href="https://virge.io"], [href^="https://virge.io/"])::after {
+    background-color: currentColor;
+    content: "";
+    display: inline-block;
+    height: .85em;
+    margin-left: .2em;
+    mask: url('../img/external-link.svg') center / contain no-repeat;
+    vertical-align: -.05em;
+    width: .85em;
+}
+
 [data-md-color-scheme="slate"] img[alt='Internet2'] {
     filter: drop-shadow(1px 1px 5px white);
 }
@@ -241,24 +253,34 @@
 .md-typeset .wfo-protocol--agui { background-color: #7B4FBF; }
 .md-typeset .wfo-protocol--mcp { background-color: #C2410C; }
 
-/* Grid cards fixed to three columns on wide screens (add the "cols-3" class next to "grid cards").
+/* The pill of a use-case page sits on the right of its title, like the pill on the use-case card. */
+.md-typeset h1 .wfo-protocol {
+  float: right;
+  margin-top: .55em;
+  margin-right: .5em;
+  margin-left: 1em;
+}
+
+/* Grid cards fixed to two columns on wide screens (add the "cols-2" class next to "grid cards").
    Material's default auto-fills as many 16rem columns as fit; fall back to it on narrow screens. */
 @media screen and (min-width: 40em) {
-  .md-typeset .grid.cards.cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+  .md-typeset .grid.cards.cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 /* Cards start with an image (the last paragraph in the markdown, moved to the top with flex order). The image
    scales with the card width and its bottom third slides under the text, which sits on the card background. */
-.md-typeset .grid.cards.cols-3 > ul > li {
+.md-typeset .grid.cards.cols-2 > ul > li {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
   min-width: 0;
   padding: 0;
   overflow: hidden;
 }
-.md-typeset .grid.cards.cols-3 > ul > li > p:last-child {
+.md-typeset .grid.cards.cols-2 > ul > li > p:last-child {
   flex: none;
   min-width: 0;
   order: -1;
@@ -266,25 +288,59 @@
   margin: 0 0 -20.5%;
   line-height: 0;
 }
-.md-typeset .grid.cards.cols-3 > ul > li > p:last-child a {
+.md-typeset .grid.cards.cols-2 > ul > li > p:last-child a {
   display: block;
 }
-.md-typeset .grid.cards.cols-3 > ul > li > p:last-child img {
+.md-typeset .grid.cards.cols-2 > ul > li > p:last-child img {
   display: block;
   width: 100%;
   max-width: none;
   height: auto;
   margin: 0;
 }
-.md-typeset .grid.cards.cols-3 > ul > li > :not(:last-child) {
+.md-typeset .grid.cards.cols-2 > ul > li > :not(:last-child) {
   position: relative;
   margin: 0;
   padding: .4rem .8rem;
   background-color: var(--md-default-bg-color);
 }
-.md-typeset .grid.cards.cols-3 > ul > li > :nth-last-child(2) {
+.md-typeset .grid.cards.cols-2 > ul > li > :nth-last-child(2) {
   flex-grow: 1;
   padding-bottom: .8rem;
+}
+
+/* Keep protocol pills together over the image, outside the text flow. */
+.md-typeset .grid.cards.cols-2 > ul > li > p:has(> .wfo-protocol) {
+  position: absolute;
+  top: .6rem;
+  right: .6rem;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: .3rem;
+  max-width: calc(100% - 1.2rem);
+  margin: 0;
+  padding: 0;
+  background: transparent;
+}
+
+/* Stretch the title's native link over the card, with one keyboard focus target. */
+.md-typeset .grid.cards.cols-2 > ul > li > p:has(.wfo-card-link) {
+  position: static;
+}
+.md-typeset .grid.cards.cols-2 .wfo-card-link::after {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  content: "";
+}
+.md-typeset .grid.cards.cols-2 .wfo-card-link:focus-visible {
+  outline: none;
+}
+.md-typeset .grid.cards.cols-2 .wfo-card-link:focus-visible::after {
+  outline: .15rem solid var(--md-accent-fg-color);
+  outline-offset: -.15rem;
 }
 
 /* Grid cards with the "links-bottom" class: pin the last paragraph (the links) to the bottom so links line up across a row of cards of
@@ -300,4 +356,45 @@
 .md-typeset .grid.cards.links-bottom > ul > li > p:last-child {
   margin-top: auto;
   padding-top: 1em;
+}
+
+/* Use-case captures keep their full frame. */
+.md-typeset .grid.cards.cols-2 > ul > li:has(.wfo-card-link) > p:last-child {
+  margin-bottom: 0;
+}
+/* Single native viewport captures, including complete LibreChat conversations. */
+.md-typeset .wfo-use-case-scene img { display: block; width: 100%; height: auto; }
+
+/* Match the main cards to Beyond networking's visible media height:
+   its 868/1557 artwork height minus the existing 20.5% text overlap.
+   Equal rows let shorter descriptions share the tallest card's height. */
+.md-typeset .grid.cards.wfo-use-case-cards {
+  grid-auto-rows: 1fr;
+}
+.md-typeset .grid.cards.wfo-use-case-cards > ul > li > p:last-child {
+  position: relative;
+  aspect-ratio: 1557 / 548.815;
+  overflow: hidden;
+  margin: 0;
+}
+.md-typeset .grid.cards.wfo-use-case-cards > ul > li > p:last-child img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+/* The wide popup spans x=524..1424 in the original 1440×900 scene.
+   Crop only the card preview; detail pages retain the complete screenshot. */
+.md-typeset .grid.cards.wfo-use-case-cards > ul > li > p:last-child img.wfo-card-popup {
+  position: absolute;
+  top: 0;
+  left: -58.222222%;
+  width: 160%;
+  height: auto;
+  transform: translateY(-27.777778%);
+}
+/* A slightly wider crop keeps the complete approval card and its controls. */
+.md-typeset .grid.cards.wfo-use-case-cards > ul > li > p:last-child img.wfo-card-popup--approval {
+  left: -26.315789%;
+  width: 126.315789%;
+  transform: translateY(-40.555556%);
 }

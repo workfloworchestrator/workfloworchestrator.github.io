@@ -1,76 +1,122 @@
+---
+description: "Choices, problems and possible solutions for running the Orchestrator Agent in production: clients, identity, deployment shapes, models and evals, observability, gateways and proxies."
+---
+
 # Running the agent in your own stack
 
-!!! warning "Outline"
-    This page is an outline. Each section lists what it will cover. It gives pointers, not full deployment how-tos,
-    because every organisation's stack is different.
+Getting the agent up and running on a laptop, or even internally, is one thing. Getting it running in production and
+keeping it running there is another. This page covers the choices you may have to make, the problems you may run into
+and some possible solutions. Every stack is different, so the page does not give one deployment recipe. Instead it
+helps you pick the path that fits your environment, and links to the guides that go into detail. The sections are
+things you may want to think about, not steps to follow in order or a checklist to complete.
 
-The tutorial and the demos run the agent on a laptop with no authentication. This page covers the choices you make
-when you run it in your own stack: which clients connect to it, who they act as, where it runs, and what you put
-around it.
+The page covers:
 
-## Choose your client
-
-- Questions to start with: do people need to start workflows? Does a model of yours already pick tools? Is the caller
-  a person or another agent?
-- A decision flow (Mermaid) from those questions to a path: `/v1`, `/mcp`, A2A or AG-UI.
-- A feature matrix in user terms, per path: memory between turns, rich results, structured data, workflow forms,
-  user identity.
-    - `/v1`: memory only with an `X-Conversation-Id` header. Workflow forms only for LibreChat (>= 0.8.8).
-    - Agent `/mcp`: stateless, no workflow forms, no follow-ups.
-    - Orchestrator Core `/mcp/`: raw tools including `create_workflow`. The client's model drives them, so the
-      agent's guards do not apply.
-    - A2A: the full agent. Workflow forms need the kagent HITL extension.
-    - AG-UI: streaming and structured artifacts, no form filling.
-
-## Client families
-
-One short paragraph each: which path to use, what works, what doesn't, and a link to the how-to.
-
-- **Chat UIs** (LibreChat, Open WebUI, any OpenAI-compatible UI) → `/v1`.
-  [Connect LibreChat](../../orchestrator-agent/guides/librechat.md), plus a planned guide for other OpenAI-compatible clients.
-- **Harnesses and IDE agents** (Claude Code, Codex CLI, Cursor, VS Code Copilot, Goose, Claude Desktop) → MCP. When
-  to use the agent's MCP and when to use the MCP server of Orchestrator Core.
-  [Use the agent with MCP](../../orchestrator-agent/guides/mcp-clients.md).
-- **Agent platforms and planners** (kagent, docker-agent, other A2A runtimes) → A2A.
-  [Connect another agent over A2A](../../orchestrator-agent/guides/a2a-planner.md).
-- **Your own app** → AG-UI for a web UI, or the OpenAI SDK for backend scripts and bots.
-  [AG-UI protocol reference](../../orchestrator-agent/reference/endpoints.md#ag-ui).
-- **A gateway in front of several clients** (LiteLLM proxy, an MCP gateway) → see [Gateways](#gateways).
+- [Identity](#identity): how identity works in an agentic stack.
+- [Deployment shapes](#deployment-shapes): where the agent runs.
+- [Models and evals](#models-and-evals): which model the agent uses, and how you know a change does not break it.
+- [Why you should observe](#why-you-should-observe): what tracing shows that logs and chat windows don't.
+- [Gateways and proxies](#gateways): what you put in front of the agent once real users and other agents reach it.
 
 ## Identity
 
-- Who holds the user's token on each path: a chat UI forwarding OIDC, a harness sending a bearer header, A2A
-  propagation. Explained per endpoint in
-  [Authentication and authorization](../../orchestrator-agent/explanation/auth.md#outbound-who-the-agent-acts-as), including that the agent's
-  `/mcp` always calls Orchestrator Core as the service account.
-- Fallback to a service account with client credentials (`OAUTH2_OUTBOUND_ACTIVE`), and why it grants more than the
-  user may do, see [Why the user's token is better than a service account](../../orchestrator-agent/explanation/auth.md#why-the-users-token-is-better-than-a-service-account).
-- Token exchange (RFC 8693) as an option, depending on your identity provider.
-- Link: [How to configure authentication and authorization](../../orchestrator-agent/guides/secure-agent.md).
+On a laptop, nobody logs in. In production the question that matters most is not "may this user call the agent?" but
+"whose token does the agent send to Orchestrator Core?". Orchestrator Core runs its own authorization checks, so the
+answer decides what the agent may do on behalf of the person asking.
+
+There are two answers:
+
+- **The user's token.** The client sends the user's token, and the agent forwards it to Orchestrator Core. Core sees
+  the person and applies its policies to them. A chat UI forwards the token from its own OIDC login; a harness sends a
+  bearer header; on A2A the token travels inside the message, not in the HTTP header.
+- **A service account.** When there is no user token, the agent can sign in as itself with the OAuth2
+  client-credentials grant. This is simpler and works for callers without a user, such as scheduled jobs. But Core
+  then sees the agent, not the person, and a service account with the rights of all its callers lets each caller ask
+  for more than they may do themselves. See
+  [User identity and service-account permissions](../../orchestrator-agent/explanation/auth.md#why-the-users-token-is-better-than-a-service-account).
+  The problem grows with every agent and MCP server you add: each hop needs to know who the request is for. That is
+  one of the questions a gateway answers, see [Gateways and proxies](#gateways) and the Virge.io blog post
+  [Why (y)our agents need a gateway (part 1)](https://virge.io/en/blog/why-your-agents-need-a-gateway-part-1/){target="_blank" rel="noopener"}
+  :octicons-link-external-16:.
+
+Problems you may run into:
+
+- **A planner acts as the service account.** A2A callers that only send the HTTP header get past the agent's check,
+  but Core sees the service account. Put the user's token in the message metadata.
+- **The agent's `/mcp` never forwards the user's token.** Core always sees the service account on that path. If Core
+  must see the user, use another path or the MCP server of Core itself.
+- **The token does not fit the next hop.** Forwarding only works when the agent and Core accept the same token. When
+  they need different audiences or scopes, token exchange ([RFC 8693](https://datatracker.ietf.org/doc/html/rfc8693))
+  swaps it for one meant for Core. The agent does not do this itself; your identity provider or a gateway can.
+
+See [Authentication and authorization](../../orchestrator-agent/explanation/auth.md#outbound-who-the-agent-acts-as)
+for which token reaches Core on which endpoint, and
+[How to configure authentication and authorization](../../orchestrator-agent/guides/secure-agent.md) to set it up.
 
 ## Deployment shapes
 
-Short, one paragraph each, with upstream links:
+The agent is one container, [published on GitHub](https://github.com/workfloworchestrator/orchestrator-agent/pkgs/container/orchestrator-agent),
+that needs Orchestrator Core, its database and a model. Three shapes are common:
 
-- **Compose on a VM.** The shape of the example orchestrator.
-- **Kubernetes with kagent.** Declarative agents, with the Orchestrator Agent as your own image.
-- **Agent only, behind an existing platform.** Your chat or agent platform calls the agent over MCP or A2A.
+- **Compose on a VM.** The agent runs next to Orchestrator Core, with a chat UI and possibly other agents in the same
+  Compose project. This is the shape of the
+  [example orchestrator](https://github.com/workfloworchestrator/example-orchestrator), and it fits a single
+  team or a first production setup.
+- **Kubernetes with an agent platform.** Agents are declared as resources, for example with
+  [kagent](https://kagent.dev/docs/kagent), and the Orchestrator Agent runs as your own image next to the other
+  agents. A planner hands questions to it over A2A.
+- **Agent only, behind an existing platform.** You already have a chat or agent platform. It calls the agent over MCP
+  or A2A, and the agent is one more service behind it.
 
-## Models
+## Models and evals
 
-- Hosted (OpenAI, Azure OpenAI, Anthropic), self-hosted (Ollama, vLLM) or through a proxy (LiteLLM).
-- Data residency and cost.
-- Link: [Change the language model](../../orchestrator-agent/guides/own-llm.md).
+The agent works by calling tools, so the model has to call tools well. You can use a hosted model (OpenAI, Azure
+OpenAI, Anthropic), a self-hosted one (Ollama or another OpenAI-compatible server) or a model behind a proxy such as LiteLLM. The choice is mostly
+about three things:
 
-## Observability
+- **Data residency.** Questions, and the subscription data the agent reads to answer them, go to the model. A hosted
+  model sends them outside your infrastructure. See
+  [The language model interprets the request](../../orchestrator-agent/explanation/index.md#the-language-model-interprets-the-request).
+- **Quality.** A small local model may pick the wrong tools or arguments, and give plausible but wrong answers.
+- **Cost.** A different model can take a different route, with a different number of calls and tokens.
 
-- Langfuse is built in. Other OpenTelemetry backends work with a small wrapper, see
-  [Tracing and observability](../../orchestrator-agent/explanation/observability.md#langfuse-and-why-switching-is-easy) and
-  [How to trace the agent](../../orchestrator-agent/guides/tracing.md).
-- Following one request from the chat trace to the agent trace to the audit log of Orchestrator Core
-  (`traceparent`).
+A model or prompt that works today can stop working after an upgrade, a new model version from the provider or a
+change to the domain context. Ordinary tests don't catch that, because the code did not change. The evals do: they run
+the agent against a seeded Orchestrator Core and check which tools it calls, in which order and with which arguments.
+Run them before you switch models or change a prompt, and gate CI on them.
 
-## Gateways
+- [Change the language model](../../orchestrator-agent/guides/own-llm.md)
+- [Understanding agent evaluations](../../orchestrator-agent/explanation/evaluation.md)
+- [How to benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md)
+- [How to add an evaluation case](../../orchestrator-agent/guides/add-eval-case.md)
+
+## Why you should observe
+
+When an answer is wrong, slow or expensive, the chat window only shows the last step. Logs show that something
+happened, not why. A trace keeps the steps together: the question, which tools the model picked, with which arguments,
+what came back and how long each step took. That is what you need to fix a wrong answer, find a run that loops, or see
+where the money goes.
+
+Tracing also closes the loop with the evals. A bad answer found in a trace already contains the question and the route
+the agent took. Write down the route it should have taken, and it becomes an eval case that runs on every later change.
+
+Things to decide before you turn it on:
+
+- **Where the traces go.** Traces contain questions, prompts and the data the model read, including customer and
+  network data. Treat the tracing backend like the model provider: where does the data go, who can read it, how long is
+  it kept.
+- **Which backend.** Langfuse is built in. Other OpenTelemetry backends work with their own exporter configuration,
+  but have not been tested with the agent.
+- **One request across services.** With tracing on, the agent passes its trace context to Orchestrator Core inside
+  each MCP tool call, but not on its plain HTTP requests, such as the calls that fill workflow forms. Orchestrator Core
+  records no traces by default. So the chat UI, the agent and Core still each record their own part, and you link
+  them by time and user. A gateway in front of them is one place to tie them together. See
+  [Tracing and observability](../../orchestrator-agent/explanation/observability.md#not-included).
+
+See [Tracing and observability](../../orchestrator-agent/explanation/observability.md) and
+[How to trace the agent](../../orchestrator-agent/guides/tracing.md).
+
+## Gateways and proxies { #gateways }
 
 ### What the example setup does
 
@@ -87,7 +133,8 @@ a laptop, but it leaves open questions that matter as soon as you run the agent 
   agents call each other over A2A. A check you add to the proxy covers only one of those paths.
 - **No limits and no shared trace.** There is no rate limit or budget per caller, and LibreChat, the proxy, the agents
   and Orchestrator Core each log on their own.
-- **Fixed addresses.** Agent URLs and agent cards point at container addresses, see [Known pitfalls](#known-pitfalls).
+- **Fixed addresses.** Agent URLs and agent cards point at container addresses, see
+  [Deployment shapes](#deployment-shapes).
 
 ### Questions a gateway answers
 
@@ -103,40 +150,23 @@ questions. No single agent or MCP server should answer them on its own:
 - **How much may the caller spend?** An alert on cost does not stop an agent stuck in a loop; a budget per user and
   per agent does.
 - **What happened?** One trace from the chat message to the audit log of Orchestrator Core, see
-  [Observability](#observability).
+  [Why you should observe](#why-you-should-observe).
 
-These are the issues you may run into. Virge.io helped develop the Orchestrator Agent and runs it in its own stack. On
-its website it works these issues out as requirements for a gateway, in the blog post
+The agent itself answers only the first half of the first question: it checks who calls it and whether they may. It
+sets no rate limits or budgets, and does not filter which tools a caller can see. See
+[What the agent does not do: gateways](../../orchestrator-agent/explanation/auth.md#what-the-agent-does-not-do-gateways).
+
+Virge.io helped develop the Orchestrator Agent and runs it in its own stack. On its website it works these questions
+out as requirements for a gateway, in the blog post
 [Why (y)our agents need a gateway (part 1)](https://virge.io/en/blog/why-your-agents-need-a-gateway-part-1/){target="_blank" rel="noopener"}
 :octicons-link-external-16:.
 
 ### When you need one
 
 Put a gateway in front once you have several clients, machine callers, quotas or a central audit log, instead of
-extending the proxy of the example setup. Depending on the traffic this is an API or agent gateway in front of the
-agents and MCP servers, or a model proxy such as LiteLLM between the agents and the model providers. See
-[Write-ups from adopters](#write-ups-from-adopters) for how others did it.
+extending the proxy of the example setup. Two kinds are common, and you may need both:
 
-## Evaluate before you change prompts or models
-
-- Prompt and model drift are production concerns.
-- Links: [Understanding agent evaluations](../../orchestrator-agent/explanation/evaluation.md), [How to benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md).
-
-## Known pitfalls
-
-- The A2A agent card URL (`BASE_URL`) set to a container address that clients can't reach.
-- Internal and external hostnames mixed up in callback URLs.
-- A missing `X-Conversation-Id` header, so the agent forgets the conversation.
-- A LibreChat version too old for workflow forms.
-- Harnesses that auto-approve destructive tools of Orchestrator Core.
-- Cost runaway without per-caller limits, see [Gateways](#gateways).
-- A client without A2A connected to a planner through a demo proxy that checks no identity, see [Gateways](#gateways).
-
-## Write-ups from adopters
-
-A neutral list of how organisations run the agent.
-
-- Virge.io, which helped develop the Orchestrator Agent and runs it in its own stack:
-  [Why (y)our agents need a gateway (part 1)](https://virge.io/en/blog/why-your-agents-need-a-gateway-part-1/){target="_blank" rel="noopener"}
-  :octicons-link-external-16:. The cross-cutting questions of an agent network, and the requirements for a
-  gateway that answers them.
+- **An API or agent gateway** in front of the agents and MCP servers: it decides who may call what, filters tools and
+  enforces budgets per caller.
+- **A model proxy**, such as LiteLLM, between the agents and the model providers: it gives one place for model keys,
+  provider switching and cost per model.

@@ -1,8 +1,13 @@
+---
+description: "Run a companion agent for another system next to the Orchestrator Agent with docker-agent, and serve it over A2A for a planner."
+---
+
 # How to run a companion agent with docker-agent
 
 This guide shows you how to run an agent for another system next to the Orchestrator Agent, with its own tools,
 instructions and model, so that a planner can combine the answers of both over [A2A](https://a2a-protocol.org/latest/).
-To decide whether you need a separate agent at all, see [How to connect another system through a planner](connect-service.md).
+This is one step of [How to connect another system through a planner](connect-service.md), which also helps you decide
+whether you need a separate agent at all.
 
 The steps use [docker-agent](https://github.com/docker/docker-agent) with Docker Compose, and the `inventory-agent` of
 the [example orchestrator](https://github.com/workfloworchestrator/example-orchestrator), which reads NetBox through
@@ -18,7 +23,7 @@ Create a folder for the agent, for example `docker/inventory-agent/`, with an `a
 ```yaml
 agents:
   inventory:
-    model: openai/gpt-4o
+    model: openai/gpt-5-mini
     # Published in the agent card. A planner reads it to decide when to call this agent.
     description: "Read-only NetBox network inventory agent: sites, devices, interfaces, cables, prefixes, IP addresses, VLANs and L2VPNs."
     instruction_file: instructions.md
@@ -73,7 +78,7 @@ services:
     depends_on:
       - netbox-mcp
     ports:
-      - "127.0.0.1:8092:8080"
+      - "127.0.0.1:8083:8080"
 ```
 
 Listen on the service name, not on `0.0.0.0` or `localhost`. The agent card advertises the listen address, and a
@@ -81,23 +86,22 @@ planner cannot reach `localhost`.
 
 ### 4. Connect it to a planner
 
-Add the agent card URL as a peer of a planner, next to the Orchestrator Agent, and tell the planner when to use it.
-See [How to connect another agent over A2A](../../../orchestrator-agent/guides/a2a-planner.md).
+Add the agent card URL as a peer of a planner, next to the Orchestrator Agent, as described in
+[How to connect another system through a planner](connect-service.md#3-connect-both-agents-to-a-planner).
 
 Restart the planner whenever you restart this agent: the card is read at startup.
 
 ## Verify it works
 
-1. Fetch the agent card:
+Fetch the agent card:
 
-    ```shell
-    curl --fail http://localhost:8092/.well-known/agent-card.json
-    ```
+```shell
+curl --fail http://localhost:8083/.well-known/agent-card.json
+```
 
-    The URL in it should be the service name, not `localhost`, and the description should say what the agent is for.
-
-2. Ask the planner a question that needs both agents, for example *Which sites exist in NetBox, and how many nodes
-   are in WFO?* The answer should combine both.
+The URL in it should be the service name, not `localhost`, and the description should say what the agent is for. To
+test the agent together with the Orchestrator Agent, ask the planner a question as described in
+[How to connect another system through a planner](connect-service.md#verify-it-works).
 
 ## Next steps
 

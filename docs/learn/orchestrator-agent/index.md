@@ -16,155 +16,107 @@ detail.
 
 ## What can I do with it?
 
-The agent is reachable in several ways, so you can fit it into your own agentic setup:
-
-<span class="wfo-protocol wfo-protocol--chat">Chat</span> **OpenAI chat completions**: use it as a chat model
-  in LibreChat or any other OpenAI-compatible client.
-
-<span class="wfo-protocol wfo-protocol--a2a">A2A</span> **A2A**: let other agents, such as a planner, hand
-  questions and tasks to it.
-
-<span class="wfo-protocol wfo-protocol--agui">AG-UI</span> **AG-UI**: stream answers, tables and charts into your
-  own web frontend.
-
-<span class="wfo-protocol wfo-protocol--mcp">MCP</span> **MCP**: call it as a tool from MCP clients such as Claude
-  Code or an agent framework.
-
 The use cases below are based on the
-[example orchestrator](https://github.com/workfloworchestrator/example-orchestrator). Search, aggregate, look up and
-export work over every protocol.
+[example orchestrator](https://github.com/workfloworchestrator/example-orchestrator). **The pills identify the protocol
+used in each example**, explained under [How can I reach the agent?](#how-can-i-reach-the-agent). Each use-case page
+explains other ways to try it and any client-specific requirements.
 
-<div class="grid cards cols-3" markdown>
+**The examples need different amounts of setup.** Search and Multi-agent work with only the
+[example orchestrator tutorial](tutorials/example-orchestrator.md). Aggregate and charts, Export and Start workflows
+from chat are shown in the agent chat popup, which the tutorial does not install: add it with
+[Add the agent chat to the WFO UI or your portal](../../orchestrator-agent/guides/chat-popup.md). Outage triage
+also needs the network demo lab of the example orchestrator.
 
--   **Search**
+<div class="grid cards cols-2 wfo-use-case-cards" markdown>
+
+-   **[Search](use-cases/search.md){ .wfo-card-link }**
 
     <span class="wfo-protocol wfo-protocol--chat">Chat</span>
 
-    *"Which L2VPNs run on node X?"*
+    *"Find all subscriptions whose subscription status is active."*
 
     Matching subscriptions, ranked by relevance.
 
-    - [How-to: Enable AI search](../../orchestrator-core/reference-docs/ai-search.md#running-it)
-    - [Reference: Plugins](../../orchestrator-agent/reference/plugins.md)
+    ![Search](../../img/orchestrator-agent/use-cases/search/thumbnail.webp){ .off-glb .wfo-card-chat }
 
-    ![Search](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
+-   **[Aggregate and charts](use-cases/aggregate-and-charts.md){ .wfo-card-link }**
 
--   **Aggregate and charts**
+    <span class="wfo-protocol wfo-protocol--agui">AG-UI</span>
 
-    <span class="wfo-protocol wfo-protocol--chat">Chat</span>
-
-    *"How many subscriptions per product, per month?"*
+    *"How many active subscriptions are there per product type?"*
 
     Counts and trends, ready to chart.
 
-    - [Reference: Plugins](../../orchestrator-agent/reference/plugins.md)
+    ![Aggregate and charts](../../img/orchestrator-agent/use-cases/aggregate-and-charts/thumbnail.webp){ .off-glb .wfo-card-popup }
 
-    ![Aggregate and charts](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
+-   **[Export](use-cases/export.md){ .wfo-card-link }**
 
--   **Look up by id**
-
-    <span class="wfo-protocol wfo-protocol--chat">Chat</span>
-
-    *"Show subscription 3f2a…"*
-
-    The full details of a single subscription.
-
-    - [Reference: Plugins](../../orchestrator-agent/reference/plugins.md)
-
-    ![Look up by id](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
-
--   **Export**
-
-    <span class="wfo-protocol wfo-protocol--chat">Chat</span>
+    <span class="wfo-protocol wfo-protocol--agui">AG-UI</span>
 
     *"Export all active core links to CSV"*
 
     A downloadable file with the results.
 
-    - [Reference: Plugins](../../orchestrator-agent/reference/plugins.md)
+    ![Export](../../img/orchestrator-agent/use-cases/export/thumbnail.webp){ .off-glb .wfo-card-popup }
 
-    ![Export](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
-
--   **Start workflows from chat**
-
-    <span class="wfo-protocol wfo-protocol--chat">Chat</span> <span class="wfo-protocol wfo-protocol--a2a">A2A</span>
-
-    *"Create a core link between Amsterdam and London"*
-
-    A workflow started from the conversation.
-
-    - [How-to: Start workflows from chat](use-cases/workflows-from-chat.md)
-    - [Reference: Plugins](../../orchestrator-agent/reference/plugins.md)
-
-    ![Start workflows from chat](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
-
--   **Multi-agent: WFO + NetBox**
-
-    <span class="wfo-protocol wfo-protocol--a2a">A2A</span>
-
-    *"Which sites exist in NetBox, and how many nodes are in WFO?"*
-
-    One answer combining several systems.
-
-    - [How-to: Multi-agent over A2A](../../orchestrator-agent/guides/a2a-planner.md)
-
-    ![Multi-agent: WFO + NetBox](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
-
--   **Use your own LLM**
-
-    <span class="wfo-protocol wfo-protocol--chat">Chat</span>
-
-    *"Compare models on your own data"*
-
-    Model results side by side on your own questions.
-
-    - [How-to: Change the language model](../../orchestrator-agent/guides/own-llm.md)
-    - [How to benchmark prompt and model changes](../../orchestrator-agent/guides/evals.md)
-
-    ![Use your own LLM](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
-
-</div>
-
-### Beyond networking
-
-Workflow Orchestrator is not limited to networks. It models products, services and workflows of any domain, see
-[At A Glance](../../architecture/at-a-glance.md). The agent works on the models of your own domain, so the same use
-cases apply wherever you use WFO.
-
-<div class="grid cards cols-3" markdown>
-
--   **Answers in your own portal**
+-   **[Start workflows from chat](use-cases/workflows-from-chat.md){ .wfo-card-link }**
 
     <span class="wfo-protocol wfo-protocol--agui">AG-UI</span>
 
-    *"Which of my services renew next quarter?" then "export them"*
+    *"Create a core link between Amsterdam and London"*
 
-    Answers, tables and charts streamed into a self-service portal of your own, with follow-ups on the same thread.
+    Review the workflow and its values before approving it.
 
-    - [Use case: Chat in your own frontend](use-cases/chat-in-your-frontend.md)
-    - [AG-UI protocol reference](../../orchestrator-agent/reference/endpoints.md#ag-ui)
+    ![Start workflows from chat](../../img/orchestrator-agent/use-cases/workflows-from-chat/thumbnail.webp){ .off-glb .wfo-card-popup .wfo-card-popup--approval }
 
-    ![Answers in your own portal](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
+-   **[Multi-agent: WFO + NetBox](use-cases/multi-agent-netbox.md){ .wfo-card-link }**
 
--   **WFO as a tool for your assistant**
+    <span class="wfo-protocol wfo-protocol--a2a">A2A</span>
 
-    <span class="wfo-protocol wfo-protocol--mcp">MCP</span>
+    *"List NetBox sites and count active node Nokia subscriptions in WFO."*
 
-    *"Which products have no active subscriptions?"*
+    One answer combining several systems.
 
-    WFO questions answered from the assistant or agent framework you already use, such as Claude Code.
+    ![Multi-agent: WFO + NetBox](../../img/orchestrator-agent/use-cases/multi-agent-netbox/thumbnail.webp){ .off-glb .wfo-card-chat }
 
-    - [How-to: Use the agent with MCP](../../orchestrator-agent/guides/mcp-clients.md)
+-   **[Outage triage](use-cases/outage-triage.md){ .wfo-card-link }**
 
-    ![WFO as a tool for your assistant](../../img/orchestrator-agent/librechat-agent-orchestrator.png)
+    <span class="wfo-protocol wfo-protocol--a2a">A2A</span>
+
+    *"Why is Amsterdam–London traffic down, and which customer is affected?"*
+
+    A planner combines WFO, NetBox and live network evidence to investigate an outage without making changes.
+
+    ![Outage triage](../../img/orchestrator-agent/use-cases/outage-triage/thumbnail.webp){ .off-glb .wfo-card-chat }
 
 </div>
 
+### How can I reach the agent?
+
+The agent is reachable in several ways, so you can fit it into your own agentic setup:
+
+<span class="wfo-protocol wfo-protocol--chat">Chat</span> **OpenAI chat completions**: use it as a chat model
+in LibreChat or any other OpenAI-compatible client. See [Connect LibreChat](../../orchestrator-agent/guides/librechat.md).
+
+<span class="wfo-protocol wfo-protocol--a2a">A2A</span> **A2A**: let other agents, such as a planner, hand
+questions and tasks to it. See [Connect another agent over A2A](../../orchestrator-agent/guides/a2a-planner.md).
+
+<span class="wfo-protocol wfo-protocol--agui">AG-UI</span> **AG-UI**: stream answers, tables and charts into a chat
+popup in the WFO UI or your own web frontend. See
+[Add the agent chat to the WFO UI or your portal](../../orchestrator-agent/guides/chat-popup.md).
+
+<span class="wfo-protocol wfo-protocol--mcp">MCP</span> **MCP**: call it as a tool from MCP clients such as Claude
+Code or an agent framework. See [Use the agent with MCP](../../orchestrator-agent/guides/mcp-clients.md).
+
 ## How can I try it out myself?
 
-Follow the [tutorial](tutorials/example-orchestrator.md). It runs the agent, a planner and a NetBox agent on the example orchestrator, with
-LibreChat as the chat frontend, and walks through the use cases above. You only need the example orchestrator and an
-API key for an LLM provider.
+Follow the [tutorial](tutorials/example-orchestrator.md). It runs the agent, a planner and a NetBox agent on the example
+orchestrator, with LibreChat as the chat frontend. You search subscriptions, ask one question across WFO and NetBox
+and start a workflow after approving it. You only need the example orchestrator and an API key for an LLM provider.
+
+The examples that use the AG-UI popup (charts, export and the workflow review) need the chat popup as well, see
+[Add the agent chat to the WFO UI or your portal](../../orchestrator-agent/guides/chat-popup.md). Outage triage has its
+own setup, described on its page.
 
 ## How does it work, and what data does the agent touch?
 
@@ -176,17 +128,14 @@ API key for an LLM provider.
 - [The agent needs approval before starting workflows](../../orchestrator-agent/explanation/index.md#the-agent-needs-approval-before-starting-workflows): how
   interpreting a request is kept separate from authorising a change.
 
-## How can I apply it to our stack?
+## How can I apply it to my own stack?
 
 - [Getting started](../../orchestrator-agent/getting-started.md): run the agent on your own Orchestrator Core. See
   the [prerequisites](../../orchestrator-agent/getting-started.md#prerequisites) for what it needs.
 - Connect your clients: [LibreChat](../../orchestrator-agent/guides/librechat.md),
   [MCP clients](../../orchestrator-agent/guides/mcp-clients.md),
   [an A2A planner](../../orchestrator-agent/guides/a2a-planner.md) or
-  [an AG-UI frontend](../../orchestrator-agent/reference/endpoints.md#ag-ui).
-- Once several clients, other agents or
-  machine callers reach the agent, decide in one place, in front of it, who may call it, what they may see and how much
-  they may spend. See [Gateways](production.md#gateways).
+  [the chat popup in the WFO UI or your portal](../../orchestrator-agent/guides/chat-popup.md).
 - Fit it to your data: [Add domain context](../../orchestrator-agent/guides/domain-context.md),
   [Expose your own Core routes as tools](../../orchestrator-core/reference-docs/mcp.md#extending),
   [Connect another system through a planner](integrations/connect-service.md),
@@ -205,6 +154,8 @@ API key for an LLM provider.
 - [How to configure authentication and authorization](../../orchestrator-agent/guides/secure-agent.md): authenticate users, authorize them with OPA and
   call Orchestrator Core as them. [Authentication and authorization](../../orchestrator-agent/explanation/auth.md)
   explains which token reaches Orchestrator Core on which endpoint.
+- [Gateways](production.md#gateways): once several clients, other agents or machine callers reach the agent, decide in
+  one place, in front of it, who may call it, what they may see and how much they may spend.
 
 ## How do I keep it working?
 

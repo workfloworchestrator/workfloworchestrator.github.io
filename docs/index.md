@@ -181,7 +181,7 @@ particular order.
 [<img alt='GÉANT' src='/img/geant-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://geant.org)
 [<img alt='Asiera' src='/img/asiera-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://www.asiera.ie/)
 [<img alt='Nomios' src='/img/nomios-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://www.nomios.com/)
-[<img alt='Virge' src='/img/Virge-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://virge.io)
+[<img alt='Virge' src='/img/Virge-logo.png' style="margin-right: 50px; margin-bottom: 50px;">](https://virge.io){target="_blank" rel="noopener"}
 [<img alt='CANARIE' src='/img/CANARIE_small.png' style="margin-right: 50px; margin-bottom: 50px;">](https://canarie.ca)
 [<img alt='GARR' src='/img/Logo-GARR-small.png' style="margin-right: 50px; margin-bottom: 50px;">](https://garr.it)
 [<img alt='REANNZ' src='/img/reannz-logo-small.png' style="margin-right: 50px; margin-bottom: 50px;">](https://reannz.co.nz)

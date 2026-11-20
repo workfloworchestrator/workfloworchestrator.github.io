@@ -43,15 +43,18 @@ nav:
               - Product and Workflow Generator: workshops/example-orchestrator/generator.md
       - Orchestrator Agent:
           - "Overview: from first question to production": learn/orchestrator-agent/index.md
-          - Tutorials:
-              - "Run it on the example orchestrator": learn/orchestrator-agent/tutorials/example-orchestrator.md
+          - "Tutorial: add the agent to the example orchestrator": learn/orchestrator-agent/tutorials/example-orchestrator.md
           - Use cases:
+              - "Search": learn/orchestrator-agent/use-cases/search.md
+              - "Aggregate and charts": learn/orchestrator-agent/use-cases/aggregate-and-charts.md
+              - "Export": learn/orchestrator-agent/use-cases/export.md
+              - "Multi-agent: WFO + NetBox": learn/orchestrator-agent/use-cases/multi-agent-netbox.md
+              - "Outage triage": learn/orchestrator-agent/use-cases/outage-triage.md
               - "Start workflows from chat": learn/orchestrator-agent/use-cases/workflows-from-chat.md
-              - "Chat in your own frontend": learn/orchestrator-agent/use-cases/chat-in-your-frontend.md
+          - Running in your own stack: learn/orchestrator-agent/production.md
           - Integrations:
               - "Connect another system through a planner": learn/orchestrator-agent/integrations/connect-service.md
               - "Run a companion agent with docker-agent": learn/orchestrator-agent/integrations/create-agent.md
-          - Running in your own stack: learn/orchestrator-agent/production.md
   - Orchestrator Core: "!include ./orchestrator-core/mkdocs.yml"
   # INCLUDED_REPO: https://github.com/workfloworchestrator/orchestrator-core.git
   - Orchestrator UI Library: "!include ./orchestrator-ui-library/mkdocs/mkdocs.yml"
@@ -218,7 +221,7 @@ plugins:
         "orchestrator-ui-library/adrs/0008-typescript-conventions.md": "orchestrator-ui-library/decisions/records/0008-typescript-conventions.md"
         # 2026-10-29: Orchestrator Agent tutorial and use case moved into subfolders
         "learn/orchestrator-agent/tutorial.md": "learn/orchestrator-agent/tutorials/example-orchestrator.md"
-        "learn/orchestrator-agent/chat-in-your-frontend.md": "learn/orchestrator-agent/use-cases/chat-in-your-frontend.md"
+        "learn/orchestrator-agent/chat-in-your-frontend.md": "orchestrator-agent/guides/chat-popup.md"
         # 2026-11-05: Orchestrator Agent own-tools guide split into connect-service and create-agent
         "orchestrator-agent/guides/own-tools.md": "learn/orchestrator-agent/integrations/create-agent.md"
         # 2026-11-05: Orchestrator Agent security-and-observability guide split into secure-agent and tracing
@@ -235,6 +238,8 @@ plugins:
         "orchestrator-agent/architecture/auth.md": "orchestrator-agent/explanation/auth.md"
         "orchestrator-agent/architecture/observability.md": "orchestrator-agent/explanation/observability.md"
         "orchestrator-agent/architecture/evaluation.md": "orchestrator-agent/explanation/evaluation.md"
+        # 2026-11-18: Orchestrator Agent chat-in-your-frontend page replaced by the chat popup guide
+        "learn/orchestrator-agent/use-cases/chat-in-your-frontend.md": "orchestrator-agent/guides/chat-popup.md"
   # orchestrator-ui-library plugins
   # Inline the termynal assets only on pages with a `<!-- termynal -->` block. Loaded site-wide, its
   # termynal.js clashes with orchestrator-core's own (both declare `class Termynal`) and its init code
