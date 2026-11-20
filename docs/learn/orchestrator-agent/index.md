@@ -23,7 +23,9 @@ explains other ways to try it and any client-specific requirements.
 
 **The examples need different amounts of setup.** Search and Multi-agent work with only the
 [example orchestrator tutorial](tutorials/example-orchestrator.md). Aggregate and charts, Export and Start workflows
-from chat are shown in the agent chat popup, which the tutorial does not install: add it with
+from chat are shown in the agent chat popup: add it with the tutorial's optional
+[Part 4: Explore the agent inside the WFO UI](tutorials/example-orchestrator.md#part-4-explore-the-agent-inside-the-wfo-ui).
+For another WFO deployment or your own portal, follow
 [Add the agent chat to the WFO UI or your portal](../../orchestrator-agent/guides/chat-popup.md). Outage triage
 also needs the network demo lab of the example orchestrator.
 

@@ -27,7 +27,7 @@
 }
 
 /* Mark outgoing Virge links, including links added to future documentation pages. */
-.md-typeset a:is([href="https://virge.io"], [href^="https://virge.io/"])::after {
+.md-typeset a:is([href="https://virge.io"], [href^="https://virge.io/"]):not(.virge-logo)::after {
     background-color: currentColor;
     content: "";
     display: inline-block;
