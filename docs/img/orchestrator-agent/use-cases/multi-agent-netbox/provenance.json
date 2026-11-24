@@ -1,0 +1,37 @@
+{
+  "case": "multi-agent-netbox",
+  "captured_at": "2026-11-16T18:30:21.356230+00:00",
+  "client": "LibreChat",
+  "prompt": "List the sites in NetBox and count the active WFO subscriptions for product node Nokia.",
+  "sha256": {
+    "prompt.png": "5f13758c2e946b756381a17ed8b5ec4d8fde6cfc188bbbc315eebe9295fd3b7d",
+    "result.png": "e19af79f18c5f22baa62b75805c0af6404a667e668208dcc3ce4f871014b9617",
+    "thumbnail.webp": "d4babc84aeed3d0fc91fa4e5bf37283bc084273c265016fe67a9976f75e1c2d0"
+  },
+  "review": {
+    "content_passed": true,
+    "visual_passed": true,
+    "independent_checks_passed": true,
+    "note": "Full original LibreChat screens; initial entered prompt on card, complete conversation on page. Response text verified against original answer.txt; original independent evidence retained. Greeting animation settled; no message text changes."
+  },
+  "composition": {
+    "layout": "chat",
+    "size": [
+      1440,
+      508
+    ],
+    "source_sha256": {
+      "prompt.png": "5f13758c2e946b756381a17ed8b5ec4d8fde6cfc188bbbc315eebe9295fd3b7d",
+      "result.png": "e19af79f18c5f22baa62b75805c0af6404a667e668208dcc3ce4f871014b9617"
+    },
+    "thumbnail_sha256": "d4babc84aeed3d0fc91fa4e5bf37283bc084273c265016fe67a9976f75e1c2d0",
+    "treatment": "Full uncomposited viewport screenshot; aspect ratio preserved"
+  },
+  "source": {
+    "method": "Original Playwright DOM snapshots; native viewport reflow; greeting animation settled",
+    "trace_sha256": "0254543034d1221ee4f34503052eb0cd8a156a5f8a755bc09a34bef033bd7437",
+    "initial_snapshot": "before@call@27",
+    "response_snapshot": "before@call@41",
+    "rendered_at": "2026-11-17T18:11:21.622116+00:00"
+  }
+}

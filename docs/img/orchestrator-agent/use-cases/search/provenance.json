@@ -1,0 +1,37 @@
+{
+  "case": "search",
+  "captured_at": "2026-11-16T18:30:54.719719+00:00",
+  "client": "LibreChat",
+  "prompt": "Find all subscriptions whose subscription status is active. Show their IDs and descriptions.",
+  "sha256": {
+    "prompt.png": "8bea649aeec269b415ed3f7dc905a6006d6fed1f5f87016564285c54d0a18ebc",
+    "result.png": "096c69f4cdae260a0680e4e5cf782afe524218dba9ec83944fa324205b3821e0",
+    "thumbnail.webp": "971d30f6efbbd8561e6cbb8cb83602b89da366df068219081593fab0f5d898ec"
+  },
+  "review": {
+    "content_passed": true,
+    "visual_passed": true,
+    "independent_checks_passed": true,
+    "note": "Full original LibreChat screens; initial entered prompt on card, complete conversation on page. Response text verified against original answer.txt; original independent evidence retained. Greeting animation settled; no message text changes."
+  },
+  "composition": {
+    "layout": "chat",
+    "size": [
+      1440,
+      508
+    ],
+    "source_sha256": {
+      "prompt.png": "8bea649aeec269b415ed3f7dc905a6006d6fed1f5f87016564285c54d0a18ebc",
+      "result.png": "096c69f4cdae260a0680e4e5cf782afe524218dba9ec83944fa324205b3821e0"
+    },
+    "thumbnail_sha256": "971d30f6efbbd8561e6cbb8cb83602b89da366df068219081593fab0f5d898ec",
+    "treatment": "Full uncomposited viewport screenshot; aspect ratio preserved"
+  },
+  "source": {
+    "method": "Original Playwright DOM snapshots; native viewport reflow; greeting animation settled",
+    "trace_sha256": "5f20258dd29285db6441c2dccc442aba1df363655f3cb1c04b16f9604fe923ac",
+    "initial_snapshot": "before@call@27",
+    "response_snapshot": "before@call@41",
+    "rendered_at": "2026-11-17T18:11:20.654993+00:00"
+  }
+}

@@ -1,0 +1,165 @@
+{
+  "captured_on": "2026-11-19",
+  "client": "LibreChat",
+  "presentation": "Native full-screen captures; no compositing, response edits or font overrides.",
+  "checks": {
+    "subscriptions": [
+      {
+        "subscriptionId": "5bdb0602-4c66-47eb-9311-838233c85bee",
+        "description": "node clab-orch-demo-ams-pe (active)",
+        "status": "ACTIVE",
+        "product": {
+          "name": "node Nokia",
+          "productType": "Node"
+        }
+      },
+      {
+        "subscriptionId": "c6b0c41c-1a9e-4b22-bb3d-3f201684aa9d",
+        "description": "node clab-orch-demo-par-p (active)",
+        "status": "ACTIVE",
+        "product": {
+          "name": "node Nokia",
+          "productType": "Node"
+        }
+      },
+      {
+        "subscriptionId": "b07b425f-3445-4c54-bce6-47cdb1a3b2be",
+        "description": "node clab-orch-demo-lon-pe (active)",
+        "status": "ACTIVE",
+        "product": {
+          "name": "node Nokia",
+          "productType": "Node"
+        }
+      },
+      {
+        "subscriptionId": "28b3779b-5854-4206-83ea-8d3474dc0fc2",
+        "description": "core link 10G clab-orch-demo-ams-pe ethernet-1/1 <-> ethernet-1/2 clab-orch-demo-par-p",
+        "status": "ACTIVE",
+        "product": {
+          "name": "core link 10G",
+          "productType": "CoreLink"
+        }
+      },
+      {
+        "subscriptionId": "fa058898-05d5-4fb0-a18c-4b087e5a45a3",
+        "description": "core link 10G clab-orch-demo-par-p ethernet-1/1 <-> ethernet-1/2 clab-orch-demo-lon-pe",
+        "status": "ACTIVE",
+        "product": {
+          "name": "core link 10G",
+          "productType": "CoreLink"
+        }
+      }
+    ],
+    "sites": [
+      {
+        "name": "Amsterdam",
+        "slug": "amsterdam"
+      },
+      {
+        "name": "London",
+        "slug": "london"
+      },
+      {
+        "name": "Madrid",
+        "slug": "madrid"
+      },
+      {
+        "name": "Paris",
+        "slug": "paris"
+      },
+      {
+        "name": "Rome",
+        "slug": "rome"
+      }
+    ],
+    "workflow": {
+      "form_open": false,
+      "workflow_processes_created": 0,
+      "selected_decision": "Reject",
+      "delivery": "Retried through the same local chat adapter after the temporary server expired."
+    }
+  },
+  "images": {
+    "active-subscriptions.png": {
+      "prompt": "Which subscriptions are active?",
+      "model": "wfo-search",
+      "captured_on": "2026-11-19",
+      "size": [
+        1440,
+        900
+      ],
+      "sha256": "2a7cc90d1686077b49ed118d312715fdbba6661bd07a818c28fefce35aa6542f",
+      "trace_sha256": "885a6f5fd0bbcf6862817b37e477e216cf9ccbd88159c55c467b781c1c35df54",
+      "source_take": "active-subscriptions/20261119T094403510759Z",
+      "captured_at": "2026-11-19T09:44:37.928242+00:00",
+      "answer_sha256": "e67de882fae56bbdb559e3177e9506acf0745f5c072cf8dae478f9c41716ff18"
+    },
+    "subscription-details.png": {
+      "prompt": "Show subscription 5bdb0602",
+      "model": "wfo-search",
+      "captured_on": "2026-11-19",
+      "size": [
+        1440,
+        900
+      ],
+      "sha256": "409007a2400c3d972f103af589b04e16fcc5b4c269cf8716a35104fd6941d271",
+      "trace_sha256": "cf56a2bb5789a08442fce217df33142397c0088f564c65de8a88b9d3237cc1c5",
+      "source_take": "subscription-details/20261119T094522519807Z",
+      "captured_at": "2026-11-19T09:45:42.179781+00:00",
+      "answer_sha256": "5a0b8a5853ae88a6081067a219d0aaf6c864be1dccef0eda9f1998533b921472"
+    },
+    "subscriptions-per-product.png": {
+      "prompt": "Show the active subscriptions per product type as a pie chart.",
+      "model": "wfo-search",
+      "captured_on": "2026-11-19",
+      "size": [
+        1440,
+        986
+      ],
+      "sha256": "60885c1c006e361b23691ac036ff9def04a26a49091295246c5e988e2168f89b",
+      "trace_sha256": "adc8435f4a166f5ac08fb6f7374c5330526de8dce3f19a407a9fc0df08277970",
+      "source_take": "subscriptions-pie/20261119T104321520503Z",
+      "captured_at": "2026-11-19T10:43:46.841936+00:00",
+      "answer_sha256": "e79c3cdaf86a1fff3e2138763c16a0b73f3f463dcae8e586e91fa46b15543bb0",
+      "treatment": "Native 1440px capture of the completed conversation after the Mermaid pie settled. Replaces the earlier bar chart, whose auto-scaled y-axis ran from 2 to 3."
+    },
+    "sites-and-nodes.png": {
+      "prompt": "Which sites exist in NetBox, and how many active node Nokia subscriptions does the orchestrator have?",
+      "model": "planner",
+      "captured_on": "2026-11-19",
+      "size": [
+        1440,
+        1127
+      ],
+      "sha256": "60ccb953a7ab59600365500136f805c7d890e8e628d8e0c79635c8eb5f06ca24",
+      "trace_sha256": "b3ce56ec7b3ca6fb1f1bc305ffb3aa4c65367faef01d79693cabd4fa5233ea0e",
+      "source_take": "sites-and-nodes/20261119T095319444080Z",
+      "captured_at": "2026-11-19T09:53:59.221852+00:00",
+      "answer_sha256": "87a3768c936e9f2dabe9456e4dda061de5b74c1bafdc1c2325d27d1d69279f8a"
+    },
+    "workflow-approval.png": {
+      "prompt": "Create a core link 10G between clab-orch-demo-par-p and clab-orch-demo-lon-pe",
+      "model": "wfo",
+      "captured_on": "2026-11-19",
+      "size": [
+        1440,
+        900
+      ],
+      "sha256": "493535e4c56b139664df23f6e72a078b4fefd3666a2c7736136b308b7147c67b",
+      "trace_sha256": "db598d42f6432b6c6fea09a196298df138709fc8829ff927d4124d28dd62a3f9",
+      "source_take": "workflow-approval/20261119T094511936787Z",
+      "treatment": "Native scrolled viewport, approval moved into conversation using the client control.",
+      "pending_form": {
+        "workflow": "create_core_link",
+        "product": "core link 10G",
+        "customer": "SURF",
+        "node_a": "clab-orch-demo-par-p",
+        "node_b": "clab-orch-demo-lon-pe",
+        "port_a": "ethernet-1/3",
+        "port_b": "ethernet-1/3",
+        "under_maintenance": false,
+        "awaiting_approval": true
+      }
+    }
+  }
+}

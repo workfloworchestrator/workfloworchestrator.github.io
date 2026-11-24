@@ -1,0 +1,38 @@
+{
+  "case": "outage-triage",
+  "captured_at": "2026-11-16T20:02:06.544204+00:00",
+  "client": "LibreChat",
+  "prompt": "Traffic between Amsterdam and London has stopped. Both sites are reachable and no maintenance is planned. Which service and customer are affected? Compare the stored configuration with live device state. Make no changes.",
+  "sha256": {
+    "prompt.png": "40bd865ae4c2755ccb56d0ff80a1c7559c91d99a0086e555a5a65d9927ef506c",
+    "result.png": "2d1f3bf721d354fc96ff19365a9053cb10860bd3f3955bd5b33887a7b0b4d51b",
+    "thumbnail.webp": "787b826d448d49f11c77728c4c3bfb5136300f273e7955d884b5c92926ef6a4c"
+  },
+  "review": {
+    "content_passed": true,
+    "visual_passed": true,
+    "independent_checks_passed": true,
+    "note": "Full original LibreChat screens; initial entered prompt on card, complete conversation on page. Response text verified against original answer.txt; original independent evidence retained. Greeting animation settled; no message text changes.",
+    "recovery_passed": true
+  },
+  "composition": {
+    "layout": "chat",
+    "size": [
+      1440,
+      508
+    ],
+    "source_sha256": {
+      "prompt.png": "40bd865ae4c2755ccb56d0ff80a1c7559c91d99a0086e555a5a65d9927ef506c",
+      "result.png": "2d1f3bf721d354fc96ff19365a9053cb10860bd3f3955bd5b33887a7b0b4d51b"
+    },
+    "thumbnail_sha256": "787b826d448d49f11c77728c4c3bfb5136300f273e7955d884b5c92926ef6a4c",
+    "treatment": "Full uncomposited viewport screenshot; aspect ratio preserved"
+  },
+  "source": {
+    "method": "Original Playwright DOM snapshots; native viewport reflow; greeting animation settled",
+    "trace_sha256": "e646b06ead78d1047a03a79a2330939d7dfc6233da8139770afa1139c8da413c",
+    "initial_snapshot": "before@call@21",
+    "response_snapshot": "before@call@35",
+    "rendered_at": "2026-11-17T18:11:22.620643+00:00"
+  }
+}

@@ -9,6 +9,7 @@ The following Workflow Orchestrator projects have their own documentation page:
 - [Orchestrator Core](orchestrator-core/index.md)
 - [Orchestrator UI Library](orchestrator-ui-library/index.md)
 - [LSO](lightweight-service-orchestrator/index.md)
+- [Orchestrator Agent](orchestrator-agent/index.md)
 
 This page contains documentation of other projects.
 
