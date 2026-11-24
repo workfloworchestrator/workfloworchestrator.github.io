@@ -107,10 +107,12 @@ Things to decide before you turn it on:
   it kept.
 - **Which backend.** Langfuse is built in. Other OpenTelemetry backends work with their own exporter configuration,
   but have not been tested with the agent.
-- **One request across services.** With tracing on, the agent passes its trace context to Orchestrator Core inside
-  each MCP tool call, but not on its plain HTTP requests, such as the calls that fill workflow forms. Orchestrator Core
-  records no traces by default. So the chat UI, the agent and Core still each record their own part, and you link
-  them by time and user. A gateway in front of them is one place to tie them together. See
+- **One request across services.** With tracing enabled, MCP tool-call metadata carries trace context, but the
+  built-in integration does not propagate it through HTTP `traceparent` headers, including on MCP and form-fill
+  requests. Orchestrator Core records no traces by default. There is no built-in, verified trace spanning the chat UI,
+  the agent and Core; each service needs its own tracing configuration. You can correlate available logs and traces
+  manually using timestamps and identifiers, including user identity where preserved. A gateway can help propagate
+  trace context, but recording and propagation must also be configured across the participating services. See
   [Tracing and observability](../../orchestrator-agent/explanation/observability.md#not-included).
 
 See [Tracing and observability](../../orchestrator-agent/explanation/observability.md) and
