@@ -23,6 +23,12 @@ uv run --no-sync mkdocs build --strict   # what CI runs on PRs; deploy also uses
 - The build **fails without the sub-project checkouts** (`orchestrator-core/`, `orchestrator-ui-library/`, `lso/`,
   `pydantic-forms/` at the repo root, all gitignored). Run `just setup-subprojects` first.
 - CI builds with `--strict`, so any warning (broken link, missing nav target) fails the PR.
+- CI only runs from `.github/workflows/ci.yml`, which calls the reusable `pre-commit.yml` and
+  `run-mkdocs-build.yml` and reports both through the `CI result` gate. Deployment (`gh-pages.yml`) is separate.
+- The docs build clones/pulls the sub-project `main` branches, so an unrelated upstream docs change can fail
+  the strict docs job (and therefore `CI result`) for a PR that touched nothing related.
+- Every CI/`uv` invocation is locked (`UV_LOCKED=true`). Change dependencies with `uv add`/`uv lock` and commit
+  `uv.lock`; `pyproject.toml` keeps `exclude-newer = "3 days"` in `[tool.uv]` to match Renovate's release age.
 - yamllint caps lines at 120 chars (except `mkdocs.yml`).
 
 ## Architecture
@@ -44,6 +50,10 @@ uv run --no-sync mkdocs build --strict   # what CI runs on PRs; deploy also uses
   `source.html` works together with `docs/js/repo-source.js` to fix the repo link/stats under instant navigation.
 - **Dependency pins** in `pyproject.toml` carry comments explaining why (e.g. `mkdocs-redirects==1.2.2`,
   `override-dependencies` for orchestrator-lso conflicts). Read them before bumping.
+- **Renovate** (`renovate.json`) extends the shared workfloworchestrator presets (base, Python, application,
+  security-alerts). The lock is what `gh-pages` deploys, so lock maintenance and site dependency updates are
+  manual. `mkdocs-redirects` is disabled for PEP 621: 1.2.3 depends on properdocs, a MkDocs fork that injects a
+  banner into the build.
 
 ## Conventions
 

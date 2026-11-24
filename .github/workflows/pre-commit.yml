@@ -1,7 +1,12 @@
 name: pre-commit
 
+# Reusable from ci.yml only. Keep the pull_request trigger out of this file so pre-commit is
+# reported once, through the "CI result" gate, instead of as a separate check.
 on:
-  pull_request:
+  workflow_call:
+
+env:
+  UV_LOCKED: true # Assert that the `uv.lock` will remain unchanged
 
 jobs:
   pre-commit:
@@ -12,7 +17,7 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v7
         with:
-          version: "0.11.6"
+          version: "0.13.9"
 
       - name: Install dependencies
         run: uv sync

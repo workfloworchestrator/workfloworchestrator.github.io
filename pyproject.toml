@@ -30,6 +30,9 @@ dependencies = [
 ]
 
 [tool.uv]
+# Keep equal to the shared Renovate preset's minimumReleaseAge (3 days), so Renovate's resolution
+# and a local `uv lock` agree.
+exclude-newer = "3 days"
 # orchestrator-lso 3.0.0 pins pydantic-settings==2.13.1 and uvicorn[standard]==0.44.0, which
 # conflict with orchestrator-core 5.0's pydantic-settings>=2.14.0 and uvicorn[standard]>=0.46.0.
 # These packages are only imported by mkdocstrings to render API docs, so override the pins to the

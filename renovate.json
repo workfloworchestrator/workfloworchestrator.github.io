@@ -1,0 +1,18 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "description": "The docs website: gh-pages deploys the site built from the root lock file, so lock maintenance and site dependency updates are reviewed by hand. A PEP 621 mkdocs-redirects bump is refused because 1.2.3 pulls in properdocs, which injects a banner into the docs build",
+  "extends": [
+    "local>workfloworchestrator/renovate-config",
+    "local>workfloworchestrator/renovate-config//languages/python",
+    "local>workfloworchestrator/renovate-config//projects/application",
+    "local>workfloworchestrator/renovate-config//extras/security-alerts"
+  ],
+  "packageRules": [
+    {
+      "description": "[disable] 1.2.3 adds a dependency on properdocs, a MkDocs fork that injects a switch-away-from-mkdocs banner into the build; stay on the mkdocs-only 1.2.2 pin so no PR is opened until the migration is decided",
+      "matchManagers": ["pep621"],
+      "matchPackageNames": ["mkdocs-redirects"],
+      "enabled": false
+    }
+  ]
+}

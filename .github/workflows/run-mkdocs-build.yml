@@ -1,8 +1,9 @@
 name: Test mkdocs build
 
+# Reusable from ci.yml only. Keep the pull_request trigger out of this file so the strict docs
+# build is reported once, through the "CI result" gate, instead of as a separate check.
 on:
-  pull_request:
-    branches: ["main"]
+  workflow_call:
 
 env:
   UV_LOCKED: true # Assert that the `uv.lock` will remain unchanged
@@ -17,11 +18,13 @@ jobs:
         uses: astral-sh/setup-uv@v8.2.0
         with:
           # It is considered best practice to pin to a specific uv version.
-          version: "0.11.26"
+          version: "0.13.9"
 
       - name: Install site dependencies
         run: uv sync
 
+      # Clones/pulls the sub-project `main` branches. An upstream docs change can therefore fail
+      # this job for a reason unrelated to the pull request (see CLAUDE.md).
       - name: Set up subprojects
         run: ./setup_subprojects.sh
 

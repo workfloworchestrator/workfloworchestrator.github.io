@@ -1,0 +1,31 @@
+name: CI
+
+# Single pull-request entry point: every check runs once from here and the required "CI result"
+# gate is what a ruleset should protect. Deployment (gh-pages.yml) stays on push/dispatch.
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  pre-commit:
+    name: pre-commit
+    uses: ./.github/workflows/pre-commit.yml
+
+  docs:
+    name: Strict docs build
+    uses: ./.github/workflows/run-mkdocs-build.yml
+
+  gate:
+    name: CI result
+    needs: # every job that must pass
+      - pre-commit
+      - docs
+    runs-on: ubuntu-slim
+    if: always() # also report when a needed job failed or was cancelled
+    steps:
+      - name: Decide whether the needed jobs succeeded or failed
+        uses: re-actors/alls-green@b5b5b37504aa4183270bd3d855c52a67f212be35 # v1.3.0
+        with:
+          jobs: ${{ toJSON(needs) }}
